@@ -49,11 +49,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/restaurant_result.do", method=RequestMethod.GET)
 	public String restaurant_result() {
-<<<<<<< HEAD
 		return "restaurant_result ";
-=======
-		return "restaurant_result";
->>>>>>> 0c316e6ee0b2bdb92e1f99e466b5548ab481fa72
 		
 	}
 	
@@ -127,11 +123,11 @@ public class HomeController {
 		return "login";
 		
 	}
-	//È¸¿ø°¡ÀÔ
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value ="/register.do")
 	public String register() {
 	return "register";
-}	//°èÁ¤Ã£±â
+}	//ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½
 	@RequestMapping(value ="/find_account.do")
 	public String find() {
 	return "find_account";
