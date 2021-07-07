@@ -19,7 +19,7 @@
 .category .ico_store {background-position:-10px -36px;}   
 .category .ico_carpark {background-position:-10px -72px;}
 
-#header_banner {
+#head_banner {
     position: relative;
     height: 420px;
     overflow: hidden;
@@ -31,7 +31,7 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
-	<div id="header_banner" style="margin-bottom: 50px;" > 
+	<div id="head_banner" style="margin-bottom: 50px;" > 
     	<div class="text">
         	<span id="banner_text" style="float: left; padding-left: 15px; padding-top: 10px; color: white;">퇴근하기도 바쁜 당신을 위한
             	<br />주변위치 정보 한눈에 모아보기!</span>
