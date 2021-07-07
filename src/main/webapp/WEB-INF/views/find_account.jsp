@@ -101,7 +101,7 @@
                 <div id="top_menu">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
-                        <ul class="navi">
+ 						 <ul class="navi">
                             <li><a href="#">출근길</a>
                                 <ul>
                                     <li><a href="#">날씨/미세먼지</a></li>
@@ -118,14 +118,15 @@
                                     <li><a href="#">5분 스트레칭</a></li>
                                 </ul>
                             </li>
-                            <li><a href="${pageContext.request.contextPath}/.do">퇴근길</a>
-                                <ul>
-                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/restaurant_search.do'">Restaurant</a></li>
-                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/music_select1.do'">Music</a></li>
-                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/nail_search.do'">Beauty</a></li>
-                                    <li><a href="#">Nearby</a></li>
-                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/traffic_search.do'">Transportation</a></li>
-                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/mylist.do'">My List</a></li>
+                            <li><a href="#">퇴근길</a>
+                               <ul>
+                                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
+                                	<br/>
                                 </ul>
                             </li>
                             <li><a href="#">실내</a>
@@ -249,7 +250,7 @@
             <div id="footer">
                 <div id="footer_content">
                     <div id="footer_img">
-                        <a href="#"><img src="assets/img/zigme_logo_rm.png" /></a>
+                        <a href="${pageContext.request.contextPath}/"><img src="assets/img/zigme_logo_rm.png" /></a>
                     </div>
                     <div id="footer_text">
                         <div class="footer_row">

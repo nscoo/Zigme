@@ -44,9 +44,18 @@
 .category .ico_carpark {background-position:-10px -72px;}
 
 
+#head_banner {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+    background-image: url(assets/img/nearby.jpg);
+    background-size: cover;
+
+
 </style>
 </head>
 <body>
+
 <div class="container">
         <!-- header 시작 -->
         <div id="header">
@@ -143,6 +152,7 @@
                     <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
                 </ul>
             </div>
+
 	<div id="head_banner" style="margin-bottom: 50px;" > 
     	<div class="text">
         	<span id="banner_text" style="float: left; padding-left: 15px; padding-top: 10px; color: white;">퇴근하기도 바쁜 당신을 위한

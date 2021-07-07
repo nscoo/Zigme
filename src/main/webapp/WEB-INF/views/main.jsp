@@ -164,7 +164,7 @@
                         <span class="text">transportation</span>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/traffic_search.do">
+                        <a href="${pageContext.request.contextPath}/mylist.do">
                             <img src="assets/img/list.png" alt="사진" width="150" height="150">
                         </a>
                         <span class="text">mylist</span>

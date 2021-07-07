@@ -49,8 +49,8 @@ public class HomeController {
 	
 	@RequestMapping(value = "/restaurant_result.do", method=RequestMethod.GET)
 	public String restaurant_result() {
-
 		return "restaurant_result";		
+
 	}
 	
 	@RequestMapping(value = "/nearby.do", method=RequestMethod.GET)
@@ -106,6 +106,30 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping(value = "/music_select2.do", method=RequestMethod.GET)
+	public String music_select2() {
+		return "music_select2";
+		
+	}
+	
+	@RequestMapping(value = "/music_select3.do", method=RequestMethod.GET)
+	public String music_select3() {
+		return "music_select3";
+		
+	}
+	
+	@RequestMapping(value = "/music_select4.do", method=RequestMethod.GET)
+	public String music_select4() {
+		return "music_select4";
+		
+	}
+	
+	@RequestMapping(value = "/music_result.do", method=RequestMethod.GET)
+	public String music_result() {
+		return "music_result";
+		
+	}
+	
 	@RequestMapping(value = "/mylist.do", method=RequestMethod.GET)
 	public String mylist() {
 		return "mylist";
@@ -123,14 +147,15 @@ public class HomeController {
 		return "login";
 		
 	}
-	//회원가입
+	
 	@RequestMapping(value ="/register.do")
 	public String register() {
 	return "register";
-}	//계정찾기
+	}	
+	
 	@RequestMapping(value ="/find_account.do")
 	public String find() {
 	return "find_account";
-}
+	}
 
 }
