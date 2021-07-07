@@ -1,0 +1,124 @@
+ #header_banner {
+     position: relative;
+     height: 420px;
+     overflow: hidden;
+     background-image: url(../img/trans.jpg);
+     background-size: cover;
+ }
+
+ #traffic {
+     width: 1180px;
+     text-align: center;
+ }
+
+
+
+ .traffic_content {
+     display: inline-block;
+     height: 400px;
+     padding: 100px;
+
+ }
+
+ .traffic_alias {
+     text-align: center;
+ }
+
+ #traffic_result>img {
+     width: 1100px;
+     padding: 20px 0 30px 120px;
+ }
+
+ .alias_name {
+     display: inline-block;
+     padding: 20px;
+     vertical-align: middle;
+ }
+
+ .location {
+     display: block;
+     padding: 20px 0;
+
+ }
+
+ #go_button {
+     display: block;
+     margin: 0 auto;
+     padding: 20px 0 50px 0;
+ }
+
+ #input_traffic {
+     float: left;
+ }
+
+
+
+
+ .navi1:after {
+     content: '';
+     display: block;
+     float: none;
+     clear: both;
+ }
+
+
+ .navi1>li>ul {
+     width: 100%;
+
+     /** 타이틀바 보다 작은 값 */
+     z-index: 100;
+     /** 숨김처리 */
+     opacity: 0;
+     visibility: hidden;
+     position: relative;
+     top: 15px;
+ }
+
+ /* 2detp메뉴 보이기 처리 */
+ .navi1>li:hover>ul {
+     opacity: 1;
+     display: block;
+     visibility: visible;
+     -webkit-transition: all 0.5s;
+     position: relative;
+     top: 0px;
+
+ }
+
+ /* 2depth 메뉴 컨테이너 각 항목 > 링크 */
+ .navi1 ul>li>a {
+     display: block;
+     height: 30px;
+     font-weight: normal;
+     font-size: 15px;
+     line-height: 30px;
+     color: #818181;
+     text-decoration: none;
+ }
+
+ /* 2depth 메뉴 컨테이너 각 항목 > 링크 마우스 오버 */
+ .navi1 ul>li>a:active {}
+
+ .navi1 a:hover {
+     color: #000000;
+ }
+
+ @media (max-width: 480px) {
+     #header_banner {
+         height: 300px;
+     }
+
+     #traffic {
+         width: 450px;
+     }
+
+     #traffic_result>img {
+         width: 450px;
+         padding: 20px 0 30px 0;
+     }
+
+     .alias_name {
+         float: left;
+     }
+
+ }

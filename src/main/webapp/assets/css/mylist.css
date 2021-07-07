@@ -1,0 +1,214 @@
+/* mylist 부분 시작*/
+
+#mylist_area {
+    width: 1200px;
+    height: 1725px;
+    font-family: "BMHANNAPro";
+    position: relative;
+}
+
+#list_box {
+    width: 1200px;
+    height: 1600px;
+    text-align: center;
+}
+
+#list_box>div {
+    width: 900px;
+    position: relative;
+    top: 110px;
+    left: 150px;
+}
+
+/* 선택 탭 (선택) */
+#list_select>ul>li {
+    width: 300px;
+    position: relative;
+    top: 10px;
+}
+
+#list_select>ul>li.active>a {
+    font-size: 20px;
+    color: #ffffff;
+}
+
+#list_select>ul>li:not(.active)>a {
+    color: #000000;
+}
+
+#list_select>ul>li:nth-child(1)>a {
+    background-color: #fd9735;
+}
+
+#list_select>ul>li:nth-child(1).active>a {
+    border: 1px solid #fd9735;
+    background-color: #fd9735;
+}
+
+#list_select>ul>li:nth-child(2)>a {
+    background-color: #aec33a;
+}
+
+#list_select>ul>li:nth-child(2).active>a {
+    border: 1px solid #aec33a;
+    background-color: #aec33a;
+}
+
+#list_select>ul>li:nth-child(3)>a {
+    background-color: #397edc;
+}
+
+#list_select>ul>li:nth-child(3).active>a {
+    border: 1px solid #397edc;
+    background-color: #397edc;
+}
+
+
+/* 선택 탭 내용 */
+
+#list_select>div>div:nth-child(1).active {
+    border: 10px solid #fd9735;
+    background-color: #fd9735;
+}
+
+
+#list_select>div>div:nth-child(2).active {
+    border: 10px solid #aec33a;
+    background-color: #aec33a;
+}
+
+
+#list_select>div>div:nth-child(3).active {
+    border: 10px solid #397edc;
+    background-color: #397edc;
+}
+
+
+/* list item */
+
+.list_item {
+    width: 800px;
+    height: 320px;
+    background-color: #ffffff;
+    border: 0px solid #000000;
+    padding: 20px 20px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.item_img {
+    width: 280px;
+    float: left;
+}
+
+.info_button {
+    float: right;
+    font-size: 25px;
+}
+
+.item_info {
+    width: 400px;
+    display: inline-block;
+    text-align: left;
+}
+
+.info_name {
+    font-size: 40px;
+}
+
+.info_name,
+.info_stars {
+    text-align: left;
+    position: relative;
+    left: 20px;
+}
+
+.info_common {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
+.info_memo>form {
+    padding-left: 20px;
+    padding-top: 15px;
+}
+
+.info_memo>form>input {
+    display: inline-block;
+}
+
+.info_memo>form>input:nth-child(1) {
+    width: 300px;
+    height: 70px;
+}
+
+
+.info_memo>form>input:nth-child(2) {
+    width: 70px;
+    height: 70px;
+    border: 1px 1px 1px 0px solid #000000;
+}
+
+/* mylist 부분 end */
+
+/*반응형 부분*/
+
+@media(max-width: 480px) {
+    #mylist_area {
+        height: 1600px;
+    }
+
+    #list_box>div {
+        width: 450px;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
+
+    #list_select>ul>li {
+        width: 450px;
+        position: relative;
+        top: 10px;
+    }
+
+    #list_select>div>div.active {
+        margin-top: 20px;
+    }
+
+    #list_select>div>div:nth-child(1).active {
+        border: 10px solid #fd9735;
+        background-color: #fd9735;
+    }
+
+
+    #list_select>div>div:nth-child(2).active {
+        border: 10px solid #aec33a;
+        background-color: #aec33a;
+    }
+
+
+    #list_select>div>div:nth-child(3).active {
+        border: 10px solid #397edc;
+        background-color: #397edc;
+    }
+
+
+    .list_item {
+        width: 420px;
+        height: auto;
+        background-color: #ffffff;
+        border: 0px solid #000000;
+        padding: 20px 20px;
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .info_memo>form {
+        padding-left: 20px;
+        padding-top: 10px;
+    }
+}

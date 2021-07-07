@@ -1,0 +1,19 @@
+#login {
+    width: 440px;
+    height: 350px;
+    margin: auto;
+    padding: 30px;
+}
+
+#button_group {
+    width: 440px;
+
+}
+
+#login_btn {
+    width: 380px;
+}
+
+#regit_btn {
+    width: 380px;
+}

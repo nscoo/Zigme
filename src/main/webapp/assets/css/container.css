@@ -1,0 +1,167 @@
+@font-face {
+    font-family: 'BMHANNAPro';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.0/BMHANNAPro.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    font-family: 'BMHANNAPro';
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+#container {
+    font-family: BMHANNAPro;
+}
+
+.block {
+    display: block;
+    padding: 50px 0;
+    font-size: 20px;
+}
+
+
+#block_top {
+    padding-left: 200px;
+    padding-bottom: 10px;
+    display: block;
+
+}
+
+#block_bottom {
+    display: block;
+    padding-left: 375px;
+}
+
+#block_top ul li {
+    margin-left: 15px;
+    display: inline-block;
+
+}
+
+#block_top ul li img {
+    background-color: orange;
+    border-radius: 10px;
+}
+
+.text {
+    display: block;
+    text-align: center;
+}
+
+#block_bottom ul li {
+    display: inline-block;
+    border-radius: 10px;
+    margin-left: 15px;
+}
+
+#block_bottom ul li img {
+    background-color: orange;
+    border-radius: 10px;
+}
+
+
+#carousel {
+    width: 1000px;
+    padding: 100px 0 100px 100px;
+
+}
+
+
+.carousel_img {
+    width: 450px;
+    float: right;
+    display: inline-block;
+}
+
+.carousel_shop {
+    position: absolute;
+    bottom: 20px;
+    left: 28%;
+}
+
+.carousel-indicators li {
+    background: #d3d3d3;
+    border: none;
+}
+
+.carousel-indicators .active {
+    background: orange;
+
+}
+
+.carousel-control .icon-prev:before {
+    content: none;
+}
+
+.carousel-control .icon-next:before {
+    content: none;
+}
+
+.carousel-indicators {
+    margin-bottom: 0%;
+}
+
+@media (max-width: 480px) {
+    #block_top {
+        padding: 0;
+    }
+
+    #block_bottom {
+        padding: 0 0 0 50px;
+    }
+
+    #block_top .text {
+        font-size: 15px;
+    }
+
+    #block_bottom .text {
+        font-size: 15px;
+    }
+
+    #block_top>ul>li>a>img {
+        width: 100px;
+        height: 100px;
+    }
+
+    #block_bottom>ul>li>a>img {
+        width: 100px;
+        height: 100px;
+    }
+
+    #carousel {
+        padding: 20px 0 50px 60px;
+        width: 400px;
+    }
+
+
+
+    .carousel-caption {
+        height: 350px;
+        padding: 0;
+    }
+
+    .carousel-caption>h1 {
+        font-size: 25px;
+    }
+
+    .carousel-shop {
+        position: absolute;
+        bottom: 20px;
+        left: 70%;
+    }
+
+
+
+}

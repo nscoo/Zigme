@@ -1,0 +1,246 @@
+@charset "utf-8";
+/** header 부분 css*/
+
+
+
+#header_banner {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+    background-image: url(../img/panorama.jpg);
+    background-size: cover;
+
+}
+
+
+.top_text {
+    text-align: center;
+    font-size: 35px;
+    padding-left: 500px;
+
+}
+
+#top_logo>a {
+    text-decoration: none;
+
+}
+
+
+#top_logo,
+#top_buttons,
+#button_top,
+#button_time,
+#top_menu {
+    display: inline-block;
+
+}
+
+#button_time {
+    margin-bottom: 50px;
+}
+
+
+#top_buttons {
+    padding-left: 300px;
+    vertical-align: middle;
+    height: 50px;
+}
+
+#banner_text {
+    font-size: 40px;
+    text-align: left;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #000000;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.navi:after {
+    content: '';
+    display: block;
+    float: none;
+    clear: both;
+}
+
+
+.navi>li>ul {
+    width: 100%;
+    display: none;
+    /** 타이틀바 보다 작은 값 */
+    z-index: 100;
+    /** 숨김처리 */
+    opacity: 0;
+    visibility: hidden;
+    position: relative;
+    top: 15px;
+}
+
+/* 2detp메뉴 보이기 처리 */
+.navi>li:hover>ul {
+    opacity: 1;
+    display: block;
+    visibility: visible;
+    -webkit-transition: all 0.5s;
+    position: relative;
+    top: 0px;
+
+}
+
+
+/* 2depth 메뉴 컨테이너 각 항목 > 링크 */
+.navi ul>li>a {
+    display: block;
+    height: 30px;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 30px;
+    color: #818181;
+    text-decoration: none;
+}
+
+/* 2depth 메뉴 컨테이너 각 항목 > 링크 마우스 오버 */
+.navi ul>li>a:active {}
+
+/* 하단 공통 footer
+---------------- */
+
+#footer {
+
+    min-height: 200px;
+
+    background-color: #f7f9fa;
+
+}
+
+
+
+#footer_img,
+#footer_text {
+    display: inline-block;
+}
+
+#footer_text {
+    width: 600px;
+    height: 150px;
+    padding: 50px 0px 0px 0px;
+}
+
+#footer_img,
+#footer_img img {
+    width: 250px;
+    height: 250px;
+
+}
+
+#text_right,
+#text_left {
+    display: inline-block;
+}
+
+#text_right {
+    padding-left: 30px;
+}
+
+@media(min-width: 1180px) {
+    #header {
+        width: 1190px;
+    }
+}
+
+@media(max-width: 480px) {
+
+
+    #top_logo,
+    .top_text {
+        padding: 0 0 0 70px;
+
+    }
+
+    #top_buttons {
+        padding: 0 0 0 100px;
+
+    }
+
+
+    #footer_text {
+        width: 300px;
+        padding: 30px 0 0 0;
+
+
+    }
+
+    #footer_img,
+    #footer_img img {
+        width: 100px;
+        height: 150px;
+        vertical-align: top;
+        padding-top: 50px;
+
+
+    }
+
+    #text_right,
+    #text_left {
+        padding: 0;
+        display: block;
+    }
+}
+
+    @media screen and (max-width: 480px) {
+        .dropdown>li>ul {
+            width: 100%;
+            display: none;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            position: relative;
+            top: 15px;
+        }
+
+        .dropdown-menu {
+            width: 100%;
+            text-align: center;
+            padding: 4px;
+        }
+    }

@@ -1,0 +1,153 @@
+ @media(max-width: 480px) {
+
+     #form-horizontal {
+
+         display: grid;
+         max-height: 360px;
+         max-width: 360px;
+         position: relative;
+         right: 27px;
+     }
+
+     legend {
+         max-width: 240px;
+         margin-left: 0px;
+     }
+
+     .music_select {
+         max-width: 240px;
+         padding-left: 9px;
+         margin-top: 8px;
+         margin-left: -30px;
+
+     }
+
+
+
+     .select_number {
+         margin-left: -465px;
+     }
+
+     .speech-bubble {
+         max-width: 290px;
+         max-height: 65px;
+         margin-left: -620px;
+         margin-top: 110px;
+     }
+
+     #music_cat>img {
+         max-width: 215px;
+         max-height: 235px;
+         margin-top: 180px;
+         margin-left: -680px;
+     }
+ }
+
+
+
+
+ .container_music {
+     width: 900px;
+     height: 770px;
+ }
+
+
+
+ #form-horizontal {
+     border: 10px solid;
+     border-color: rgb(243, 156, 18);
+     width: 820px;
+     height: 430px;
+     margin-top: 45px;
+     margin-left: 80px;
+ }
+
+ #back {
+     position: relative;
+     top: 10px;
+     left: 15px;
+ }
+
+ .text_back {
+     width: 50px;
+     position: absolute;
+     top: 30px;
+     left: 3px;
+ }
+
+ .music {
+     position: relative;
+     top: 100px;
+     left: 50px;
+ }
+
+ legend {
+     position: relative;
+     top: 86px;
+     text-align: center;
+     font-size: calc(0.42vw + 22.00px);
+     border: 2px solid;
+     border-radius: 10px;
+     width: 640px;
+     background-color: orange;
+     color: white;
+
+ }
+
+ .music_select {
+     position: relative;
+     top: 75px;
+     left: 80px;
+     text-align: center;
+     font-size: 1.375em;
+     border: 2px solid;
+     width: 638px;
+     border-radius: 10px;
+ }
+
+ .music_select>li>a:hover {
+     color: #818181;
+     text-decoration: none;
+ }
+
+ .select_number {
+     position: relative;
+     top: -168px;
+     left: 745px;
+     font-size: 22px;
+ }
+
+ .speech-bubble {
+     width: 360px;
+     height: 62px;
+     position: relative;
+     top: 82px;
+     left: 665px;
+     background: #666;
+     border-radius: .4em;
+     text-align: center;
+     font-size: 1.563em;
+     padding-top: 16px;
+     color: white;
+ }
+
+ .speech-bubble:after {
+     content: '';
+     position: absolute;
+     bottom: 0;
+     left: 50%;
+     width: 0;
+     height: 0;
+     border: 20px solid transparent;
+     border-top-color: #666;
+     border-bottom: 0;
+     border-right: 0;
+     margin-left: -10px;
+     margin-bottom: -20px;
+ }
+
+ #music_cat>img {
+     position: relative;
+     top: -42px;
+     left: 890px;
+ }

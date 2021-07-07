@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'BMHANNAPro';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.0/BMHANNAPro.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    font-family: 'BMHANNAPro';
+}
+
+#top_banner {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+    background-image: url(assets_suzy/img/panorama.jpg);
+    background-size: cover;
+    margin-top: -30px;
+}
+
+
+#top_logo>a {
+    text-decoration: none;
+}
+
+#top_logo>a>h2 {
+    text-align: center;
+    font-color: black;
+}
+
+
+#top_logo,
+#top_buttons,
+#button_top,
+#button_time {
+    display: inline-block;
+
+}
+
+#button_time {
+    margin-bottom: 50px;
+}
+
+#header {
+    width: 1200px;
+}
+
+#top_buttons {
+    padding-left: 100px;
+    vertical-align: middle;
+    height: 50px;
+}

@@ -1,0 +1,51 @@
+ #search_input {
+
+     width: 750px;
+     padding-top: 80px;
+     padding-left: 420px;
+ }
+
+ /* 검색 버튼    */
+ #search_input>span>button {
+     background-color: #f89b00;
+     border: 1px solid #f89b00;
+     border-radius: 5px;
+     height: 50px;
+     margin-top: 8px;
+ }
+
+
+ /* 검색 박스 */
+ #search_input>input {
+     position: relative;
+     top: 8px;
+     border-radius: 5px;
+     height: 50px;
+ }
+
+ #header_banner {
+     position: relative;
+     height: 420px;
+     overflow: hidden;
+     background-image: url(../img/flowers.jpg);
+     background-size: cover;
+ }
+
+ @media (max-width: 480px) {
+     #search_input {
+
+         width: 350px;
+         padding-top: 80px;
+         padding-left: 100px;
+     }
+
+     .jumbotron {
+         text-align: center;
+     }
+
+     #header_banner {
+         height: 300px;
+     }
+
+
+ }

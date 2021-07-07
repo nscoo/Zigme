@@ -1,0 +1,135 @@
+#search_input {
+
+    width: 750px;
+    padding-top: 100px;
+    padding-left: 420px;
+}
+
+/* 검색 버튼    */
+#search_input>span>button {
+    background-color: #f89b00;
+    border: 1px solid #f89b00;
+    border-radius: 5px;
+    height: 50px;
+    margin-top: 8px;
+}
+
+
+/* 검색 박스 */
+#search_input>input {
+    position: relative;
+    top: 8px;
+    border-radius: 5px;
+    height: 50px;
+}
+
+#header_banner {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+    background-image: url(../img/restaurant.jpg);
+    background-size: cover;
+
+}
+
+#popupLayer {
+    display: none;
+    border: 5px solid #cccccc;
+    margin: 0;
+    padding: 5px;
+    background-color: #ffffff;
+    font-family: BMHANNAPro;
+    z-index: 5;
+}
+
+#popupLayer .b-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #f37a20;
+    font-weight: bold;
+    cursor: hand;
+}
+
+#popupLayer .popupContent {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    border: 0;
+}
+
+#popupLayer .popupContent {
+    width: 720px;
+    height: 1000px;
+    border: 0px;
+    padding: 0px;
+    margin: 0;
+    z-index: 10;
+}
+
+#popupContent>#popup_content_1 {
+    text-align: center;
+    height: 50px;
+    border-bottom: 4px solid #cccccc;
+}
+
+#popupContent>#popup_content_2 {
+    height: 160px;
+    border-bottom: 4px solid #cccccc;
+    padding-left: 30px;
+    padding-top: 15px;
+    vertical-align: top;
+
+}
+
+#popupContent>#popup_content_2>div>div {
+    font-size: 18px;
+    height: 50px;
+}
+
+#popupContent>#popup_content_2>div>div>.glyphicon {
+    font-size: 25px;
+
+}
+
+#popupContent>#popup_content_2>#info_left {
+    width: 350px;
+    height: 160px;
+
+    display: inline-block;
+}
+
+#popupContent>#popup_content_2>#info_right {
+    width: 350px;
+    height: 160px;
+    display: inline-block;
+}
+
+#popupContent>#popup_content_3 {
+    height: 160px;
+    font-size: 13px;
+    border-bottom: 4px solid #cccccc;
+    padding-left: 30px;
+
+
+}
+
+#popupContent>#popup_content_4 {
+    height: 300px;
+    padding-left: 62px;
+    padding-top: 30px;
+    font-size: 20px;
+
+}
+
+#popupContent>#popup_content_4>#graph_left {
+    width: 300px;
+    height: 240px;
+    display: inline-block;
+}
+
+#popupContent>#popup_content_4>#graph_right {
+    width: 300px;
+    height: 240px;
+    display: inline-block;
+}
