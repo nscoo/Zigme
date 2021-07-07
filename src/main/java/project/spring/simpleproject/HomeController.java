@@ -37,13 +37,19 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "main";
 	}
 	
 	
 	@RequestMapping(value = "/restaurant_search.do", method=RequestMethod.GET)
 	public String restaurant_search() {
 		return "restaurant_search";
+		
+	}
+	
+	@RequestMapping(value = "/restaurant_result.do", method=RequestMethod.GET)
+	public String restaurant_result() {
+		return "restaurant_result ";
 		
 	}
 	
@@ -83,6 +89,12 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping(value = "/traffic_result.do", method=RequestMethod.GET)
+	public String traffic_result() {
+		return "traffic_result";
+		
+	}
+	
 	@RequestMapping(value = "/main.do", method=RequestMethod.GET)
 	public String main() {
 		return "main";
@@ -101,8 +113,8 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/edit.do", method=RequestMethod.GET)
-	public String mypage() {
-		return "mypage";
+	public String edit() {
+		return "edit";
 		
 	}
 	

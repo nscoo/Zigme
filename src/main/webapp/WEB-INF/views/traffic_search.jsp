@@ -54,14 +54,14 @@
                                     <br />
                                 </ul>
                             </li>
-                            <li><a href="main.html">퇴근길</a>
+                            <li><a href="${pageContext.request.contextPath}/main.do">퇴근길</a>
                                 <ul>
-                                    <li><a href="#" onclick="location.href='restaurant_search.html'">Restaurant</a></li>
-                                    <li><a href="#" onclick="location.href='music_select1.html'">Music</a></li>
-                                    <li><a href="#" onclick="location.href='nail_search.html'">Beauty</a></li>
-                                    <li><a href="#">Nearby</a></li>
-                                    <li><a href="#" onclick="location.href='traffic_search.html'">Transportation</a></li>
-                                    <li><a href="#" onclick="location.href='mylist.html'">My List</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/nearby.do" >Nearby</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">실내</a>
@@ -103,8 +103,8 @@
                         </div>
                     </div>
                     <div id="button_top">
-                        <button type="button" class="btn btn-success btn-xs">Login</button>
-                        <button type="button" class="btn btn-warning btn-xs">mypage</button>
+                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
+                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
                     </div>
                 </div>
             </div>
@@ -113,15 +113,15 @@
                     <li class="dropdown">
                         <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" href="nail_search.html">네일샵</a></li>
-                            <li role="presentation"><a role="menuitem" href="nail_search.html">미용실</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
                         </ul>
                     </li>
-                    <li><a href="music_select1.html" style="font-size: 20px;">Music</a></li>
-                    <li><a href="restaurant_search.html" style="font-size: 20px;">Restaurant</a></li>
-                    <li><a href="#" style="font-size: 20px;">Nearby</a></li>
-                    <li><a href="traffic_search.html" style="font-size: 20px;">Transportation</a></li>
-                    <li><a href="mylist.html" style="font-size: 20px;">MyList</a></li>
+                    <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
+                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do" style="font-size: 20px;">Restaurant</a></li>
+                    <li><a href="${pageContext.request.contextPath}/nearby.do" style="font-size: 20px;">Nearby</a></li>
+                    <li><a href="${pageContext.request.contextPath}/traffic_search.do" style="font-size: 20px;">Transportation</a></li>
+                    <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
                 </ul>
             </div>
             <div id="header_banner">
@@ -168,14 +168,14 @@
                     </ul>
                 </div>
             </div>
-            <span id="go_button"><button type="button" onclick="location.href = 'traffic_result.html'" class=" btn btn-danger" style="width: 150px; font-size: 30px;">GO</button></span>
+            <span id="go_button"><button type="button" onclick="location.href='${pageContext.request.contextPath}/traffic_result.do'" class=" btn btn-danger" style="width: 150px; font-size: 30px;">GO</button></span>
         </div>
         <!-- traffic 끝-->
         <!-- footer 시작 -->
         <div id="footer">
             <div id="footer_content">
                 <div id="footer_img">
-                    <a href="#"><img src="assets/img/zigme_logo_rm.png" /></a>
+                    <a href="${pageContext.request.contextPath}/main.do"><img src="assets/img/zigme_logo_rm.png" /></a>
                 </div>
                 <div id="footer_text">
                     <div id="text_left">

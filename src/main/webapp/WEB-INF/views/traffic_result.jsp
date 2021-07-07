@@ -118,8 +118,8 @@
                         </div>
                     </div>
                     <div id="button_top">
-                        <button type="button" class="btn btn-success btn-xs" onclick="${pageContext.request.contextPath}/login.do">Login</button>
-                        <button type="button" class="btn btn-warning btn-xs" onclick="${pageContext.request.contextPath}/edit.do">mypage</button>
+                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
+                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
                     </div>
                 </div>
             </div>
