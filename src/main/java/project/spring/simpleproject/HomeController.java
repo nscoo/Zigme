@@ -51,7 +51,7 @@ public class HomeController {
 	public String restaurant_result() {
 
 
-		return "restaurant_result ";
+		return "restaurant_result";
 
 	}
 	
@@ -125,14 +125,15 @@ public class HomeController {
 		return "login";
 		
 	}
-	//
+	
 	@RequestMapping(value ="/register.do")
 	public String register() {
 	return "register";
-}	//
+	}	
+	
 	@RequestMapping(value ="/find_account.do")
 	public String find() {
 	return "find_account";
-}
+	}
 
 }
