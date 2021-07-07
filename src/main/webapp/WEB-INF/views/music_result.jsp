@@ -204,7 +204,7 @@
                     <img src="assets/img/cat.png" width="340px" height="385px" />
                 </div>
                 <div class="balloon_1">
-                    <a href="music_select1.html" style="color:white; text-decoration: none;">다시 한번 해볼거냥?</a>
+                    <a href="${pageContext.request.contextPath}/music_select1.do" style="color:white; text-decoration: none;">다시 한번 해볼거냥?</a>
                 </div>
                 <!-- music_result 끝 -->
                 <!-- footer 시작 -->

@@ -19,6 +19,22 @@
     <link rel="stylesheet" type="text/css" href="assets/css/container.css">
     <link rel="stylesheet" type="text/css" href="assets/css/music_select.css">
     <!-- 이수진 css,부트스트랩 끝 -->
+    <style type="text/css">
+    legend {
+        position: relative;
+        top: 110px;
+    }
+
+    .music_select {
+        position: relative;
+        top: 97px;
+    }
+
+    .select_number {
+        position: relative;
+        top: -141px;
+    }
+    </style>
 </head>
 
 <body>
@@ -119,16 +135,12 @@
             <!-- header 끝-->
             <div class="container_music">
                 <form id="form-horizontal" role="form">
-                    <a href="restaurant_result.html" id="back">
-                        <img src="assets/img/arrow-left-solid.svg" width="40px" height="30px" />
-                        <span class="text_back">이전으로</span>
-                    </a>
                     <fieldset>
                         <legend>어떤 기분이냥?</legend>
                         <ul class="music_select">
-                            <li><a href="music_select2.html">신난다!!!</a></li>
-                            <li><a href="music_select2.html">우울해</a></li>
-                            <li><a href="music_select2.html">너무 복잡해</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select2.do">신난다!!!</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select2.do">우울해</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select2.do">너무 복잡해</a></li>
                         </ul>
                         <span class="select_number">1&#47;4</span>
                     </fieldset>

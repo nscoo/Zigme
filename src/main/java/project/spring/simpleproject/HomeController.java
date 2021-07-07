@@ -108,6 +108,30 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping(value = "/music_select2.do", method=RequestMethod.GET)
+	public String music_select2() {
+		return "music_select2";
+		
+	}
+	
+	@RequestMapping(value = "/music_select3.do", method=RequestMethod.GET)
+	public String music_select3() {
+		return "music_select3";
+		
+	}
+	
+	@RequestMapping(value = "/music_select4.do", method=RequestMethod.GET)
+	public String music_select4() {
+		return "music_select4";
+		
+	}
+	
+	@RequestMapping(value = "/music_result.do", method=RequestMethod.GET)
+	public String music_result() {
+		return "music_result";
+		
+	}
+	
 	@RequestMapping(value = "/mylist.do", method=RequestMethod.GET)
 	public String mylist() {
 		return "mylist";
