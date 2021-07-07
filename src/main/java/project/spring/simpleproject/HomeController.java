@@ -49,8 +49,10 @@ public class HomeController {
 	
 	@RequestMapping(value = "/restaurant_result.do", method=RequestMethod.GET)
 	public String restaurant_result() {
+
+
 		return "restaurant_result ";
-		
+
 	}
 	
 	@RequestMapping(value = "/nearby.do", method=RequestMethod.GET)
@@ -123,11 +125,11 @@ public class HomeController {
 		return "login";
 		
 	}
-	//ȸ������
+	//
 	@RequestMapping(value ="/register.do")
 	public String register() {
 	return "register";
-}	//����ã��
+}	//
 	@RequestMapping(value ="/find_account.do")
 	public String find() {
 	return "find_account";
