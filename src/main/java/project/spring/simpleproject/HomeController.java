@@ -49,9 +49,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/restaurant_result.do", method=RequestMethod.GET)
 	public String restaurant_result() {
-
-
-		return "restaurant_result";
+		return "restaurant_result";		
 
 	}
 	
