@@ -49,7 +49,11 @@ public class HomeController {
 	
 	@RequestMapping(value = "/restaurant_result.do", method=RequestMethod.GET)
 	public String restaurant_result() {
+<<<<<<< HEAD
 		return "restaurant_result ";
+=======
+		return "restaurant_result";
+>>>>>>> 0c316e6ee0b2bdb92e1f99e466b5548ab481fa72
 		
 	}
 	
@@ -123,5 +127,14 @@ public class HomeController {
 		return "login";
 		
 	}
-	
+	//회원가입
+	@RequestMapping(value ="/register.do")
+	public String register() {
+	return "register";
+}	//계정찾기
+	@RequestMapping(value ="/find_account.do")
+	public String find() {
+	return "find_account";
+}
+
 }

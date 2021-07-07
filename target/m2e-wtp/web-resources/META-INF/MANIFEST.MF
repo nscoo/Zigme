@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: suzy
 Build-Jdk: 16.0.1
+=======
+Built-By: Admin
+Build-Jdk: 15.0.2
+>>>>>>> 0c316e6ee0b2bdb92e1f99e466b5548ab481fa72
 Created-By: Maven Integration for Eclipse
 
