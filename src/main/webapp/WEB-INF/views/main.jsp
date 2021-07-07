@@ -130,19 +130,19 @@
             <div id="block_top">
                 <ul>
                     <li>
-                        <a href="nail_search.jsp">
+                        <a href="${pageContext.request.contextPath}/nail_search.do">
                             <img src="assets/img/beauty.png" alt="사진" width="150" height="150" />
                         </a>
                         <span class="text">beauty</span>
                     </li>
                     <li>
-                        <a href="music_select1.jsp">
+                        <a href="${pageContext.request.contextPath}/music_select1.do">
                             <img src="assets/img/music.png" alt="사진" width="150" height="150">
                         </a>
                         <span class="text">music</span>
                     </li>
                     <li>
-                        <a href="restaurant_search.jsp">
+                        <a href="${pageContext.request.contextPath}/restaurant_search.do">
                             <img src="assets/img/restaurant.png" alt="사진" width="150" height="150">
                         </a>
                         <span class="text">restaurant</span>
@@ -152,19 +152,19 @@
             <div id="block_bottom">
                 <ul>
                     <li>
-                        <a href="nearby.jsp">
+                        <a href="${pageContext.request.contextPath}/nearby.do">
                             <img src="assets/img/map.png" alt="사진" width="150" height="150">
                         </a>
                         <span class="text">nearby</span>
                     </li>
                     <li>
-                        <a href="traffic_search.jsp">
+                        <a href="${pageContext.request.contextPath}/traffic_search.do">
                             <img src="assets/img/bus.png" alt="사진" width="150" height="150">
                         </a>
                         <span class="text">transportation</span>
                     </li>
                     <li>
-                        <a href="mylist.jsp">
+                        <a href="${pageContext.request.contextPath}/traffic_search.do">
                             <img src="assets/img/list.png" alt="사진" width="150" height="150">
                         </a>
                         <span class="text">mylist</span>

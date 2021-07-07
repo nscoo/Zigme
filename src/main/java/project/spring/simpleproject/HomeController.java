@@ -49,12 +49,8 @@ public class HomeController {
 	
 	@RequestMapping(value = "/restaurant_result.do", method=RequestMethod.GET)
 	public String restaurant_result() {
-<<<<<<< HEAD
-		return "restaurant_result ";
-=======
-		return "restaurant_result";
->>>>>>> 0c316e6ee0b2bdb92e1f99e466b5548ab481fa72
-		
+
+		return "restaurant_result";		
 	}
 	
 	@RequestMapping(value = "/nearby.do", method=RequestMethod.GET)

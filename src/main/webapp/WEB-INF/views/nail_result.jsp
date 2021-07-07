@@ -21,12 +21,21 @@
     <!-- body 부분 css 시작-->
     <link rel="stylesheet" type="text/css" href="assets/css/result_gallery.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <style type="text/css">
+    #head_banner {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+    background-image: url(assets/img/flowers.jpg);
+    background-size: cover;
+
+}
+    </style>
 </head>
 
 <body>
     <!--bootstrap 반응형 사용을 위해 제일 상위 class를 container로 설정함 -->
-    <div class="container">
-        <!-- header 시작 -->
+
         <div class="container">
         <!-- header 시작 -->
         <div id="header">
@@ -102,8 +111,8 @@
                         </div>
                     </div>
                     <div id="button_top">
-                        <button type="button" class="btn btn-success btn-xs" onclick="${pageContext.request.contextPath}/login.do">Login</button>
-                        <button type="button" class="btn btn-warning btn-xs" onclick="${pageContext.request.contextPath}/edit.do">mypage</button>
+                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
+                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
                     </div>
                 </div>
             </div>
@@ -123,7 +132,7 @@
                     <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
                 </ul>
             </div>
-            <div id="header_banner">
+            <div id="head_banner">
                 <div id="search_input" class="input-group">
                     <input type="text" class="form-control" placeholder="강남구 서초동 네일샵">
                     <span class="input-group-btn">
@@ -131,6 +140,7 @@
                     </span>
                 </div>
             </div>
+          </div>
             <!-- header 끝-->
             <!-- 네일 검색결과 부분 시작-->
             <h1>Best5</h1>
