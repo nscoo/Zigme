@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -44,14 +46,14 @@
                                     <li><a href="#">5분 스트레칭</a></li>
                                 </ul>
                             </li>
-                            <li><a href="main.html">퇴근길</a>
+                            <li><a href="${pageContext.request.contextPath}/main.do">퇴근길</a>
                                 <ul>
-                                    <li><a href="#" onclick="location.href='restaurant_search.html'">Restaurant</a></li>
-                                    <li><a href="#" onclick="location.href='music_select1.html'">Music</a></li>
-                                    <li><a href="#" onclick="location.href='nail_search.html'">Beauty</a></li>
-                                    <li><a href="#">Nearby</a></li>
-                                    <li><a href="#" onclick="location.href='traffic_search.html'">Transportation</a></li>
-                                    <li><a href="#" onclick="location.href='mylist.html'">My List</a></li>
+                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/restaurant_search.do'">Restaurant</a></li>
+                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/music_select1.do'">Music</a></li>
+                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/nail_search.do'">Beauty</a></li>
+                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/nearby.do'">Nearby</a></li>
+                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/traffic_search.do'">Transportation</a></li>
+                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/edit.do'">My List</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">실내</a>
@@ -76,7 +78,7 @@
                     <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
                 </div>
                 <div id="top_logo">
-                    <a href="main.html">
+                    <a href="${pageContext.request.contextPath}/">
                         <span class="top_text" style="color: black;">
                             ZIGME
                         </span>
@@ -91,8 +93,8 @@
                         </div>
                     </div>
                     <div id="button_top">
-                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='login.html'">Login</button>
-                        <button type="button" class="btn btn-warning btn-xs">mypage</button>
+                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
+                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
                     </div>
                 </div>
             </div>
@@ -101,15 +103,15 @@
                     <li class="dropdown">
                         <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" href="nail_search.html">네일샵</a></li>
-                            <li role="presentation"><a role="menuitem" href="nail_search.html">미용실</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">미용실</a></li>
                         </ul>
                     </li>
-                    <li><a href="music_select1.html" style="font-size: 20px;">Music</a></li>
-                    <li><a href="restaurant_search.html" style="font-size: 20px;">Restaurant</a></li>
+                    <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
+                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do" style="font-size: 20px;">Restaurant</a></li>
                     <li><a href="#" style="font-size: 20px;">Nearby</a></li>
-                    <li><a href="traffic_search.html" style="font-size: 20px;">Transportation</a></li>
-                    <li><a href="mylist.html" style="font-size: 20px;">MyList</a></li>
+                    <li><a href="${pageContext.request.contextPath}/traffic_search.do" style="font-size: 20px;">Transportation</a></li>
+                    <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
                 </ul>
             </div>
             <!-- header 끝-->
@@ -129,8 +131,11 @@
                         <button type="button" class="btn btn-primary btn-block" id="login_btn">
                             로그인
                         </button>
-                        <button type="button" class="btn btn-primary btn-block" id="regit_btn" onclick="location.href='register.html'">
+                        <button type="button" class="btn btn-primary btn-block" id="regit_btn" onclick="location.href='${pageContext.request.contextPath}/register.do'">
                             회원가입
+                        </button>
+                        <button type="button" class="btn btn-primary btn-block" id="regit_btn" onclick="location.href='${pageContext.request.contextPath}/find_account.do'">
+                            아이디 / 비밀번호 찾기
                         </button>
                     </div>
                 </fieldset>
@@ -164,6 +169,7 @@
             </div>
             <!-- footer 끝-->
         </div>
+   </div>
         <!-- Javascript -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>

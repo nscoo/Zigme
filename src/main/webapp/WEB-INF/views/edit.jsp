@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -45,14 +45,14 @@
                                     <li><a href="#">5분 스트레칭</a></li>
                                 </ul>
                             </li>
-                            <li><a href="main.html">퇴근길</a>
+                            <li><a href="${pageContext.request.contextPath}/">퇴근길</a>
                                 <ul>
-                                    <li><a href="#" onclick="location.href='restaurant_search.html'">Restaurant</a></li>
-                                    <li><a href="#" onclick="location.href='music_select1.html'">Music</a></li>
-                                    <li><a href="#" onclick="location.href='nail_search.html'">Beauty</a></li>
-                                    <li><a href="#">Nearby</a></li>
-                                    <li><a href="#" onclick="location.href='traffic_search.html'">Transportation</a></li>
-                                    <li><a href="#" onclick="location.href='mylist.html'">My List</a></li>
+                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/restaurant_search.do'">Restaurant</a></li>
+                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/music_select1.do'">Music</a></li>
+                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/nail_search.do'">Beauty</a></li>
+                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/nail_search.do'">Nearby</a></li>
+                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/traffic_search.do'">Transportation</a></li>
+                                    <li><a href="#" onclick="location.href='${pageContext.request.contextPath}/mylist.do'">My List</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">실내</a>
@@ -77,7 +77,7 @@
                     <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
                 </div>
                 <div id="top_logo">
-                    <a href="main.html">
+                    <a href="${pageContext.request.contextPath}/">
                         <span class="top_text" style="color: black;">
                             ZIGME
                         </span>
@@ -92,8 +92,8 @@
                         </div>
                     </div>
                     <div id="button_top">
-                        <button type="button" class="btn btn-success btn-xs">Login</button>
-                        <button type="button" class="btn btn-warning btn-xs">mypage</button>
+                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
+                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
                     </div>
                 </div>
             </div>
@@ -102,15 +102,15 @@
                     <li class="dropdown">
                         <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" href="nail_search.html">네일샵</a></li>
-                            <li role="presentation"><a role="menuitem" href="nail_search.html">미용실</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">미용실</a></li>
                         </ul>
                     </li>
-                    <li><a href="music_select1.html" style="font-size: 20px;">Music</a></li>
-                    <li><a href="restaurant_search.html" style="font-size: 20px;">Restaurant</a></li>
+                    <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
+                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do" style="font-size: 20px;">Restaurant</a></li>
                     <li><a href="#" style="font-size: 20px;">Nearby</a></li>
-                    <li><a href="traffic_search.html" style="font-size: 20px;">Transportation</a></li>
-                    <li><a href="mylist.html" style="font-size: 20px;">MyList</a></li>
+                    <li><a href="${pageContext.request.contextPath}/traffic_search.do" style="font-size: 20px;">Transportation</a></li>
+                    <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
                 </ul>
             </div>
             <!-- header 끝-->
@@ -122,11 +122,11 @@
                     <form role="form">
                         <div class="form-group">
                             <label for="inputPassword">비밀번호</label>
-                            <input tpye="password" class="form-control" id="inputPassword" placeholder="비밀번호 입력">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="비밀번호 입력">
                         </div>
                         <div class="form-group">
                             <label for="inputPassword">비밀번호확인</label>
-                            <input tpye="password" class="form-control" id="inputPassword_check" placeholder="비밀번호 재입력">
+                            <input type="password" class="form-control" id="inputPassword_check" placeholder="비밀번호 재입력">
                         </div>
                         <div class="form-group">
                             <label for="inputMobile">휴대폰 번호</label>
@@ -139,7 +139,7 @@
                         </div>
                         <div class="form-group">
                             <label for="inputadd" id="icon_search">회사 주소 </label>
-                            <input type=" text" class="form-control" id="inputCompany" placeholder="회사 주소를 입력하세요">
+                            <input type="text" class="form-control" id="inputCompany" placeholder="회사 주소를 입력하세요">
                             <button class="btn btn-default" type="button"><i class="fas fa-search"></i></button>
                         </div>
                         <div id="regist_button">
@@ -153,6 +153,7 @@
                     </form>
                 </div>
             </div>
+       </div>
             <!-- footer 시작 -->
             <div id="footer">
                 <div id="footer_content">
