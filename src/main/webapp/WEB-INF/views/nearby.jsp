@@ -5,9 +5,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Hello JSP</title>
+<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+    <!-- countdown bar css -->
+    <link rel="stylesheet" href="assets/css/stylesheet.css" />
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/common.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/container.css">
 
+    <!-- 아이콘을 위한 css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <style type="text/css">
+    ul {
+        padding-left: 0;
+
+    }
+    #head_banner {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+    background-image: url(assets/img/nearby.jpg);
+    background-size: cover;
+
+} 
+    </style>
 <style>
 #mapwrap{position:relative;overflow:hidden;}
 .category, .category *{margin:0;padding:0;color:#000;}   
@@ -19,6 +43,7 @@
 .category .ico_store {background-position:-10px -36px;}   
 .category .ico_carpark {background-position:-10px -72px;}
 
+
 #head_banner {
     position: relative;
     height: 420px;
@@ -26,16 +51,114 @@
     background-image: url(assets/img/nearby.jpg);
     background-size: cover;
 
-} 
+
 </style>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+
+<div class="container">
+        <!-- header 시작 -->
+        <div id="header">
+            <div id="header_top">
+                <div id="top_menu">
+                    <div id="mySidenav" class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
+                        <ul class="navi">
+                            <li><a href="#">출근길</a>
+                                <ul>
+                                    <li><a href="#">날씨/미세먼지</a></li>
+                                    <li><a href="#">코로나수치</a></li>
+                                    <li><a href="#">대중교통정보</a></li>
+                                    <li><a href="#">뉴스/주식정보</a></li>
+                                    <br />
+                                </ul>
+                            </li>
+                            <li><a href="#">회사안</a>
+                                <ul>
+                                    <li><a href="#">메뉴추천</a></li>
+                                    <li><a href="#">업무 주기능</a></li>
+                                    <li><a href="#">커뮤니티</a></li>
+                                    <li><a href="#">5분 스트레칭</a></li>
+                                    <br />
+                                </ul>
+                            </li>
+                            <li><a href="${pageContext.request.contextPath}/main.do">퇴근길</a>
+                                <ul>
+                                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/nearby.do" >Nearby</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">실내</a>
+                                <ul>
+                                    <li><a href="#">영화추천</a></li>
+                                    <li><a href="#">오늘의 쇼핑</a></li>
+                                    <li><a href="#">이직메이트</a></li>
+                                    <li><a href="#">커뮤니티</a></li>
+                                    <br />
+                                </ul>
+                            </li>
+                            <li><a href="#">실외</a>
+                                <ul>
+                                    <li><a href="#">걷기장소추천</a></li>
+                                    <li><a href="#">커뮤니티</a></li>
+                                    <li><a href="#">문화</a></li>
+                                    <li><a href="#">체육</a></li>
+                                    <li><a href="#">교통정보보기</a></li>
+                                    <br />
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
+                </div>
+                <div id="top_logo">
+                    <a href="${pageContext.request.contextPath}/main.do">
+                        <span class="top_text" style="color: black;">
+                            ZIGME
+                        </span>
+                    </a>
+                </div>
+                <div id="top_buttons">
+                    <button type="button" class="btn btn-default btn-xs">퇴근까지</button>
+                    <div id="button_time">
+                        <div class="countdown-bar" id="countdownC">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div id="button_top">
+                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
+                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
+                    </div>
+                </div>
+            </div>
+            <div id="header_nav">
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="dropdown">
+                        <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
+                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do" style="font-size: 20px;">Restaurant</a></li>
+                    <li><a href="${pageContext.request.contextPath}/nearby.do" style="font-size: 20px;">Nearby</a></li>
+                    <li><a href="${pageContext.request.contextPath}/traffic_search.do" style="font-size: 20px;">Transportation</a></li>
+                    <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
+                </ul>
+            </div>
+
 	<div id="head_banner" style="margin-bottom: 50px;" > 
     	<div class="text">
         	<span id="banner_text" style="float: left; padding-left: 15px; padding-top: 10px; color: white;">퇴근하기도 바쁜 당신을 위한
             	<br />주변위치 정보 한눈에 모아보기!</span>
         </div>
+ 	</div>
  	</div>
 <div id="mapwrap"> 
     <!-- 지도가 표시될 div -->
@@ -258,6 +381,8 @@ function changeMarker(type){
     }    
 } 
 </script>
+
 <%@ include file="footer.jsp" %>
+</div>
 </body>
 </html>

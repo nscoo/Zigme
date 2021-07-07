@@ -88,7 +88,7 @@
                     <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
                 </div>
                 <div id="top_logo">
-                    <a href="main.html">
+                    <a href="${pageContext.request.contextPath}/main.do">
                         <span class="top_text" style="color: black;">
                             ZIGME
                         </span>
