@@ -119,16 +119,16 @@
             <!-- header 끝-->
             <div class="container_music">
                 <form id="form-horizontal" role="form">
-                    <a href="music_select1.html" id="back">
+                    <a href="${pageContext.request.contextPath}/music_select1.do" id="back">
                         <img src="assets/img/arrow-left-solid.svg" width="40px" height="30px" />
                         <span class="text_back">이전으로</span>
                     </a>
                     <fieldset>
                         <legend>날씨는 어떠냥?</legend>
                         <ul class="music_select">
-                            <li><a href="music_select3.html">화창해</a></li>
-                            <li><a href="music_select3.html">비가와</a></li>
-                            <li><a href="music_select3.html">우중충해</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select3.do">화창해</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select3.do">비가와</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select3.do">우중충해</a></li>
                         </ul>
                         <span class="select_number">2&#47;4</span>
                     </fieldset>
