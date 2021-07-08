@@ -5,6 +5,7 @@
 <html lang="ko">
 
 <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -34,6 +35,7 @@
 </head>
 
 <body>
+    <!--bootstrap 반응형 사용을 위해 제일 상위 class를 container로 설정함 -->
     <div class="container">
         <!-- header 시작 -->
         <div id="header">
@@ -48,7 +50,6 @@
                                     <li><a href="#">코로나수치</a></li>
                                     <li><a href="#">대중교통정보</a></li>
                                     <li><a href="#">뉴스/주식정보</a></li>
-                                    <br />
                                 </ul>
                             </li>
                             <li><a href="#">회사안</a>
@@ -57,17 +58,17 @@
                                     <li><a href="#">업무 주기능</a></li>
                                     <li><a href="#">커뮤니티</a></li>
                                     <li><a href="#">5분 스트레칭</a></li>
-                                    <br />
                                 </ul>
                             </li>
-                            <li><a href="${pageContext.request.contextPath}/main.do">퇴근길</a>
-                                <ul>
+                            <li><a href="#">퇴근길</a>
+                               <ul>
                                     <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
                                     <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
                                     <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/nearby.do" >Nearby</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
                                     <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
                                     <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
+                                	<br/>
                                 </ul>
                             </li>
                             <li><a href="#">실내</a>
@@ -76,7 +77,6 @@
                                     <li><a href="#">오늘의 쇼핑</a></li>
                                     <li><a href="#">이직메이트</a></li>
                                     <li><a href="#">커뮤니티</a></li>
-                                    <br />
                                 </ul>
                             </li>
                             <li><a href="#">실외</a>
@@ -86,7 +86,6 @@
                                     <li><a href="#">문화</a></li>
                                     <li><a href="#">체육</a></li>
                                     <li><a href="#">교통정보보기</a></li>
-                                    <br />
                                 </ul>
                             </li>
                         </ul>
@@ -94,7 +93,7 @@
                     <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
                 </div>
                 <div id="top_logo">
-                    <a href="${pageContext.request.contextPath}/main.do">
+                    <a href="${pageContext.request.contextPath}">
                         <span class="top_text" style="color: black;">
                             ZIGME
                         </span>
@@ -109,8 +108,8 @@
                         </div>
                     </div>
                     <div id="button_top">
-                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
-                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
+                       <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
+                       <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
                     </div>
                 </div>
             </div>
@@ -120,14 +119,14 @@
                         <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">미용실</a></li>
                         </ul>
                     </li>
-                    <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
-                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do" style="font-size: 20px;">Restaurant</a></li>
-                    <li><a href="${pageContext.request.contextPath}/nearby.do" style="font-size: 20px;">Nearby</a></li>
-                    <li><a href="${pageContext.request.contextPath}/traffic_search.do" style="font-size: 20px;">Transportation</a></li>
-                    <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
+                   <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
+                   <li><a href="${pageContext.request.contextPath}/restaurant_search.do" style="font-size: 20px;">Restaurant</a></li>
+                   <li><a href="${pageContext.request.contextPath}/nearby.do" style="font-size: 20px;">Nearby</a></li>
+                   <li><a href="${pageContext.request.contextPath}/traffic_search.do" style="font-size: 20px;">Transportation</a></li>
+                   <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>        
                 </ul>
             </div>
             <!-- 네일 검색결과 부분 시작-->
