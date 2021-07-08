@@ -99,8 +99,8 @@
      }
 
      .video-text {
-         margin-top: -174px;
-         margin-left: 110px;
+         margin-top: -184px;
+         margin-left: 102px;
      }
 
      .carousel_caption {
@@ -224,7 +224,7 @@
  }
 
  .video-text {
-     font-size: calc(1.67vw + 6.00px);
+     font-size: 28px;
      text-align: center;
      position: absolute;
      top: 116px;
@@ -244,7 +244,7 @@
      background: #666;
      border-radius: .4em;
      text-align: center;
-     font-size: calc(0.56vw + 15.33px);
+     font-size: 22px;
      padding-top: 24px;
      color: white;
  }
@@ -275,7 +275,7 @@
  }
 
  .balloon_1 {
-     font-size: calc(0.56vw + 13.33px);
+     font-size: 20px;
      text-align: center;
      padding-top: 12px;
      position: relative;

@@ -18,6 +18,23 @@
     <link rel="stylesheet" type="text/css" href="assets/css/common.css">
     <link rel="stylesheet" type="text/css" href="assets/css/music_result.css">
     <!-- 이수진 css,부트스트랩 끝 -->
+    <!-- 반응형 폰트 작업 -->
+    <style type="text/css">
+    @media screen and (max-width: 480px) {
+        .video-text {
+            font-size: 16px;
+        }
+
+        .speech-bubble {
+            font-size: 19px;
+        }
+
+        .balloon_1 {
+            font-size: 18px;
+        }
+    }
+    </style>
+    
 </head>
 
 <body>
