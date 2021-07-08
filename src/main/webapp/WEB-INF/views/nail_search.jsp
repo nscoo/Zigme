@@ -22,18 +22,11 @@
     <link rel="stylesheet" type="text/css" href="assets/css/result_gallery.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <style type="text/css">
-    #head_banner {
-    position: relative;
-    height: 420px;
-    overflow: hidden;
-    background-image: url(assets/img/flowers.jpg);
-    background-size: cover;
-
-}
     </style>
 </head>
 
 <body>
+    <!--bootstrap 반응형 사용을 위해 제일 상위 class를 container로 설정함 -->
     <div class="container">
         <!-- header 시작 -->
         <div id="header">
@@ -131,11 +124,11 @@
                 </ul>
             </div>
             <!-- 네일 검색결과 부분 시작-->
-            <div id="head_banner">
+            <div id="header_banner">
                 <div id="search_input" class="input-group">
                     <input type="text" class="form-control" placeholder="검색어를 입력하세요">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" onclick="location.href='${pageContext.request.contextPath}/nail_result.do'"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-default" type="button" onclick="location.href='${pageContext.request.contextPath}/hair_result.do'"><i class="fas fa-search"></i></button>
                     </span>
                 </div>
             </div>
@@ -205,7 +198,32 @@
             </div>
         </div>
         <!-- footer 시작 -->
-        <%@ include file="footer.jsp" %>
+           <div id="footer">
+                <div id="footer_content">
+                    <div id="footer_img">
+                        <a href="${pageContext.request.contextPath}/"><img src="assets/img/zigme_logo_rm.png" /></a>
+                    </div>
+                    <div id="footer_text">
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-thumbs-up"> Name </span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            PROJECT PORTFOLIO Big Data Class 8
+                        </div>
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-user"> Manager </span>
+                            &nbsp;
+                            Younga Joo
+                        </div>
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-map-marker"> Address </span>
+                            &nbsp;
+                            서울 서초구 서초대로 77길 55, 에이프로스퀘어 2층 EZEN IT
+                        </div>
+                        <br />
+                        <address>copyright&copy; team_3 / All right reserved</address>
+                    </div>
+                </div>
+            </div>
         <!-- footer 끝-->
     </div>
     <!-- Javascript -->
