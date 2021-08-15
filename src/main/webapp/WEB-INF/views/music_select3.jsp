@@ -1,6 +1,12 @@
+<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+  String ans1 = request.getParameter("ans1");
+  String ans3 = request.getParameter("ans3"); 
+  
+%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -118,7 +124,7 @@
             </div>
             <!-- header 끝-->
             <div class="container_music">
-                <form id="form-horizontal" role="form">
+                <form id="form-horizontal" role="form" method="get" action="${pageContext.request.contextPath}/music_result.do">
                     <a href="${pageContext.request.contextPath}/music_select2.do" id="back">
                         <img src="assets/img/arrow-left-solid.svg" width="40px" height="30px" />
                         <span class="text_back">이전으로</span>
@@ -126,9 +132,9 @@
                     <fieldset>
                         <legend>어떤 시간대냥?</legend>
                         <ul class="music_select">
-                            <li><a href="${pageContext.request.contextPath}/music_select4.do">아침</a></li>
-                            <li><a href="${pageContext.request.contextPath}/music_select4.do">오전</a></li>
-                            <li><a href="${pageContext.request.contextPath}/music_select4.do">오후</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_result.do?ans1=<%=ans1%>&ans3=<%=URLEncoder.encode("아침", "utf-8")%>">아침</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_result.do?ans1=<%=ans1%>&ans3=<%=URLEncoder.encode("오전", "utf-8")%>">오전</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_result.do?ans1=<%=ans1%>&ans3=<%=URLEncoder.encode("오후", "utf-8")%>">오후</a></li>
                         </ul>
                         <span class="select_number">3&#47;4</span>
                     </fieldset>
@@ -175,6 +181,7 @@
                 </div>
             </div>
             <!-- footer 끝-->
+        </div>
         </div>
         <!-- Javascript -->
         <script src="assets/js/jquery.min.js"></script>

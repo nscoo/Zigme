@@ -12,8 +12,10 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
+	<!-- 웹 리소스 위치(location)에 대한 URL 맵핑(mapping) -->
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/resources/**" location="/resources/" />
+	<!--resources mapping="/resources/**" location="/resources/" /-->
+	<resources mapping="/assets/**" location="/assets/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -21,12 +23,18 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="project.spring.simpleproject" />
+	<!-- 컨트롤러나 서비스의 구현체가 포함되어 있는 패키지들 나열 -->
 	<context:component-scan base-package="project.spring.simpleproject.controllers" />
+	<context:component-scan base-package="project.spring.simpleproject.service.impl" />
 	
-	<resources mapping="/assets/**" location="/assets/" />
 	
-	<resources mapping="/resources/**" location="/resources/" />
-	
+	<!-- 인터셉터 등록 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/**" />
+			<beans:bean id="appInterceptor"
+			class="project.spring.simpleproject.interceptor.AppInterceptor" />
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

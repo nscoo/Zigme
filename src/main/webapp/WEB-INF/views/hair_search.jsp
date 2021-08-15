@@ -21,7 +21,18 @@
     <!-- body 부분 css 시작-->
     <link rel="stylesheet" type="text/css" href="assets/css/result_gallery.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    
+
     <style type="text/css">
+    
+    #head_banner {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+    background-image: url(assets/img/flowers.jpg);
+    background-size: cover;
+
+}
     </style>
 </head>
 
@@ -124,7 +135,7 @@
                 </ul>
             </div>
             <!-- 네일 검색결과 부분 시작-->
-            <div id="header_banner">
+            <div id="head_banner">
                 <div id="search_input" class="input-group">
                     <input type="text" class="form-control" placeholder="검색어를 입력하세요">
                     <span class="input-group-btn">
@@ -132,7 +143,7 @@
                     </span>
                 </div>
             </div>
-        </div>
+            
         <!-- header 끝-->
         <div id="carousel">
             <!-- 캐러셀 영역 구성 -->
@@ -230,7 +241,11 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/script.js"></script>
+     <!--찜목록 사이드바-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/sidebar.js"></script>
     <script type="text/javascript">
+   
     countdown('countdownC', 0, 0, 10, 10);
     // Countdown Loading Bar
     $config.loadingBars_width = 60;
@@ -253,6 +268,8 @@
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
+    
+    
     </script>
 </body>
 

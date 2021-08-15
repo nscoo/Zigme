@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<% 
+	// GET 파라미터 수신
+	String ans1 = request.getParameter("ans1");
+	String ans2 = request.getParameter("ans2");
+	String ans3 = request.getParameter("ans3");
+	String ans4 = request.getParameter("ans4");
+
+%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -33,6 +43,9 @@
             font-size: 18px;
         }
     }
+    
+  
+   
     </style>
     
 </head>
@@ -68,7 +81,7 @@
                                     <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
                                     <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
                                     <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
-                                    <li><a href="#">Nearby</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
                                     <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
                                     <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
                                 	<br/>
@@ -134,71 +147,60 @@
             </div>
             <!-- header 끝-->
             <!-- music_result 시작 -->
-            <div id="container_music">
+                <div id="container_music">
                 <div id="container_banner">
                 </div>
                 <div id="carousel_video">
                     <!-- 캐러셀 영역 구성 -->
-                    <div id="carousel-example-generic" class="carousel slide">
+                    <div id="carousel-example-generic" class="carousel slide" data-interval="false">
                         <!-- 현재 위치 표시 -->
                         <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="0"></li>
                             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="4"></li>
                         </ol>
                         <!-- 내용 영역 -->
                         <div class="carousel-inner">
                             <!-- 항목 (1) -->
-                            <div class="item active" id="video_item">
-                                <img src="assets/img/get-off1.png" id="video-size" class="carousel_video_img" alt="슬라이더(1)">
-                                <div class="container">
-                                    <div class="carousel-caption">
-                                        <p class="video-text">
-                                            퇴근길,
-                                            <br />
-                                            우연히 들은 노래에
-                                            <br />
-                                            하루가 근사해져버렸다.
-                                            <br />
-                                            <small>2021.04.07</small>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 항목 (2) -->
-                            <div class="item" id="video_item">
-                                <img src="assets/img/get-off2.PNG" id="video-size" class="carousel_video_img" alt="슬라이더(2)">
-                                <div class="container">
-                                    <div class="carousel-caption">
-                                        <p class="video-text">
-                                            지친날,
-                                            <br />
-                                            우연히 들은 노래에
-                                            <br />
-                                            하루가 근사해져버렸다.
-                                            <br />
-                                            <small>2021.04.07</small>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 항목 (3) -->
-                            <div class="item" id="video_item">
-                                <img src="assets/img/get-off3.PNG" id="video-size" class="carousel_video_img" alt="슬라이더(3)">
-                                <div class="container">
-                                    <div class="carousel-caption">
-                                        <p class="video-text">
-                                            어느날,
-                                            <br />
-                                            우연히 들은 노래에
-                                            <br />
-                                            하루가 근사해져버렸다.
-                                            <br />
-                                            <small>2021.04.07</small>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            <c:choose>
+                            <c:when test="${searchYoutubeList !=null && searchYoutubeList.items.size()>0}">
+                            	<c:forEach var="item" items="${searchYoutubeList.items}" varStatus="status" >
+                                  	<c:if test="${status.count eq 1 }">
+                                  		<div class="item active" id="video_item">
+                              			<iframe id="video-size" class="carousel_video_img" src="https://www.youtube.com/embed/${item.id.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+                        	   			<div class="container">
+                                    		<div class="carousel-caption">
+                                           		<p class="video-text">
+                                             		${item.snippet.title}
+                                            		<small>${item.snippet.publishedAt}</small>
+                                           		</p>
+                                    		</div>
+                                		</div>
+                             		</div>
+                                  	</c:if>
+                                  	<c:if test="${status.count ne 1 }">
+                                  		<div class="item" id="video_item">
+                              			<iframe id="video-size" class="carousel_video_img" src="https://www.youtube.com/embed/${item.id.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+                        	   			<div class="container">
+                                    		<div class="carousel-caption">
+                                           		<p class="video-text">
+                                             		${item.snippet.title}
+                                            		<small>${item.snippet.publishedAt}</small>
+                                           		</p>
+                                    		</div>
+                                		</div>
+                             		</div>
+                                  	</c:if>
+                                  	
+                                 
+                                 
+                             	</c:forEach>
+                            </c:when>
+                          	</c:choose>
+                        </div>
+                            
                         </div>
                         <!-- // 내용영역 구성 -->
                         <!-- 이동 버튼 -->
@@ -259,6 +261,7 @@
                 </div>
                 <!-- footer 끝-->
             </div>
+            </div>
             <!-- Javascript -->
             <script src="assets/js/jquery.min.js"></script>
             <script src="assets/js/bootstrap.min.js"></script>
@@ -286,6 +289,10 @@
             function closeNav() {
                 document.getElementById("mySidenav").style.width = "0";
             }
+            </script>
+            <!-- youtube -->
+            <script type="text/javascript"> 
+            
             </script>
 </body>
 

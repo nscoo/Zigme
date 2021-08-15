@@ -36,6 +36,7 @@
         cursor: pointer;
         font-size: 25px;
     }
+    
     </style>
 </head>
 

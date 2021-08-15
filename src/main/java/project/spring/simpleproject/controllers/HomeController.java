@@ -1,16 +1,20 @@
-package project.spring.simpleproject;
+package project.spring.simpleproject.controllers;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import lombok.extern.slf4j.Slf4j;
+import project.spring.simpleproject.helper.RegexHelper;
+import project.spring.simpleproject.helper.WebHelper;
 
 /**
  * Handles requests for the application home page.
@@ -19,6 +23,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class HomeController {
+	
+	@Autowired WebHelper webHelper;
+	@Autowired RegexHelper regexHelper;
+	@Autowired SqlSession sqlSession;
 	
 	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -59,18 +67,9 @@ public class HomeController {
 		
 	}
 	
-	@RequestMapping(value = "/nail_search.do", method=RequestMethod.GET)
-	public String nail_search() {
-		return "nail_search";
-		
-	}
 	
-	@RequestMapping(value = "/nail_result.do", method=RequestMethod.GET)
-	public String nail_result() {
-		return "nail_result";
-		
-	}
 	
+
 	@RequestMapping(value = "/hair_search.do", method=RequestMethod.GET)
 	public String hair_search() {
 		return "hair_search";
@@ -100,35 +99,7 @@ public class HomeController {
 		return "main";
 		
 	}
-	@RequestMapping(value = "/music_select1.do", method=RequestMethod.GET)
-	public String music_select1() {
-		return "music_select1";
-		
-	}
 	
-	@RequestMapping(value = "/music_select2.do", method=RequestMethod.GET)
-	public String music_select2() {
-		return "music_select2";
-		
-	}
-	
-	@RequestMapping(value = "/music_select3.do", method=RequestMethod.GET)
-	public String music_select3() {
-		return "music_select3";
-		
-	}
-	
-	@RequestMapping(value = "/music_select4.do", method=RequestMethod.GET)
-	public String music_select4() {
-		return "music_select4";
-		
-	}
-	
-	@RequestMapping(value = "/music_result.do", method=RequestMethod.GET)
-	public String music_result() {
-		return "music_result";
-		
-	}
 	
 	@RequestMapping(value = "/mylist.do", method=RequestMethod.GET)
 	public String mylist() {
