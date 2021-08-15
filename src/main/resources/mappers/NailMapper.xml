@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="NailMapper">
+
+	<!-- Beans 객체이름(id)과 클래스type을 명시 -->
+	<resultMap type="project.spring.simpleproject.model.Nail" id="nailMap">
+		<!-- Beans의 property 이름과 대상 테이블의 column연결 -->
+		<result property="nailno" column="nailno" />
+		<result property="name" column="name" />
+		<result property="stars" column="stars" />
+		<result property="call" column="call" />
+		<result property="address" column= "address" />
+		<result property="times" column="times" />
+		<result property="ps" column="ps" />
+		<result property="review_count" column="review_count" />
+		<result property="photos" column="photos" />
+		<result property="menu" column="menu" />
+	</resultMap>
+	
+	<!-- 단일행 조회를 위한 기능 정의 -->
+	<select id="selectItem" parameterType="project.spring.simpleproject.model.Nail" resultMap="nailMap">
+		SELECT * FROM hair WHERE review_count=#{review_count};
+	</select>
+	
+	<!-- 다중행 조회를 위한 기능 정의 -->
+	<select id="selectList" parameterType="project.spring.simpleproject.model.Nail" resultMap="nailMap">
+		SELECT * FROM hair
+		<where>
+			<if test="name != null and name !=''">
+				name LIKE concat('%', #{name}, '%')
+			</if>
+			
+			<if test="address != null and address !=''">
+				OR address LIKE concat('%', #{address}, '%')
+			</if>
+		</where>
+		
+		ORDER BY review_count desc
+	</select>
+
+	<!-- 데이터 저장을 위한 기능 정의 -->
+	<insert id="insertItem" parameterType="project.spring.simpleproject.model.Nail" useGeneratedKeys="true" keyProperty="nailno">
+		INSERT INTO hair (name, stars, `call`, address, times, ps, review_count, photos, menu) VALUES (#{name}, #{stars}, #{call}, #{address}, #{times}, #{ps}, #{review_count}, #{photos}, #{menu});	
+	</insert>
+	
+	<!-- 데이터 삭제를 위한 기능 정의 -->
+	<delete id="deleteItem" parameterType="project.spring.simpleproject.model.Nail">
+		DELETE FROM hair WHERE nailno=#{nailno}
+	</delete>
+	
+	<!-- 데이터 갱신을 위한 기능 정의 -->
+	<update id="updateItem" parameterType="project.spring.simpleproject.model.Nail">
+		UPDATE hair SET name=#{name} WHERE nailno=#{nailno}
+	</update>
+	
+	<!-- 데이터 수 조회하기 -->
+	<select id="selectCountAll" parameterType="project.spring.simpleproject.model.Nail" resultType="int">
+		SELECT COUNT(*) FROM hair
+		
+			<where>
+				<if test="name != null and name!=''">
+					name LIKE concat('%',#{name},'%')
+				</if>
+				
+				<if test="address!=null and address!=''">
+					OR address LIKE concat('%',#{address},'%')
+				</if>
+			</where>	
+	</select>
+	
+</mapper>

@@ -2,6 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -143,13 +144,13 @@
             </div>
             <!-- header 끝-->
             <div class="container_music">
-                <form id="form-horizontal" role="form">
+                <form id="form-horizontal" role="form" method="get" action="${pageContext.request.contextPath}/music_result.do">
                     <fieldset>
                         <legend>어떤 기분이냥?</legend>
                         <ul class="music_select">
-                            <li><a href="${pageContext.request.contextPath}/music_select2.do">신난다!!!</a></li>
-                            <li><a href="${pageContext.request.contextPath}/music_select2.do">우울해</a></li>
-                            <li><a href="${pageContext.request.contextPath}/music_select2.do">너무 복잡해</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select3.do?ans1=신나는">신난다!!!</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select3.do?ans1=편안한">우울해</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select3.do?ans1=감성적인">너무 복잡해</a></li>
                         </ul>
                         <span class="select_number">1&#47;4</span>
                     </fieldset>

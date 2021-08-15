@@ -1,8 +1,6 @@
 @charset "utf-8";
 /** header 부분 css*/
 
-
-
 #header_banner {
     position: relative;
     height: 420px;
@@ -244,3 +242,4 @@
             padding: 4px;
         }
     }
+    

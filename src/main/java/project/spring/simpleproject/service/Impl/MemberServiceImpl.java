@@ -1,4 +1,4 @@
-package project.spring.simpleproject.service.Impl;
+package project.spring.simpleproject.service.impl;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
