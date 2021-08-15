@@ -91,7 +91,92 @@
     }
 }
 </style>
+<!--  아이디 비밀번호 찾기 ajax -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+		$(document).ready(function(){
+			// 취소
+			$(".cencle").on("click", function(){				
+				location.href = "/";						    
+			})
+		
+			$("#id-submit").on("click", function(){
+				if($("#name").val()==""){
+					alert("이름을 입력해주세요.");
+					$("#name").focus();
+					return false;
+				}
+				if($("#tel").val()==""){
+					alert("휴대전화 번호를 입력하세요");
+					$("#tel").focus();
+					return false;
+				}
+				if($("#birthdate").val()==""){
+					alert("생년월일을 입력하세요");
+					return false;
+				}
+				$.ajax({
+					url : "findIdAction",
+					type : "POST",
+					dataType : "json",
+					data : $("#find_id").serializeArray(),
+					
+					success: function(data){
+							console.log(data);
+							alert('당신의 아이디는' + data.userid +' 입니다');
+					},
+					error :function(data){
+						alert('잘못된정보입니다.');
+					}
 
+				})
+			});		
+		})
+	</script>
+  	<script type="text/javascript">
+		$(document).ready(function(){
+			// 취소
+			$(".cencle").on("click", function(){				
+				location.href = "/";						    
+			})
+		
+			$("#pwd-submit").on("click", function(){
+				if($("#pw_name").val()==""){
+					alert("이름을 입력해주세요.");
+					$("#name").focus();
+					return false;
+				}
+				if($("#userid").val()==""){
+					alert("아이디를 입력하세요");
+					$("#pw_tel").focus();
+					return false;
+				}
+				if($("#pw_tel").val()==""){
+					alert("핸드폰 번호를 입력하세요");
+					return false;
+				}
+				$.ajax({
+					url : "findPwAction",
+					type : "POST",
+					dataType : "json",
+					data : $("#find_pw").serializeArray(),
+					
+					success: function(data){
+						if(data==0){
+							alert('비밀번호 초기화에 실패했습니다 다시 입력해주세요')
+							return false;
+						}
+						alert('비밀번호를 0000으로 초기화했습니다 로그인 후 비밀번호를 변경하세요.');
+						location.replace('http://localhost:8080/simpleproject/main.do')
+					},
+					error: function(data){
+						alert('잘못된 정보입니다');
+					}
+				})
+			});		
+		})
+	</script>
 <body>
     <!--bootstrap 반응형 사용을 위해 제일 상위 class를 container로 설정함 -->
     <div class="container">
@@ -151,7 +236,7 @@
                     <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
                 </div>
                 <div id="top_logo">
-                    <a href="#">
+                    <a href="${pageContext.request.contextPath}/main.do">
                         <span class="top_text" style="color: black;">
                             ZIGME
                         </span>
@@ -165,10 +250,18 @@
                             <div></div>
                         </div>
                     </div>
-                    <div id="button_top">
+              <div id="button_top">
+                    	<c:if test="${member == null}">
                         <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
-                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
-                    </div>
+                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/register.do'">회원가입</button>
+                   		</c:if>
+                   		<c:if test="${member != null}">
+                   		<div id = "login_top">
+                  		 <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">Mypage</button>
+                   		<button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
+                   		</div>
+                   		</c:if>
+                </div>
                 </div>
             </div>
             <div id="header_nav">
@@ -193,54 +286,54 @@
                 <div id="search_select">
                     <ul class="nav nav-tabs nav-justified">
                         <li class="active"><a href="#loc" data-toggle="tab" role="tab" class="tab-link-sub">아이디 찾기</a></li>
-                        <li><a href="#food" data-toggle="tab" role="tab" class="tab-link-sub">비밀번호 찾기</a></li>
+                        <li><a href="#food" data-toggle="tab" role="tab" class="tab-link-sub">비밀번호 초기화</a></li>
                     </ul>
                     <div role="tabpanel" class="tab-content tab-area">
                         <div class="tab-pane search-tab-content active filter inner2--bottom" id="loc">
                             <!--id 찾기-->
                             <div id="btn_box">
-                                <form role="form">
+                                <form method="post" action ="${pageContext.request.contextPath}/findIdAction.do" id="find_id">
                                     <div class="form-group">
                                         <label for="inputName">이름</label>
-                                        <input type="text" class="form-control" id="inputName" placeholder="이름입력">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="이름입력">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputMobile">전화번호</label>
-                                        <input type="tel" class="form-control" id="inputMobile" placeholder="휴대폰번호를 입력해 주세요">
+                                        <input type="tel" class="form-control" id="tel" name="tel" placeholder="휴대폰번호를 입력해 주세요">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputMobile">생년 월일</label>
-                                        <input type="date" class="form-control" id="inputBirth" placeholder="생년월일입력">
-                                    </div>
-                                    <div id="regist_button">
-                                        <button type="submit" id="id-submit" class="btn btn-primary">
-                                            아이디 찾기<i class="fa fa-check spaceLeft"></i>
-                                        </button>
+                                        <input type="date" class="form-control" id="birthdate" name="birthdate" placeholder="생년월일입력">
                                     </div>
                                 </form>
+                                  <div id="regist_button">
+                                    <button type="button" id="id-submit" class="btn btn-primary">
+                                        아이디 찾기<i class="fa fa-check spaceLeft"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div class="tab-pane search-tab-content" id="food">
                             <div id="btn_box">
-                                <form role="form">
+                                <form method="post" action ="${pageContext.request.contextPath}/findPwAction.do" id="find_pw">
                                     <div class="form-group">
                                         <label for="inputName">이름</label>
-                                        <input type="text" class="form-control" id="inputName" placeholder="이름입력">
+                                        <input type="text" class="form-control" id="pw_name" name ="name" placeholder="이름입력">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputID">아이디</label>
-                                        <input type="text" class="form-control" id="inputID" placeholder="ID입력하세요">
+                                        <input type="text" class="form-control" id="pw_userid" name="userid" placeholder="ID입력하세요">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputMobile">휴대폰 번호</label>
-                                        <input type="tel" class="form-control" id="inputMobile" placeholder="휴대폰번호를 입력해 주세요">
-                                    </div>
-                                    <div id="regist_button">
-                                        <button type="submit" id="pwd-submit" class="btn btn-primary">
-                                            비밀번호 찾기<i class="fa fa-check spaceLeft"></i>
-                                        </button>
+                                        <input type="tel" class="form-control" id="pw_tel" name="tel" placeholder="휴대폰번호를 입력해 주세요">
                                     </div>
                                 </form>
+                                     <div id="regist_button">
+                                        <button type="submit" id="pwd-submit" class="btn btn-primary">
+                                            비밀번호 초기화<i class="fa fa-check spaceLeft"></i>
+                                        </button>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -250,7 +343,7 @@
             <div id="footer">
                 <div id="footer_content">
                     <div id="footer_img">
-                        <a href="${pageContext.request.contextPath}/"><img src="assets/img/zigme_logo_rm.png" /></a>
+                        <a href="${pageContext.request.contextPath}/main.do"><img src="assets/img/zigme_logo_rm.png" /></a>
                     </div>
                     <div id="footer_text">
                         <div class="footer_row">

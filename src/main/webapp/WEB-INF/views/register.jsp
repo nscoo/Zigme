@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -96,10 +94,18 @@
                             <div></div>
                         </div>
                     </div>
-                    <div id="button_top">
+              <div id="button_top">
+                    	<c:if test="${member == null}">
                         <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
-                        <button type="button" class="btn btn-warning btn-xs">mypage</button>
-                    </div>
+                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/register.do'">회원가입</button>
+                   		</c:if>
+                   		<c:if test="${member != null}">
+                   		<div id = "login_top">
+                  		 <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">Mypage</button>
+                   		<button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
+                   		</div>
+                   		</c:if>
+                </div>
                 </div>
             </div>
             <div id="header_nav">
@@ -124,50 +130,52 @@
                     <h3>회원가입</h3>
                 </div>
                 <div id="btn_box">
-                    <form role="form">
+                     <form method="post" role="form" id="regForm" action="${pageContext.request.contextPath}/registAction.do">
                         <div class="form-group">
-                            <label for="inputName">이름</label>
-                            <input type="text" class="form-control" id="inputName" placeholder="이름입력">
+                            <label for="name">이름</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="이름입력">
                         </div>
                         <div class="form-group">
                             <label for="inputID">아이디</label>
-                            <input type="text" class="form-control" id="inputID" placeholder="ID입력하세요">
+                            <input type="text" class="form-control" id="userid" name="userid" placeholder="ID입력하세요">
+                            <button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword">비밀번호</label>
-                            <input type="password" class="form-control" id="inputPassword" placeholder="비밀번호 입력">
+                            <input type="password" class="form-control" id="userpw" name="userpw" placeholder="비밀번호 입력" style="font-family: emoji;">
                         </div>
                         <div class="form-group">
                             <label for="inputPassword">비밀번호확인</label>
-                            <input type="password" class="form-control" id="inputPassword_check" placeholder="비밀번호 재입력">
+                            <input type="password" class="form-control" id="user_ch_pw" name="user_ch_pw" placeholder="비밀번호 재입력" style="font-family: emoji;"> 
                         </div>
                         <div class="form-group">
                             <label for="inputMobile">휴대폰 번호</label>
-                            <input type="tel" class="form-control" id="inputMobile" placeholder="휴대폰번호를 입력해 주세요">
+                            <input type="tel" class="form-control" name="tel" id="tel" placeholder="휴대폰번호를 입력해 주세요">
                         </div>
                         <div class="form-group">
                             <label for="inputMobile">생년 월일</label>
-                            <input type="date" class="form-control" id="inputBirth" placeholder="생년월일입력">
+                            <input type="date" class="form-control" name="birthdate" id="birthdate" placeholder="생년월일입력">
                         </div>
                         <div class="form-group" id="icon_search">
                             <label for="inputadd">집 주소 </label>
-                            <input type="text" class="form-control" id="inputHome" placeholder="집 주소를 입력하세요">
-                            <button class="btn btn-default" type="button"><i class="fas fa-search"></i></button>
+                            <input type="text" class="form-control" name="addr_h" id="addr_h" placeholder="집 주소를 입력하세요"   onclick="execution_daum_address_h()">
+                            
                         </div>
                         <div class="form-group">
                             <label for="inputadd" id="icon_search">회사 주소 </label>
-                            <input type="text" class="form-control" id="inputCompany" placeholder="회사 주소를 입력하세요">
-                            <button class="btn btn-default" type="button"><i class="fas fa-search"></i></button>
+                            <input type="text" class="form-control" id="addr_c" name="addr_c" placeholder="회사 주소를 입력하세요"  onclick="execution_daum_address_c()">
+                           
                         </div>
-                        <div id="regist_button">
-                            <button type="submit" id="join-submit" class="btn btn-primary">
+                       
+                    </form>
+                     <div id="regist_button">
+                            <button type="submit" id="submit" class="btn btn-primary">
                                 회원가입<i class="fa fa-check spaceLeft"></i>
                             </button>
-                            <button type="submit" class="btn btn-warning">
+                            <button type="submit" id="submit" class="cencle btn btn-warning">
                                 가입취소<i class="fa fa-times spaceLeft"></i>
                             </button>
                         </div>
-                    </form>
                 </div>
             </div>
             <!-- footer 시작 -->
@@ -227,7 +235,190 @@
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
+
     </script>
+    <!-- 회원가입 기능 -->
+        	<script type="text/javascript">
+		$(document).ready(function(){
+			// 취소
+			$(".cencle").on("click", function(){
+				location.href = "main.do";
+			})
+			
+			$("#submit").on("click", function(){
+				if($("#name").val()==""){
+					alert("성명을 입력해주세요.");
+					$("#name").focus();
+					return false;
+				}
+				if($("#userid").val()==""){
+					alert("아이디를 입력해주세요.");
+					$("#userid").focus();
+					return false;
+				}
+				if($("#userpw").val()==""){
+					alert("비밀번호를 입력해주세요.");
+					$("#userpw").focus();
+					return false;
+				}
+				if($("#userpw").val()!=$("#user_ch_pw").val()){
+					alert("비밀번호와 비밀번호 확인이 서로 다릅니다." );
+					alert($("#userpw").val())
+					alert($("#user_ch_pw").val())
+					$("#userpw").focus();
+					return false;
+				}
+				if($("#tel").val()==""){
+					alert("전화번호를 입력해주세요.");
+					$("#tel").focus();
+					return false;
+				}
+				if($("#birthdate").val()==null){
+					alert("생년월일을 입력하세요.");
+					$("#birthdate").focus();
+					return false;
+				}
+				if($("#addr_h").val()==""){
+					alert("집 주소를 입력하세요.");
+					$("#addr_h").focus();
+					return false;
+				}
+				if($("#addr_c").val()==""){
+					alert("회사주소를 입력하세요.");
+					$("#addr_c").focus();
+					return false;
+				}
+				var idChkVal = $("#idChk").val();
+				if(idChkVal == "N"){
+					alert("중복확인 버튼을 눌러주세요.");
+					return false;
+				}else if(idChkVal == "Y"){
+					$("#regForm").submit();
+				}
+			});
+		})
+		
+		function fn_idChk(){
+			$.ajax({
+				url : "idChk",
+				type : "post",
+				dataType : "json",
+				data : {"userid" : $("#userid").val()},
+				success : function(data){
+					if(data != 0){
+						alert("중복된 아이디입니다.");
+					}else if(data == 0){
+						$("#idChk").attr("value", "Y");
+						alert("사용가능한 아이디입니다.");
+					}
+				}
+			})
+		}
+	</script>
+	<!-- 주소검색 기능 -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function execution_daum_address_h() {
+	  new daum.Postcode({
+	        oncomplete: function(data) {
+	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+	            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+	       
+	        	// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+ 
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+ 
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                 // 주소변수 문자열과 참고항목 문자열 합치기
+                    addr += extraAddr;
+                
+                } else {
+                	   addr += ' ';
+                }
+ 
+                $("#addr_h").val(data.zonecode);
+                //$("[name=memberAddr1]").val(data.zonecode);    // 대체가능
+                $("#addr_h").val(addr);
+                //$("[name=memberAddr2]").val(addr);            // 대체가능
+
+ 
+	        }
+	    }).open();
+}
+function execution_daum_address_c() {
+	  new daum.Postcode({
+	        oncomplete: function(data) {
+	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+	            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+	       
+	        	// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+              // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+              var addr = ''; // 주소 변수
+              var extraAddr = ''; // 참고항목 변수
+
+              //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+              if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                  addr = data.roadAddress;
+              } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                  addr = data.jibunAddress;
+              }
+
+              // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+              if(data.userSelectedType === 'R'){
+                  // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                  // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                  if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                      extraAddr += data.bname;
+                  }
+                  // 건물명이 있고, 공동주택일 경우 추가한다.
+                  if(data.buildingName !== '' && data.apartment === 'Y'){
+                      extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                  }
+                  // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                  if(extraAddr !== ''){
+                      extraAddr = ' (' + extraAddr + ')';
+                  }
+               // 주소변수 문자열과 참고항목 문자열 합치기
+                  addr += extraAddr;
+              
+              } else {
+              	   addr += ' ';
+              }
+
+              $("#addr_c").val(data.zonecode);
+              //$("[name=memberAddr1]").val(data.zonecode);    // 대체가능
+              $("#addr_c").val(addr);
+              //$("[name=memberAddr2]").val(addr);            // 대체가능
+
+
+	        }
+	    }).open();
+}  
+</script>
+		
+	
 </body>
 
 </html>

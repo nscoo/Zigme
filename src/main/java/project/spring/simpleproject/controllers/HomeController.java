@@ -1,4 +1,4 @@
-package project.spring.simpleproject;
+package project.spring.simpleproject.controllers;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -136,11 +137,8 @@ public class HomeController {
 		
 	}
 	
-	@RequestMapping(value = "/edit.do", method=RequestMethod.GET)
-	public String edit() {
-		return "edit";
-		
-	}
+
+
 	
 	@RequestMapping(value = "/login.do", method=RequestMethod.GET)
 	public String login() {
@@ -153,9 +151,16 @@ public class HomeController {
 	return "register";
 	}	
 	
-	@RequestMapping(value ="/find_account.do")
+	@RequestMapping(value ="/find_account.do", method={RequestMethod.GET, RequestMethod.POST})
 	public String find() {
 	return "find_account";
 	}
+	
+	@RequestMapping(value = "/delete.do", method=RequestMethod.GET)
+	public String delete() {
+		return "delete";
+		
+	}
+
 
 }

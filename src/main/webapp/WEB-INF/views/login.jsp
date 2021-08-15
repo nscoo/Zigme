@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -93,10 +93,18 @@
                             <div></div>
                         </div>
                     </div>
-                    <div id="button_top">
+				<div id="button_top">
+                    	<c:if test="${member == null}">
                         <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
-                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
-                    </div>
+                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/register.do'">회원가입</button>
+                   		</c:if>
+                   		<c:if test="${member != null}">
+                   		<div id = "login_top">
+                  		 <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">Mypage</button>
+                   		<button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
+                   		</div>
+                   		</c:if>
+                </div>
                 </div>
             </div>
             <div id="header_nav">
@@ -117,19 +125,19 @@
             </div>
             <!-- header 끝-->
             <!-- 로그인 -->
-            <form role="form" id="login">
+            <form method="post" role="form" id="login" action="${pageContext.request.contextPath}/loginAction.do">
                 <fieldset>
                     <legend>로그인</legend>
                     <div class="form-group">
                         <label for="user_id">아이디</label>
-                        <input type="text" id="user_id" class="form-control" placeholder="아이디를 입력하세요." />
+                        <input type="text" id="user_id" name="userid" class="form-control" placeholder="아이디를 입력하세요." />
                     </div>
                     <div class="form-group">
                         <label for="user_pw">비밀번호</label>
-                        <input type="password" id="user_pw" class="form-control" placeholder="비밀번호를 입력하세요." />
+                        <input type="password" id="user_pw" name="userpw" class="form-control" placeholder="비밀번호를 입력하세요." style="font-family: emoji;" />
                     </div>
                     <div id="button_group">
-                        <button type="button" class="btn btn-primary btn-block" id="login_btn">
+                        <button type="submit" class="btn btn-primary btn-block" id="login_btn">
                             로그인
                         </button>
                         <button type="button" class="btn btn-primary btn-block" id="regit_btn" onclick="location.href='${pageContext.request.contextPath}/register.do'">
@@ -199,6 +207,7 @@
             document.getElementById("mySidenav").style.width = "0";
         }
         </script>
+
 </body>
 
 </html>
