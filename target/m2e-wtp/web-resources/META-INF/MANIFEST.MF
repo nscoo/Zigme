@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: Admin
-=======
-Built-By: bsbtn
->>>>>>> 3bb822132e80823c66554c48c089f2b9ed5080ed
 Build-Jdk: 15.0.2
 Created-By: Maven Integration for Eclipse
 
