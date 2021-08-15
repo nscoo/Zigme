@@ -497,9 +497,34 @@
                     </li>
                 </ul>
             </div>
-            <!-- footer 시작 -->
-            <%@ include file="footer.jsp" %>
-            <!-- footer 끝-->
+        <!-- footer 시작 -->
+           <div id="footer">
+                <div id="footer_content">
+                    <div id="footer_img">
+                        <a href="${pageContext.request.contextPath}/"><img src="assets/img/zigme_logo_rm.png" /></a>
+                    </div>
+                    <div id="footer_text">
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-thumbs-up"> Name </span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            PROJECT PORTFOLIO Big Data Class 8
+                        </div>
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-user"> Manager </span>
+                            &nbsp;
+                            Younga Joo
+                        </div>
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-map-marker"> Address </span>
+                            &nbsp;
+                            서울 서초구 서초대로 77길 55, 에이프로스퀘어 2층 EZEN IT
+                        </div>
+                        <br />
+                        <address>copyright&copy; team_3 / All right reserved</address>
+                    </div>
+                </div>
+            </div>
+        <!-- footer 끝-->
         </div>
         
         <!-- Javascript -->

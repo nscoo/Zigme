@@ -5,7 +5,6 @@
 <html lang="ko">
 
 <head>
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -23,14 +22,6 @@
     <link rel="stylesheet" type="text/css" href="assets/css/result_gallery.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <style type="text/css">
-    #head_banner {
-    position: relative;
-    height: 420px;
-    overflow: hidden;
-    background-image: url(assets/img/flowers.jpg);
-    background-size: cover;
-
-}
     </style>
 </head>
 
@@ -50,6 +41,7 @@
                                     <li><a href="#">코로나수치</a></li>
                                     <li><a href="#">대중교통정보</a></li>
                                     <li><a href="#">뉴스/주식정보</a></li>
+                                    <br />
                                 </ul>
                             </li>
                             <li><a href="#">회사안</a>
@@ -58,17 +50,17 @@
                                     <li><a href="#">업무 주기능</a></li>
                                     <li><a href="#">커뮤니티</a></li>
                                     <li><a href="#">5분 스트레칭</a></li>
+                                    <br />
                                 </ul>
                             </li>
-                            <li><a href="#">퇴근길</a>
-                               <ul>
+                            <li><a href="${pageContext.request.contextPath}/main.do">퇴근길</a>
+                                <ul>
                                     <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
                                     <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
                                     <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/nearby.do" >Nearby</a></li>
                                     <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
                                     <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
-                                	<br/>
                                 </ul>
                             </li>
                             <li><a href="#">실내</a>
@@ -77,6 +69,7 @@
                                     <li><a href="#">오늘의 쇼핑</a></li>
                                     <li><a href="#">이직메이트</a></li>
                                     <li><a href="#">커뮤니티</a></li>
+                                    <br />
                                 </ul>
                             </li>
                             <li><a href="#">실외</a>
@@ -86,6 +79,7 @@
                                     <li><a href="#">문화</a></li>
                                     <li><a href="#">체육</a></li>
                                     <li><a href="#">교통정보보기</a></li>
+                                    <br />
                                 </ul>
                             </li>
                         </ul>
@@ -93,7 +87,7 @@
                     <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
                 </div>
                 <div id="top_logo">
-                    <a href="${pageContext.request.contextPath}">
+                    <a href="${pageContext.request.contextPath}/main.do">
                         <span class="top_text" style="color: black;">
                             ZIGME
                         </span>
@@ -108,8 +102,8 @@
                         </div>
                     </div>
                     <div id="button_top">
-                       <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
-                       <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
+                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
+                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
                     </div>
                 </div>
             </div>
@@ -119,22 +113,22 @@
                         <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">미용실</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
                         </ul>
                     </li>
-                   <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
-                   <li><a href="${pageContext.request.contextPath}/restaurant_search.do" style="font-size: 20px;">Restaurant</a></li>
-                   <li><a href="${pageContext.request.contextPath}/nearby.do" style="font-size: 20px;">Nearby</a></li>
-                   <li><a href="${pageContext.request.contextPath}/traffic_search.do" style="font-size: 20px;">Transportation</a></li>
-                   <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>        
+                    <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
+                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do" style="font-size: 20px;">Restaurant</a></li>
+                    <li><a href="${pageContext.request.contextPath}/nearby.do" style="font-size: 20px;">Nearby</a></li>
+                    <li><a href="${pageContext.request.contextPath}/traffic_search.do" style="font-size: 20px;">Transportation</a></li>
+                    <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
                 </ul>
             </div>
             <!-- 네일 검색결과 부분 시작-->
-            <div id="head_banner">
+            <div id="header_banner">
                 <div id="search_input" class="input-group">
                     <input type="text" class="form-control" placeholder="검색어를 입력하세요">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" onclick="location.href='${pageContext.request.contextPath}/nail_result.do'"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-default" type="button" onclick="location.href='${pageContext.request.contextPath}/hair_result.do'"><i class="fas fa-search"></i></button>
                     </span>
                 </div>
             </div>
@@ -204,7 +198,32 @@
             </div>
         </div>
         <!-- footer 시작 -->
-        <%@ include file="footer.jsp" %>
+           <div id="footer">
+                <div id="footer_content">
+                    <div id="footer_img">
+                        <a href="${pageContext.request.contextPath}/"><img src="assets/img/zigme_logo_rm.png" /></a>
+                    </div>
+                    <div id="footer_text">
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-thumbs-up"> Name </span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            PROJECT PORTFOLIO Big Data Class 8
+                        </div>
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-user"> Manager </span>
+                            &nbsp;
+                            Younga Joo
+                        </div>
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-map-marker"> Address </span>
+                            &nbsp;
+                            서울 서초구 서초대로 77길 55, 에이프로스퀘어 2층 EZEN IT
+                        </div>
+                        <br />
+                        <address>copyright&copy; team_3 / All right reserved</address>
+                    </div>
+                </div>
+            </div>
         <!-- footer 끝-->
     </div>
     <!-- Javascript -->
