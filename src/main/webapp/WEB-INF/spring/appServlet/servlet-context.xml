@@ -20,10 +20,12 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
 	<context:component-scan base-package="project.spring.simpleproject" />
+	<context:component-scan base-package="project.spring.simpleproject.helper" />
 	<context:component-scan base-package="project.spring.simpleproject.controllers" />
-	
+	<context:component-scan base-package="project.spring.simpleproject.model.Members" />
+	<context:component-scan base-package="project.spring.simpleproject.service.MemberService" />
+	<context:component-scan base-package="project.spring.simpleproject.service.Impl.MemberServiceImpl" />
 	<resources mapping="/assets/**" location="/assets/" />
 	
 	<resources mapping="/resources/**" location="/resources/" />
