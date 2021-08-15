@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberMapper">
+<resultMap id="memberMap" type="project.spring.simpleproject.model.Member" >
+<result property="userno" column="userno" />
+<result property="name" column="name" />
+<result property="userid" column="userid" />
+<result property="userpw" column="userpw" />
+<result property="tel" column="tel" />
+<result property="birthdate" column="birthdate" />
+<result property="addr_h" column="addr_h" />
+<result property="addr_c" column="addr_c" />
+<result property="is_out" column="is_out" />
+<result property="is_login" column="is_login" />
+
+</resultMap>
+
+
+  <!-- 로그인-->
+   <select id="memberLogin" parameterType="project.spring.simpleproject.model.Member" resultType="project.spring.simpleproject.model.Member">
+      SELECT * FROM members WHERE userid=#{userid} AND userpw=#{userpw};
+   </select>
+	 <!-- 회원가입 form -->
+
+    <insert id="memberAdd"
+        parameterType="project.spring.simpleproject.model.Member"
+        useGeneratedKeys="true"
+        keyProperty="userno">
+        INSERT INTO `members` (`name`, `userid`, `userpw`, `tel`, `birthdate`, `addr_h`, `addr_c`) 
+        VALUES (#{name}, #{userid}, #{userpw}, #{tel}, #{birthdate}, #{addr_h}, #{addr_c});
+    </insert>
+    <!-- 중복 체크 -->
+	<select id="memberidChk" resultType="int">
+				SELECT COUNT(*) FROM `members`
+			<where>userid=#{userid}</where>
+	</select>
+	<!-- 회원정보 수정 -->
+	<update id="memberEdit">
+		UPDATE members SET
+		userpw = #{userpw},
+		tel = #{tel},
+		addr_h = #{addr_h},
+		addr_c = #{addr_c}
+		WHERE userid = #{userid}
+	</update>
+	<!-- 회원 탈퇴 -->
+	<select id = "memberPwch" resultType="int">
+		SELECT count(*) FROM members
+		WHERE userid = #{userid} AND userpw=#{userpw}
+	</select>
+	<delete id="memberDelete">
+		DELETE FROM members
+		WHERE userid=#{userid} AND userpw=#{userpw}
+	</delete>
+	<!--아이디/ 비밀번호찾기 -->
+	<select id="member_Findid" resultType="project.spring.simpleproject.model.Member">
+		SELECT * FROM members where name =#{name} AND tel=#{tel} AND birthdate =#{birthdate}
+	</select>
+<!--	<select id="member_FindPw" resultType="project.spring.simpleproject.model.Member">
+  	select * FROM members where name= #{name} AND userid = #{userid} and tel = #{tel}
+	</select>-->
+	<!-- 비밀번호 변경 -->
+	<update id="member_FindPw">
+		UPDATE members SET
+		userpw = "0000"
+		where userid=#{userid}
+	</update>
+</mapper>

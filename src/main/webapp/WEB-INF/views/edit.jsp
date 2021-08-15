@@ -92,10 +92,18 @@
                             <div></div>
                         </div>
                     </div>
-                    <div id="button_top">
-                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
-                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
-                    </div>
+	              <div id="button_top">
+	                    	<c:if test="${member == null}">
+	                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
+	                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/register.do'">회원가입</button>
+	                   		</c:if>
+	                   		<c:if test="${member != null}">
+	                   		<div id = "login_top">
+	                  		 <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">Mypage</button>
+	                   		<button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
+	                   		</div>
+	                   		</c:if>
+	                </div>
                 </div>
             </div>
             <div id="header_nav">
@@ -120,34 +128,38 @@
                     <h3>정보 수정</h3>
                 </div>
                 <div id="btn_box">
-                    <form role="form">
+                    <form method="post" role="form" id="edit" action="${pageContext.request.contextPath}/updateAction.do" >
+                     <div class="form-group">
+                            <label for="inputPassword">아이디</label>
+                            <input type="text" class="form-control" id="userid" name="userid" value="${member.userid}" readonly>
+                        </div>
                         <div class="form-group">
                             <label for="inputPassword">비밀번호</label>
-                            <input type="password" class="form-control" id="inputPassword" placeholder="비밀번호 입력">
+                            <input type="password" class="form-control" id="userpw" name="userpw" placeholder="비밀번호 입력" style="font-family: emoji;">
                         </div>
                         <div class="form-group">
                             <label for="inputPassword">비밀번호확인</label>
-                            <input type="password" class="form-control" id="inputPassword_check" placeholder="비밀번호 재입력">
+                            <input type="password" class="form-control" id="user_ch_pw" name="user_ch_pw" placeholder="비밀번호 재입력" style="font-family: emoji;">
                         </div>
                         <div class="form-group">
                             <label for="inputMobile">휴대폰 번호</label>
-                            <input type="tel" class="form-control" id="inputMobile" placeholder="휴대폰번호를 입력해 주세요">
+                            <input type="tel" class="form-control" name="tel" id="tel" placeholder="휴대폰번호를 입력해 주세요" value="${member.tel}">
                         </div>
                         <div class="form-group" id="icon_search">
                             <label for="inputadd">집 주소 </label>
-                            <input type="text" class="form-control" id="inputHome" placeholder="집 주소를 입력하세요">
-                            <button class="btn btn-default" type="button"><i class="fas fa-search"></i></button>
+                            <input type="text" class="form-control" id="addr_h" name="addr_h" placeholder="집 주소를 입력하세요" value="${member.addr_h}" onclick="execution_daum_address_h()" >
+                            
                         </div>
                         <div class="form-group">
                             <label for="inputadd" id="icon_search">회사 주소 </label>
-                            <input type="text" class="form-control" id="inputCompany" placeholder="회사 주소를 입력하세요">
-                            <button class="btn btn-default" type="button"><i class="fas fa-search"></i></button>
+                            <input type="text" class="form-control" id="addr_c" name="addr_c" placeholder="회사 주소를 입력하세요" value="${member.addr_c}"onclick="execution_daum_address_c()" >
+                           
                         </div>
                         <div id="regist_button">
-                            <button type="submit" id="join-submit" class="btn btn-primary">
-                                회원수정<i class="fa fa-check spaceLeft"></i>
+                            <button type="submit" id="submit" class="btn btn-primary">
+                                정보 수정<i class="fa fa-check spaceLeft"></i>
                             </button>
-                            <button type="submit" class="btn btn-warning">
+                            <button type="button" id="delete" class="btn btn-warning" onclick="location.href='${pageContext.request.contextPath}/delete.do'">
                                 회원탈퇴<i class="fa fa-times spaceLeft"></i>
                             </button>
                         </div>
@@ -212,6 +224,159 @@
             document.getElementById("mySidenav").style.width = "0";
         }
         </script>
+        <!--  정보 수정 기능 -->
+        <script type="text/javascript">
+		$(document).ready(function(){
+		
+
+			
+			$("#submit").on("click", function(){
+				var input = $("#userpw");
+				if($("#userpw").val()==""){
+					alert("비밀번호를 입력해주세요.");
+					$("#userpw").focus();
+					return false;
+				}
+				if($("#userpw").val()!=$("#user_ch_pw").val()){
+					alert("비밀번호와 비밀번호 확인이 서로 다릅니다." );
+					$("#userpw").focus();
+					return false;
+				}
+				if(input.length<4 || input.length>20){
+					alert("비밀번호는 4~20글자까지 가능합니다.");
+					return false;
+				}
+				if($("#tel").val()==""){
+					alert("전화번호를 입력해주세요.");
+					$("#tel").focus();
+					return false;
+				}
+
+				if($("#addr_h").val()==""){
+					alert("집 주소를 입력하세요.");
+					$("#addr_h").focus();
+					return false;
+				}
+				if($("#addr_c").val()==""){
+					alert("회사주소를 입력하세요.");
+					$("#addr_c").focus();
+					return false;
+				}
+
+			});
+		})
+		
+
+	</script>
+        
+        
+        
+        
+        
+        
+	<!-- 주소검색 기능 -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function execution_daum_address_h() {
+	  new daum.Postcode({
+	        oncomplete: function(data) {
+	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+	            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+	       
+	        	// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+ 
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+ 
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                 // 주소변수 문자열과 참고항목 문자열 합치기
+                    addr += extraAddr;
+                
+                } else {
+                	   addr += ' ';
+                }
+ 
+                $("#addr_h").val(data.zonecode);
+                //$("[name=memberAddr1]").val(data.zonecode);    // 대체가능
+                $("#addr_h").val(addr);
+                //$("[name=memberAddr2]").val(addr);            // 대체가능
+
+ 
+	        }
+	    }).open();
+}
+function execution_daum_address_c() {
+	  new daum.Postcode({
+	        oncomplete: function(data) {
+	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+	            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+	       
+	        	// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+              // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+              var addr = ''; // 주소 변수
+              var extraAddr = ''; // 참고항목 변수
+
+              //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+              if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                  addr = data.roadAddress;
+              } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                  addr = data.jibunAddress;
+              }
+
+              // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+              if(data.userSelectedType === 'R'){
+                  // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                  // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                  if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                      extraAddr += data.bname;
+                  }
+                  // 건물명이 있고, 공동주택일 경우 추가한다.
+                  if(data.buildingName !== '' && data.apartment === 'Y'){
+                      extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                  }
+                  // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                  if(extraAddr !== ''){
+                      extraAddr = ' (' + extraAddr + ')';
+                  }
+               // 주소변수 문자열과 참고항목 문자열 합치기
+                  addr += extraAddr;
+              
+              } else {
+              	   addr += ' ';
+              }
+
+              $("#addr_c").val(data.zonecode);
+              //$("[name=memberAddr1]").val(data.zonecode);    // 대체가능
+              $("#addr_c").val(addr);
+              //$("[name=memberAddr2]").val(addr);            // 대체가능
+
+
+	        }
+	    }).open();
+}  
+</script>	
+   
 </body>
 
 </html>

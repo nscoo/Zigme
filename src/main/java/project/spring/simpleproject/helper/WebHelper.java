@@ -2,11 +2,12 @@ package project.spring.simpleproject.helper;
 
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.AbstractView;
@@ -18,7 +19,10 @@ public class WebHelper {
     /** 기본 인코딩 타입 설정 */
     private String encType;
 
-    /** JSP의 request 내장 객체 */
+    
+
+	/** JSP의 request 내장 객체 */
+
     // --> import javax.servlet.http.HttpServletRequest;
     private HttpServletRequest request;
 
@@ -59,6 +63,7 @@ public class WebHelper {
 
     /** Getter, Setter 메서드 */
     public String getEncType() { return encType; }
+
 
     public void setEncType(String encType) { this.encType = encType; }
 
@@ -130,4 +135,115 @@ public class WebHelper {
         // 가상의 뷰를 리턴한다.
         return new ModelAndView(view);
     }
+
+    /**
+     * 전달받은 Map객체에 rt와 pubDate값을 추가한 후 리턴한다.
+     *
+     * @param statusCode    HTTP 결과코드 (200, 404, 500 등)
+     * @param rt            결과메시지 (성공일 경우 OK, 그 밖의 경우 에러메시지)
+     * @param data          JSON으로 변환할 데이터 컬렉션
+     *
+     * @return Map<String, Object>
+     */
+    public Map<String, Object> getJsonData(int statusCode, String rt, Map<String, Object> data) {
+        /** 1) JSON 형식 출력을 위한 HTTP 헤더 설정 */
+        // JSON 형식임을 명시함
+        response.setContentType("application/json");
+
+        // HTTP 상태 코드 설정 (200, 404, 500 등)
+        response.setStatus(statusCode);
+
+        // CrossDomain에 의한 접근 허용
+        // (보안에 좋지 않기 때문에 이 옵션을 허용할 경우 인증키 등의 보안장치가 필요함)
+        // 여기서는 실습을 위해 허용함
+        this.response.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE");
+        this.response.setHeader("Access-Control-Max-Age", "3600");
+        this.response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+        this.response.setHeader("Access-Control-Allow-Origin", "*");
+
+        /** 2) 파라미터로 전달된 Map 객체에 rt와 pubDate값을 추가한 새로운 Map 생성하기 */
+        // JSON 생성일시를 위한 현재 시각 문자열 만들기
+        Calendar c = Calendar.getInstance();
+        String pubDate = String.format("%04d-%02d-%02d %02d:%02d:%02d",
+                            c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1, c.get(Calendar.DAY_OF_MONTH),
+                            c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE), c.get(Calendar.SECOND));
+
+        // JSON 구성을 위한 컬렉션 객체 생성
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        // 결과코드 추가
+        map.put("rt", rt);
+
+        // 생성일시 추가
+        map.put("pubDate", pubDate);
+
+        // data가 전달되었다면 map에 병합한다.
+        if (data != null) {
+            map.putAll(data);
+        }
+        
+        return map;
+    }
+
+    /**
+     * JSON 형식으로 결과 메시지를 리턴하기 위한 메서드 오버로드
+     * HTTP 상태코드는 200으로 설정하고, 결과 메시지는 "OK"라는 값을 설정하여
+     * getJsonData(int statusCode, String rt, Map<String, Object> data)
+     * 를 호출한다.
+     *
+     * JSON으로 표현하고자 하는 컬렉션이 있을 때 사용하는 가장 일반적인 메서드이다.
+     *
+     * @param data          JSON으로 변환할 데이터 컬렉션
+     *
+     * @return Map<String, Object>
+     */
+    public Map<String, Object> getJsonData(Map<String, Object> data) {
+        return this.getJsonData(200, "OK", data);
+    }
+
+    /**
+     * JSON 형식으로 결과 메시지를 리턴하기 위한 메서드 오버로드
+     * HTTP 상태코드는 200으로 설정하고, 결과 메시지는 "OK"라는 값을 설정하여
+     * getJsonData(int statusCode, String rt, Map<String, Object> data)
+     * 를 호출한다.
+     *
+     * JSON으로 표현하고자 하는 컬렉션이 없지만 처리 결과는 성공인 경우 사용한다.
+     * ex) 데이터 입력, 수정, 삭제 등을 수행하고 특별히 조회 결과를 반환하지 않을 경우
+     *
+     * @return Map<String, Object>
+     */
+    public Map<String, Object> getJsonData() {
+        return this.getJsonData(200, "OK", null);
+    }
+
+    /**
+     * JSON 형식으로 에러 메시지를 리턴한다.
+     * HTTP 상태코드는 500으로 설정하고, 결과 메시지는 파라미터로 전달되는 값을 설정하여 
+     * JSON 문자열을 리턴한다.
+     *
+     * Service 구현체에서 예외 발생시 전달하는 에러 메시지 등을 JSON으로 표현할 때 사용.
+     *
+     * @param rt
+     *
+     * @return Map<String, Object>
+     */
+    public Map<String, Object> getJsonError(String rt) {
+        return this.getJsonData(500, rt, null);
+    }
+
+    /**
+     * JSON 형식으로 잘못된 접근에 대한 경고 메시지를 리턴한다.
+     * HTTP 상태코드는 400으로 설정하고, 결과 메시지는 파라미터로 전달되는 값을 설정하여 
+     * JSON 문자열을 리턴한다.
+     *
+     * 파라미터 점검 과정에서 유효성 검증에 통과하지 못한 경우 사용.
+     *
+     * @param rt
+     *
+     * @return Map<String, Object>
+     */
+    public Map<String, Object> getJsonWarning(String rt) {
+        return this.getJsonData(400, rt, null);
+    }
+
 }

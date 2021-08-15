@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -9,7 +8,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <!-- 이수진 css,부트스트랩 시작-->
     <!-- bootstrap -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
     <!-- countdown bar css -->
@@ -17,10 +15,49 @@
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="assets/css/common.css">
     <link rel="stylesheet" type="text/css" href="assets/css/container.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/music_select.css">
-    <!-- 이수진 css,부트스트랩 끝 -->
+    <link rel="stylesheet" type="text/css" href="assets/css/register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 </head>
+<!--  아이디체크 -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<script type="text/javascript">
+		$(document).ready(function(){
+			// 취소
+			$(".cencle").on("click", function(){				
+				location.href = "/";						    
+			})
+		
+			$("#submit").on("click", function(){
+				if($("#userpw").val()==""){
+					alert("비밀번호를 입력해주세요.");
+					$("#userpw").focus();
+					return false;
+				}
+				$.ajax({
+					url : "passChk",
+					type : "POST",
+					dataType : "json",
+					data : $("#delform").serializeArray(),
+					success: function(data){
+						if(data==0){
+							alert("패스워드가 틀렸습니다.");
+							return;
+						}else{
+							if(confirm("회원탈퇴하시겠습니까?")){
+								
+								$("#delform").submit();
+								//alert('진행');
+							}
+							
+						}
+					}
+				})
+				
+			});
+						
+		})
+	</script>
 <body>
     <!--bootstrap 반응형 사용을 위해 제일 상위 class를 container로 설정함 -->
     <div class="container">
@@ -30,7 +67,7 @@
                 <div id="top_menu">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
-                        <ul class="navi">
+  							<ul class="navi">
                             <li><a href="#">출근길</a>
                                 <ul>
                                     <li><a href="#">날씨/미세먼지</a></li>
@@ -47,8 +84,8 @@
                                     <li><a href="#">5분 스트레칭</a></li>
                                 </ul>
                             </li>
-                            <li><a href="main.html">퇴근길</a>
-                                <ul>
+                            <li><a href="#">퇴근길</a>
+                               <ul>
                                     <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
                                     <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
                                     <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
@@ -80,7 +117,7 @@
                     <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
                 </div>
                 <div id="top_logo">
-                    <a href="${pageContext.request.contextPath}">
+                    <a href="${pageContext.request.contextPath}/">
                         <span class="top_text" style="color: black;">
                             ZIGME
                         </span>
@@ -117,68 +154,61 @@
                             <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">미용실</a></li>
                         </ul>
                     </li>
-                   <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
-                   <li><a href="${pageContext.request.contextPath}/restaurant_search.do" style="font-size: 20px;">Restaurant</a></li>
-                   <li><a href="${pageContext.request.contextPath}/nearby.do" style="font-size: 20px;">Nearby</a></li>
-                   <li><a href="${pageContext.request.contextPath}/traffic_search.do" style="font-size: 20px;">Transportation</a></li>
-                   <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
+                    <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
+                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do" style="font-size: 20px;">Restaurant</a></li>
+                    <li><a href="#" style="font-size: 20px;">Nearby</a></li>
+                    <li><a href="${pageContext.request.contextPath}/traffic_search.do" style="font-size: 20px;">Transportation</a></li>
+                    <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
                 </ul>
             </div>
             <!-- header 끝-->
-            <div class="container_music">
-                <form id="form-horizontal" role="form">
-                    <a href="${pageContext.request.contextPath}/music_select3.do" id="back">
-                        <img src="assets/img/arrow-left-solid.svg" width="40px" height="30px" />
-                        <span class="text_back">이전으로</span>
-                    </a>
-                    <fieldset>
-                        <legend>머하고 있냥?</legend>
-                        <ul class="music_select">
-                            <li><a href="${pageContext.request.contextPath}/music_result.do">퇴근중</a></li>
-                            <li><a href="${pageContext.request.contextPath}/music_result.do">공부중</a></li>
-                            <li><a href="${pageContext.request.contextPath}/music_result.do">운동중</a></li>
-                        </ul>
-                        <span class="select_number">4&#47;4</span>
-                    </fieldset>
-                    <div class="speech-bubble">
-                        네가 원하는 음악을 찾아줄고양!
-                    </div>
-                </form>
-                <div id="music_cat">
-                    <img src="assets/img/cat.png" width="320px" height="350px" />
+            <div id="regist_box">
+                <div>
+                    <h3>정보 수정</h3>
+                </div>
+                <div id="btn_box">
+                    <form method="post"  id="delform" action="${pageContext.request.contextPath}/deleteAction.do">
+                     <div class="form-group">
+                            <label for="inputname">아이디</label>
+                            <input type="text" class="form-control" id="userid" name="userid" value="${member.userid}" readonly>
+                     </div>
+                     <div class="form-group">
+                         <label for="inputPassword">비밀번호</label>
+                         <input type="password" class="form-control" id="userpw" name="userpw" placeholder="비밀번호 입력" style="font-family: emoji;">
+                     </div>
+                    </form>
+                     <div id="regist_button">
+                         <button type="button" id="submit" class="btn btn-warning">
+                             회원탈퇴<i class="fa fa-times spaceLeft"></i>
+                         </button>
+                     </div>
                 </div>
             </div>
-            <!-- Music_select 끝 -->
+       </div>
             <!-- footer 시작 -->
             <div id="footer">
                 <div id="footer_content">
                     <div id="footer_img">
-                        <a href="${pageContext.request.contextPath}"><img src="assets/img/zigme_logo_rm.png" /></a>
+                        <a href="${pageContext.request.contextPath}/"><img src="assets/img/zigme_logo_rm.png" /></a>
                     </div>
                     <div id="footer_text">
-                        <div id="text_left">
+                        <div class="footer_row">
                             <span class="glyphicon glyphicon-thumbs-up"> Name </span>
-                        </div>
-                        <div id="text_right">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             PROJECT PORTFOLIO Big Data Class 8
                         </div>
-                        <br />
-                        <div id="text_left">
+                        <div class="footer_row">
                             <span class="glyphicon glyphicon-user"> Manager </span>
-                        </div>
-                        <div id="text_right">
+                            &nbsp;
                             Younga Joo
                         </div>
-                        <br />
-                        <div id="text_left">
+                        <div class="footer_row">
                             <span class="glyphicon glyphicon-map-marker"> Address </span>
-                        </div>
-                        <div id="text_right">
+                            &nbsp;
                             서울 서초구 서초대로 77길 55, 에이프로스퀘어 2층 EZEN IT
                         </div>
                         <br />
-                        <br />
-                        <address>copyright&copy;team_3 / All right reserved</address>
+                        <address>copyright&copy; team_3 / All right reserved</address>
                     </div>
                 </div>
             </div>
@@ -212,6 +242,8 @@
             document.getElementById("mySidenav").style.width = "0";
         }
         </script>
+
+   
 </body>
 
 </html>

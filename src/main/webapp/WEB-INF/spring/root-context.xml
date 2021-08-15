@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:util="http://www.springframework.org/schema/util"
     xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+<<<<<<< HEAD
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
@@ -24,6 +25,16 @@
 	<bean id="retrofitHelper" class="project.spring.simpleproject.helper.RetrofitHelper" />
 	
 	
+=======
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+    <!-- Helper 구동에 필요한 환경설정 값 -->
+    <util:properties id="config">
+        <!-- 기본 인코딩 타입 -->
+        <prop key="encType">UTF-8</prop>
+    </util:properties>
+
+>>>>>>> aca6ee1814ff09feaa7d939ce3fed50ca2fcdb61
     <!-- DB연동에 필요한 환경설정 값 -->
     <util:properties id="dbConfig">
         <!-- 데이터베이스 호스트 이름 -->
@@ -41,13 +52,33 @@
         <!-- Mapper 파일들이 위치할 '/src/main/resources' 하위의 경로 -->
         <prop key="mapperPath">/mappers/**/*Mapper.xml</prop>
     </util:properties>
+<<<<<<< HEAD
     
    
+=======
+
+    <!-- WebHelper 주입 설정 -->
+    <bean id="webHelper" class="project.spring.simpleproject.helper.WebHelper">
+        <property name="encType" value="#{config['encType']}" />
+    </bean>
+
+    <!-- RegexHelper 주입 설정 -->
+    <bean id="regexHelper" class="project.spring.simpleproject.helper.RegexHelper" />
+
+    <!-- RetrifotHelper 주입 설정 -->
+    <bean id="retrofitHelper" class="project.spring.simpleproject.helper.RetrofitHelper" />
+
+>>>>>>> aca6ee1814ff09feaa7d939ce3fed50ca2fcdb61
     <!-- ======= DATABASE 연동 설정 ======= -->
     <!-- JDBC 객체 생성 -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+<<<<<<< HEAD
         <property name="url" value="jdbc:log4jdbc:mysql://#{dbConfig['dbHost']}:#{dbConfig['dbPort']}/#{dbConfig['dbName']}?characterEncoding=#{dbConfig['dbCharset']}&amp;serverTimezone=UTC" />
+=======
+        <property name="url"
+            value="jdbc:log4jdbc:mysql://#{dbConfig['dbHost']}:#{dbConfig['dbPort']}/#{dbConfig['dbName']}?characterEncoding=#{dbConfig['dbCharset']}&amp;serverTimezone=UTC" />
+>>>>>>> aca6ee1814ff09feaa7d939ce3fed50ca2fcdb61
         <property name="username" value="#{dbConfig['dbUsername']}" />
         <property name="password" value="#{dbConfig['dbPassword']}" />
     </bean>
@@ -65,5 +96,9 @@
         <!-- 생성자를 통해 SQLSessionFactory 객체 주입 -->
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> aca6ee1814ff09feaa7d939ce3fed50ca2fcdb61
 </beans>
