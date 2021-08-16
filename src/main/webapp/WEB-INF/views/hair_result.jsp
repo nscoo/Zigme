@@ -28,7 +28,7 @@
     <!-- 인스타그램 하트스타일-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style type="text/css">
-    <style type="text/css">
+ 
 
 
 	.fa-heart-o {
@@ -439,18 +439,19 @@
                 function() {});
         }
         //찜하트 구현 js
-        $(document).ready(function() {
-            $("#heart").click(function() {
-                if ($("#heart").hasClass("liked")) {
-                    $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-                    $("#heart").removeClass("liked");
-                } else {
-                    $("#heart").html('<i class="fa fa-heart" aria-hidden="true"></i>');
-                    $("#heart").addClass("liked");
-                }
-            });
-        });
-        </script>
+		$("#heart").click(function(){
+			alert('하트누름');
+  		  if($("#heart").hasClass("liked")){
+  			  alert('liked 상태');
+    		 	$("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+     		 	$("#heart").removeClass("liked");
+    	}else{
+    		alert('liked 상태아님');
+      			$("#heart").html('<i class="fa fa-heart" aria-hidden="true"></i>');
+      			$("#heart").addClass("liked");
+    		}
+ 		 });
+      </script>
 </body>
 
 </html>
