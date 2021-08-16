@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -277,18 +276,10 @@
                             <div></div>
                         </div>
                     </div>
-              <div id="button_top">
-                    	<c:if test="${member == null}">
-                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
-                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/register.do'">회원가입</button>
-                   		</c:if>
-                   		<c:if test="${member != null}">
-                   		<div id = "login_top">
-                  		 <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">Mypage</button>
-                   		<button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
-                   		</div>
-                   		</c:if>
-                </div>
+                    <div id="button_top">
+                       <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
+                       <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
+                    </div>
                 </div>
             </div>
             <div id="header_nav">
@@ -319,9 +310,9 @@
                 </div>
                 <!--검색창 부분 -->
                 <div id="search_input" class="input-group">
-                    <input type="text" class="form-control" placeholder="키워드를 입력하세요     ex) 분위기 가성비">
+                    <input id="search_input_keyword" type="text" class="form-control" placeholder="키워드를 입력하세요     ex) 분위기 가성비">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" onclick="location.href='${pageContext.request.contextPath}/restaurant_result.do'"><i class="fas fa-search"></i></button>
+                        <button id="search_btn" class="btn btn-default" type="button"><i class="fas fa-search"></i></button>
                     </span>
                 </div>
                 <!--옵션 선택 부분 -->
@@ -399,13 +390,13 @@
                             </div>
                             <div>
                                 <h4>최소 평점</h4>
-                                <form>
+                               <form>
                                     <input type="radio" name="stars" value="1"><label><span>&nbsp;1.0&nbsp; </span></label>
                                     <input type="radio" name="stars" value="2"><label><span>&nbsp;2.0&nbsp; </span></label>
                                     <input type="radio" name="stars" value="3"><label><span>&nbsp;3.0&nbsp; </span></label>
                                     <input type="radio" name="stars" value="4"><label><span>&nbsp;4.0&nbsp; </span></label>
                                     <input type="radio" name="stars" value="5"><label><span>&nbsp;5.0&nbsp; </span></label>
-                                </form>
+                               </form>
                             </div>
                         </div>
                     </div>
@@ -460,7 +451,7 @@
             var tag = $(this).text();
             if ($("#search_tag_div_1>div").length < 1) {
                 $("#search_tag_div_1").append(
-                    "<div id='search_tag_1'>" + "<span>&nbsp;" + tag + "&nbsp;</span>" + "<div id='tag_button_1'><a href='#'>X</div>" + "</div>"
+                    "<div id='search_tag_1'>" + "<span id='tag_1'>&nbsp;" + tag + "&nbsp;</span>" + "<div id='tag_button_1'><a href='#'>X</div>" + "</div>"
                 );
             } else {
                 alert("하나의 지역만 입력이 가능합니다.")
@@ -473,7 +464,7 @@
             var tag = $(this).text();
             if ($("#search_tag_div_2>div").length < 1) {
                 $("#search_tag_div_2").append(
-                    "<div id='search_tag_2'>" + "<span>&nbsp;" + tag + "&nbsp;</span>" + "<div id='tag_button_2'><a href='#'>X</div>" + "</div>"
+                    "<div id='search_tag_2'>" + "<span id='tag_2'>&nbsp;" + tag + "&nbsp;</span>" + "<div id='tag_button_2'><a href='#'>X</div>" + "</div>"
                 );
             } else {
                 alert("하나의 종류만 입력이 가능합니다.")
@@ -511,12 +502,47 @@
             alert("선택한 종류를 삭제합니다.")
             $("#search_tag_2").detach();
         });
-
+        
+        
+        $(document).on("click", "#search_btn", function(e) {
+        	e.preventDefault();
+        	
+        	var input_keyword = "";
+        	
+        	if (document.getElementById("search_input_keyword").value){
+        		input_keyword = document.getElementById("search_input_keyword").value;
+        	}
+        	
+			
+			
+			if (document.getElementById('tag_1')){
+				var loc = document.getElementById('tag_1').textContent.trim();
+				
+				if (document.getElementById('tag_2')){
+					var subject = document.getElementById('tag_2').textContent.trim();
+					
+					if (document.querySelector("input[name='review_count']:checked")){
+						var review_count = document.querySelector("input[name='review_count']:checked").value;
+						
+						if (document.querySelector("input[name='stars']:checked")){
+							var stars = document.querySelector("input[name='stars']:checked").value;
+							
+				        	get_url = "${pageContext.request.contextPath}/restaurant_result.do?loc=" + loc + "&subject=" + subject + "&input_keyword=" + input_keyword  + "&review_count=" + review_count + "&stars=" + stars;
+							location.href = get_url;
+						} else {
+							alert("지역 / 종류 / 옵션 은 필수 입력 사항입니다.");
+						}
+					} else {
+						alert("지역 / 종류 / 옵션 은 필수 입력 사항입니다.");
+					}
+				} else {
+					alert("지역 / 종류 / 옵션 은 필수 입력 사항입니다.");
+				}
+			} else {
+				alert("지역 / 종류 / 옵션 은 필수 입력 사항입니다.");
+			}
+        });
     });
-
-
-
-
 
     countdown('countdownC', 0, 0, 10, 10);
     // Countdown Loading Bar
@@ -540,6 +566,8 @@
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
+
+    
     </script>
 </body>
 

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="RestaurantMapper">
+	<resultMap id="restaurantMap" type="project.spring.simpleproject.model.Restaurant">
+		<result property="resno" column="resno"/>
+		<result property="name" column="name"/>
+		<result property="stars" column="stars"/>
+		<result property="call" column="call"/>
+		<result property="address" column="address"/>
+		<result property="times" column="times"/>
+		<result property="theme_1" column="theme_1"/>
+		<result property="theme_2" column="theme_2"/>
+		<result property="theme_3" column="theme_3"/>
+		<result property="ps" column="ps"/>
+		<result property="review_count" column="review_count"/>
+		<result property="photos" column="photos"/>
+		<result property="prefer_10" column="prefer_10"/>
+		<result property="prefer_20" column="prefer_20"/>
+		<result property="prefer_30" column="prefer_30"/>
+		<result property="prefer_40" column="prefer_40"/>
+		<result property="prefer_50" column="prefer_50"/>
+		<result property="prefer_60" column="prefer_60"/>
+		<result property="prefer_M" column="prefer_M"/>
+		<result property="prefer_F" column="prefer_F"/>
+		<result property="menu_photo" column="menu_photo"/>
+		<result property="loc" column="loc"/>
+		<result property="subject" column="subject"/>
+	</resultMap>
+
+ 	<!-- 다중행 조회를 위한 기능 정의 -->
+    <select id="selectList" parameterType="project.spring.simpleproject.model.Restaurant" resultMap="restaurantMap">
+        SELECT * FROM restaurant
+        
+        <where>
+			loc  = #{loc}
+			AND 
+				subject = #{subject}
+			AND 
+				review_count &gt;= #{review_count}
+			AND 
+				stars &gt;= #{stars}
+        </where>
+        
+    </select>
+    
+    <!-- 데이터 수 조회하기 -->
+	<select id="selectCountAll" parameterType="project.spring.simpleproject.model.Restaurant" resultType="int">
+		SELECT COUNT(*) FROM Restaurant
+		
+		<where>
+			loc  = #{loc}
+			AND 
+				subject = #{subject}
+			AND 
+				review_count &gt;= #{review_count}
+			AND 
+				stars &gt;= #{stars}
+        </where>
+	</select>
+    
+</mapper>
