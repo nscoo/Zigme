@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="RestaurantMapper">
+	<resultMap id="restaurantMap" type="project.spring.simpleproject.model.Restaurant">
+		<result property="resno" column="resno"/>
+		<result property="name" column="name"/>
+		<result property="stars" column="stars"/>
+		<result property="call" column="call"/>
+		<result property="address" column="address"/>
+		<result property="times" column="times"/>
+		<result property="ps" column="ps"/>
+		<result property="tags" column="tags"/>
+		<result property="review_count" column="review_count"/>
+		<result property="photo_1" column="photo_1"/>
+		<result property="photo_2" column="photo_2"/>
+		<result property="photo_3" column="photo_3"/>
+		<result property="menu_1" column="menu_1"/>
+		<result property="menu_2" column="menu_2"/>
+		<result property="loc" column="loc"/>
+		<result property="subject" column="subject"/>
+	</resultMap>
+
+ 	<!-- 다중행 조회를 위한 기능 정의 -->
+    <select id="selectList" parameterType="project.spring.simpleproject.model.Restaurant" resultMap="restaurantMap">
+        SELECT * FROM restaurant
+        
+        <where>
+			loc  = #{loc}
+			AND 
+				subject = #{subject}
+			AND 
+				review_count &gt;= #{review_count}
+			AND 
+				stars &gt;= #{stars}
+        </where>
+        
+    </select>
+    
+    <!-- 데이터 수 조회하기 -->
+	<select id="selectCountAll" parameterType="project.spring.simpleproject.model.Restaurant" resultType="int">
+		SELECT COUNT(*) FROM Restaurant
+		
+		<where>
+			loc  = #{loc}
+			AND 
+				subject = #{subject}
+			AND 
+				review_count &gt;= #{review_count}
+			AND 
+				stars &gt;= #{stars}
+        </where>
+	</select>
+    
+</mapper>

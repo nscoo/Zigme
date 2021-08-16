@@ -31,12 +31,26 @@
     position: relative;
     height: 420px;
     overflow: hidden;
-    background-image: url(assets/img/flowers.jpg);
+    background-image: url(assets/img/flowers2.jpg);
     background-size: cover;
-    
-    
 
 }
+
+	/* 사이드바 */
+	.sidebar_content {position:fixed;top:0;right:-300px;width:300px;height:100%;background:#999;transition:all .35s;z-index:5;}
+	.sidebar_content > ul {margin:20px;}
+	.sidebar_content > ul > li {border-bottom:1px solid #ccc;list-style:none;}
+	.sidebar_content > ul > li > a {display:inline-block;width:auto;color:#fff;padding:10px;margin:10px;background:#f5f5f5;}
+	.sidebar_content label[for*='sidebar'] {position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;}
+	
+	/* 사이드바 외 배경영역 */
+	.background {position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);transition:all .35s;opacity:0;visibility:hidden;z-index:1;}
+
+	/* input 체크 */
+	input#sidebar:checked ~ header label {background-position:-24px 0;}
+	input#sidebar:checked ~ .sidebar_content {right:0;}
+	input#sidebar:checked ~ .background  {opacity:1;visibility:visible;}
+	
     </style>
 </head>
 
@@ -198,45 +212,45 @@
                 <div class="carousel-inner">
                     <!-- 항목 (1) -->
                     <div class="item active">
-                        <img src="assets/img/nail2.jpg" class="carousel_img" alt="슬라이더(1)">
+                        <img src="assets/img/hair3.jpg" class="carousel_img" alt="슬라이더(1)">
                         <div class="container">
                             <div class="carousel-caption">
                                 <h1>올 시즌 베스트<br />
-                                    컬러만 가득 담아볼래요?</h1>
+                                    애쉬핑크는 어떠신가요?!</h1>
                                 <div class="carousel_shop">
-                                    <p>Nail.A la Mode</p>
+                                    <p>주노헤어 종각점</p>
                                     <h6>서울특별시 종로구 인사동로 12길
-                                        <br />기본 젤컬러 30,000원</h6>
+                                        <br />기본 커트 30,000원</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- 항목 (2) -->
                     <div class="item">
-                        <img src="assets/img/nail1.jpg" class="carousel_img" alt="슬라이더(2)">
+                        <img src="assets/img/hair2.jpg" class="carousel_img" alt="슬라이더(2)">
                         <div class="container">
                             <div class="carousel-caption">
                                 <h1>세상의 모든<br />
-                                    네일 디자인을 만나보세요!</h1>
+                                    단발 디자인을 만나보세요!</h1>
                                 <div class="carousel_shop">
-                                    <p>츄잉네일</p>
+                                    <p>리안헤어 낙원점</p>
                                     <h6>서울특별시 종로구 낙원로 29길
-                                        <br />프렌치네일 개당 15,000원</h6>
+                                        <br />스타일링 15,000원</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- 항목 (3) -->
                     <div class="item">
-                        <img src="assets/img/nail8.jpg" class="carousel_img" alt="슬라이더(3)">
+                        <img src="assets/img/hair1.jpg" class="carousel_img" alt="슬라이더(3)">
                         <div class="container">
                             <div class="carousel-caption">
                                 <h1>손상 걱정없는<br />
-                                    젤드릴 케어는 여기서!</h1>
+                                    염색은 류자매헤어에서!</h1>
                                 <div class="carousel_shop">
-                                    <p>류자매네일</p>
+                                    <p>류자매헤어</p>
                                     <h6>서울특별시 강남구 테헤란로 12길
-                                        <br />이벤트네일 90,000원</h6>
+                                        <br />이벤트 염색 90,000원</h6>
                                 </div>
                             </div>
                         </div>

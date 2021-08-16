@@ -50,7 +50,7 @@ public class MusicController {
 		// 파라미터값을 View에게 전달
 		model.addAttribute("ans1" , ans1);
 		model.addAttribute("result",result);
-		
+	
 		return "music_select1";
 		
 	}

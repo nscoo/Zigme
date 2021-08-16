@@ -41,36 +41,14 @@ public class HomeController {
 		return "main";
 	}
 	
-	
-	@RequestMapping(value = "/restaurant_search.do", method=RequestMethod.GET)
-	public String restaurant_search() {
-		return "restaurant_search";
-		
-	}
-	
-	@RequestMapping(value = "/restaurant_result.do", method=RequestMethod.GET)
-	public String restaurant_result() {
-		return "restaurant_result";		
 
-	}
-	
 	@RequestMapping(value = "/nearby.do", method=RequestMethod.GET)
 	public String nearby() {
 		return "nearby";
 		
 	}
 	
-	@RequestMapping(value = "/nail_search.do", method=RequestMethod.GET)
-	public String nail_search() {
-		return "nail_search";
-		
-	}
-	
-	@RequestMapping(value = "/nail_result.do", method=RequestMethod.GET)
-	public String nail_result() {
-		return "nail_result";
-		
-	}
+
 	
 
 	@RequestMapping(value = "/traffic_search.do", method=RequestMethod.GET)
