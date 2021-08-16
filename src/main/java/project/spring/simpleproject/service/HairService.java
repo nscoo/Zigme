@@ -4,6 +4,7 @@ import java.util.List;
 
 import project.spring.simpleproject.model.Hair;
 
+
 public interface HairService {
 	
 	public Hair getHairItem(Hair input) throws Exception;

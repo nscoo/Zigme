@@ -10,21 +10,14 @@
 		<result property="call" column="call"/>
 		<result property="address" column="address"/>
 		<result property="times" column="times"/>
-		<result property="theme_1" column="theme_1"/>
-		<result property="theme_2" column="theme_2"/>
-		<result property="theme_3" column="theme_3"/>
 		<result property="ps" column="ps"/>
+		<result property="tags" column="tags"/>
 		<result property="review_count" column="review_count"/>
-		<result property="photos" column="photos"/>
-		<result property="prefer_10" column="prefer_10"/>
-		<result property="prefer_20" column="prefer_20"/>
-		<result property="prefer_30" column="prefer_30"/>
-		<result property="prefer_40" column="prefer_40"/>
-		<result property="prefer_50" column="prefer_50"/>
-		<result property="prefer_60" column="prefer_60"/>
-		<result property="prefer_M" column="prefer_M"/>
-		<result property="prefer_F" column="prefer_F"/>
-		<result property="menu_photo" column="menu_photo"/>
+		<result property="photo_1" column="photo_1"/>
+		<result property="photo_2" column="photo_2"/>
+		<result property="photo_3" column="photo_3"/>
+		<result property="menu_1" column="menu_1"/>
+		<result property="menu_2" column="menu_2"/>
 		<result property="loc" column="loc"/>
 		<result property="subject" column="subject"/>
 	</resultMap>
