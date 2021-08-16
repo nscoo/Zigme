@@ -28,7 +28,7 @@
     <!-- 인스타그램 하트스타일-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style type="text/css">
-    <style type="text/css">
+    
 
 
 	.fa-heart-o {
@@ -183,7 +183,7 @@
            			<c:set var="times" value="${item.times}"/>
            			<c:set var="menu" value="${item.menu}"/>
            			<c:set var="photos" value="${item.photos}"/>
-           		
+           			<c:if test="${status.count<6 }">
            			<div class="jumbotron">
                 		<div class="jumbo_img">
                     		<img src= "${photos}" alt="best5 사진">
@@ -271,7 +271,7 @@
                     </div>
                     <div class="b-close"></div>
                 </div>
-            		
+            	</c:if>
    
            			</c:forEach>
            			

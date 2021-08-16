@@ -41,19 +41,7 @@ public class HomeController {
 		return "main";
 	}
 	
-	
-	@RequestMapping(value = "/restaurant_search.do", method=RequestMethod.GET)
-	public String restaurant_search() {
-		return "restaurant_search";
-		
-	}
-	
-	@RequestMapping(value = "/restaurant_result.do", method=RequestMethod.GET)
-	public String restaurant_result() {
-		return "restaurant_result";		
 
-	}
-	
 	@RequestMapping(value = "/nearby.do", method=RequestMethod.GET)
 	public String nearby() {
 		return "nearby";
