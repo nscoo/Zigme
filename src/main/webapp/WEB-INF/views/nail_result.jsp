@@ -183,13 +183,16 @@
            			<c:set var="times" value="${item.times}"/>
            			<c:set var="menu" value="${item.menu}"/>
            			<c:set var="photos" value="${item.photos}"/>
-           		
+           			
+           			<c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
+           			<c:set var="name2" value="${fn:replace(name2,' ','')}" />
+           			<c:if test="${status.count<6 }">
            			<div class="jumbotron">
                 		<div class="jumbo_img">
                     		<img src= "${photos}" alt="best5 사진">
                 		</div>
                 		<div class="shop_title">
-                    		<a href="javascript:void(0);" style="text-decoration: none;" onClick="openPopup()">
+                    		<a href="javascript:void(0);" style="text-decoration: none;" onClick="openPopup('${name2}')">
                         		${name}&nbsp;<a href="www.instagram.com"><img src="assets/img/instagram.png" width="30px" height="30px"></a>
                     		</a>
                 		</div>
@@ -223,7 +226,7 @@
                     		</p>
                 		</div>
             		</div>
-            		<div id="popupLayer">
+            		<div id="popupLayer" class="${name2}">
                     <div id="popupContent">
                         <div id="popup_image_box">
                             <image src="${photos}" width="240px" height="240px" />
@@ -272,7 +275,7 @@
                     <div class="b-close"></div>
                 </div>
             		
-   
+   					</c:if>
            			</c:forEach>
            			
            		</c:otherwise>

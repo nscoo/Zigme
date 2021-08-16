@@ -48,17 +48,7 @@ public class HomeController {
 		
 	}
 	
-	@RequestMapping(value = "/nail_search.do", method=RequestMethod.GET)
-	public String nail_search() {
-		return "nail_search";
-		
-	}
-	
-	@RequestMapping(value = "/nail_result.do", method=RequestMethod.GET)
-	public String nail_result() {
-		return "nail_result";
-		
-	}
+
 	
 
 	@RequestMapping(value = "/traffic_search.do", method=RequestMethod.GET)

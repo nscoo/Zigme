@@ -12,6 +12,9 @@ String food = request.getParameter("food");
 String input_keyword = request.getParameter("input_keyword");
 String review_count = request.getParameter("review_count");
 String stars = request.getParameter("stars");
+
+pageContext.setAttribute("sp", "&nbsp;");
+pageContext.setAttribute("amp", "&amp;");
 %>
 
 <!DOCTYPE html>
@@ -187,7 +190,8 @@ String stars = request.getParameter("stars");
 					<%-- 조회 결과가 있는 경우 --%>
 					<c:otherwise>
 						<%-- 조회 결과에 대한 반복 처리 --%>
-						<c:forEach var="item" items="${output}" varStatus="status" begin="1" end="5" step="1">
+						<c:forEach var="item" items="${output}" varStatus="status"
+							begin="1" end="5" step="1">
 							<c:set var="loc" value="${item.loc}" />
 							<c:set var="subject" value="${item.subject}" />
 							<c:set var="resno" value="${item.resno}" />
@@ -197,22 +201,26 @@ String stars = request.getParameter("stars");
 							<c:set var="name" value="${item.name}" />
 							<c:set var="stars" value="${item.stars}" />
 							<c:set var="ps" value="${item.ps}" />
+							<c:set var="tags" value="${item.tags}" />
 							<c:set var="review_count" value="${item.review_count}" />
-							<c:set var="photos" value="${item.photos}" />
-							<c:set var="menu_photo_photo" value="${item.menu_photo}" />
-							<c:set var="theme_1" value="${item.theme_1}" />
-							<c:set var="theme_2" value="${item.theme_2}" />
-							<c:set var="theme_3" value="${item.theme_3}" />
-							<%-- 설정 안한 칼럼 많음. 테이블 수정하고 다시 설정하기 --%>
+							<c:set var="photo_1" value="${item.photo_1}" />
+							<c:set var="photo_2" value="${item.photo_2}" />
+							<c:set var="photo_3" value="${item.photo_3}" />
+							<c:set var="menu_1" value="${item.menu_1}" />
+							<c:set var="menu_2" value="${item.menu_2}" />
+
+							<c:set var="name_2" value="${fn:replace(item.name,'&','')}" />
+							<c:set var="name_2" value="${fn:replace(name_2,' ','')}" />
 
 
 							<div class="jumbotron">
 								<div class="jumbo_img">
-									<img src="${photos}" alt="best5 사진">
+									<img src="${photo_1}" alt="best5 사진"
+										referrerpolicy="no-referrer">
 								</div>
 								<div class="shop_title">
 									<a href="javascript:void(0);" style="text-decoration: none;"
-										onClick="openPopup()"> ${name}&nbsp; <a
+										onClick="openPopup('${name_2}')"> ${name}&nbsp; <a
 										href="www.instagram.com"> <img
 											src="assets/img/instagram.png" width="30px" height="30px">
 									</a>
@@ -239,20 +247,23 @@ String stars = request.getParameter("stars");
 								<div class="jumbo_info">
 									<p>
 										<br /> <img src="assets/img/clipboard.png" width="20px"
-											height="20px"> ${menu_photo_photo}
+											height="20px"> <a href="${menu_1}"
+											referrerpolicy="no-referrer" target="_blank">메뉴판 이미지</a>
 									<p>
-										<img src="assets/img/clipboard.png" width="20px" height="20px">
+										<img src="assets/img/clipboard.png" width="20px" height="20px">${tags}
 
 									</p>
 								</div>
 							</div>
 
-							<div id="popupLayer">
+							<div id="popupLayer" class="${name_2}">
 								<div id="popupContent">
 									<div id="popup_image_box">
-										<img src="${photos}" width="240px" height="240px" /> <img
-											src="${photos}" width="240px" height="240px" /> <img
-											src="${photos}" width="240px" height="240px" />
+										<img src="${photo_1}" width="240px" height="240px"
+											referrerpolicy="no-referrer" /> <img src="${photo_2}"
+											width="240px" height="240px" referrerpolicy="no-referrer" />
+										<img src="${photo_3}" width="240px" height="240px"
+											referrerpolicy="no-referrer" />
 									</div>
 									<div id="popup_content_1">
 										<h3>${name}&nbsp;<span id=heart><i
@@ -280,22 +291,25 @@ String stars = request.getParameter("stars");
 												: ${times}
 											</div>
 											<div id="info_etc">
-												<img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${menu_photo}
+												<img src="assets/img/etc.png" width="20px" height="20px">&nbsp;
+												<a href="${menu_1}" referrerpolicy="no-referrer"
+													target="_blank">메뉴판 이미지 1</a>
 											</div>
 											<div id="info_etc">
-												<img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${menu_photo}
+												<img src="assets/img/etc.png" width="20px" height="20px">&nbsp;
+												<a href="${menu_1}" referrerpolicy="no-referrer"
+													target="_blank">메뉴판 이미지 2</a>
 											</div>
 										</div>
 									</div>
 									<div id="popup_content_3">
 										<div id="menu_photo" style="padding-top: 3px;">
 											<h4>메뉴</h4>
-											<p style="font-size: 15px">${menu_photo}</p>
+											<a src="${menu_1}" />
 										</div>
 										<div id="price" style="padding-top: 3px;">
 											<h4>검색 키워드</h4>
-											<p style="font-size: 15px">커플, 신나는, 친구와의 모임, 수제맥주, 회식 장소,
-												숨겨진 맛집</p>
+											<p style="font-size: 15px">${tags}</p>
 										</div>
 									</div>
 									<div id="popup_content_4">
@@ -315,9 +329,8 @@ String stars = request.getParameter("stars");
 
 						</c:forEach>
 					</c:otherwise>
-				</c:choose>
 
-				
+				</c:choose>
 				<br />
 				<hr />
 				<div id="normal_list">
@@ -330,21 +343,46 @@ String stars = request.getParameter("stars");
 							<%-- 조회 결과가 있는 경우 --%>
 							<c:otherwise>
 								<%-- 조회 결과에 대한 반복 처리 --%>
-								<c:forEach var="item" items="${output}" varStatus="status">
-								
+								<c:forEach var="item" items="${output}" varStatus="status"
+									begin="6" end="50" step="1">
+									<c:set var="loc" value="${item.loc}" />
+									<c:set var="subject" value="${item.subject}" />
+									<c:set var="resno" value="${item.resno}" />
+									<c:set var="call" value="${item.call}" />
+									<c:set var="address" value="${item.address}" />
+									<c:set var="times" value="${item.times}" />
+									<c:set var="name" value="${item.name}" />
+									<c:set var="stars" value="${item.stars}" />
+									<c:set var="ps" value="${item.ps}" />
+									<c:set var="tags" value="${item.tags}" />
+									<c:set var="review_count" value="${item.review_count}" />
+									<c:set var="photo_1" value="${item.photo_1}" />
+									<c:set var="photo_2" value="${item.photo_2}" />
+									<c:set var="photo_3" value="${item.photo_3}" />
+									<c:set var="menu_1" value="${item.menu_1}" />
+									<c:set var="menu_2" value="${item.menu_2}" />
+
+									<c:set var="name_2" value="${fn:replace(item.name,'&','')}" />
+									<c:set var="name_2" value="${fn:replace(name_2,' ','')}" />
+
+									<%-- 일반 가게 리스트 --%>
 									<li><a href="javascript:void(0);"
-										style="text-decoration: none;" onClick="openPopup()"> <span
-											class="thumb"> <img src="${photos}" alt="이미지1"
-												width="270px" height="150px" />
+										style="text-decoration: none;"
+										onClick="openPopup('${name_2}')"> <span class="thumb">
+												<img src="${photo_1}" alt="이미지1" width="270px" 
+												height="150px" referrerpolicy="no-referrer"/>
 										</span> <span class="text">${name}</span>
 									</a></li>
 
-									<div id="popupLayer">
+									<%-- 일반 가게 리스트 팝업 --%>
+									<div id="popupLayer" class="${name_2}">
 										<div id="popupContent">
 											<div id="popup_image_box">
-												<image src="${photos}" width="240px" height="240px" />
-												<image src="${photos}" width="240px" height="240px" />
-												<image src="${photos}" width="240px" height="240px" />
+												<img src="${photo_1}" width="240px" height="240px"
+													referrerpolicy="no-referrer" /> <img src="${photo_2}"
+													width="240px" height="240px" referrerpolicy="no-referrer" />
+												<img src="${photo_3}" width="240px" height="240px"
+													referrerpolicy="no-referrer" />
 											</div>
 											<div id="popup_content_1">
 												<h3>${name}&nbsp;<span id=heart><i
@@ -372,21 +410,25 @@ String stars = request.getParameter("stars");
 														: ${times}
 													</div>
 													<div id="info_etc">
-														<img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${menu_photo}
+														<img src="assets/img/etc.png" width="20px" height="20px">&nbsp;
+														<a href="${menu_1}" referrerpolicy="no-referrer"
+															target="_blank">메뉴판 이미지 1</a>
 													</div>
 													<div id="info_etc">
-														<img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${menu_photo}
+														<img src="assets/img/etc.png" width="20px" height="20px">&nbsp;
+														<a href="${menu_1}" referrerpolicy="no-referrer"
+															target="_blank">메뉴판 이미지 2</a>
 													</div>
 												</div>
 											</div>
 											<div id="popup_content_3">
 												<div id="menu_photo" style="padding-top: 3px;">
 													<h4>메뉴</h4>
-													<p style="font-size: 15px">${menu_photo}</p>
+													<a src="${menu_1}" />
 												</div>
 												<div id="price" style="padding-top: 3px;">
 													<h4>검색 키워드</h4>
-													<p style="font-size: 15px">${theme_1}</p>
+													<p style="font-size: 15px">${tags}</p>
 												</div>
 											</div>
 											<div id="popup_content_4">
@@ -409,6 +451,10 @@ String stars = request.getParameter("stars");
 						</c:choose>
 					</ul>
 				</div>
+
+
+
+
 
 
 
@@ -470,11 +516,12 @@ String stars = request.getParameter("stars");
 			function closeNav() {
 				document.getElementById("mySidenav").style.width = "0";
 			}
+
 			//상세팝업
-			function openPopup() {
-				$("#popupLayer").bPopup({
+			function openPopup(name) {
+				$('#popupLayer.' + name).bPopup({
 					iframeAttr : 'frameborder=”auto”',
-					iframeAttr : 'frameborder=”0',
+					iframeAttr : 'frameborder=”0"',
 					contentContainer : '.popupContent',
 
 					onOpen : function() {

@@ -152,7 +152,7 @@
                     <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
                 </ul>
             </div>
-            <div id="head_banner" style="position: relative; height: 420px; overflow: hidden; background-image: url(assets/img/flowers.jpg); background-size: cover;" >
+            <div id="head_banner" style="position: relative; height: 420px; overflow: hidden; background-image: url(assets/img/flowers2.jpg); background-size: cover;" >
             <!-- 검색 input을 form 태그로 바꾸어서 파라미터 전달을 가능하게 만듬 -->
                 <form method="get" action="${pageContext.request.contextPath}/hair_result.do" } id="search_input" class="input-group">
                 	<input type="search" name="keyword" class="form-control" placeholder="검색어를 입력하세요" value="${keyword}" /> <!-- 검색어에 대한 상태유지 처리 -->
@@ -183,13 +183,17 @@
            			<c:set var="times" value="${item.times}"/>
            			<c:set var="menu" value="${item.menu}"/>
            			<c:set var="photos" value="${item.photos}"/>
+           			
+           			<c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
+           			<c:set var="name2" value="${fn:replace(name2,' ','')}" />
            			<c:if test="${status.count<6 }">
+           			
            			<div class="jumbotron">
                 		<div class="jumbo_img">
                     		<img src= "${photos}" alt="best5 사진">
                 		</div>
                 		<div class="shop_title">
-                    		<a href="javascript:void(0);" style="text-decoration: none;" onClick="openPopup()">
+                    		<a href="javascript:void(0);" style="text-decoration: none;" onClick="openPopup('${name2}')">
                         		${name}&nbsp;<a href="www.instagram.com"><img src="assets/img/instagram.png" width="30px" height="30px"></a>
                     		</a>
                 		</div>
@@ -223,7 +227,7 @@
                     		</p>
                 		</div>
             		</div>
-            		<div id="popupLayer">
+            		<div id="popupLayer" class="${name2}">
                     <div id="popupContent">
                         <div id="popup_image_box">
                             <image src="${photos}" width="240px" height="240px" />
@@ -290,12 +294,21 @@
            		<c:otherwise>
            			<%-- 조회 결과에 대한 반복 처리 --%>
            			<c:forEach var="item" items="${output}" varStatus="status" >
+           			<c:if test="${status.count>5}">
 					<c:set var="name" value="${item.name}"/>           			
+           			<c:set var="address" value="${item.address}"/>
+           			<c:set var="call" value="${item.call}"/>
+           			<c:set var="ps" value="${item.ps}"/>
+           			<c:set var="times" value="${item.times}"/>
+           			<c:set var="menu" value="${item.menu}"/>
            			<c:set var="photos" value="${item.photos}"/>
+           			<c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
+           			<c:set var="name2" value="${fn:replace(name2,' ','')}" />
            		
            			
                     		<li>
-                        		<a href="javascript:void(0);" style="text-decoration: none;" onClick="openPopup()">
+                        		<a href="javascript:void(0);" style="text-decoration: none;" 
+                        		onClick="openPopup('${name2}')">
                             		<span class="thumb">
                                 		<img src="${photos}" alt="이미지1" width="270px" height="150px"/>
                             		</span>
@@ -303,7 +316,7 @@
                         		</a>
                     		</li>
                     		
-                    		<div id="popupLayer">
+                    		<div id="popupLayer" class="${name2}">
                     <div id="popupContent">
                         <div id="popup_image_box">
                             <image src="${photos}" width="240px" height="240px" />
@@ -352,7 +365,7 @@
                     <div class="b-close"></div>
                 </div>
                     	
-      
+      				</c:if>
            			</c:forEach>
            	</c:otherwise>
            </c:choose>
@@ -426,8 +439,8 @@
             document.getElementById("mySidebar").style.display = "none";
         }
         //상세 팝업
-        function openPopup() {
-            $("#popupLayer").bPopup({
+        function openPopup(name) {
+            $("#popupLayer."+name).bPopup({
                     iframeAttr: 'frameborder=”auto”',
                     iframeAttr: 'frameborder=”0',
                     contentContainer: '.popupContent',

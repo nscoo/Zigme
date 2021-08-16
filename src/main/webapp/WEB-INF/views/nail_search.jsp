@@ -33,10 +33,25 @@
     overflow: hidden;
     background-image: url(assets/img/flowers.jpg);
     background-size: cover;
-    
-    
 
 }
+
+	/* 사이드바 */
+	.sidebar_content {position:fixed;top:0;right:-300px;width:300px;height:100%;background:#999;transition:all .35s;z-index:5;}
+	.sidebar_content > ul {margin:20px;}
+	.sidebar_content > ul > li {border-bottom:1px solid #ccc;list-style:none;}
+	.sidebar_content > ul > li > a {display:inline-block;width:auto;color:#fff;padding:10px;margin:10px;background:#f5f5f5;}
+	.sidebar_content label[for*='sidebar'] {position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;}
+	
+	/* 사이드바 외 배경영역 */
+	.background {position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);transition:all .35s;opacity:0;visibility:hidden;z-index:1;}
+
+	/* input 체크 */
+	input#sidebar:checked ~ header label {background-position:-24px 0;}
+	input#sidebar:checked ~ .sidebar_content {right:0;}
+	input#sidebar:checked ~ .background  {opacity:1;visibility:visible;}
+	
+	
     </style>
 </head>
 
