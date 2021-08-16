@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -23,7 +25,6 @@
     <link rel="stylesheet" type="text/css" href="assets/css/result_gallery.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     
-
     <style type="text/css">
     
     #head_banner {
@@ -32,6 +33,8 @@
     overflow: hidden;
     background-image: url(assets/img/flowers.jpg);
     background-size: cover;
+    
+    
 
 }
     </style>
@@ -124,7 +127,7 @@
                    		<button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
                    		</div>
                    		</c:if>
-                </div>
+                    </div>
                 </div>
             </div>
             <div id="header_nav">
@@ -143,16 +146,44 @@
                     <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
                 </ul>
             </div>
+            
             <!-- 네일 검색결과 부분 시작-->
             <div id="head_banner">
-                <div id="search_input" class="input-group">
-                    <input type="text" class="form-control" placeholder="검색어를 입력하세요">
+			<!-- 검색 input을 form 태그로 바꾸어서 파라미터 전달을 가능하게 만듬 -->
+                <form method="get" action="${pageContext.request.contextPath}/hair_result.do" } id="search_input"class="input-group">
+                	<input type="search" name="keyword" class="form-control" placeholder="주소나 상호명을 입력하세요" />
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" onclick="location.href='${pageContext.request.contextPath}/hair_result.do'"><i class="fas fa-search"></i></button>
-                    </span>
-                </div>
+                        <button class="btn btn-default" type="submit"><i class="fas fa-search"></i></button>
+                    </span>        	
+                </form>
+                    
+
             </div>
             
+            <input type="checkbox" id="sidebar" style="display: none;" >
+			<!-- 헤더 네비게이션 -->
+			
+			<header>
+				<label for="sidebar" class="menu" style="margin-top:20px; float: right; transform:translateY(-50%);width:24px;height:24px;background:url('assets/img/menu.png') 0 0 no-repeat;cursor:pointer;"></label>
+			</header>
+		
+			
+			<!-- 사이드바 -->
+			<div class="sidebar_content">
+				<ul>
+					<li><a>메뉴1</a></li>
+					<li><a>메뉴2</a></li>
+					<li><a>메뉴3</a></li>
+					<li><a>메뉴4</a></li>
+					<li><a>메뉴5</a></li>
+					<li><a>메뉴6</a></li>
+				</ul>
+				<label for="sidebar"></label>
+			</div>
+			<!-- 사이드바 외 영역 -->
+			<label for="sidebar" class="background"></label>
+
+        </div>
         <!-- header 끝-->
         <div id="carousel">
             <!-- 캐러셀 영역 구성 -->
@@ -217,7 +248,7 @@
                 <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"> <span class="icon-next"></span> </a>
             </div>
         </div>
-          <!-- footer 시작 -->
+        <!-- footer 시작 -->
            <div id="footer">
                 <div id="footer_content">
                     <div id="footer_img">
@@ -250,11 +281,7 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/script.js"></script>
-     <!--찜목록 사이드바-->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/sidebar.js"></script>
     <script type="text/javascript">
-   
     countdown('countdownC', 0, 0, 10, 10);
     // Countdown Loading Bar
     $config.loadingBars_width = 60;
@@ -277,8 +304,6 @@
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
-    
-    
     </script>
 </body>
 

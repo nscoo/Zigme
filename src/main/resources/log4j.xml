@@ -43,7 +43,7 @@
 
     <!-- Application Loggers -->
     <!-- study.jsp.model1 패키지 하위의 모든 클래스에서 발생하는 로그를 기록함 프로젝트 상황에 맞게 수정필요. -->
-    <logger name="project.spring.simpleproject">
+    <logger name="pproject.spring.simpleproject">
         <level value="debug" />
     </logger>
 

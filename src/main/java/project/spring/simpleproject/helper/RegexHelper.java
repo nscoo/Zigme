@@ -5,9 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class RegexHelper {
-
     /**
-
      * 주어진 문자열이 공백이거나 null인지를 검사
      * 
      * @param str - 검사할 문자열
@@ -216,5 +214,4 @@ public class RegexHelper {
         
         return result;
     }
-
 }

@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -22,24 +24,31 @@
     <!-- body 부분 css 시작-->
     <link rel="stylesheet" type="text/css" href="assets/css/result_gallery.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/result.css">
+    <!-- 인스타그램 하트스타일-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style type="text/css">
-    
-    #head_banner {
-    position: relative;
-    height: 420px;
-    overflow: hidden;
-    background-image: url(assets/img/flowers.jpg);
-    background-size: cover;
+    <style type="text/css">
 
-}
+
+	.fa-heart-o {
+        color: red;
+        cursor: pointer;
+        font-size: 25px;
+    }
+
+    .fa-heart {
+        color: red;
+        cursor: pointer;
+        font-size: 25px;
+    }
     </style>
 </head>
 
 <body>
     <!--bootstrap 반응형 사용을 위해 제일 상위 class를 container로 설정함 -->
-   
-        <!-- header 시작 -->
-       <div class="container">
+
+        <div class="container">
         <!-- header 시작 -->
         <div id="header">
             <div id="header_top">
@@ -124,6 +133,7 @@
                    		<button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
                    		</div>
                    		</c:if>
+                    </div>
                 </div>
             </div>
             <div id="header_nav">
@@ -142,371 +152,213 @@
                     <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
                 </ul>
             </div>
-            <div id="head_banner">
-                <div id="search_input" class="input-group">
-                    <input type="text" class="form-control" placeholder="강남구 서초동 네일샵">
+            <div id="head_banner" style="position: relative; height: 420px; overflow: hidden; background-image: url(assets/img/flowers.jpg); background-size: cover;" >
+            <!-- 검색 input을 form 태그로 바꾸어서 파라미터 전달을 가능하게 만듬 -->
+                <form method="get" action="${pageContext.request.contextPath}/hair_result.do" } id="search_input" class="input-group">
+                	<input type="search" name="keyword" class="form-control" placeholder="검색어를 입력하세요" value="${keyword}" /> <!-- 검색어에 대한 상태유지 처리 -->
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><i class="fas fa-search"></i></button>
-                    </span>
-                </div>
+                        <button class="btn btn-default" type="submit"><i class="fas fa-search"></i></button>
+                    </span>        	
+                </form>
             </div>
-           </div>
+          </div>
             <!-- header 끝-->
             <!-- 네일 검색결과 부분 시작-->
             <h1>Best5</h1>
             <br />
-            <!-- 큰 통 박스 -->
-            <div class="jumbotron">
-                <div class="jumbo_img">
-                    <img src="assets/img/nail1.jpg" alt="best5 사진">
+            
+            <c:choose>
+           		<%-- 조회 결과가 없는 경우 --%>
+           		<c:when test="${output == null || fn:length(output)==0 }">
+           			<h1>조회 결과가 없습니다.</h1>
+           		</c:when>
+           		<%-- 조회 결과가 있는 경우 --%>
+           		<c:otherwise>
+           			<%-- 조회 결과에 대한 반복 처리 --%>
+           			<c:forEach var="item" items="${output}" varStatus="status" >
+					<c:set var="name" value="${item.name}"/>           			
+           			<c:set var="address" value="${item.address}"/>
+           			<c:set var="call" value="${item.call}"/>
+           			<c:set var="ps" value="${item.ps}"/>
+           			<c:set var="times" value="${item.times}"/>
+           			<c:set var="menu" value="${item.menu}"/>
+           			<c:set var="photos" value="${item.photos}"/>
+           		
+           			<div class="jumbotron">
+                		<div class="jumbo_img">
+                    		<img src= "${photos}" alt="best5 사진">
+                		</div>
+                		<div class="shop_title">
+                    		<a href="javascript:void(0);" style="text-decoration: none;" onClick="openPopup()">
+                        		${name}&nbsp;<a href="www.instagram.com"><img src="assets/img/instagram.png" width="30px" height="30px"></a>
+                    		</a>
+                		</div>
+                		<div class="jumbo_info">
+                    		<p>
+                        		<br />
+                        		<img src="assets/img/call.png" width="20px" height="20px">
+                        		전화번호 : ${call}
+                    		</p>
+                    		<p>
+                        		<img src="assets/img/placeholder-filled-point.png" width="20px" height="20px">
+                        		주소 : ${address}
+                    		</p>
+                    		<p>
+                        		<img src="assets/img/parked-car.png" alt="주차가능?" width="30px" height="30px">
+                        		${ps}
+                    		</p>
+                    		<p>
+                        		<img src="assets/img/clock.png" alt="시간" width="25px" height="25px">
+                        		${times}
+                    		</p>
+                		</div>
+                		<div class="jumbo_info">
+                    		<p>
+                        		<br />
+                        		<img src="assets/img/clipboard.png" width="20px" height="20px">
+                        		${menu}
+                    		<p>
+                        		<img src="assets/img/clipboard.png" width="20px" height="20px">
+                        		
+                    		</p>
+                		</div>
+            		</div>
+            		<div id="popupLayer">
+                    <div id="popupContent">
+                        <div id="popup_image_box">
+                            <image src="${photos}" width="240px" height="240px" />
+                            <image src="${photos}" width="240px" height="240px" />
+                            <image src="${photos}" width="240px" height="240px" />
+                        </div>
+                        <div id="popup_content_1">
+                            <h3>${name}&nbsp;<span id=heart><i class="fa fa-heart-o" aria-hidden="true"></i> </span>
+                            </h3>
+                        </div>
+                        <div id="popup_content_2">
+                            <div id="info_left">
+                                <div id="info_num"><img src="assets/img/call.png" width="20px" height="20px">&nbsp;전화번호 : ${call}</div>
+                                <div id="info_add"><img src="assets/img/add.png" width="20px" height="20px">&nbsp;주소 : ${address}</div>
+                                <div id="info_ps">
+                                    <img src="assets/img/ps.png" width="25px" height="25px">&nbsp;PS : ${ps}
+                                </div>
+                            </div>
+                            <div id="info_right">
+                                <div id="info_time"><img src="assets/img/time.png" width="20px" height="20px">&nbsp;영업시간 : ${times}</div>
+                                <div id="info_etc"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${menu}</div>
+                                <div id="info_etc"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${menu}</div>
+                            </div>
+                        </div>
+                        <div id="popup_content_3">
+                            <div id="menu" style="padding-top: 3px;">
+                                <h4>메뉴</h4>
+                                <p style="font-size: 15px">${menu}</p>
+                            </div>
+                            <div id="price" style="padding-top: 3px;">
+                                <h4>검색 키워드</h4>
+                                <p style="font-size: 15px">커플, 신나는, 친구와의 모임, 수제맥주, 회식 장소, 숨겨진 맛집</p>
+                            </div>
+                        </div>
+                        <div id="popup_content_4">
+                            <div id="graph_left" style="font-size: 18px">
+                                통계 결과
+                                <img src="assets/img/graph1.png" width="280" height="220px">
+                            </div>
+                            <div id="graph_right" style="font-size: 18px">
+                                나이대별 선호도
+                                <img src="assets/img/graph2.png" width="280" height="220px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="b-close"></div>
                 </div>
-                <div class="shop_title">
-                    <a href="#" style="text-decoration: none;">
-                        Nail A.LaMode&nbsp;<a href="www.instagram.com"><img src="assets/img/instagram.png" width="30px" height="30px"></a>
-                    </a>
-                </div>
-                <div class="jumbo_info">
-                    <p>
-                        <br />
-                        <img src="assets/img/call.png" width="20px" height="20px">
-                        전화번호 : 02-457-1234
-                    </p>
-                    <p>
-                        <img src="assets/img/placeholder-filled-point.png" width="20px" height="20px">
-                        주소 : 서울특별시 강남구 서초동
-                    </p>
-                    <p>
-                        <img src="assets/img/parked-car.png" alt="주차가능?" width="30px" height="30px">
-                        주차가능, 발렛가능
-                    </p>
-                    <p>
-                        <img src="assets/img/clock.png" alt="시간" width="25px" height="25px">
-                        운영시간: 10:00 ~ 22:00
-                    </p>
-                </div>
-                <div class="jumbo_info">
-                    <p>
-                        <br />
-                        <img src="assets/img/clipboard.png" width="20px" height="20px">
-                        메뉴 <br />
-                        기본 컬러젤: 40,000원<br />
-                        이달의 이벤트: 60,000원<br />
-                        프렌치 네일: 개당 10,000원
-                    </p>
-                    <p>
-                        <img src="assets/img/clipboard.png" width="20px" height="20px">
-                        추가정보?
-                    </p>
-                </div>
-            </div>
-            <div class="jumbotron">
-                <div class="jumbo_img">
-                    <img src="assets/img/nail2.jpg" alt="best5 사진">
-                </div>
-                <div class="shop_title">
-                    <a href="#" style="text-decoration: none;">
-                        살롱드네일&nbsp;<a href="www.instagram.com"><img src="assets/img/instagram.png" width="30px" height="30px"></a>
-                    </a>
-                </div>
-                <div class="jumbo_info">
-                    <p>
-                        <br />
-                        <img src="assets/img/call.png" width="20px" height="20px">
-                        전화번호 : 02-425-1256
-                    </p>
-                    <p>
-                        <img src="assets/img/placeholder-filled-point.png" width="20px" height="20px">
-                        주소 : 서울특별시 강남구 서초동
-                    </p>
-                    <p>
-                        <img src="assets/img/parked-car.png" alt="주차가능?" width="30px" height="30px">
-                        주차불가, 동반시술가능
-                    </p>
-                    <p>
-                        <img src="assets/img/clock.png" alt="시간" width="25px" height="25px">
-                        운영시간: 12:00 ~ 20:00
-                    </p>
-                </div>
-                <div class="jumbo_info">
-                    <p>
-                        <br />
-                        <img src="assets/img/clipboard.png" width="20px" height="20px">
-                        메뉴 <br />
-                        기본 컬러젤: 30,000원<br />
-                        이달의 이벤트: 70,000원<br />
-                        프렌치 네일: 개당 15,000원
-                    </p>
-                    <p>
-                        <img src="assets/img/clipboard.png" width="20px" height="20px">
-                        추가정보?
-                    </p>
-                </div>
-            </div>
-            <div class="jumbotron">
-                <div class="jumbo_img">
-                    <img src="assets/img/nail3.jpg" alt="best5 사진">
-                </div>
-                <div class="shop_title">
-                    <a href="#" style="text-decoration: none;">
-                        츄잉네일&nbsp;<a href="www.instagram.com"><img src="assets/img/instagram.png" width="30px" height="30px"></a>
-                    </a>
-                </div>
-                <div class="jumbo_info">
-                    <p>
-                        <br />
-                        <img src="assets/img/call.png" width="20px" height="20px">
-                        전화번호 : 02-327-1234
-                    </p>
-                    <p>
-                        <img src="assets/img/placeholder-filled-point.png" width="20px" height="20px">
-                        주소 : 서울특별시 강남구 서초동
-                    </p>
-                    <p>
-                        <img src="assets/img/parked-car.png" alt="주차가능?" width="30px" height="30px">
-                        동반시술불가, 주차가능
-                    </p>
-                    <p>
-                        <img src="assets/img/clock.png" alt="시간" width="25px" height="25px">
-                        운영시간: 13:00 ~ 21:00
-                    </p>
-                </div>
-                <div class="jumbo_info">
-                    <p>
-                        <br />
-                        <img src="assets/img/clipboard.png" width="20px" height="20px">
-                        메뉴 <br />
-                        기본 컬러젤: 30,000원<br />
-                        이달의 이벤트: 55,000원<br />
-                        프렌치 네일: 개당 9,000원
-                    </p>
-                    <p>
-                        <img src="assets/img/clipboard.png" width="20px" height="20px">
-                        추가정보?
-                    </p>
-                </div>
-            </div>
-            <div class="jumbotron">
-                <div class="jumbo_img">
-                    <img src="assets/img/nail4.jpg" alt="best5 사진">
-                </div>
-                <div class="shop_title">
-                    <a href="#" style="text-decoration: none;">
-                        상철이네일샵&nbsp;<a href="www.instagram.com"><img src="assets/img/instagram.png" width="30px" height="30px"></a>
-                    </a>
-                </div>
-                <div class="jumbo_info">
-                    <p>
-                        <br />
-                        <img src="assets/img/call.png" width="20px" height="20px">
-                        전화번호 : 02-457-1234
-                    </p>
-                    <p>
-                        <img src="assets/img/placeholder-filled-point.png" width="20px" height="20px">
-                        주소 : 서울특별시 강남구 서초동
-                    </p>
-                    <p>
-                        <img src="assets/img/parked-car.png" alt="주차가능?" width="30px" height="30px">
-                        동반시술시 예약필수
-                    </p>
-                    <p>
-                        <img src="assets/img/clock.png" alt="시간" width="25px" height="25px">
-                        운영시간: 10:00 ~ 22:00
-                    </p>
-                </div>
-                <div class="jumbo_info">
-                    <p>
-                        <br />
-                        <img src="assets/img/clipboard.png" width="20px" height="20px">
-                        메뉴 <br />
-                        기본 컬러젤: 50,000원<br />
-                        이달의 이벤트: 80,000원<br />
-                        프렌치 네일: 개당 12,000원
-                    </p>
-                    <p>
-                        <img src="assets/img/clipboard.png" width="20px" height="20px">
-                        추가정보?
-                    </p>
-                </div>
-            </div>
-            <div class="jumbotron">
-                <div class="jumbo_img">
-                    <img src="assets/img/nail5.jpg" alt="best5 사진">
-                </div>
-                <div class="shop_title">
-                    <a href="#" style="text-decoration: none;">
-                        Noir. Nail&nbsp;<a href="www.instagram.com"><img src="assets/img/instagram.png" width="30px" height="30px"></a>
-                    </a>
-                </div>
-                <div class="jumbo_info">
-                    <p>
-                        <br />
-                        <img src="assets/img/call.png" width="20px" height="20px">
-                        전화번호 : 02-367-1784
-                    </p>
-                    <p>
-                        <img src="assets/img/placeholder-filled-point.png" width="20px" height="20px">
-                        주소 : 서울특별시 강남구 서초동
-                    </p>
-                    <p>
-                        <img src="assets/img/parked-car.png" alt="주차가능?" width="30px" height="30px">
-                        주차가능, 발렛가능
-                    </p>
-                    <p>
-                        <img src="assets/img/clock.png" alt="시간" width="25px" height="25px">
-                        운영시간: 12:00 ~ 20:00
-                    </p>
-                </div>
-                <div class="jumbo_info">
-                    <p>
-                        <br />
-                        <img src="assets/img/clipboard.png" width="20px" height="20px">
-                        메뉴 <br />
-                        기본 컬러젤: 40,000원<br />
-                        이달의 이벤트: 60,000원<br />
-                        프렌치 네일: 개당 10,000원
-                    </p>
-                    <p>
-                        <img src="assets/img/clipboard.png" width="20px" height="20px">
-                        추가정보?
-                    </p>
-                </div>
-            </div>
-            <br />
+            		
+   
+           			</c:forEach>
+           			
+           		</c:otherwise>
+           	</c:choose>
+           	<br />
             <hr />
             <div id="normal_list">
                 <ul id="gallery">
-                    <li>
-                        <a href="#">
-                            <span class="thumb">
-                                <img src="assets/img/nail1.jpg" alt="이미지1" />
-                            </span>
-                            <span class="text">상호명이 들어가는자리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="thumb">
-                                <img src="assets/img/nail2.jpg" alt="이미지1" />
-                            </span>
-                            <span class="text">상호명이 들어가는자리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="thumb">
-                                <img src="assets/img/nail3.jpg" alt="이미지1" />
-                            </span>
-                            <span class="text">상호명이 들어가는자리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="thumb">
-                                <img src="assets/img/nail4.jpg" alt="이미지1" />
-                            </span>
-                            <span class="text">상호명이 들어가는자리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="thumb">
-                                <img src="assets/img/nail5.jpg" alt="이미지1" />
-                            </span>
-                            <span class="text">상호명이 들어가는자리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="thumb">
-                                <img src="assets/img/nail6.jpg" alt="이미지1" />
-                            </span>
-                            <span class="text">상호명이 들어가는자리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="thumb">
-                                <img src="assets/img/nail7.jpg" alt="이미지1" />
-                            </span>
-                            <span class="text">상호명이 들어가는자리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="thumb">
-                                <img src="assets/img/nail8.jpg" alt="이미지1" />
-                            </span>
-                            <span class="text">상호명이 들어가는자리</span>
-                        </a>
-                    </li>
-                </ul>
-                <ul id="gallery">
-                    <li>
-                        <a href="#">
-                            <span class="thumb">
-                                <img src="assets/img/nail1.jpg" alt="이미지1" />
-                            </span>
-                            <span class="text">상호명이 들어가는자리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="thumb">
-                                <img src="assets/img/nail2.jpg" alt="이미지1" />
-                            </span>
-                            <span class="text">상호명이 들어가는자리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="thumb">
-                                <img src="assets/img/nail3.jpg" alt="이미지1" />
-                            </span>
-                            <span class="text">상호명이 들어가는자리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="thumb">
-                                <img src="assets/img/nail4.jpg" alt="이미지1" />
-                            </span>
-                            <span class="text">상호명이 들어가는자리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="thumb">
-                                <img src="assets/img/nail5.jpg" alt="이미지1" />
-                            </span>
-                            <span class="text">상호명이 들어가는자리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="thumb">
-                                <img src="assets/img/nail6.jpg" alt="이미지1" />
-                            </span>
-                            <span class="text">상호명이 들어가는자리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="thumb">
-                                <img src="assets/img/nail7.jpg" alt="이미지1" />
-                            </span>
-                            <span class="text">상호명이 들어가는자리</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="thumb">
-                                <img src="assets/img/nail8.jpg" alt="이미지1" />
-                            </span>
-                            <span class="text">상호명이 들어가는자리</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <c:choose>
+           		<%-- 조회 결과가 없는 경우 --%>
+           		<c:when test="${output == null || fn:length(output)==0 }">
+           			<h1>조회 결과가 없습니다.</h1>
+           		</c:when>
+           		<%-- 조회 결과가 있는 경우 --%>
+           		<c:otherwise>
+           			<%-- 조회 결과에 대한 반복 처리 --%>
+           			<c:forEach var="item" items="${output}" varStatus="status" >
+					<c:set var="name" value="${item.name}"/>           			
+           			<c:set var="photos" value="${item.photos}"/>
+           		
+           			
+                    		<li>
+                        		<a href="javascript:void(0);" style="text-decoration: none;" onClick="openPopup()">
+                            		<span class="thumb">
+                                		<img src="${photos}" alt="이미지1" width="270px" height="150px"/>
+                            		</span>
+                            		<span class="text">${name}</span>
+                        		</a>
+                    		</li>
+                    		
+                    		<div id="popupLayer">
+                    <div id="popupContent">
+                        <div id="popup_image_box">
+                            <image src="${photos}" width="240px" height="240px" />
+                            <image src="${photos}" width="240px" height="240px" />
+                            <image src="${photos}" width="240px" height="240px" />
+                        </div>
+                        <div id="popup_content_1">
+                            <h3>${name}&nbsp;<span id=heart><i class="fa fa-heart-o" aria-hidden="true"></i> </span>
+                            </h3>
+                        </div>
+                        <div id="popup_content_2">
+                            <div id="info_left">
+                                <div id="info_num"><img src="assets/img/call.png" width="20px" height="20px">&nbsp;전화번호 : ${call}</div>
+                                <div id="info_add"><img src="assets/img/add.png" width="20px" height="20px">&nbsp;주소 : ${address}</div>
+                                <div id="info_ps">
+                                    <img src="assets/img/ps.png" width="25px" height="25px">&nbsp;PS : ${ps}
+                                </div>
+                            </div>
+                            <div id="info_right">
+                                <div id="info_time"><img src="assets/img/time.png" width="20px" height="20px">&nbsp;영업시간 : ${times}</div>
+                                <div id="info_etc"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${menu}</div>
+                                <div id="info_etc"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${menu}</div>
+                            </div>
+                        </div>
+                        <div id="popup_content_3">
+                            <div id="menu" style="padding-top: 3px;">
+                                <h4>메뉴</h4>
+                                <p style="font-size: 15px">${menu}</p>
+                            </div>
+                            <div id="price" style="padding-top: 3px;">
+                                <h4>검색 키워드</h4>
+                                <p style="font-size: 15px">커플, 신나는, 친구와의 모임, 수제맥주, 회식 장소, 숨겨진 맛집</p>
+                            </div>
+                        </div>
+                        <div id="popup_content_4">
+                            <div id="graph_left" style="font-size: 18px">
+                                통계 결과
+                                <img src="assets/img/graph1.png" width="280" height="220px">
+                            </div>
+                            <div id="graph_right" style="font-size: 18px">
+                                나이대별 선호도
+                                <img src="assets/img/graph2.png" width="280" height="220px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="b-close"></div>
+                </div>
+                    	
+      
+           			</c:forEach>
+           	</c:otherwise>
+           </c:choose>
+           	</ul>
+          </div>
+           
         <!-- footer 시작 -->
            <div id="footer">
                 <div id="footer_content">
@@ -541,6 +393,7 @@
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/script.js"></script>
+        <script type="text/javascript" src="assets/js/bpopup.js"></script>
         <script type="text/javascript">
         countdown('countdownC', 0, 0, 10, 10);
         // Countdown Loading Bar
@@ -572,6 +425,31 @@
         function w3_close() {
             document.getElementById("mySidebar").style.display = "none";
         }
+        //상세 팝업
+        function openPopup() {
+            $("#popupLayer").bPopup({
+                    iframeAttr: 'frameborder=”auto”',
+                    iframeAttr: 'frameborder=”0',
+                    contentContainer: '.popupContent',
+
+                    onOpen: function() {},
+
+                    onClose: function() {}
+                },
+                function() {});
+        }
+        //찜하트 구현 js
+        $(document).ready(function() {
+            $("#heart").click(function() {
+                if ($("#heart").hasClass("liked")) {
+                    $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+                    $("#heart").removeClass("liked");
+                } else {
+                    $("#heart").html('<i class="fa fa-heart" aria-hidden="true"></i>');
+                    $("#heart").addClass("liked");
+                }
+            });
+        });
         </script>
 </body>
 

@@ -3,8 +3,8 @@ package project.spring.simpleproject.model;
 import lombok.Data;
 
 @Data
-public class Nail {
-	private int nailno;
+public class Hair {
+	private int hairno;
 	private String name;
 	private double stars;
 	private String call;

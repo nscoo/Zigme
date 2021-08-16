@@ -12,41 +12,19 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
-	<!-- 웹 리소스 위치(location)에 대한 URL 맵핑(mapping) -->
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<!--resources mapping="/resources/**" location="/resources/" /-->
-	<resources mapping="/assets/**" location="/assets/" />
+	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-<<<<<<< HEAD
-	
-	<!-- 컨트롤러나 서비스의 구현체가 포함되어 있는 패키지들 나열 -->
 	<context:component-scan base-package="project.spring.simpleproject.controllers" />
 	<context:component-scan base-package="project.spring.simpleproject.service.impl" />
-	
-=======
-	<context:component-scan base-package="project.spring.simpleproject" />
-	<context:component-scan base-package="project.spring.simpleproject.helper" />
-	<context:component-scan base-package="project.spring.simpleproject.controllers" />
-	<context:component-scan base-package="project.spring.simpleproject.model.Members" />
-	<context:component-scan base-package="project.spring.simpleproject.service.MemberService" />
-	<context:component-scan base-package="project.spring.simpleproject.service.Impl.MemberServiceImpl" />
 	<resources mapping="/assets/**" location="/assets/" />
 	
 	<resources mapping="/resources/**" location="/resources/" />
->>>>>>> aca6ee1814ff09feaa7d939ce3fed50ca2fcdb61
 	
-	<!-- 인터셉터 등록 -->
-	<interceptors>
-		<interceptor>
-			<mapping path="/**" />
-			<beans:bean id="appInterceptor"
-			class="project.spring.simpleproject.interceptor.AppInterceptor" />
-		</interceptor>
-	</interceptors>
 	
 </beans:beans>

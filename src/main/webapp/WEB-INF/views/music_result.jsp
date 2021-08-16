@@ -134,7 +134,8 @@
                    		<button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
                    		</div>
                    		</c:if>
-                </div>
+                    </div>
+                    
                 </div>
             </div>
             <div id="header_nav">

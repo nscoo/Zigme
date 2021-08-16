@@ -7,21 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
-import project.spring.simpleproject.model.Nail;
-import project.spring.simpleproject.service.NailService;
+import project.spring.simpleproject.model.Hair;
+import project.spring.simpleproject.service.HairService;
 
 @Slf4j
 @Service
-public class NailServiceImpl implements NailService{
+public class HairServiceImpl implements HairService{
 	@Autowired
 	SqlSession sqlSession;
 	
 	
 	@Override
-	public Nail getNailItem(Nail input) throws Exception {
-		Nail result = null;
+	public Hair getHairItem(Hair input) throws Exception {
+		Hair result = null;
 		try {
-			result = sqlSession.selectOne("NailMapper.selectItem", input);
+			result = sqlSession.selectOne("HairMapper.selectItem", input);
 			
 			if(result == null) {
 				throw new NullPointerException("result=null");
@@ -38,11 +38,11 @@ public class NailServiceImpl implements NailService{
 
 
 	@Override
-	public List<Nail> getNailList(Nail input) throws Exception {
-		List<Nail> result = null;
+	public List<Hair> getHairList(Hair input) throws Exception {
+		List<Hair> result = null;
 		
 		try {
-			result = sqlSession.selectList("NailMapper.selectList",input);
+			result = sqlSession.selectList("HairMapper.selectList",input);
 			
 			if(result == null) {
 				throw new NullPointerException("result=null");
@@ -60,11 +60,11 @@ public class NailServiceImpl implements NailService{
 
 
 	@Override
-	public int getNailCount(Nail input) throws Exception {
+	public int getHairCount(Hair input) throws Exception {
 		int result = 0;
 		
 		try {
-			result = sqlSession.selectOne("NailMapper.selectCountAll",input);
+			result = sqlSession.selectOne("HairMapper.selectCountAll",input);
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
 			throw new Exception("데이터 조회에 실패했습니다.");

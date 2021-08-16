@@ -13,29 +13,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import project.spring.simpleproject.model.Nail;
-import project.spring.simpleproject.service.NailService;
+import project.spring.simpleproject.model.Hair;
+import project.spring.simpleproject.service.HairService;
 
 @Controller
-public class NailController {
+public class HairController {
 
 	@Autowired
-	NailService nailService;
+	HairService hairService;
 	
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 	
-	@RequestMapping(value="/nail_result.do", method = RequestMethod.GET)
+	@RequestMapping(value="/hair_result.do", method = RequestMethod.GET)
 	public String list(Model model, HttpServletResponse response, @RequestParam(value="keyword", required=false) String keyword) {
 		
-		Nail input = new Nail();
+		Hair input = new Hair();
 		input.setName(keyword);
 		input.setAddress(keyword);
 		
-		List<Nail> output = null;
+		List<Hair> output = null;
 		
 		try {
-			output = nailService.getNailList(input);
+			output = hairService.getHairList(input);
 		} catch(Exception e) { e.printStackTrace(); }
 		
 		//view 처리
@@ -43,12 +43,12 @@ public class NailController {
 		model.addAttribute("keyword",keyword);
 		
 		
-		return "nail_result";
+		return "hair_result";
 	}
 	
-	@RequestMapping(value = "/nail_search.do", method=RequestMethod.GET)
-	public String nail_search() {
-		return "nail_search";
+	@RequestMapping(value = "/hair_search.do", method=RequestMethod.GET)
+	public String hair_search() {
+		return "hair_search";
 		
 	}
 }

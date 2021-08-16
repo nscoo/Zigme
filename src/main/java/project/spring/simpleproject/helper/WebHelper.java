@@ -2,12 +2,15 @@ package project.spring.simpleproject.helper;
 
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.AbstractView;
@@ -18,11 +21,9 @@ import lombok.extern.slf4j.Slf4j;
 public class WebHelper {
     /** 기본 인코딩 타입 설정 */
     private String encType;
-
     
 
 	/** JSP의 request 내장 객체 */
-
     // --> import javax.servlet.http.HttpServletRequest;
     private HttpServletRequest request;
 
@@ -64,7 +65,8 @@ public class WebHelper {
     /** Getter, Setter 메서드 */
     public String getEncType() { return encType; }
 
-
+    
+    
     public void setEncType(String encType) { this.encType = encType; }
 
     public HttpServletRequest getRequest() { return request; }
@@ -135,7 +137,7 @@ public class WebHelper {
         // 가상의 뷰를 리턴한다.
         return new ModelAndView(view);
     }
-
+    
     /**
      * 전달받은 Map객체에 rt와 pubDate값을 추가한 후 리턴한다.
      *
@@ -245,5 +247,4 @@ public class WebHelper {
     public Map<String, Object> getJsonWarning(String rt) {
         return this.getJsonData(400, rt, null);
     }
-
 }

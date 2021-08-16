@@ -3,10 +3,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.extern.slf4j.Slf4j;
-import project.spring.simpleproject.helper.RegexHelper;
-import project.spring.simpleproject.helper.WebHelper;
 
 /**
  * Handles requests for the application home page.
@@ -24,10 +20,6 @@ import project.spring.simpleproject.helper.WebHelper;
 @Slf4j
 @Controller
 public class HomeController {
-	
-	@Autowired WebHelper webHelper;
-	@Autowired RegexHelper regexHelper;
-	@Autowired SqlSession sqlSession;
 	
 	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -68,21 +60,19 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping(value = "/nail_search.do", method=RequestMethod.GET)
+	public String nail_search() {
+		return "nail_search";
+		
+	}
 	
+	@RequestMapping(value = "/nail_result.do", method=RequestMethod.GET)
+	public String nail_result() {
+		return "nail_result";
+		
+	}
 	
 
-	@RequestMapping(value = "/hair_search.do", method=RequestMethod.GET)
-	public String hair_search() {
-		return "hair_search";
-		
-	}
-	
-	@RequestMapping(value = "/hair_result.do", method=RequestMethod.GET)
-	public String hair_result() {
-		return "hair_result";
-		
-	}
-	
 	@RequestMapping(value = "/traffic_search.do", method=RequestMethod.GET)
 	public String traffic_search() {
 		return "traffic_search";
@@ -100,6 +90,7 @@ public class HomeController {
 		return "main";
 		
 	}
+	
 	
 	
 	@RequestMapping(value = "/mylist.do", method=RequestMethod.GET)

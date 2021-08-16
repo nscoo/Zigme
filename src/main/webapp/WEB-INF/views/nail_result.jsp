@@ -2,12 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<<<<<< HEAD
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-=======
-
->>>>>>> aca6ee1814ff09feaa7d939ce3fed50ca2fcdb61
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -126,7 +122,7 @@
                             <div></div>
                         </div>
                     </div>
-              <div id="button_top">
+                    <div id="button_top">
                     	<c:if test="${member == null}">
                         <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
                         <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/register.do'">회원가입</button>
@@ -137,7 +133,7 @@
                    		<button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
                    		</div>
                    		</c:if>
-                </div>
+                    </div>
                 </div>
             </div>
             <div id="header_nav">
