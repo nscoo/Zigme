@@ -234,8 +234,7 @@
                             <image src="${photos}" width="240px" height="240px" />
                         </div>
                         <div id="popup_content_1">
-                            <h3>${name}&nbsp;<span id=heart><i class="fa fa-heart-o" aria-hidden="true"></i> </span>
-                            </h3>
+                            <h3>${name}&nbsp;<span id ="heart" class="${name2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name2}')" ></i> </span>                            </h3>
                         </div>
                         <div id="popup_content_2">
                             <div id="info_left">
@@ -323,7 +322,7 @@
                             <image src="${photos}" width="240px" height="240px" />
                         </div>
                         <div id="popup_content_1">
-                            <h3>${name}&nbsp;<span id=heart><i class="fa fa-heart-o" aria-hidden="true"></i> </span>
+                            <h3>${name}&nbsp;<span id=heart ><i class="fa fa-heart-o" aria-hidden="true" onClick="heart('${name2}')"></i> </span>
                             </h3>
                         </div>
                         <div id="popup_content_2">
@@ -451,19 +450,34 @@
                 function() {});
         }
         //찜하트 구현 js
-		$("#heart").click(function(){
-			alert('하트누름');
-  		  if($("#heart").hasClass("liked")){
-  			  alert('liked 상태');
-    		 	$("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-     		 	$("#heart").removeClass("liked");
-    	}else{
-    		alert('liked 상태아님');
-      			$("#heart").html('<i class="fa fa-heart" aria-hidden="true"></i>');
-      			$("#heart").addClass("liked");
-    		}
- 		 });
+        /*
+       function heart(name){
+          $("#heart."+name).click(function(){
+            if($("#heart."+name).hasClass("liked")){
+              $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+              $("#heart."+name).removeClass("liked");
+            }else{
+              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+              $("#heart."+name).addClass("liked");
+            }
+          });
+        }
+        */
+        //하트 색상 채우기
+        function heart(name){
+          $("#heart."+name).click(function(){
+            if($("#heart."+name).hasClass("liked") && confirm('찜을 취소하시겠습니까')){
+              $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+              $("#heart."+name).removeClass("liked");
+              alert('취소완료');
+            }else{
+              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+              $("#heart."+name).addClass("liked");
+            }
+          });
+        }
       </script>
+      
 </body>
 
 </html>

@@ -58,9 +58,6 @@
 	<select id="member_Findid" resultType="project.spring.simpleproject.model.Member">
 		SELECT * FROM members where name =#{name} AND tel=#{tel} AND birthdate =#{birthdate}
 	</select>
-<!--	<select id="member_FindPw" resultType="project.spring.simpleproject.model.Member">
-  	select * FROM members where name= #{name} AND userid = #{userid} and tel = #{tel}
-	</select>-->
 	<!-- 비밀번호 변경 -->
 	<update id="member_FindPw">
 		UPDATE members SET

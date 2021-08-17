@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MylistHairMapper">
+	<!-- Beans 객체이름(id)과 클래스type을 명시 -->
+	<resultMap type="project.spring.simpleproject.model.MylistHair" id="Mylist">
+		<!-- Beans의 property 이름과 대상 테이블의 column연결 -->
+		<result property="mylistno" column="userno" />
+		<result property="members_userno" column="members_userno" />
+		<result property="hair_hairno" column="hair_hairno" />
+		<result property="memo" column="memo" />
+	</resultMap>
+	<!-- 회원 -->
+	<resultMap id="memberMap" type="project.spring.simpleproject.model.Member" >
+	<result property="userno" column="userno" />
+	<result property="name" column="name" />
+	<result property="userid" column="userid" />
+	<result property="userpw" column="userpw" />
+	<result property="tel" column="tel" />
+	<result property="birthdate" column="birthdate" />
+	<result property="addr_h" column="addr_h" />
+	<result property="addr_c" column="addr_c" />
+	<result property="is_out" column="is_out" />
+	<result property="is_login" column="is_login" />
+	</resultMap>
+	<!--미용실 -->
+	<resultMap type="project.spring.simpleproject.model.Hair" id="hairMap">
+	<!-- Beans의 property 이름과 대상 테이블의 column연결 -->
+	<result property="hairno" column="hairno" />
+	<result property="name" column="name" />
+	<result property="stars" column="stars" />
+	<result property="call" column="call" />
+	<result property="address" column= "address" />
+	<result property="times" column="times" />
+	<result property="ps" column="ps" />
+	<result property="review_count" column="review_count" />
+	<result property="photos" column="photos" />
+	<result property="menu" column="menu" />
+	</resultMap>
+	
+	
+	
+	<!-- 찜하기 -->
+	<select id="find">
+	
+	</select>
+    <insert id="addList"
+        useGeneratedKeys="true"
+        keyProperty="userno">
+        INSERT INTO `mylist_hair` (`members_userno`, `hair_hairno`, `memo`) 
+        VALUES (#{members_userno}, #{hair_hairno}, #{memo});
+    </insert>
+	
+</mapper>
