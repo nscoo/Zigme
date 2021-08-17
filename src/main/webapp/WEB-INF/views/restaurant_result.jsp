@@ -12,6 +12,7 @@ String food = request.getParameter("food");
 String input_keyword = request.getParameter("input_keyword");
 String review_count = request.getParameter("review_count");
 String stars = request.getParameter("stars");
+
 %>
 
 <!DOCTYPE html>
@@ -42,7 +43,7 @@ String stars = request.getParameter("stars");
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">
-.fa-heart-o {
+/* .fa-heart-o {
 	color: red;
 	cursor: pointer;
 	font-size: 25px;
@@ -52,7 +53,64 @@ String stars = request.getParameter("stars");
 	color: red;
 	cursor: pointer;
 	font-size: 25px;
+
+} */
+
+.jumbo_info>p>span {
+    font-size: 15px;
+    color: #323232;
+    width : 400px;
 }
+
+.jumbo_img>img {
+    width: 350px;
+    height: 220px;
+    object-fit: cover;
+    margin-top: 15px;
+    margin-right: 30px;
+}
+
+.container .jumbotron {
+    padding-left: 30px;
+    padding-right: 60px;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    background-color: #eee;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.shop_title {
+	margin-top: 10px;
+}
+
+#popupContent>#popup_content_2>div>div {
+    font-size: 18px;
+    height: 50px;
+}
+
+#popupContent>#popup_content_2 {
+    height: 300px;
+    border-bottom: 4px solid #cccccc;
+    padding-left: 50px;
+    padding-top: 30px;
+    vertical-align: top;
+}
+
+#popupContent>#popup_content_3 {
+	padding-top: 30px;
+	padding-left: 50px;
+	height: 140px;
+}
+#popupContent>#popup_content_3>.info_menu{
+	height: 50px;
+	
+}
+
+#popupContent>#popup_content_3>.info_menu>img>a{
+	font-size: 18px;
+}
+
 </style>
 </head>
 
@@ -60,123 +118,114 @@ String stars = request.getParameter("stars");
 	<!--bootstrap 반응형 사용을 위해 제일 상위 class를 container로 설정함 -->
 	<div class="container">
 		<!-- header 시작 -->
-		<div id="header">
-			<div id="header_top">
-				<div id="top_menu_photo">
-					<div id="mySidenav" class="sidenav">
-						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
-						<ul class="navi">
-							<li><a href="#">출근길</a>
-								<ul>
-									<li><a href="#">날씨/미세먼지</a></li>
-									<li><a href="#">코로나수치</a></li>
-									<li><a href="#">대중교통정보</a></li>
-									<li><a href="#">뉴스/주식정보</a></li>
-								</ul></li>
-							<li><a href="#">회사안</a>
-								<ul>
-									<li><a href="#">메뉴추천</a></li>
-									<li><a href="#">업무 주기능</a></li>
-									<li><a href="#">커뮤니티</a></li>
-									<li><a href="#">5분 스트레칭</a></li>
-								</ul></li>
-							<li><a href="main.html">퇴근길</a>
-								<ul>
-									<li><a
-										href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
-									<li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
-									<li><a href="${pageContext.request.contextPath}/mylist.do">My
-											List</a></li>
-									<br />
-								</ul></li>
-							<li><a href="#">실내</a>
-								<ul>
-									<li><a href="#">영화추천</a></li>
-									<li><a href="#">오늘의 쇼핑</a></li>
-									<li><a href="#">이직메이트</a></li>
-									<li><a href="#">커뮤니티</a></li>
-								</ul></li>
-							<li><a href="#">실외</a>
-								<ul>
-									<li><a href="#">걷기장소추천</a></li>
-									<li><a href="#">커뮤니티</a></li>
-									<li><a href="#">문화</a></li>
-									<li><a href="#">체육</a></li>
-									<li><a href="#">교통정보보기</a></li>
-								</ul></li>
-						</ul>
-					</div>
-					<span style="font-size: 30px; cursor: pointer;" onclick="openNav()">&#9776;</span>
-				</div>
-				<div id="top_logo">
-					<a href="${pageContext.request.contextPath}"> <span
-						class="top_text" style="color: black;"> ZIGME </span>
-					</a>
-				</div>
-				<div id="top_buttons">
-					<button type="button" class="btn btn-default btn-xs">퇴근까지</button>
-					<div id="button_time">
-						<div class="countdown-bar" id="countdownC">
-							<div></div>
-							<div></div>
-						</div>
-					</div>
-					<div id="button_top">
-						<button type="button" class="btn btn-success btn-xs"
-							onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
-						<button type="button" class="btn btn-warning btn-xs"
-							onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
-					</div>
-				</div>
-			</div>
-			<div id="header_nav">
-				<ul class="nav nav-tabs nav-justified">
-					<li class="dropdown"><a id="dropdownmenu_photo1" href="#"
-						role="button" class="dropdown-toggle" data-toggle="dropdown"
-						style="font-size: 20px;">Beauty<b class="caret"></b></a>
-						<ul class="dropdown-menu_photo" role="menu_photo"
-							aria-labelledby="dropdownmenu_photo1">
-							<li role="presentation"><a role="menu_photoitem"
-								href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
-							<li role="presentation"><a role="menu_photoitem"
-								href="${pageContext.request.contextPath}/nail_search.do">미용실</a></li>
-						</ul></li>
-					<li><a
-						href="${pageContext.request.contextPath}/music_select1.do"
-						style="font-size: 20px;">Music</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/restaurant_search.do"
-						style="font-size: 20px;">Restaurant</a></li>
-					<li><a href="${pageContext.request.contextPath}/nearby.do"
-						style="font-size: 20px;">Nearby</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/traffic_search.do"
-						style="font-size: 20px;">Transportation</a></li>
-					<li><a href="${pageContext.request.contextPath}/mylist.do"
-						style="font-size: 20px;">MyList</a></li>
-				</ul>
+        <div id="header">
+            <div id="header_top">
+                <div id="top_menu">
+                    <div id="mySidenav" class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
+                        <ul class="navi">
+                            <li><a href="#">출근길</a>
+                                <ul>
+                                    <li><a href="#">날씨/미세먼지</a></li>
+                                    <li><a href="#">코로나수치</a></li>
+                                    <li><a href="#">대중교통정보</a></li>
+                                    <li><a href="#">뉴스/주식정보</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">회사안</a>
+                                <ul>
+                                    <li><a href="#">메뉴추천</a></li>
+                                    <li><a href="#">업무 주기능</a></li>
+                                    <li><a href="#">커뮤니티</a></li>
+                                    <li><a href="#">5분 스트레칭</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="main.html">퇴근길</a>
+                               <ul>
+                                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
+                                	<br/>
+                                </ul>
+                            </li>
+                            <li><a href="#">실내</a>
+                                <ul>
+                                    <li><a href="#">영화추천</a></li>
+                                    <li><a href="#">오늘의 쇼핑</a></li>
+                                    <li><a href="#">이직메이트</a></li>
+                                    <li><a href="#">커뮤니티</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">실외</a>
+                                <ul>
+                                    <li><a href="#">걷기장소추천</a></li>
+                                    <li><a href="#">커뮤니티</a></li>
+                                    <li><a href="#">문화</a></li>
+                                    <li><a href="#">체육</a></li>
+                                    <li><a href="#">교통정보보기</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
+                </div>
+                <div id="top_logo">
+                    <a href="${pageContext.request.contextPath}">
+                        <span class="top_text" style="color: black;">
+                            ZIGME
+                        </span>
+                    </a>
+                </div>
+                <div id="top_buttons">
+                    <button type="button" class="btn btn-default btn-xs">퇴근까지</button>
+                    <div id="button_time">
+                        <div class="countdown-bar" id="countdownC">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div id="button_top">
+                       <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
+                       <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
+                    </div>
+                </div>
+            </div>
+            <div id="header_nav">
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="dropdown">
+                        <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">미용실</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
+                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do" style="font-size: 20px;">Restaurant</a></li>
+                    <li><a href="${pageContext.request.contextPath}/nearby.do" style="font-size: 20px;">Nearby</a></li>
+                    <li><a href="${pageContext.request.contextPath}/traffic_search.do" style="font-size: 20px;">Transportation</a></li>
+                    <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
+                </ul>
 				<div id="header_banner">
 					<div id="search_input" class="input-group">
-						<input type="text" class="form-control"
+<%-- 						<input type="text" class="form-control"
 							placeholder=<%=input_keyword%>> <span
 							class="input-group-btn">
 							<button class="btn btn-default" type="button">
 								<i class="fas fa-search"></i>
 							</button>
-						</span>
+						</span> --%>
 					</div>
 				</div>
 			</div>
 			<!-- header 끝-->
 			<!-- 식당 검색결과 부분 시작-->
 			<div class="container">
-				<h1>Best5</h1>
+				<br>
+				<br>
+				<h1 style="text-align: center;">Best5</h1>
 				<br />
 
 				<c:choose>
@@ -187,7 +236,8 @@ String stars = request.getParameter("stars");
 					<%-- 조회 결과가 있는 경우 --%>
 					<c:otherwise>
 						<%-- 조회 결과에 대한 반복 처리 --%>
-						<c:forEach var="item" items="${output}" varStatus="status" begin="1" end="5" step="1">
+						<c:forEach var="item" items="${output}" varStatus="status"
+							begin="1" end="5">
 							<c:set var="loc" value="${item.loc}" />
 							<c:set var="subject" value="${item.subject}" />
 							<c:set var="resno" value="${item.resno}" />
@@ -197,105 +247,112 @@ String stars = request.getParameter("stars");
 							<c:set var="name" value="${item.name}" />
 							<c:set var="stars" value="${item.stars}" />
 							<c:set var="ps" value="${item.ps}" />
+							<c:set var="tags" value="${item.tags}" />
 							<c:set var="review_count" value="${item.review_count}" />
-							<c:set var="photos" value="${item.photos}" />
-							<c:set var="menu_photo_photo" value="${item.menu_photo}" />
-							<c:set var="theme_1" value="${item.theme_1}" />
-							<c:set var="theme_2" value="${item.theme_2}" />
-							<c:set var="theme_3" value="${item.theme_3}" />
-							<%-- 설정 안한 칼럼 많음. 테이블 수정하고 다시 설정하기 --%>
+							<c:set var="photo_1" value="${item.photo_1}" />
+							<c:set var="photo_2" value="${item.photo_2}" />
+							<c:set var="photo_3" value="${item.photo_3}" />
+							<c:set var="menu_1" value="${item.menu_1}" />
+							<c:set var="menu_2" value="${item.menu_2}" />
 
-
+							<c:set var="name_2" value="${fn:replace(item.name,'&','')}" />
+							<c:set var="name_2" value="${fn:replace(name_2,' ','')}" />
+							
+							<br>
+							<br>
+							<br>
 							<div class="jumbotron">
 								<div class="jumbo_img">
-									<img src="${photos}" alt="best5 사진">
+									<img src="${photo_1}" alt="best5 사진"
+										referrerpolicy="no-referrer">
 								</div>
 								<div class="shop_title">
 									<a href="javascript:void(0);" style="text-decoration: none;"
-										onClick="openPopup()"> ${name}&nbsp; <a
-										href="www.instagram.com"> <img
-											src="assets/img/instagram.png" width="30px" height="30px">
+										onClick="openPopup('${name_2}')">
+										<font style="color: #0077a3; font-size: 23px;">&nbsp;&nbsp;${name}&nbsp;&nbsp;</font>
+										<span style="font-size: 30px">
+										<i class="fas fa-star fa-1x" style="color:#ffd400"></i>
+										</span>
+										<span style="font-size: 18px">${stars}</span>
+										<span style="font-size: 15px">(${review_count})</span>
 									</a>
-									</a>
+									
 								</div>
 								<div class="jumbo_info">
 									<p>
 										<br /> <img src="assets/img/call.png" width="20px"
-											height="20px"> 전화번호 : ${call}
+											height="20px">&nbsp;&nbsp;&nbsp;&nbsp;<span>전화번호 : ${call}</span>
 									</p>
 									<p>
 										<img src="assets/img/placeholder-filled-point.png"
-											width="20px" height="20px"> 주소 : ${address}
-									</p>
-									<p>
-										<img src="assets/img/parked-car.png" alt="주차가능?" width="30px"
-											height="30px"> ${ps}
+											width="25px" height="25px">&nbsp;&nbsp;&nbsp;<span>주소 : </span><span  style="font-size:12px;">${address}</span>
 									</p>
 									<p>
 										<img src="assets/img/clock.png" alt="시간" width="25px"
-											height="25px"> ${times}
+											height="25px"> &nbsp;&nbsp;<span>${times}</span>
 									</p>
+									<p>
+										 <img src="assets/img/clipboard.png" width="25px"
+											height="25px"> <a href="${menu_1}"
+											referrerpolicy="no-referrer" target="_blank"><span style="font-size:15px; color:skyblue;">&nbsp;&nbsp;-> 메뉴판 이미지 링크</span></a>
 								</div>
 								<div class="jumbo_info">
-									<p>
-										<br /> <img src="assets/img/clipboard.png" width="20px"
-											height="20px"> ${menu_photo_photo}
-									<p>
-										<img src="assets/img/clipboard.png" width="20px" height="20px">
 
-									</p>
 								</div>
 							</div>
 
-							<div id="popupLayer">
+							<div id="popupLayer" class="${name_2}">
 								<div id="popupContent">
 									<div id="popup_image_box">
-										<img src="${photos}" width="240px" height="240px" /> <img
-											src="${photos}" width="240px" height="240px" /> <img
-											src="${photos}" width="240px" height="240px" />
+										<img src="${photo_1}" width="240px" height="220px"
+											referrerpolicy="no-referrer" /> <img src="${photo_2}"
+											width="240px" height="220px" referrerpolicy="no-referrer" />
+										<img src="${photo_3}" width="240px" height="220px"
+											referrerpolicy="no-referrer" />
 									</div>
 									<div id="popup_content_1">
-										<h3>${name}&nbsp;<span id=heart><i
-												class="fa fa-heart-o" aria-hidden="true"></i> </span>
+										<h3><font style="color: #0077a3; font-size: 30px;">&nbsp;&nbsp;${name}&nbsp;&nbsp;</font>
+											<span style="font-size: 30px">
+												<i class="fas fa-star fa-1x" style="color:#ffd400"></i>
+											</span>
+											<span style="font-size: 18px">${stars}</span>
+											<span style="font-size: 15px">(${review_count})</span>
 										</h3>
 									</div>
 									<div id="popup_content_2">
-										<div id="info_left">
+										<div>
 											<div id="info_num">
-												<img src="assets/img/call.png" width="20px" height="20px">&nbsp;전화번호
+												<img src="assets/img/call.png" width="25px" height="25px">&nbsp;&nbsp;전화번호
 												: ${call}
 											</div>
 											<div id="info_add">
-												<img src="assets/img/add.png" width="20px" height="20px">&nbsp;주소
+												<img src="assets/img/add.png" width="25px" height="25px">&nbsp;&nbsp;주소
 												: ${address}
 											</div>
-											<div id="info_ps">
-												<img src="assets/img/ps.png" width="25px" height="25px">&nbsp;PS
-												: ${ps}
-											</div>
-										</div>
-										<div id="info_right">
 											<div id="info_time">
-												<img src="assets/img/time.png" width="20px" height="20px">&nbsp;영업시간
+												<img src="assets/img/time.png" width="25px" height="25px">&nbsp;&nbsp;영업시간
 												: ${times}
 											</div>
-											<div id="info_etc">
-												<img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${menu_photo}
+											<div id="info_ps" style="padding-top: 3px;">
+												<img src="assets/img/ps.png" width="25px" height="25px">&nbsp;&nbsp;편의시설
+												: ${ps}
 											</div>
-											<div id="info_etc">
-												<img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${menu_photo}
+											<div id="info_tags" style="padding-top: 3px;">
+												<img src="assets/img/tag.png" width="25px" height="25px">&nbsp;&nbsp;검색 키워드
+												: ${tags}
 											</div>
 										</div>
 									</div>
 									<div id="popup_content_3">
-										<div id="menu_photo" style="padding-top: 3px;">
-											<h4>메뉴</h4>
-											<p style="font-size: 15px">${menu_photo}</p>
+										<div class="info_menu">
+											<img src="assets/img/etc.png" width="25px" height="25px">&nbsp;
+											<a href="${menu_1}" referrerpolicy="no-referrer"
+												target="_blank" style="font-size:18px; color:skyblue;">-> 메뉴판 이미지 링크 1</a>
 										</div>
-										<div id="price" style="padding-top: 3px;">
-											<h4>검색 키워드</h4>
-											<p style="font-size: 15px">커플, 신나는, 친구와의 모임, 수제맥주, 회식 장소,
-												숨겨진 맛집</p>
+										<div class="info_menu">
+											<img src="assets/img/etc.png" width="25px" height="25px">&nbsp;
+											<a href="${menu_2}" referrerpolicy="no-referrer"
+												target="_blank" style="font-size:18px; color:skyblue;">-> 메뉴판 이미지 링크 2</a>
 										</div>
 									</div>
 									<div id="popup_content_4">
@@ -315,9 +372,8 @@ String stars = request.getParameter("stars");
 
 						</c:forEach>
 					</c:otherwise>
-				</c:choose>
 
-				
+				</c:choose>
 				<br />
 				<hr />
 				<div id="normal_list">
@@ -330,63 +386,88 @@ String stars = request.getParameter("stars");
 							<%-- 조회 결과가 있는 경우 --%>
 							<c:otherwise>
 								<%-- 조회 결과에 대한 반복 처리 --%>
-								<c:forEach var="item" items="${output}" varStatus="status">
-								
+								<c:forEach var="item" items="${output}" varStatus="status" begin="6" end="100">
+									<c:set var="loc" value="${item.loc}" />
+									<c:set var="subject" value="${item.subject}" />
+									<c:set var="resno" value="${item.resno}" />
+									<c:set var="call" value="${item.call}" />
+									<c:set var="address" value="${item.address}" />
+									<c:set var="times" value="${item.times}" />
+									<c:set var="name" value="${item.name}" />
+									<c:set var="stars" value="${item.stars}" />
+									<c:set var="ps" value="${item.ps}" />
+									<c:set var="tags" value="${item.tags}" />
+									<c:set var="review_count" value="${item.review_count}" />
+									<c:set var="photo_1" value="${item.photo_1}" />
+									<c:set var="photo_2" value="${item.photo_2}" />
+									<c:set var="photo_3" value="${item.photo_3}" />
+									<c:set var="menu_1" value="${item.menu_1}" />
+									<c:set var="menu_2" value="${item.menu_2}" />
+
+									<c:set var="name_2" value="${fn:replace(item.name,'&','')}" />
+									<c:set var="name_2" value="${fn:replace(name_2,' ','')}" />
+
+									<%-- 일반 가게 리스트 --%>
 									<li><a href="javascript:void(0);"
-										style="text-decoration: none;" onClick="openPopup()"> <span
-											class="thumb"> <img src="${photos}" alt="이미지1"
-												width="270px" height="150px" />
-										</span> <span class="text">${name}</span>
+										style="text-decoration: none;"
+										onClick="openPopup('${name_2}')"> <span class="thumb">
+												<img src="${photo_1}" alt="이미지1" width="270px" 
+												height="150px" referrerpolicy="no-referrer"/>
+										</span> <span class="text" style="font-size:15px;">${name}</span>
 									</a></li>
 
-									<div id="popupLayer">
+									<%-- 일반 가게 리스트 팝업 --%>
+									<div id="popupLayer" class="${name_2}">
 										<div id="popupContent">
 											<div id="popup_image_box">
-												<image src="${photos}" width="240px" height="240px" />
-												<image src="${photos}" width="240px" height="240px" />
-												<image src="${photos}" width="240px" height="240px" />
+												<img src="${photo_1}" width="240px" height="220px"
+													referrerpolicy="no-referrer" /> <img src="${photo_2}"
+													width="240px" height="220px" referrerpolicy="no-referrer" />
+												<img src="${photo_3}" width="240px" height="220px"
+													referrerpolicy="no-referrer" />
 											</div>
 											<div id="popup_content_1">
-												<h3>${name}&nbsp;<span id=heart><i
-														class="fa fa-heart-o" aria-hidden="true"></i> </span>
+												<h3><font style="color: #0077a3; font-size: 30px;">&nbsp;&nbsp;${name}&nbsp;&nbsp;</font>
+													<span style="font-size: 30px">
+														<i class="fas fa-star fa-1x" style="color:#ffd400"></i>
+													</span>
+													<span style="font-size: 18px">${stars}</span>
 												</h3>
 											</div>
 											<div id="popup_content_2">
-												<div id="info_left">
+												<div>
 													<div id="info_num">
-														<img src="assets/img/call.png" width="20px" height="20px">&nbsp;전화번호
+														<img src="assets/img/call.png" width="25px" height="25px">&nbsp;&nbsp;전화번호
 														: ${call}
 													</div>
 													<div id="info_add">
-														<img src="assets/img/add.png" width="20px" height="20px">&nbsp;주소
+														<img src="assets/img/add.png" width="25px" height="25px">&nbsp;&nbsp;주소
 														: ${address}
 													</div>
-													<div id="info_ps">
-														<img src="assets/img/ps.png" width="25px" height="25px">&nbsp;PS
-														: ${ps}
-													</div>
-												</div>
-												<div id="info_right">
 													<div id="info_time">
-														<img src="assets/img/time.png" width="20px" height="20px">&nbsp;영업시간
+														<img src="assets/img/time.png" width="25px" height="25px">&nbsp;&nbsp;영업시간
 														: ${times}
 													</div>
-													<div id="info_etc">
-														<img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${menu_photo}
+													<div id="info_ps" style="padding-top: 3px;">
+														<img src="assets/img/ps.png" width="25px" height="25px">&nbsp;&nbsp;편의시설
+														: ${ps}
 													</div>
-													<div id="info_etc">
-														<img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${menu_photo}
+													<div id="info_tags" style="padding-top: 3px;">
+														<img src="assets/img/tag.png" width="25px" height="25px">&nbsp;&nbsp;검색 키워드
+														: ${tags}
 													</div>
 												</div>
 											</div>
 											<div id="popup_content_3">
-												<div id="menu_photo" style="padding-top: 3px;">
-													<h4>메뉴</h4>
-													<p style="font-size: 15px">${menu_photo}</p>
+												<div class="info_menu">
+													<img src="assets/img/etc.png" width="25px" height="25px">&nbsp;
+													<a href="${menu_1}" referrerpolicy="no-referrer"
+														target="_blank" style="font-size:18px; color:skyblue;">-> 메뉴판 이미지 링크 1</a>
 												</div>
-												<div id="price" style="padding-top: 3px;">
-													<h4>검색 키워드</h4>
-													<p style="font-size: 15px">${theme_1}</p>
+												<div class="info_menu">
+													<img src="assets/img/etc.png" width="25px" height="25px">&nbsp;
+													<a href="${menu_2}" referrerpolicy="no-referrer"
+														target="_blank" style="font-size:18px; color:skyblue;">-> 메뉴판 이미지 링크 2</a>
 												</div>
 											</div>
 											<div id="popup_content_4">
@@ -402,17 +483,11 @@ String stars = request.getParameter("stars");
 										</div>
 										<div class="b-close"></div>
 									</div>
-
-
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
 					</ul>
 				</div>
-
-
-
-
 				<!-- footer 시작 -->
 				<div id="footer">
 					<div id="footer_content">
@@ -428,7 +503,7 @@ String stars = request.getParameter("stars");
 							</div>
 							<div class="footer_row">
 								<span class="glyphicon glyphicon-user"> Manager </span> &nbsp;
-								Younga Joo
+								나야 ...
 							</div>
 							<div class="footer_row">
 								<span class="glyphicon glyphicon-map-marker"> Address </span>
@@ -470,11 +545,12 @@ String stars = request.getParameter("stars");
 			function closeNav() {
 				document.getElementById("mySidenav").style.width = "0";
 			}
+
 			//상세팝업
-			function openPopup() {
-				$("#popupLayer").bPopup({
+			function openPopup(name) {
+				$('#popupLayer.' + name).bPopup({
 					iframeAttr : 'frameborder=”auto”',
-					iframeAttr : 'frameborder=”0',
+					iframeAttr : 'frameborder=”0"',
 					contentContainer : '.popupContent',
 
 					onOpen : function() {
@@ -485,7 +561,7 @@ String stars = request.getParameter("stars");
 				}, function() {
 				});
 			}
-			//찜하트 구현 js
+/* 			//찜하트 구현 js
 			$(document)
 					.ready(
 							function() {
@@ -508,7 +584,7 @@ String stars = request.getParameter("stars");
 																"liked");
 													}
 												});
-							});
+							}); */
 		</script>
 </body>
 
