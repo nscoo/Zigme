@@ -1,4 +1,4 @@
-package project.spring.simpleproject.controllers;
+/*package project.spring.simpleproject.controllers;
 
 import java.util.List;
 
@@ -42,3 +42,4 @@ public class MylistController {
 		return result;
 	}
 }
+*/
