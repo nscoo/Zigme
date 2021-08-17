@@ -517,6 +517,7 @@ String stars = request.getParameter("stars");
 			</div>
 			<!-- footer 끝-->
 		</div>
+		
 		<!-- Javascript -->
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
