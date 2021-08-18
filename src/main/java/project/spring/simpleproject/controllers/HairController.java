@@ -38,6 +38,8 @@ public class HairController {
 			output = hairService.getHairList(input);
 		} catch(Exception e) { e.printStackTrace(); }
 		
+		
+		
 		//view 처리
 		model.addAttribute("output",output);
 		model.addAttribute("keyword",keyword);
