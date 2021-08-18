@@ -31,8 +31,7 @@ public class RestaurantController {
 			@RequestParam(value="loc", required=false) String loc,
 			@RequestParam(value="subject", required=false) String subject,
 			@RequestParam(value="stars", required=false) double stars,
-			@RequestParam(value="review_count", required=false) int review_count,
-			@RequestParam(value="input_keyword", required=false) String input_keyword
+			@RequestParam(value="review_count", required=false) int review_count
 	) {
 		
 		Restaurant input = new Restaurant();
@@ -53,7 +52,6 @@ public class RestaurantController {
 		model.addAttribute("subject",subject);
 		model.addAttribute("stars", stars);
 		model.addAttribute("review_count", review_count);
-		// 키워드는 DB theme_N 부분 통합하고 다시 추가해야 함
 		
 		return "restaurant_result";
 	}
