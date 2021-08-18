@@ -29,6 +29,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style type="text/css">
 
+    #head_banner {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+    background-image: url(assets/img/flowers2.jpg);
+    background-size: cover;
+
+
+}
 
 	.fa-heart-o {
         color: red;
@@ -41,6 +50,93 @@
         cursor: pointer;
         font-size: 25px;
     }
+    
+
+.info_stars {
+    text-align: left;
+    position: relative;
+    display: inline-block;
+    left: 20px;
+}
+    
+    #search_input {
+
+    width: 750px;
+    padding-top: 100px;
+    padding-left: 420px;
+}
+
+/* 검색 버튼    */
+#search_input>span>button {
+    background-color: #f89b00;
+    border: 1px solid #f89b00;
+    border-radius: 5px;
+    height: 50px;
+    margin-top: 8px;
+}
+
+
+/* 검색 박스 */
+#search_input>input {
+    position: relative;
+    top: 8px;
+    border-radius: 5px;
+    height: 50px;
+}
+
+
+#popupContent>#popup_content_1 {
+    text-align: center;
+
+    height: 50px;
+    border-bottom: 4px solid #cccccc;
+}
+
+#popupContent>#popup_content_2 {
+    height: 220px;
+    border-bottom: 4px solid #cccccc;
+    padding-left: 10px;
+    padding-top: 15px;
+    vertical-align: top;
+    text-align: center;
+    font-size: 25px;
+
+}
+
+#popupContent>#popup_content_3 {
+    height: 220px;
+    font-size: 13px;
+    border-bottom: 4px solid #cccccc;
+    padding-left: 30px;
+    text-align: center;
+
+
+}
+
+#popupContent>#popup_content_4 {
+vertical-align: top;
+    height: 300px;
+    padding-left: 62px;
+    padding-top: 30px;
+    font-size: 20px;
+
+}
+
+#popupContent>#popup_content_4>#graph_left {
+	vertical-align: top;
+    width: 300px;
+    
+    display: inline-block;
+}
+
+#popupContent>#popup_content_4>#graph_right {
+vertical-align: top;
+    width: 300px;
+    
+    display: inline-block;
+}
+
+    
     </style>
 </head>
 
@@ -151,7 +247,7 @@
                     <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
                 </ul>
             </div>
-            <div id="head_banner" style="position: relative; height: 420px; overflow: hidden; background-image: url(assets/img/flowers2.jpg); background-size: cover;" >
+            <div id="head_banner">
             <!-- 검색 input을 form 태그로 바꾸어서 파라미터 전달을 가능하게 만듬 -->
                 <form method="get" action="${pageContext.request.contextPath}/hair_result.do" } id="search_input" class="input-group">
                 	<input type="search" name="keyword" class="form-control" placeholder="검색어를 입력하세요" value="${keyword}" /> <!-- 검색어에 대한 상태유지 처리 -->
@@ -190,38 +286,35 @@
            			<div class="jumbotron">
                 		<div class="jumbo_img">
                     		<img src= "${photos}" alt="best5 사진">
+                    		
                 		</div>
                 		<div class="shop_title">
                     		<a href="javascript:void(0);" style="text-decoration: none;" onClick="openPopup('${name2}')">
-                        		${name}&nbsp;<a href="www.instagram.com"><img src="assets/img/instagram.png" width="30px" height="30px"></a>
+                        		${name}&nbsp;<div class="info_stars"><i class="fas fa-star" style="color:#ffd400; font-size:28px;"></i>
+                                        <font style="font-size:20px;">&nbsp;${item.stars}</font></div></a><div style="font-size: 20px; color: gray;">&nbsp;리뷰수:&nbsp;${item.review_count}개</div>
                     		</a>
                 		</div>
                 		<div class="jumbo_info">
-                    		<p>
-                        		<br />
-                        		<img src="assets/img/call.png" width="20px" height="20px">
-                        		전화번호 : ${call}
-                    		</p>
-                    		<p>
-                        		<img src="assets/img/placeholder-filled-point.png" width="20px" height="20px">
-                        		주소 : ${address}
-                    		</p>
-                    		<p>
-                        		<img src="assets/img/parked-car.png" alt="주차가능?" width="30px" height="30px">
-                        		${ps}
-                    		</p>
-                    		<p>
+                			<p>
+                				<br />
                         		<img src="assets/img/clock.png" alt="시간" width="25px" height="25px">
                         		${times}
                     		</p>
-                		</div>
-                		<div class="jumbo_info">
                     		<p>
-                        		<br />
-                        		<img src="assets/img/clipboard.png" width="20px" height="20px">
-                        		${menu}
+                        		
+                        		<img src="assets/img/call.png" width="20px" height="20px">
+                        		${call}
+                    		</p>
                     		<p>
+                        		<img src="assets/img/placeholder-filled-point.png" width="20px" height="20px">
+                        		${address}
+                    		</p>
+                    		
+                    		<p>
+                        		
                         		<img src="assets/img/clipboard.png" width="20px" height="20px">
+                        		${fn:substring(menu,0,fn:indexOf(menu, "~")+1)}
+         
                         		
                     		</p>
                 		</div>
@@ -232,43 +325,44 @@
                             <image src="${photos}" width="240px" height="240px" />
                             <image src="${photos}" width="240px" height="240px" />
                             <image src="${photos}" width="240px" height="240px" />
+                           
                         </div>
                         <div id="popup_content_1">
                             <h3>${name}&nbsp;<span id ="heart" class="${name2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name2}')" ></i> </span>                            </h3>
                         </div>
                         <div id="popup_content_2">
-                            <div id="info_left">
-                                <div id="info_num"><img src="assets/img/call.png" width="20px" height="20px">&nbsp;전화번호 : ${call}</div>
-                                <div id="info_add"><img src="assets/img/add.png" width="20px" height="20px">&nbsp;주소 : ${address}</div>
-                                <div id="info_ps">
-                                    <img src="assets/img/ps.png" width="25px" height="25px">&nbsp;PS : ${ps}
-                                </div>
-                            </div>
-                            <div id="info_right">
-                                <div id="info_time"><img src="assets/img/time.png" width="20px" height="20px">&nbsp;영업시간 : ${times}</div>
-                                <div id="info_etc"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${menu}</div>
-                                <div id="info_etc"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${menu}</div>
-                            </div>
+                           		
+                           		<div class="info_stars" style="font-size: 20px; margin-left: -30px;"><i class="fas fa-star" style="color:#ffd400; font-size:28px;"></i><font style="font-size: 20px;" id="star" class="${name2}">${item.stars}</font></div>
+                                <div id="info_num" style="font-size: 20px;">카카오 헤어샵 리뷰수:&nbsp;<font id="review" class="${name2}" style="font-size: 25px; color: #ff7f00;">${item.review_count}</font>개</div>
+                                <br/>   
+                                
+                                <div id="info_time" style="font-size: 20px;"><img src="assets/img/time.png" width="20px" height="20px">&nbsp;${times}</div>     
+                                <div id="info_num" style="font-size: 20px;">&nbsp;${call}</div>
+                                <div id="info_add" style="font-size: 20px;"><img src="assets/img/add.png" width="20px" height="20px">&nbsp;${address}</div>
+                                
+
                         </div>
+                        
                         <div id="popup_content_3">
-                            <div id="menu" style="padding-top: 3px;">
-                                <h4>메뉴</h4>
-                                <p style="font-size: 15px">${menu}</p>
-                            </div>
-                            <div id="price" style="padding-top: 3px;">
-                                <h4>검색 키워드</h4>
-                                <p style="font-size: 15px">커플, 신나는, 친구와의 모임, 수제맥주, 회식 장소, 숨겨진 맛집</p>
-                            </div>
+                        	<br/>
+                       
+                        	<div id="info_ps" style="font-size: 20px;"><img src="assets/img/ps.png" width="25px" height="25px">&nbsp;${fn:substring(ps,0,35)}<br/>${fn:substring(ps,35,70)}<br/>${fn:substring(ps,70,105)}<br/>${fn:substring(ps,105,150)}</div><br/>
+                         	<div id="info_etc" style="font-size: 20px;"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${fn:substring(menu,0,45)}<br/>${fn:substring(menu,45,90)}<br/>${fn:substring(menu,90,135)}<br/>${fn:substring(menu,135,180)}</div>
                         </div>
+                        
                         <div id="popup_content_4">
-                            <div id="graph_left" style="font-size: 18px">
-                                통계 결과
-                                <img src="assets/img/graph1.png" width="280" height="220px">
+                        <div id="graph_left">
+                        <button onclick="statistics('${name2}')" class="btn btn-warning">직메의 점수 보기</button>
+                        	<br/><br/>
+                            <div style="width: 300px;">
+                            	<canvas id="myChart" class="${name2}"></canvas>
                             </div>
-                            <div id="graph_right" style="font-size: 18px">
-                                나이대별 선호도
-                                <img src="assets/img/graph2.png" width="280" height="220px">
-                            </div>
+                         </div>
+                        
+                        <div id="graph_right">
+                        	<font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;"></font>
+                        </div>
+                        
                         </div>
                     </div>
                     <div class="b-close"></div>
@@ -291,6 +385,7 @@
            		<%-- 조회 결과가 있는 경우 --%>
            		<c:otherwise>
            			<%-- 조회 결과에 대한 반복 처리 --%>
+           			
            			<c:forEach var="item" items="${output}" varStatus="status" >
            			<c:if test="${status.count>5}">
 					<c:set var="name" value="${item.name}"/>           			
@@ -300,6 +395,7 @@
            			<c:set var="times" value="${item.times}"/>
            			<c:set var="menu" value="${item.menu}"/>
            			<c:set var="photos" value="${item.photos}"/>
+           			
            			<c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
            			<c:set var="name2" value="${fn:replace(name2,' ','')}" />
            		
@@ -310,54 +406,57 @@
                             		<span class="thumb">
                                 		<img src="${photos}" alt="이미지1" width="270px" height="150px"/>
                             		</span>
-                            		<span class="text">${name}</span>
+                            		<span class="text" style="font-size: 15px;">${name}<div class="info_stars"><i class="fas fa-star" style="color:#ffd400; font-size:15px;"></i>
+                                        <font style="font-size:15px;">&nbsp;${item.stars}</font></div></span>
                         		</a>
                     		</li>
                     		
-                    		<div id="popupLayer" class="${name2}">
+                    <div id="popupLayer" class="${name2}">
                     <div id="popupContent">
                         <div id="popup_image_box">
                             <image src="${photos}" width="240px" height="240px" />
                             <image src="${photos}" width="240px" height="240px" />
                             <image src="${photos}" width="240px" height="240px" />
+                           
                         </div>
                         <div id="popup_content_1">
                             <h3>${name}&nbsp;<span id=heart ><i class="fa fa-heart-o" aria-hidden="true" onClick="heart('${name2}')"></i> </span>
                             </h3>
+
                         </div>
                         <div id="popup_content_2">
-                            <div id="info_left">
-                                <div id="info_num"><img src="assets/img/call.png" width="20px" height="20px">&nbsp;전화번호 : ${call}</div>
-                                <div id="info_add"><img src="assets/img/add.png" width="20px" height="20px">&nbsp;주소 : ${address}</div>
-                                <div id="info_ps">
-                                    <img src="assets/img/ps.png" width="25px" height="25px">&nbsp;PS : ${ps}
-                                </div>
-                            </div>
-                            <div id="info_right">
-                                <div id="info_time"><img src="assets/img/time.png" width="20px" height="20px">&nbsp;영업시간 : ${times}</div>
-                                <div id="info_etc"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${menu}</div>
-                                <div id="info_etc"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${menu}</div>
-                            </div>
+                           		
+                           		<div class="info_stars" style="font-size: 20px; margin-left: -30px;"><i class="fas fa-star" style="color:#ffd400; font-size:28px;"></i><font style="font-size: 20px;" id="star" class="${name2}">${item.stars}</font></div>
+                                <div id="info_num" style="font-size: 20px;">카카오 헤어샵 리뷰수:&nbsp;<font id="review" class="${name2}" style="font-size: 25px; color: #ff7f00;">${item.review_count}</font>개</div>
+                                <br/>   
+                                
+                                <div id="info_time" style="font-size: 20px;"><img src="assets/img/time.png" width="20px" height="20px">&nbsp;${times}</div>     
+                                <div id="info_num" style="font-size: 20px;">&nbsp;${call}</div>
+                                <div id="info_add" style="font-size: 20px;"><img src="assets/img/add.png" width="20px" height="20px">&nbsp;${address}</div>
+                                
+
                         </div>
+                        
                         <div id="popup_content_3">
-                            <div id="menu" style="padding-top: 3px;">
-                                <h4>메뉴</h4>
-                                <p style="font-size: 15px">${menu}</p>
-                            </div>
-                            <div id="price" style="padding-top: 3px;">
-                                <h4>검색 키워드</h4>
-                                <p style="font-size: 15px">커플, 신나는, 친구와의 모임, 수제맥주, 회식 장소, 숨겨진 맛집</p>
-                            </div>
+                        	<br/>
+                       
+                        	<div id="info_ps" style="font-size: 20px;"><img src="assets/img/ps.png" width="25px" height="25px">&nbsp;${fn:substring(ps,0,35)}<br/>${fn:substring(ps,35,70)}<br/>${fn:substring(ps,70,150)}</div><br/>
+                         	<div id="info_etc" style="font-size: 20px;"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${fn:substring(menu,0,45)}<br/>${fn:substring(menu,45,90)}<br/>${fn:substring(menu,90,150)}</div>
                         </div>
+                        
                         <div id="popup_content_4">
-                            <div id="graph_left" style="font-size: 18px">
-                                통계 결과
-                                <img src="assets/img/graph1.png" width="280" height="220px">
+                        <div id="graph_left">
+                        <button onclick="statistics('${name2}')" class="btn btn-warning">직메의 점수 보기</button>
+                        	<br/><br/>
+                            <div style="width: 300px;">
+                            	<canvas id="myChart" class="${name2}"></canvas>
                             </div>
-                            <div id="graph_right" style="font-size: 18px">
-                                나이대별 선호도
-                                <img src="assets/img/graph2.png" width="280" height="220px">
-                            </div>
+                         </div>
+                        
+                        <div id="graph_right">
+                        	<font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;"></font>
+                        </div>
+                        
                         </div>
                     </div>
                     <div class="b-close"></div>
@@ -405,6 +504,120 @@
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/script.js"></script>
         <script type="text/javascript" src="assets/js/bpopup.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                              
+                              <script type="text/javascript">
+                              function statistics(name){
+                              var ctx = $("#myChart."+name)[0].getContext('2d');
+                              var star = $("#star."+name)[0].innerHTML;
+                              var review = ($("#review."+name)[0].innerHTML)/100;
+                              var score = (((star*0.3)+(review*0.7))/8.46)*100;
+                              var myChart = new Chart(ctx, {
+                                  
+                                  data: {
+                                      labels: ['별점', '리뷰수(백)'],
+                                      datasets: [{
+                                    	  type: 'bar',
+                                          label: name+'데이터',
+                                          data: [star,review],
+                                          backgroundColor:['rgba(255, 159, 64, 0.2)',
+                                              'rgba(255, 205, 86, 0.2)'],
+                                          borderColor: ['rgb(255, 159, 64)',
+                                              'rgb(255, 205, 86)'],
+                                      borderWidth: 1}, {
+                                    	  type:'line',
+                                    	  label: '전체 데이터 평균치',
+                                    	  data: [4.2,1.4],
+
+                                      }]
+                                  },
+                                  options: {
+                                      scales: {
+                                          y: {
+                                              beginAtZero: true
+                                          }
+                                      }
+                                  }
+                              });
+                              
+                              if(star>=4.2 && review>=1.4){
+                            	 
+                            	  
+                            	  if(score>=70){
+                            		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                            		  +Math.abs((star-4.2).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+Math.abs((review-1.4).toFixed(1))+"</font>백개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                            		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;유명한 헤어샵이네요!<br/>&nbsp;&nbsp;강력 추천합니다!";
+                            		  
+                            	  } else if(score<70 && score>=30){
+                            		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                            		  +Math.abs((star-4.2).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+Math.abs((review-1.4).toFixed(1))+"</font>백개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                            		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;괜찮은 헤어샵인 것 같아요!<br/>&nbsp;&nbsp;추천합니다!";
+                            	  } else if(score<30){
+                            		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                            		  +Math.abs((star-4.2).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+Math.abs((review-1.4).toFixed(1))+"</font>백개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                            		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;데이터가 많이 없네요!<br/>&nbsp;&nbsp;도전해보실래요? 숨은 진주일수도요!";
+                            	  }
+                            	  
+                              } else if (star>=4.2 && review<1.4) {
+                            	  
+                            	  if(score>=70){
+                            		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                            		  +Math.abs((star-4.2).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+Math.abs((review-1.4).toFixed(1))+"</font>백개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                            		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;유명한 헤어샵이네요!<br/>&nbsp;&nbsp;강력 추천합니다!";
+                            		  
+                            	  } else if(score<70 && score>=30){
+                            		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                            		  +Math.abs((star-4.2).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+Math.abs((review-1.4).toFixed(1))+"</font>백개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                            		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;괜찮은 헤어샵인 것 같아요!<br/>&nbsp;&nbsp;추천합니다!";
+                            	  } else if(score<30){
+                            		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                            		  +Math.abs((star-4.2).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+Math.abs((review-1.4).toFixed(1))+"</font>백개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                            		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;데이터가 많이 없네요!<br/>&nbsp;&nbsp;도전해보실래요? 숨은 진주일수도요!";
+                            	  }
+								
+							} else if (star<4.2 && review>=1.4) {
+                          	  
+                          	  if(score>=70){
+                          		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                          		  +Math.abs((star-4.2).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+Math.abs((review-1.4).toFixed(1))+"</font>백개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                          		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;유명한 헤어샵이네요!<br/>&nbsp;&nbsp;강력 추천합니다!";
+                          		  
+                          	  } else if(score<70 && score>=30){
+                          		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                          		  +Math.abs((star-4.2).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+Math.abs((review-1.4).toFixed(1))+"</font>백개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                          		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;괜찮은 헤어샵인 것 같아요!<br/>&nbsp;&nbsp;추천합니다!";
+                          	  } else if(score<30){
+                          		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                          		  +Math.abs((star-4.2).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+Math.abs((review-1.4).toFixed(1))+"</font>백개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                          		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;데이터가 많이 없네요!<br/>&nbsp;&nbsp;도전해보실래요? 숨은 진주일수도요!";
+                          	  	} 
+                              
+                              
+                            
+                              } else if (star<4.2 && review<1.4) {
+                              	  
+                              	  if(score>=70){
+                              		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                              		  +Math.abs((star-4.2).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+Math.abs((review-1.4).toFixed(1))+"</font>백개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                              		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;유명한 헤어샵이네요!<br/>&nbsp;&nbsp;강력 추천합니다!";
+                              		  
+                              	  } else if(score<70 && score>=50){
+                              		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                              		  +Math.abs((star-4.2).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+Math.abs((review-1.4).toFixed(1))+"</font>백개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                              		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;괜찮은 헤어샵인 것 같아요!<br/>&nbsp;&nbsp;추천합니다!";
+                              	  } else if(score<30){
+                              		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                              		  +Math.abs((star-4.2).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+Math.abs((review-1.4).toFixed(1))+"</font>백개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                              		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;데이터가 많이 없네요!<br/>&nbsp;&nbsp;도전해보실래요? 숨은 진주일수도요!";
+                              	  }
+                              } 
+                              
+                              }
+                              
+                              
+                             
+
+                              </script>
         <script type="text/javascript">
         countdown('countdownC', 0, 0, 10, 10);
         // Countdown Loading Bar
