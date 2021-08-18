@@ -21,27 +21,32 @@
 		<result property="loc" column="loc"/>
 		<result property="subject" column="subject"/>
 	</resultMap>
-
+	
  	<!-- 다중행 조회를 위한 기능 정의 -->
     <select id="selectList" parameterType="project.spring.simpleproject.model.Restaurant" resultMap="restaurantMap">
         SELECT * FROM restaurant
-        
-        <where>
-			loc  = #{loc}
-			AND 
-				subject = #{subject}
-			AND 
-				review_count &gt;= #{review_count}
-			AND 
-				stars &gt;= #{stars}
-        </where>
-        
+        WHERE subject = #{subject}
+		AND 
+			review_count &gt;= #{review_count}
+		AND 
+			stars &gt;= #{stars}
+        <choose>
+        	<when test="loc.equals('상관없음')">
+        		GROUP BY name
+				ORDER BY stars DESC, review_count DESC;
+        	</when>
+        	<otherwise>
+				AND
+					loc = #{loc}
+				GROUP BY name
+				ORDER BY stars DESC, review_count DESC;
+        	</otherwise>
+        </choose>
     </select>
     
     <!-- 데이터 수 조회하기 -->
 	<select id="selectCountAll" parameterType="project.spring.simpleproject.model.Restaurant" resultType="int">
 		SELECT COUNT(*) FROM Restaurant
-		
 		<where>
 			loc  = #{loc}
 			AND 
