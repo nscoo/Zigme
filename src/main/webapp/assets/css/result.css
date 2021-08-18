@@ -74,9 +74,9 @@
 }
 
 #popupContent>#popup_content_2 {
-    height: 160px;
+    height: 300px;
     border-bottom: 4px solid #cccccc;
-    padding-left: 30px;
+    padding-left: 10px;
     padding-top: 15px;
     vertical-align: top;
 
@@ -94,14 +94,14 @@
 
 #popupContent>#popup_content_2>#info_left {
     width: 350px;
-    height: 160px;
+    height: 260px;
 
     display: inline-block;
 }
 
 #popupContent>#popup_content_2>#info_right {
     width: 350px;
-    height: 160px;
+    height: 260px;
     display: inline-block;
 }
 
