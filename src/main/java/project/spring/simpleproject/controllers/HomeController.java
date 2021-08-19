@@ -70,13 +70,7 @@ public class HomeController {
 	}
 	
 	
-	
-	@RequestMapping(value = "/mylist.do", method=RequestMethod.GET)
-	public String mylist() {
-		return "mylist";
-		
-	}
-	
+
 
 
 	
