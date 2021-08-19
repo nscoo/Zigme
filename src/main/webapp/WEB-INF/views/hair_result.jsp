@@ -709,7 +709,7 @@ vertical-align: top;
 	                      $("#heart."+name).removeClass("liked");
 	                      }
 	        		  },
-	        		  error: alert('오류 발생 다시시도해 주세요')
+	        		  
 	        	  })
             }else{ //찜하기
           	  $.ajax({
@@ -732,7 +732,7 @@ vertical-align: top;
        	  			 	}
 
         		  },
-        		  error: alert('알 수 없는 오류입니다. 다시 시도해주세요')
+        		
         	  })
             }
 

@@ -3,7 +3,7 @@
 
 <mapper namespace="MylistHairMapper">
 	<!-- Beans 객체이름(id)과 클래스type을 명시 -->
-	<resultMap type="project.spring.simpleproject.model.MylistHair" id="Mylist">
+	<resultMap type="project.spring.simpleproject.model.MylistHair" id="myhairlist">
 		<!-- Beans의 property 이름과 대상 테이블의 column연결 -->
 		<result property="mylistno" column="userno" />
 		<result property="members_userno" column="members_userno" />
@@ -39,7 +39,7 @@
 	</resultMap>
 	<resultMap type="project.spring.simpleproject.model.MylistHair" id ="mylisthairMap">
 	<result property="mylistno" column="mylistno"/>
-	<result property="members_userno" column="memebers_userno"/>
+	<result property="members_userno" column="members_userno"/>
 	<result property="hair_hairno" column="hair_hairno"/>
 	<result property="memo" column="memo"/>
 	
@@ -64,5 +64,13 @@
         INSERT INTO `mylist_hair` (`members_userno`, `hair_hairno`) 
         VALUES (#{item1}, #{item2});
     </insert>
-	
+	   <select id="selectMyList" parameterType="project.spring.simpleproject.model.MylistHair" resultMap="myhairlist">
+      SELECT hair_hairno FROM mylist_hair where members_userno=#{members_userno}
+
+   </select>
+   
+   <select id="selectMyMemoList" parameterType="project.spring.simpleproject.model.MylistHair" resultMap="myhairlist">
+      SELECT memo FROM mylist_hair where members_userno=#{members_userno}
+
+   </select>
 </mapper>
