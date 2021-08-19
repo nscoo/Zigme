@@ -39,7 +39,7 @@ public class RestaurantController {
 		input.setSubject(subject);
 		input.setStars(stars);
 		input.setReview_count(review_count);
-		// 키워드는 DB theme_N 부분 통합하고 다시 추가해야 함
+		
 
 		List<Restaurant> output = null;
 		
