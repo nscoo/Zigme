@@ -3,7 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8b52f2a876d1009c657bead053a10a2b4e36e0f3
 <!DOCTYPE html>
 <html>
 
@@ -197,106 +200,54 @@
                         </div>
                         <!-- tab2 -->
                         <div class="tab-pane search-tab-content" id="my_hair_list" style="overflow:auto; height:1400px; border: 1px solid #969BA6;">
-                            <div class="list_item">
-                                <div class="info_button">
-                                    <a href="#">X</a>
-                                </div>
-                                <div class="item_img">
-                                    <image src="assets/img/chi.png" width="280px" height="280px">
-                                </div>
-                                <div class="item_info">
-                                    <div class="info_name">꼭끄닭 신논현점</div>
-                                    <div class="info_stars"><i class="fas fa-star" style="color:#ffd400; font-size:20px;"></i>
-                                        <font size="3px">&nbsp;4.5</font>
-                                    </div>
-                                    <div class="info_common">
-                                        <div class="info_call"><img src="assets/img/call.png" width="13px" height="13px">&nbsp;전화번호 : 02-455-9598</div>
-                                        <div class="info_add"><img src="assets/img/add.png" width="13px" height="13px">&nbsp;주소 : 서울 강동구 진황도로 29</div>
-                                        <div class="info_etc"><img src="assets/img/etc.png" width="13px" height="13px">&nbsp;주차 가능</div>
-                                        <div class="info_time"><img src="assets/img/time.png" width="13px" height="13px">&nbsp;영업시간 : 10:00-22:00</div>
-                                    </div>
-                                    <div class="info_memo">
-                                        <form name="memo_form">
-                                            <input type="text" id="memo_form" onsubmit="submit_memo(); return false;" value="어쩌구 저쩌구"><input type="submit" name="button" value="메모 수정">
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list_item">
-                                <div class="info_button">
-                                    <a href="#">X</a>
-                                </div>
-                                <div class="item_img">
-                                    <image src="assets/img/chi.png" width="280px" height="280px">
-                                </div>
-                                <div class="item_info">
-                                    <div class="info_name">꼭끄닭 신논현점</div>
-                                    <div class="info_stars"><i class="fas fa-star" style="color:#ffd400; font-size:20px;"></i>
-                                        <font size="3px">&nbsp;4.5</font>
-                                    </div>
-                                    <div class="info_common">
-                                        <div class="info_call"><img src="assets/img/call.png" width="13px" height="13px">&nbsp;전화번호 : 02-455-9598</div>
-                                        <div class="info_add"><img src="assets/img/add.png" width="13px" height="13px">&nbsp;주소 : 서울 강동구 진황도로 29</div>
-                                        <div class="info_etc"><img src="assets/img/etc.png" width="13px" height="13px">&nbsp;주차 가능</div>
-                                        <div class="info_time"><img src="assets/img/time.png" width="13px" height="13px">&nbsp;영업시간 : 10:00-22:00</div>
-                                    </div>
-                                    <div class="info_memo">
-                                        <form name="memo_form">
-                                            <input type="text" id="memo_form" onsubmit="submit_memo(); return false;" value="어쩌구 저쩌구"><input type="submit" name="button" value="메모 수정">
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list_item">
-                                <div class="info_button">
-                                    <a href="#">X</a>
-                                </div>
-                                <div class="item_img">
-                                    <image src="assets/img/chi.png" width="280px" height="280px">
-                                </div>
-                                <div class="item_info">
-                                    <div class="info_name">꼭끄닭 신논현점</div>
-                                    <div class="info_stars"><i class="fas fa-star" style="color:#ffd400; font-size:20px;"></i>
-                                        <font size="3px">&nbsp;4.5</font>
-                                    </div>
-                                    <div class="info_common">
-                                        <div class="info_call"><img src="assets/img/call.png" width="13px" height="13px">&nbsp;전화번호 : 02-455-9598</div>
-                                        <div class="info_add"><img src="assets/img/add.png" width="13px" height="13px">&nbsp;주소 : 서울 강동구 진황도로 29</div>
-                                        <div class="info_etc"><img src="assets/img/etc.png" width="13px" height="13px">&nbsp;주차 가능</div>
-                                        <div class="info_time"><img src="assets/img/time.png" width="13px" height="13px">&nbsp;영업시간 : 10:00-22:00</div>
-                                    </div>
-                                    <div class="info_memo">
-                                        <form name="memo_form">
-                                            <input type="text" id="memo_form" onsubmit="submit_memo(); return false;" value="어쩌구 저쩌구"><input type="submit" name="button" value="메모 수정">
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list_item">
-                                <div class="info_button">
-                                    <a href="#">X</a>
-                                </div>
-                                <div class="item_img">
-                                    <image src="assets/img/chi.png" width="280px" height="280px">
-                                </div>
-                                <div class="item_info">
-                                    <div class="info_name">꼭끄닭 신논현점</div>
-                                    <div class="info_stars"><i class="fas fa-star" style="color:#ffd400; font-size:20px;"></i>
-                                        <font size="3px">&nbsp;4.5</font>
-                                    </div>
-                                    <div class="info_common">
-                                        <div class="info_call"><img src="assets/img/call.png" width="13px" height="13px">&nbsp;전화번호 : 02-455-9598</div>
-                                        <div class="info_add"><img src="assets/img/add.png" width="13px" height="13px">&nbsp;주소 : 서울 강동구 진황도로 29</div>
-                                        <div class="info_etc"><img src="assets/img/etc.png" width="13px" height="13px">&nbsp;주차 가능</div>
-                                        <div class="info_time"><img src="assets/img/time.png" width="13px" height="13px">&nbsp;영업시간 : 10:00-22:00</div>
-                                    </div>
-                                    <div class="info_memo">
-                                        <form name="memo_form">
-                                            <input type="text" id="memo_form" onsubmit="submit_memo(); return false;" value="어쩌구 저쩌구"><input type="submit" name="button" value="메모 수정">
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                            
+                            <c:choose>
+                          <%-- 조회 결과가 없는 경우 --%>
+                             <c:when test="${output == null || fn:length(output)==0 }">
+                                <h1>조회 결과가 없습니다.</h1>
+                             </c:when>
+                          <%-- 조회 결과가 있는 경우 --%>
+                             <c:otherwise>
+                          <%-- 조회 결과에 대한 반복 처리 --%>
+                                <c:forEach var="item" items="${output}" varStatus="status" >
+                                   <div class="list_item">
+                                         <div class="info_button">
+                                             <a href="#">X</a>
+                                         </div>
+                                         <div class="item_img">
+                                             <image src="${item.photos}" width="280px" height="280px">
+                                         </div>
+                                         <div class="item_info">
+                                             <div class="info_name">${item.name}</div>
+                                             <div class="info_stars"><i class="fas fa-star" style="color:#ffd400; font-size:20px;"></i>
+                                                 <font size="3px">&nbsp;${item.stars}</font>
+                                             </div>
+                                             <div class="info_common">
+                                                 <div class="info_call"><img src="assets/img/call.png" width="13px" height="13px">&nbsp;전화번호 : ${item.call}</div>
+                                                 <div class="info_add"><img src="assets/img/add.png" width="13px" height="13px">&nbsp;주소 : ${item.address}</div>
+                                                 <div class="info_etc"><img src="assets/img/etc.png" width="13px" height="13px">&nbsp;${item.ps}</div>
+                                                 <div class="info_time"><img src="assets/img/time.png" width="13px" height="13px">&nbsp;${item.times}</div>
+                                             </div>
+                                           
+                                             <div class="info_memo">
+                                                 <form method="post" action="${pageContext.request.contextPath}/mylist.do">
+                                                     <input type="text" id="memo" name="memo" value="${mymemolist[status.index].memo}"/>
+                                                     <input type="submit" value="메모 수정">
+                                                 </form>
+                                             </div>
+                                             
+                                         </div>
+                                     </div>
+                                
+                                </c:forEach>
+                             </c:otherwise>
+                          </c:choose>
+                            
+                            
+                            
+                            
+                            
+                            
                         </div>
                         <!-- tab3 -->
                         <div class="tab-pane search-tab-content" id="my_nail_list" style="overflow:auto; height:1400px; border: 1px solid #0080ff;">
