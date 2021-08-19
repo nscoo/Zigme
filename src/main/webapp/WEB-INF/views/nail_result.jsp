@@ -415,7 +415,7 @@ vertical-align: top;
                          </div>
                         
                         <div id="graph_right">
-                        	<font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;"></font>
+                        	<font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<-- 직메가 매긴<br/>추천 점수를 확인해보세요!</font>
                         </div>
                         
                         </div>
@@ -506,7 +506,7 @@ vertical-align: top;
                          </div>
                         
                         <div id="graph_right">
-                        	<font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;"></font>
+                        	<font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<-- 직메가 매긴<br/>추천 점수를 확인해보세요!</font>
                         </div>
                         
                         </div>

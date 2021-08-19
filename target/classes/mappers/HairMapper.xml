@@ -16,6 +16,7 @@
 		<result property="review_count" column="review_count" />
 		<result property="photos" column="photos" />
 		<result property="menu" column="menu" />
+
 	</resultMap>
 	
 	<!-- 단일행 조회를 위한 기능 정의 -->
@@ -38,6 +39,13 @@
 		
 		ORDER BY review_count desc
 	</select>
+	
+	<!-- 찜리스트를 위한 기능 정의 -->
+	<select id="selectMyList" parameterType="project.spring.simpleproject.model.Hair" resultMap="hairMap">
+		SELECT * FROM hair WHERE hairno = #{hairno}		
+	</select>
+	
+	
 
 	<!-- 데이터 저장을 위한 기능 정의 -->
 	<insert id="insertItem" parameterType="project.spring.simpleproject.model.Hair" useGeneratedKeys="true" keyProperty="hairno">
