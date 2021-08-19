@@ -51,17 +51,17 @@ public class HomeController {
 
 	
 
-	@RequestMapping(value = "/traffic_search.do", method=RequestMethod.GET)
-	public String traffic_search() {
-		return "traffic_search";
-		
-	}
-	
-	@RequestMapping(value = "/traffic_result.do", method=RequestMethod.GET)
-	public String traffic_result() {
-		return "traffic_result";
-		
-	}
+//	@RequestMapping(value = "/traffic_search.do", method=RequestMethod.GET)
+//	public String traffic_search() {
+//		return "traffic_search";
+//		
+//	}
+//	
+//	@RequestMapping(value = "/traffic_result.do", method=RequestMethod.GET)
+//	public String traffic_result() {
+//		return "traffic_result";
+//		
+//	}
 	
 	@RequestMapping(value = "/main.do", method=RequestMethod.GET)
 	public String main() {
