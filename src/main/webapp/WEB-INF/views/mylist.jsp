@@ -174,15 +174,17 @@
 			                                    <div class="info_common">
 			                                        <div class="info_call"><img src="assets/img/call.png" width="13px" height="13px">&nbsp;전화번호 : ${item.call}</div>
 			                                        <div class="info_add"><img src="assets/img/add.png" width="13px" height="13px">&nbsp;주소 : ${item.address}</div>
-			                                        <div class="info_etc"><img src="assets/img/etc.png" width="13px" height="13px">&nbsp;${item.menu}</div>
+			                                        <div class="info_etc"><img src="assets/img/etc.png" width="13px" height="13px">&nbsp;${item.ps}</div>
 			                                        <div class="info_time"><img src="assets/img/time.png" width="13px" height="13px">&nbsp;${item.times}</div>
 			                                    </div>
+			                                  
 			                                    <div class="info_memo">
 			                                        <form method="post" action="${pageContext.request.contextPath}/mylist.do">
-			                                            <input type="text" id="memo" name="memo" />
+			                                            <input type="text" id="memo" name="memo" value="${mymemolist[status.index].memo}"/>
 			                                            <input type="submit" value="메모 수정">
 			                                        </form>
 			                                    </div>
+			                                    
 			                                </div>
 			                            </div>
            							
