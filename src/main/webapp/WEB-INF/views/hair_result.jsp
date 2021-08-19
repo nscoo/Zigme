@@ -328,11 +328,11 @@ vertical-align: top;
                            
                         </div>
                         <div id="popup_content_1">
-                            <h3>${name}&nbsp;<span id ="heart" class="${name2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name2}')" ></i> </span>                            </h3>
+                            <h3>${name}&nbsp;<span id ="heart" class="${name2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name2}','${name}')" ></i> </span>                            </h3>
                         </div>
                         <div id="popup_content_2">
                            		
-                           		<div class="info_stars" style="font-size: 20px; margin-left: -30px;"><i class="fas fa-star" style="color:#ffd400; font-size:28px;"></i><font style="font-size: 20px;" id="star" class="${name2}">${item.stars}</font></div>
+                           		<div class="info_stars" style="font-size: 20px; margin-left: -30px;"><i class="fas fa-star" style="color:#ffd400; font-size:28px;"></i><font style="font-size: 20px;" id="star" class="${name}">${item.stars}</font></div>
                                 <div id="info_num" style="font-size: 20px;">카카오 헤어샵 리뷰수:&nbsp;<font id="review" class="${name2}" style="font-size: 25px; color: #ff7f00;">${item.review_count}</font>개</div>
                                 <br/>   
                                 
@@ -420,7 +420,7 @@ vertical-align: top;
                            
                         </div>
                         <div id="popup_content_1">
-                            <h3>${name}&nbsp;<span id=heart ><i class="fa fa-heart-o" aria-hidden="true" onClick="heart('${name2}')"></i> </span>
+                            <h3>${name}&nbsp;<span id=heart class="${name2}" ><i class="fa fa-heart-o" aria-hidden="true" onClick="heart('${name2}','${name}')"></i> </span>
                             </h3>
 
                         </div>
@@ -664,29 +664,79 @@ vertical-align: top;
         }
         //찜하트 구현 js
         /*
-       function heart(name){
+        function heart(name,a){
           $("#heart."+name).click(function(){
-            if($("#heart."+name).hasClass("liked")){
-              $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-              $("#heart."+name).removeClass("liked");
-            }else{
-              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
-              $("#heart."+name).addClass("liked");
-            }
+        	  $.ajax({
+        		  type : "POST",
+        		  url : "basket",
+        		  dataType : "json",
+        		  data : {"name" : a},
+       	  		 success:function(data){
+       	  			 	if(data==3){
+       	  			 		alert('로그인 후 이용해주세요 로그인 페이지로 이동합니다');
+       	  			 		location.replace("main.do");
+       	  			 		return false;
+       	  			 	}
+        	            if($("#heart."+name).hasClass("liked"))){
+        	                $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+        	                $("#heart."+name).removeClass("liked");
+        	              }else{
+        	                $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+        	                $("#heart."+name).addClass("liked");
+        	              }
+        		  }
+        	  })
+
           });
         }
         */
         //하트 색상 채우기
-        function heart(name){
+ function heart(name,a){
           $("#heart."+name).click(function(){
-            if($("#heart."+name).hasClass("liked") && confirm('찜을 취소하시겠습니까')){
-              $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-              $("#heart."+name).removeClass("liked");
-              alert('취소완료');
-            }else{
-              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
-              $("#heart."+name).addClass("liked");
+        	  //찜  취소
+	          if($("#heart."+name).hasClass("liked")){
+	        	  $.ajax({
+	        		  type :"POST",
+	        		  url : "cancel_basket",
+	        		  dataType : "json",
+	        		  data :{"name": a},
+	        		  success:function(data){
+	        			  if(data == 0){
+	        				  alert('삭제 실패 다시 시도해주세요');
+	        				  return false;
+	        			  }else{
+	                      $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+	                      $("#heart."+name).removeClass("liked");
+	                      }
+	        		  },
+	        		  error: alert('오류 발생 다시시도해 주세요')
+	        	  })
+            }else{ //찜하기
+          	  $.ajax({
+        		  type : "POST",
+        		  url : "add_basket",
+        		  dataType : "json",
+        		  data : {"name" : a},
+       	  		 success:function(data){
+       	  			 	if(data==3){
+       	  			 		alert('로그인 후 이용해주세요 로그인 페이지로 이동합니다');
+       	  			 		location.replace("main.do");
+       	  			 		return false;
+       	  			 	}else if(data ==-1){
+       	  			 		alert('저장 실패 다시 시도해주세요');
+       	  			 		return false;
+       	  			 	}
+       	  			 	else{
+       	  	              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+       	              	  $("#heart."+name).addClass("liked");
+       	  			 	}
+
+        		  },
+        		  error: alert('알 수 없는 오류입니다. 다시 시도해주세요')
+        	  })
             }
+
+
           });
         }
       </script>

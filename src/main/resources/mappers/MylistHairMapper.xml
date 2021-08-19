@@ -37,8 +37,20 @@
 	<result property="photos" column="photos" />
 	<result property="menu" column="menu" />
 	</resultMap>
+	<resultMap type="project.spring.simpleproject.model.MylistHair" id ="mylisthairMap">
+	<result property="mylistno" column="mylistno"/>
+	<result property="members_userno" column="memebers_userno"/>
+	<result property="hair_hairno" column="hair_hairno"/>
+	<result property="memo" column="memo"/>
 	
-	
+	</resultMap>
+	<!-- Hairno 조회 -->
+	<select id="findHairno" parameterType="string" resultType="int">
+		SELECT hairno FROM hair 
+		<where>
+		name = #{name}
+		</where> 
+	</select>
 	
 	<!-- 찜하기 -->
 	<select id="find">
@@ -46,9 +58,11 @@
 	</select>
     <insert id="addList"
         useGeneratedKeys="true"
-        keyProperty="userno">
-        INSERT INTO `mylist_hair` (`members_userno`, `hair_hairno`, `memo`) 
-        VALUES (#{members_userno}, #{hair_hairno}, #{memo});
+        keyProperty="userno"
+        parameterType="hashmap"
+        >
+        INSERT INTO `mylist_hair` (`members_userno`, `hair_hairno`) 
+        VALUES (#{item1}, #{item2});
     </insert>
 	
 </mapper>
