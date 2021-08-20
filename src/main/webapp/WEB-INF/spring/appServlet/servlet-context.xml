@@ -3,7 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -23,6 +25,14 @@
 	<context:component-scan base-package="project.spring.simpleproject.controllers" />
 	<context:component-scan base-package="project.spring.simpleproject.service.impl" />
 	<resources mapping="/assets/**" location="/assets/" />
+	
+	
+	<!-- 뮤직 스케줄러 어노테이션 -->
+	<task:annotation-driven />
+	<beans:bean id="scheduleJob" class="project.spring.simpleproject.scheduler.MusicScheduler" />
+	<task:scheduled-tasks>
+		<task:scheduled ref="scheduleJob" method="everyMidnight" cron="0 0 0 * * ?"/>
+	</task:scheduled-tasks>
 	
 
 	

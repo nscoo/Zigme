@@ -11,7 +11,8 @@ public interface HairService {
 	
 	public List<Hair> getHairList(Hair input) throws Exception;
 	
+	public List<Hair> getHairMyList(Hair input) throws Exception;
+	
 	public int getHairCount(Hair input) throws Exception;
 
-	public List<Hair> getHairMyList(Hair input) throws Exception;
 }

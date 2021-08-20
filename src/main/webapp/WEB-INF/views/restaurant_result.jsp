@@ -144,7 +144,7 @@ String stars = request.getParameter("stars");
                                <ul>
                                     <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
                                     <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
                                     <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
                                     <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
                                     <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
@@ -188,9 +188,18 @@ String stars = request.getParameter("stars");
                         </div>
                     </div>
                     <div id="button_top">
-                       <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
-                       <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
+                    	<c:if test="${member == null}">
+                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
+                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/register.do'">회원가입</button>
+                   		</c:if>
+                   		<c:if test="${member != null}">
+                   		<div id = "login_top">
+                  		 <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">Mypage</button>
+                   		<button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
+                   		</div>
+                   		</c:if>
                     </div>
+                    
                 </div>
             </div>
             <div id="header_nav">
@@ -198,8 +207,8 @@ String stars = request.getParameter("stars");
                     <li class="dropdown">
                         <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">미용실</a></li>
+                        	<li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li> 
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
@@ -491,28 +500,29 @@ String stars = request.getParameter("stars");
 				<!-- footer 시작 -->
 				<div id="footer">
 					<div id="footer_content">
-						<div id="footer_img">
-							<a href="${pageContext.request.contextPath}"><img
-								src="assets/img/zigme_logo_rm.png" /></a>
-						</div>
-						<div id="footer_text">
-							<div class="footer_row">
-								<span class="glyphicon glyphicon-thumbs-up"> Name </span>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PROJECT PORTFOLIO Big Data Class
-								8
-							</div>
-							<div class="footer_row">
-								<span class="glyphicon glyphicon-user"> Manager </span> &nbsp;
-								나야 ...
-							</div>
-							<div class="footer_row">
-								<span class="glyphicon glyphicon-map-marker"> Address </span>
-								&nbsp; 서울 서초구 서초대로 77길 55, 에이프로스퀘어 2층 EZEN IT
-							</div>
-							<br />
-							<address>copyright&copy; team_3 / All right reserved</address>
-						</div>
-					</div>
+                    <div id="footer_img">
+                        <a href="${pageContext.request.contextPath}/"><img src="assets/img/zigme_logo_rm.png" /></a>
+                    </div>
+                    <div id="footer_text">
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-thumbs-up"> Name </span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            PROJECT PORTFOLIO Big Data Class 8
+                        </div>
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-user"> Developer </span>
+                            &nbsp;
+                            TEAM3
+                        </div>
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-map-marker"> Address </span>
+                            &nbsp;
+                            서울 서초구 서초대로 77길 55, 에이프로스퀘어 2층 EZEN IT
+                        </div>
+                        <br />
+                        <address>copyright&copy; team_3 / All right reserved</address>
+                    </div>
+                </div>
 				</div>
 			</div>
 			<!-- footer 끝-->

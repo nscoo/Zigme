@@ -2,12 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <%
   String ans1 = request.getParameter("ans1");
-  String ans3 = request.getParameter("ans3"); 
+  String ans2 = request.getParameter("ans2"); 
   
 %>
 
@@ -56,11 +53,10 @@
                                     <li><a href="#">5분 스트레칭</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">퇴근길</a>
-                               <ul>
+                            <ul>
                                     <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
                                     <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
                                     <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
                                     <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
                                     <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
@@ -115,6 +111,7 @@
                    		</div>
                    		</c:if>
                     </div>
+                    
                 </div>
             </div>
             <div id="header_nav">
@@ -122,8 +119,8 @@
                     <li class="dropdown">
                         <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                        	<li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li> 
                         </ul>
                     </li>
                    <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
@@ -141,13 +138,15 @@
                         <span class="text_back">이전으로</span>
                     </a>
                     <fieldset>
-                        <legend>어떤 시간대냥?</legend>
+                        <legend>어떤 기분이냥?</legend>
                         <ul class="music_select">
-                            <li><a href="${pageContext.request.contextPath}/music_result.do?ans1=<%=ans1%>&ans3=<%=URLEncoder.encode("아침", "utf-8")%>">아침</a></li>
-                            <li><a href="${pageContext.request.contextPath}/music_result.do?ans1=<%=ans1%>&ans3=<%=URLEncoder.encode("오전", "utf-8")%>">오전</a></li>
-                            <li><a href="${pageContext.request.contextPath}/music_result.do?ans1=<%=ans1%>&ans3=<%=URLEncoder.encode("오후", "utf-8")%>">오후</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select4.do?ans1=<%=ans1%>&ans2=<%=ans2%>&ans3=<%=URLEncoder.encode("행복한", "utf-8")%>">행복해!</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select4.do?ans1=<%=ans1%>&ans2=<%=ans2%>&ans3=<%=URLEncoder.encode("즐거운", "utf-8")%>">정말 즐거워</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select4.do?ans1=<%=ans1%>&ans2=<%=ans2%>&ans3=<%=URLEncoder.encode("화가나는", "utf-8")%>">오늘은 좀 화가나</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select4.do?ans1=<%=ans1%>&ans2=<%=ans2%>&ans3=<%=URLEncoder.encode("우울한", "utf-8")%>">조금 우울해</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select4.do?ans1=<%=ans1%>&ans2=<%=ans2%>&ans3=<%=URLEncoder.encode("편안한", "utf-8")%>">그냥그래~</a></li>
                         </ul>
-                        <span class="select_number">3&#47;4</span>
+                        <span class="select_number">1&#47;4</span>
                     </fieldset>
                     <div class="speech-bubble">
                         네가 원하는 음악을 찾아줄고양!
@@ -162,37 +161,30 @@
             <div id="footer">
                 <div id="footer_content">
                     <div id="footer_img">
-                        <a href="${pageContext.request.contextPath}"><img src="assets/img/zigme_logo_rm.png" /></a>
+                        <a href="${pageContext.request.contextPath}/"><img src="assets/img/zigme_logo_rm.png" /></a>
                     </div>
                     <div id="footer_text">
-                        <div id="text_left">
+                        <div class="footer_row">
                             <span class="glyphicon glyphicon-thumbs-up"> Name </span>
-                        </div>
-                        <div id="text_right">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             PROJECT PORTFOLIO Big Data Class 8
                         </div>
-                        <br />
-                        <div id="text_left">
-                            <span class="glyphicon glyphicon-user"> Manager </span>
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-user"> Developer </span>
+                            &nbsp;
+                            TEAM3
                         </div>
-                        <div id="text_right">
-                            Younga Joo
-                        </div>
-                        <br />
-                        <div id="text_left">
+                        <div class="footer_row">
                             <span class="glyphicon glyphicon-map-marker"> Address </span>
-                        </div>
-                        <div id="text_right">
+                            &nbsp;
                             서울 서초구 서초대로 77길 55, 에이프로스퀘어 2층 EZEN IT
                         </div>
                         <br />
-                        <br />
-                        <address>copyright&copy;team_3 / All right reserved</address>
+                        <address>copyright&copy; team_3 / All right reserved</address>
                     </div>
                 </div>
             </div>
             <!-- footer 끝-->
-        </div>
         </div>
         <!-- Javascript -->
         <script src="assets/js/jquery.min.js"></script>

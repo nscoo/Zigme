@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MusicMapper">
+
+   <!-- Beans 객체이름(id)과 클래스type을 명시 -->
+   <resultMap type="project.spring.simpleproject.model.Music" id="musicMap">
+      <!-- Beans의 property 이름과 대상 테이블의 column연결 -->
+      <result property="musicno" column="musicno" />
+      <result property="happy" column="happy" />
+      <result property="joy" column="joy" />
+      <result property="mad" column="mad" />
+      <result property="blue" column="blue" />
+	  <result property="comfy" column="comfy" />
+   </resultMap>
+   
+   <!-- 단일행 조회를 위한 기능 정의 -->
+   <select id="selectItem" parameterType="project.spring.simpleproject.model.Music" resultMap="musicMap">
+      SELECT * FROM music where musicno=#{musicno}
+   </select>
+   
+   <update id="updateItem" parameterType="project.spring.simpleproject.model.Music" >
+   		UPDATE music SET happy=#{happy},joy=#{joy},mad=#{mad},blue=#{blue},comfy=#{comfy} WHERE musicno=#{musicno}
+   </update>
+   
+    <update id="updateSchedulerItem" parameterType="project.spring.simpleproject.model.Music" >
+   		UPDATE music SET happy=0,joy=0,mad=0,blue=0,comfy=0 WHERE musicno=1
+   </update>
+   
+ </mapper>
