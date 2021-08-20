@@ -178,7 +178,6 @@ public class MemberController {
 	@RequestMapping(value="/findIdAction", method =RequestMethod.POST)
 	public Member findId(Member m ) throws Exception {
 		Member member = memberservice.findId(m);
-		System.out.println("*****************"+member+"*******************");
 		return member;
 	}
 	//비밀번호 초기화
