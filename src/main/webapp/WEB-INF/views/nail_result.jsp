@@ -228,10 +228,11 @@ vertical-align: top;
                                 <ul>
                                     <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
                                     <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/nearby.do" >Nearby</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
                                     <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
                                     <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
+                                	<br/>
                                 </ul>
                             </li>
                             <li><a href="#">실내</a>
@@ -240,7 +241,6 @@ vertical-align: top;
                                     <li><a href="#">오늘의 쇼핑</a></li>
                                     <li><a href="#">이직메이트</a></li>
                                     <li><a href="#">커뮤니티</a></li>
-                                    <br/>
                                 </ul>
                             </li>
                             <li><a href="#">실외</a>
@@ -250,7 +250,6 @@ vertical-align: top;
                                     <li><a href="#">문화</a></li>
                                     <li><a href="#">체육</a></li>
                                     <li><a href="#">교통정보보기</a></li>
-                                    <br/>
                                 </ul>
                             </li>
                         </ul>
@@ -258,7 +257,7 @@ vertical-align: top;
                     <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
                 </div>
                 <div id="top_logo">
-                    <a href="${pageContext.request.contextPath}/main.do">
+                    <a href="${pageContext.request.contextPath}">
                         <span class="top_text" style="color: black;">
                             ZIGME
                         </span>
@@ -284,6 +283,7 @@ vertical-align: top;
                    		</div>
                    		</c:if>
                     </div>
+                    
                 </div>
             </div>
             <div id="header_nav">
@@ -291,8 +291,8 @@ vertical-align: top;
                     <li class="dropdown">
                         <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                        	<li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li> 
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
@@ -534,9 +534,9 @@ vertical-align: top;
                             PROJECT PORTFOLIO Big Data Class 8
                         </div>
                         <div class="footer_row">
-                            <span class="glyphicon glyphicon-user"> Manager </span>
+                            <span class="glyphicon glyphicon-user"> Developer </span>
                             &nbsp;
-                            Younga Joo
+                            TEAM3
                         </div>
                         <div class="footer_row">
                             <span class="glyphicon glyphicon-map-marker"> Address </span>

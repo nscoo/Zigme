@@ -30,6 +30,12 @@
     <!-- 이수진 css,부트스트랩 끝 -->
     <!-- 반응형 폰트 작업 -->
     <style type="text/css">
+    
+    #visualize {
+         margin-top: -17px;
+     }
+     
+     
     @media screen and (max-width: 480px) {
         .video-text {
             font-size: 16px;
@@ -80,7 +86,7 @@
                                <ul>
                                     <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
                                     <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
                                     <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
                                     <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
                                     <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
@@ -143,8 +149,8 @@
                     <li class="dropdown">
                         <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">미용실</a></li>
+                        	<li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li> 
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
@@ -220,13 +226,54 @@
                 <!-- 캐러셀 영역 끝 -->
                 <!-- 고양이 이미지 + 말풍선 -->
                 <div class="speech-bubble">
-                    오늘 <strong style="color:orange;">24%</strong>의 사람들이
-                    <br />
-                    너와 같이 우울한 하루를 보냈대
-                    <br />
-                    내가 골라준 노래 듣고 힘내라냥
-                    <br />
-                    토닥토닥. 수고했다냥~
+                	<c:set var="happy" value="${output.happy}" />
+                	<c:set var="joy" value="${output.joy}" />
+                	<c:set var="mad" value="${output.mad}" />
+                	<c:set var="blue" value="${output.blue}" />
+                	<c:set var="comfy" value="${output.comfy}" />
+                	
+                	
+                	<c:if test="${ans3=='행복한'}">
+                		<c:set var="percent" value="${(happy/(happy+joy+mad+blue+comfy))*100}" />
+                		<fmt:formatNumber var="percent" value="${percent}" pattern=".#"/>
+                		 <h3 id="visualize">오늘&nbsp;<font style="font-size: 25px; color: orange; font-style: bold;">${percent}%</font>의 사람들이<br/>
+                		 	너처럼 따뜻하고 <font style="font-size: 25px; color: #FB9DA7; font-style: bold;">행복한</font><br/>하루를 보내고 있다냥~<br/><br/>
+                		 	행복을 느낄 줄 아는 당신,<br/>정말 멋있다냥~
+                		 </h3>
+                	</c:if>
+                	<c:if test="${ans3=='즐거운'}">
+                		<c:set var="percent" value="${(joy/(happy+joy+mad+blue+comfy))*100}" />
+                		<fmt:formatNumber var="percent" value="${percent}" pattern=".#"/>
+                		 <h3 id="visualize">오늘&nbsp;<font style="font-size: 25px; color: orange; font-style: bold;">${percent}%</font>의 사람들이<br/>
+                		 	너처럼 왕창 <font style="font-size: 25px; color: orange; font-style: bold;">즐거운</font><br/>하루를 보내고 있다냥~<br/><br/>
+                		 	긍정적인 기운이 가득한<br/>이노래 어떠냥~
+                		 </h3>
+                	</c:if>
+                	<c:if test="${ans3=='화가나는'}">
+                		<c:set var="percent" value="${(happy/(happy+joy+mad+blue+comfy))*100}" />
+                		<fmt:formatNumber var="percent" value="${percent}" pattern=".#"/>
+                		 <h3 id="visualize">오늘&nbsp;<font style="font-size: 25px; color: orange; font-style: bold;">${percent}%</font>의 사람들이<br/>
+                		 	너처럼 <font style="font-size: 25px; color: #8EB695; font-style: bold;">속상한</font> <br/>하루를 보내고 있다냥...<br/><br/>
+                		 	잠시 눈을 감고 이 노래를<br/>들어보는건 어떠냥...
+                		 </h3>
+                	</c:if>
+                	<c:if test="${ans3=='우울한'}">
+                		<c:set var="percent" value="${(happy/(happy+joy+mad+blue+comfy))*100}" />
+                		<fmt:formatNumber var="percent" value="${percent}" pattern=".#"/>
+                		 <h3 id="visualize">오늘&nbsp;<font style="font-size: 25px; color: orange; font-style: bold;">${percent}%</font>의 사람들이<br/>
+                		 	너처럼 조금은 <font style="font-size: 25px; color: #6ECEDA; font-style: bold;">슬픈</font><br/>하루를 보내고 있다냥...<br/><br/>
+                		 	이 또한 지나갈거다냥...<br/>이 노래가 널 토닥여줄거랴옹..
+                		 </h3>
+                	</c:if>
+                	<c:if test="${ans3=='편안한'}">
+                		<c:set var="percent" value="${(happy/(happy+joy+mad+blue+comfy))*100}" />
+                		<fmt:formatNumber var="percent" value="${percent}" pattern=".#"/>
+                		 <h3 id="visualize">오늘&nbsp;<font style="font-size: 25px; color: orange; font-style: bold;">${percent}%</font>의 사람들이<br/>
+                		 	너처럼 <font style="font-size: 25px; color: #FCCCD4; font-style: bold;">평화로운</font> 하루를<br/>보내고 있다냥~<br/><br/>
+                		 	안정된 기분을 따뜻하게 <br/>만들어주는 이 노래 어떠냥~
+                		 </h3>
+                	</c:if>
+                   
                 </div>
                 <div id="music_cat">
                     <img src="assets/img/cat.png" width="340px" height="385px" />
@@ -238,35 +285,29 @@
                 <!-- footer 시작 -->
                 <div id="footer">
                     <div id="footer_content">
-                        <div id="footer_img">
-                            <a href="${pageContext.request.contextPath}"><img src="assets/img/zigme_logo_rm.png" /></a>
-                        </div>
-                        <div id="footer_text">
-                            <div id="text_left">
-                                <span class="glyphicon glyphicon-thumbs-up"> Name </span>
-                            </div>
-                            <div id="text_right">
-                                PROJECT PORTFOLIO Big Data Class 8
-                            </div>
-                            <br />
-                            <div id="text_left">
-                                <span class="glyphicon glyphicon-user"> Manager </span>
-                            </div>
-                            <div id="text_right">
-                                Younga Joo
-                            </div>
-                            <br />
-                            <div id="text_left">
-                                <span class="glyphicon glyphicon-map-marker"> Address </span>
-                            </div>
-                            <div id="text_right">
-                                서울 서초구 서초대로 77길 55, 에이프로스퀘어 2층 EZEN IT
-                            </div>
-                            <br />
-                            <br />
-                            <address>copyright&copy;team_3 / All right reserved</address>
-                        </div>
+                    <div id="footer_img">
+                        <a href="${pageContext.request.contextPath}/"><img src="assets/img/zigme_logo_rm.png" /></a>
                     </div>
+                    <div id="footer_text">
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-thumbs-up"> Name </span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            PROJECT PORTFOLIO Big Data Class 8
+                        </div>
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-user"> Developer </span>
+                            &nbsp;
+                            TEAM3
+                        </div>
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-map-marker"> Address </span>
+                            &nbsp;
+                            서울 서초구 서초대로 77길 55, 에이프로스퀘어 2층 EZEN IT
+                        </div>
+                        <br />
+                        <address>copyright&copy; team_3 / All right reserved</address>
+                    </div>
+                </div>
                 </div>
                 <!-- footer 끝-->
             </div>
