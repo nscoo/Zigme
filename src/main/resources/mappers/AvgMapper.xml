@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AvgMapper">
+	<resultMap id="avgMapper"
+		type="project.spring.simpleproject.model.Avg">
+		<result property="avg_no" column="avg_no" />
+		<result property="avg_loc" column="avg_loc" />
+		<result property="avg_subject" column="avg_subject" />
+		<result property="avg_stars" column="avg_stars" />
+		<result property="avg_rc" column="avg_rc" />
+	</resultMap>
+
+	<select id="selectItem"
+		parameterType="project.spring.simpleproject.model.Avg"
+		resultMap="avgMapper">
+		SELECT * FROM avg_table
+		<choose>
+			<when test="avg_loc.equals('상관없음')">
+				WHERE avg_loc="강남구" AND avg_subject=#{avg_subject};
+			</when>
+			<otherwise>
+				WHERE avg_loc=#{avg_loc} AND avg_subject=#{avg_subject};
+			</otherwise>
+		</choose>
+	</select>
+
+</mapper>

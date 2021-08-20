@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import project.spring.simpleproject.model.Hair;
 import project.spring.simpleproject.service.HairService;
-import project.spring.simpleproject.service.MemberService;
+
 
 @Controller
 public class HairController {
@@ -57,3 +57,4 @@ public class HairController {
 		
 	}
 }
+

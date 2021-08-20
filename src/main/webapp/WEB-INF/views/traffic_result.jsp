@@ -323,7 +323,7 @@ ul {
 		    .then((response) => {
 		      directionsRenderer.setDirections(response);
 		    })
-		    .catch((e) => window.alert("대한민국은 대중교통 검색 결과만 제공합니다."));
+		    .catch((e) => window.alert("대한민국은 대중교통 검색 결과만 제공합니다. 대중교통만 보세요"));
 		}
 	</script>
 	<script async defer
