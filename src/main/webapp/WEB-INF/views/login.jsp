@@ -50,7 +50,7 @@
                                <ul>
                                     <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
                                     <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
                                     <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
                                     <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
                                     <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
@@ -79,7 +79,7 @@
                     <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
                 </div>
                 <div id="top_logo">
-                    <a href="${pageContext.request.contextPath}/">
+                    <a href="${pageContext.request.contextPath}">
                         <span class="top_text" style="color: black;">
                             ZIGME
                         </span>
@@ -93,7 +93,7 @@
                             <div></div>
                         </div>
                     </div>
-				<div id="button_top">
+                    <div id="button_top">
                     	<c:if test="${member == null}">
                         <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
                         <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/register.do'">회원가입</button>
@@ -104,7 +104,8 @@
                    		<button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
                    		</div>
                    		</c:if>
-                </div>
+                    </div>
+                    
                 </div>
             </div>
             <div id="header_nav">
@@ -112,8 +113,8 @@
                     <li class="dropdown">
                         <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">미용실</a></li>
+                        	<li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li> 
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
@@ -162,9 +163,9 @@
                             PROJECT PORTFOLIO Big Data Class 8
                         </div>
                         <div class="footer_row">
-                            <span class="glyphicon glyphicon-user"> Manager </span>
+                            <span class="glyphicon glyphicon-user"> Developer </span>
                             &nbsp;
-                            Younga Joo
+                            TEAM3
                         </div>
                         <div class="footer_row">
                             <span class="glyphicon glyphicon-map-marker"> Address </span>

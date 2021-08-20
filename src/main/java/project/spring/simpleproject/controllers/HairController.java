@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import project.spring.simpleproject.model.Hair;
 import project.spring.simpleproject.service.HairService;
 
+
 @Controller
 public class HairController {
 
@@ -24,6 +25,8 @@ public class HairController {
 	
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
+	
+
 	
 	@RequestMapping(value="/hair_result.do", method = RequestMethod.GET)
 	public String list(Model model, HttpServletResponse response, @RequestParam(value="keyword", required=false) String keyword) {
@@ -54,3 +57,4 @@ public class HairController {
 		
 	}
 }
+

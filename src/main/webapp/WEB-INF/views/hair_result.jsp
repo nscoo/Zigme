@@ -28,12 +28,14 @@
     <!-- 인스타그램 하트스타일-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style type="text/css">
+
     #head_banner {
     position: relative;
     height: 420px;
     overflow: hidden;
     background-image: url(assets/img/flowers2.jpg);
     background-size: cover;
+
 
 }
 
@@ -171,10 +173,11 @@ vertical-align: top;
                                 <ul>
                                     <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
                                     <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/nearby.do" >Nearby</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
                                     <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
                                     <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
+                                	<br/>
                                 </ul>
                             </li>
                             <li><a href="#">실내</a>
@@ -183,7 +186,6 @@ vertical-align: top;
                                     <li><a href="#">오늘의 쇼핑</a></li>
                                     <li><a href="#">이직메이트</a></li>
                                     <li><a href="#">커뮤니티</a></li>
-                                    <br/>
                                 </ul>
                             </li>
                             <li><a href="#">실외</a>
@@ -193,7 +195,6 @@ vertical-align: top;
                                     <li><a href="#">문화</a></li>
                                     <li><a href="#">체육</a></li>
                                     <li><a href="#">교통정보보기</a></li>
-                                    <br/>
                                 </ul>
                             </li>
                         </ul>
@@ -201,7 +202,7 @@ vertical-align: top;
                     <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
                 </div>
                 <div id="top_logo">
-                    <a href="${pageContext.request.contextPath}/main.do">
+                    <a href="${pageContext.request.contextPath}">
                         <span class="top_text" style="color: black;">
                             ZIGME
                         </span>
@@ -227,6 +228,7 @@ vertical-align: top;
                    		</div>
                    		</c:if>
                     </div>
+                    
                 </div>
             </div>
             <div id="header_nav">
@@ -234,8 +236,8 @@ vertical-align: top;
                     <li class="dropdown">
                         <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                        	<li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li> 
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
@@ -326,8 +328,7 @@ vertical-align: top;
                            
                         </div>
                         <div id="popup_content_1">
-                            <h2>${name}&nbsp;<span id=heart><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-                            </h2>
+                            <h3>${name}&nbsp;<span id ="heart" class="${name2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name2}','${name}')" ></i> </span>                            </h3>
                         </div>
                         <div id="popup_content_2">
                            		
@@ -359,7 +360,7 @@ vertical-align: top;
                          </div>
                         
                         <div id="graph_right">
-                        	<font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;"></font>
+                        	<font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<-- 직메가 매긴<br/>추천 점수를 확인해보세요!</font>
                         </div>
                         
                         </div>
@@ -419,8 +420,9 @@ vertical-align: top;
                            
                         </div>
                         <div id="popup_content_1">
-                            <h2>${name}&nbsp;<span id=heart><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-                            </h2>
+                            <h3>${name}&nbsp;<span id=heart class="${name2}" ><i class="fa fa-heart-o" aria-hidden="true" onClick="heart('${name2}','${name}')"></i> </span>
+                            </h3>
+
                         </div>
                         <div id="popup_content_2">
                            		
@@ -452,7 +454,7 @@ vertical-align: top;
                          </div>
                         
                         <div id="graph_right">
-                        	<font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;"></font>
+                        	<font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<-- 직메가 매긴<br/>추천 점수를 확인해보세요!</font>
                         </div>
                         
                         </div>
@@ -480,9 +482,9 @@ vertical-align: top;
                             PROJECT PORTFOLIO Big Data Class 8
                         </div>
                         <div class="footer_row">
-                            <span class="glyphicon glyphicon-user"> Manager </span>
+                            <span class="glyphicon glyphicon-user"> Developer </span>
                             &nbsp;
-                            Younga Joo
+                            TEAM3
                         </div>
                         <div class="footer_row">
                             <span class="glyphicon glyphicon-map-marker"> Address </span>
@@ -661,18 +663,84 @@ vertical-align: top;
                 function() {});
         }
         //찜하트 구현 js
-        $(document).ready(function() {
-            $("#heart").click(function() {
-                if ($("#heart").hasClass("liked")) {
-                    $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-                    $("#heart").removeClass("liked");
-                } else {
-                    $("#heart").html('<i class="fa fa-heart" aria-hidden="true"></i>');
-                    $("#heart").addClass("liked");
-                }
-            });
-        });
-        </script>
+        /*
+        function heart(name,a){
+          $("#heart."+name).click(function(){
+        	  $.ajax({
+        		  type : "POST",
+        		  url : "basket",
+        		  dataType : "json",
+        		  data : {"name" : a},
+       	  		 success:function(data){
+       	  			 	if(data==3){
+       	  			 		alert('로그인 후 이용해주세요 로그인 페이지로 이동합니다');
+       	  			 		location.replace("main.do");
+       	  			 		return false;
+       	  			 	}
+        	            if($("#heart."+name).hasClass("liked"))){
+        	                $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+        	                $("#heart."+name).removeClass("liked");
+        	              }else{
+        	                $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+        	                $("#heart."+name).addClass("liked");
+        	              }
+        		  }
+        	  })
+
+          });
+        }
+        */
+        //하트 색상 채우기
+ function heart(name,a){
+          $("#heart."+name).click(function(){
+        	  //찜  취소
+	          if($("#heart."+name).hasClass("liked")){
+	        	  $.ajax({
+	        		  type :"POST",
+	        		  url : "cancel_basket",
+	        		  dataType : "json",
+	        		  data :{"name": a},
+	        		  success:function(data){
+	        			  if(data == 0){
+	        				  alert('삭제 실패 다시 시도해주세요');
+	        				  return false;
+	        			  }else{
+	                      $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+	                      $("#heart."+name).removeClass("liked");
+	                      }
+	        		  },
+	        		  
+	        	  })
+            }else{ //찜하기
+          	  $.ajax({
+        		  type : "POST",
+        		  url : "add_basket",
+        		  dataType : "json",
+        		  data : {"name" : a},
+       	  		 success:function(data){
+       	  			 	if(data==3){
+       	  			 		alert('로그인 후 이용해주세요 로그인 페이지로 이동합니다');
+       	  			 		location.replace("main.do");
+       	  			 		return false;
+       	  			 	}else if(data ==-1){
+       	  			 		alert('저장 실패 다시 시도해주세요');
+       	  			 		return false;
+       	  			 	}
+       	  			 	else{
+       	  	              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+       	              	  $("#heart."+name).addClass("liked");
+       	  			 	}
+
+        		  },
+        		
+        	  })
+            }
+
+
+          });
+        }
+      </script>
+      
 </body>
 
 </html>

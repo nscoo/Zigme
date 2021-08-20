@@ -23,29 +23,6 @@
 		<result property="subject" column="subject" />
 	</resultMap>
 
-<!-- 	<resultMap id="restaurantMap2"
-		type="project.spring.simpleproject.model.Restaurant2">
-		<result property="avg_no" column="avg_no" />
-		<result property="avg_loc" column="avg_loc" />
-		<result property="avg_subject" column="avg_subject" />
-		<result property="avg_stars" column="avg_stars" />
-		<result property="avg_rc" column="avg_rc" />
-	</resultMap>
-
-	<select id="selectItem"
-		parameterType="project.spring.simpleproject.model.Restaurant2"
-		resultMap="restaurantMap2">
-		SELECT * FROM avg_table
-		<choose>
-			<when test="loc.equals('상관없음')">
-				WHERE loc="강남구" AND subject=#{subject};
-			</when>
-			<otherwise>
-				WHERE loc=#{loc} AND subject=#{subject};
-			</otherwise>
-		</choose>
-	</select> -->
-
 	<!-- 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList"
 		parameterType="project.spring.simpleproject.model.Restaurant"
@@ -55,32 +32,46 @@
 		<choose>
 			<when test="loc.equals('상관없음')">
 				WHERE resno in (
-				SELECT max(resno)
-				FROM restaurant
-				GROUP BY name
+
+					SELECT max(resno)
+					FROM restaurant
+					GROUP BY name
 				)
 				AND
-				subject = #{subject}
+					subject = #{subject}
 				AND
-				review_count &gt;=
-				#{review_count}
+					review_count &gt;= #{review_count}
 				AND
-				stars &gt;= #{stars}
+					stars &gt;= #{stars}
 
-				ORDER BY
-				stars DESC,
-				review_count DESC;
+				ORDER BY 
+					stars DESC, review_count DESC;
 			</when>
 			<otherwise>
 				WHERE
-				loc = #{loc}
+					loc = #{loc}
 				AND
-				subject = #{subject}
-				ORDER BY
-				stars
-				DESC, review_count DESC;
+					subject = #{subject}
+				ORDER BY 
+					stars DESC, review_count DESC;
+
 			</otherwise>
 		</choose>
+	</select>
+
+	<!-- 데이터 수 조회하기 -->
+	<select id="selectCountAll"
+		parameterType="project.spring.simpleproject.model.Restaurant"
+		resultType="int">
+		SELECT COUNT(*) FROM restaurant
+		WHERE
+			loc = #{loc}
+		AND
+			subject = #{subject}
+		AND
+			review_count &gt;= #{review_count}
+		AND
+			stars &gt;= #{stars}
 	</select>
 
 
