@@ -43,7 +43,7 @@ String stars = request.getParameter("stars");
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">
-/* .fa-heart-o {
+.fa-heart-o {
 	color: red;
 	cursor: pointer;
 	font-size: 25px;
@@ -54,7 +54,7 @@ String stars = request.getParameter("stars");
 	cursor: pointer;
 	font-size: 25px;
 
-} */
+} 
 .jumbo_info>p>span {
 	font-size: 15px;
 	color: #323232;
@@ -139,6 +139,7 @@ String stars = request.getParameter("stars");
 	<!--bootstrap 반응형 사용을 위해 제일 상위 class를 container로 설정함 -->
 	<div class="container">
 		<!-- header 시작 -->
+
 
 		<div id="header">
 			<div id="header_top">
@@ -253,6 +254,7 @@ String stars = request.getParameter("stars");
 						style="font-size: 20px;">MyList</a></li>
 				</ul>
 
+
 				<div id="header_banner">
 					<div id="search_input" class="input-group">
 						<%-- 						<input type="text" class="form-control"
@@ -302,7 +304,8 @@ String stars = request.getParameter("stars");
 
 							<c:set var="name_2" value="${fn:replace(item.name,'&','')}" />
 							<c:set var="name_2" value="${fn:replace(name_2,' ','')}" />
-
+							<!-- 식당정보 필요함 -->
+							<c:set var="resno" value="${item.resno}" />
 							<br>
 							<br>
 							<br>
@@ -358,11 +361,13 @@ String stars = request.getParameter("stars");
 									</div>
 									<div id="popup_content_1">
 										<h3>
+										<input type ="hidden" id="${name_2}" value=${resno}>
 											<font style="color: #0077a3; font-size: 30px;">&nbsp;&nbsp;${name}&nbsp;&nbsp;</font>
 											<span style="font-size: 30px"> <i
 												class="fas fa-star fa-1x" style="color: #ffd400"></i>
 											</span> <span id='star' style="font-size: 18px" class="${name_2}">${stars}</span>
 											<span id='review' style="font-size: 15px" class="${name_2}">${review_count}</span>
+											<span id ="heart" class="${name_2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name_2}','${name}')" ></i> </span>
 										</h3>
 									</div>
 									<div id="popup_content_2">
@@ -486,11 +491,13 @@ String stars = request.getParameter("stars");
 											</div>
 											<div id="popup_content_1">
 												<h3>
+												<input type ="hidden" id="${name_2}" value=${resno}>
 													<font style="color: #0077a3; font-size: 30px;">&nbsp;&nbsp;${name}&nbsp;&nbsp;</font>
 													<span style="font-size: 30px"> <i
 														class="fas fa-star fa-1x" style="color: #ffd400"></i>
 													</span> <span id="star" class="${name_2}" style="font-size: 18px">${stars}</span>
 													<span id="review" class="${name_2}" style="font-size: 18px">${review_count}</span>
+													<span id ="heart" class="${name_2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name_2}','${name}')" ></i> </span>
 												</h3>
 											</div>
 											<div id="popup_content_2">
@@ -853,44 +860,90 @@ String stars = request.getParameter("stars");
 			}
 
 			//상세팝업
-			function openPopup(name) {
-				$('#popupLayer.' + name).bPopup({
-					iframeAttr : 'frameborder=”auto”',
-					iframeAttr : 'frameborder=”0"',
-					contentContainer : '.popupContent',
+        function openPopup(name) { 
 
-					onOpen : function() {
-					},
+        	var resno = document.getElementById(name).value;
+        
+        	$.ajax({
+        		type : "POST",
+        		url : "checklist3",
+        		dataType : "json",
+        		data : {
+        			"resno" : resno
+        		},
+        	success : function(data){
+        		if(data){
+ 	  	              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+   	              	  $("#heart."+name).addClass("liked");
+        		}else{
+        			console.log('찜 목록아님')
+        		}
+        	},
 
-					onClose : function() {
-					}
-				}, function() {
-				});
-			}
-			/* 			//찜하트 구현 js
-			 $(document)
-			 .ready(
-			 function() {
-			 $("#heart")
-			 .click(
-			 function() {
-			 if ($("#heart").hasClass(
-			 "liked")) {
-			 $("#heart")
-			 .html(
-			 '<i class="fa fa-heart-o" aria-hidden="true"></i>');
-			 $("#heart")
-			 .removeClass(
-			 "liked");
-			 } else {
-			 $("#heart")
-			 .html(
-			 '<i class="fa fa-heart" aria-hidden="true"></i>');
-			 $("#heart").addClass(
-			 "liked");
-			 }
-			 });
-			 }); */
+        	})
+            $("#popupLayer."+name).bPopup({
+                    iframeAttr: 'frameborder=”auto”',
+                    iframeAttr: 'frameborder=”0',
+                    contentContainer: '.popupContent',
+
+                    onOpen: function() {},
+
+                    onClose: function() {}
+                },
+                function() {});
+            
+            
+        }
+	        //하트 색상 채우기
+			 function heart(name,a){
+	        	alert(a);
+			          $("#heart."+name).click(function(){
+			        	 
+			        	  //찜  취소
+				          if($("#heart."+name).hasClass("liked")){
+				        	  $.ajax({
+				        		  type :"POST",
+				        		  url : "cancel_basket3",
+				        		  dataType : "json",
+				        		  data :{"name": a},
+				        		  success:function(data){ //삭제 
+				        			  if(data == 1){ //삭제 성공
+					                      $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+					                      $("#heart."+name).removeClass("liked");
+				        			  }else{
+											alert('취소 실패 잠시후에 다시 시도하세요');
+				                      }
+				        		  },
+				        		  
+				        	  })
+			            }else{ //찜하기
+			          	  $.ajax({
+			        		  type : "POST",
+			        		  url : "add_basket3",
+			        		  dataType : "json",
+			        		  data : {"name" : a},
+			       	  		 success:function(data){
+			       	  			 	if(data==3){
+			       	  			 		alert('로그인 후 이용해주세요 로그인 페이지로 이동합니다');
+			       	  			 		location.replace("login.do");
+			       	  			 		return false;
+			       	  			 	}else if(data ==-1){
+			       	  			 		alert('저장 실패 다시 시도해주세요');
+			       	  			 		return false;
+			       	  			 	}
+			       	  			 	else{
+			       	  	              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+			       	              	  $("#heart."+name).addClass("liked");
+			       	  			 	}
+
+			        		  },
+			        		
+			        	  })
+			            }
+
+
+			          });
+			        }
 		</script>
 </body>
 

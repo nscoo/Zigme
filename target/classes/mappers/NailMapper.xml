@@ -68,5 +68,8 @@
 				</if>
 			</where>	
 	</select>
+	   <select id="selectMyList" parameterType="project.spring.simpleproject.model.Nail" resultMap="nailMap">
+      SELECT * FROM nail WHERE nailno=#{nailno}     
+   </select>
 	
 </mapper>
