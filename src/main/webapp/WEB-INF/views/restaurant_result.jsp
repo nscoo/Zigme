@@ -200,7 +200,7 @@ String stars = request.getParameter("stars");
 					</a>
 				</div>
 				<div id="top_buttons">
-					<button type="button" class="btn btn-default btn-xs">퇴근까지</button>
+					<button type="button" class="btn btn-default btn-xs">퇴근 시간 설정하기</button>
 					<div id="button_time">
 						<div class="countdown-bar" id="countdownC">
 							<div></div>
@@ -855,6 +855,9 @@ String stars = request.getParameter("stars");
 				}
 
 			}
+			
+			
+			
 
 			countdown('countdownC', 0, 0, 10, 10);
 			// Countdown Loading Bar
