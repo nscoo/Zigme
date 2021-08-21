@@ -95,7 +95,7 @@
                     </a>
                 </div>
                 <div id="top_buttons">
-                    <button type="button" class="btn btn-default btn-xs">퇴근까지</button>
+                    <button id="start" type="button" class="btn btn-default btn-xs">퇴근까지</button>
                     <div id="button_time">
                         <div class="countdown-bar" id="countdownC">
                             <div></div>
@@ -152,23 +152,23 @@
                         <div class="tab-pane search-tab-content active filter inner2--bottom" id="my_restaurant_list" style="overflow:auto; height:1400px; border: 1px solid #f89b00;">
                             <c:choose>
                           <%-- 조회 결과가 없는 경우 --%>
-                             <c:when test="${output_h == null || fn:length(output_h)==0 }">
+                             <c:when test="${output_r == null || fn:length(output_r)==0 }">
                                 <h1>조회 결과가 없습니다.</h1>
                              </c:when>
                           <%-- 조회 결과가 있는 경우 --%>
                              <c:otherwise>
                           <%-- 조회 결과에 대한 반복 처리 --%>
-                                <c:forEach var="item" items="${output_h}" varStatus="status" >
+                                <c:forEach var="item" items="${output_r}" varStatus="status" >
                                 <c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
                                 <c:set var="name2" value="${fn:replace(name2,' ','')}" />
                                 
                                    <div class="list_item" id="${name2}">
                                          <div class="info_button">
-                                             <a id="delete" class="${name2}" href="javascript:void(0)" onClick="deletelist('${name2}','${item.name}')">X</a>
+                                             <a id="delete" class="${name2}" href="javascript:void(0)" onClick="deletelist3('${name2}','${item.name}')">X</a>
                                          </div>
                                          <div class="item_img">
                                         	
-                                             <image src="${item.photos}" width="280px" height="280px">
+                                             <image src="${item.photo_1}" width="280px" height="280px">
                                          </div>
                                          <div class="item_info">
                                              <div class="info_name">${item.name}</div>
@@ -185,8 +185,8 @@
                                              <div class="info_memo" > 
                                             
                                                  <form method="post" id="memoform"  method ="post">
-                                                     <input type="text" id="memo${name2}" name="memo${name2}" value="${mymemolist_h[status.index].memo}"/>
-                                                     <input type="button" value="메모 수정" onclick="savememo('${mymemolist_h[status.index].mylistno}',document.getElementById('memo${name2}').value)" >
+                                                     <input type="text" id="memo${name2}" name="memo${name2}" value="${mymemolist_r[status.index].memo}"/>
+                                                     <input type="button" value="메모 수정" onclick="savememo3('${mymemolist_r[status.index].mylistno}',document.getElementById('memo${name2}').value)" >
                                                  </form>
                                              </div>
                                              
@@ -266,7 +266,7 @@
                                 
                                    <div class="list_item" id="${name2}">
                                          <div class="info_button">
-                                             <a id="delete" class="${name2}" href="javascript:void(0)" onClick="deletelist('${name2}','${item.name}')">X</a>
+                                             <a id="delete" class="${name2}" href="javascript:void(0)" onClick="deletelist2('${name2}','${item.name}')">X</a>
                                          </div>
                                          <div class="item_img">
                                         	
@@ -340,19 +340,64 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/script.js"></script>
     <script type="text/javascript">
-    countdown('countdownC', 0, 0, 10, 10);
-    // Countdown Loading Bar
-    $config.loadingBars_width = 60;
-    $config.loadingBars_height = 15;
-    $config.loadingBars_border_color = 'orange';
-    $config.loadingBars_color = 'orange';
-    $config.loadingBars_background_color = 'lightblue';
+	var startBtn = document.getElementById('start');
+	
+	startBtn.addEventListener("click", function() {
 
-    // Countdown Timer
-    $config.timer_color = 'black';
-    $config.timer_font_weight = 700;
-    $config.timer_font = 'Verdana';
-    $config.timer_font_size = 9;
+		// 카운트다운을 처음 설정하는 경우
+		off_hour = parseInt(prompt("몇시에 퇴근하시나요? (24시 기준)"));
+		console.log(off_hour);
+		if ((typeof off_hour == "string") || (off_hour > 24)
+				|| (isNaN(off_hour))) {
+			alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
+			return
+
+		}
+
+		off_minute = parseInt(prompt("몇분에 퇴근하시나요?"));
+		if ((typeof off_minute != "number") || (off_minute > 60)
+				|| (isNaN(off_minute))) {
+			alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
+			return
+
+		}
+
+		sessionStorage.setItem("off_hour", off_hour);
+		sessionStorage.setItem("off_minute", off_minute);
+		location.reload();
+
+		console.log("수정된 퇴근 시간" + off_hour + ":" + off_minute);
+
+		location.reload();
+	});
+	
+
+	document.addEventListener("DOMContentLoaded", function() {
+
+		var today = new Date();
+		var now_hour = parseInt(('0' + today.getHours()).slice(-2));
+		var now_minute = parseInt(('0' + today.getMinutes()).slice(-2));
+
+		console.log("현재 시간" + now_hour + ":" + now_minute);
+		
+		if (sessionStorage.getItem('off_hour')==null || sessionStorage.getItem('off_minute')==null){
+			
+			startBtn.innerHTML = "퇴근 시간 설정하기"
+			
+		}
+		
+		else{
+			var off_hour = sessionStorage.getItem('off_hour');
+			var off_minute = sessionStorage.getItem('off_minute');
+
+			console.log("퇴근 시간" + off_hour + ":" + off_minute);
+			startBtn.innerHTML = "퇴근까지 ~ "
+			countdown('countdownC', 0, sessionStorage.getItem('off_hour')
+					- now_hour, sessionStorage.getItem('off_minute')
+					- now_minute, 10);
+		}
+
+	});
 
 
     function openNav() {
@@ -382,6 +427,44 @@
 		  
 	  })
     }
+    function deletelist2(name2,name){
+	      
+    	  $.ajax({
+  		  type :"POST",
+  		  url : "cancel_basket2",
+  		  dataType : "json",
+  		  data :{"name": name,
+  			  	  },
+  		  success:function(data){ //삭제 
+  			 
+  			  if(data == 1){ //삭제 성공
+  				  $(".list_item#"+name2).hide();
+  			  }else{
+  					alert('취소 실패 잠시후에 다시 시도하세요');
+                }
+  		  },
+  		  
+  	  })
+      }
+    function deletelist3(name2,name){
+	       
+    	  $.ajax({
+  		  type :"POST",
+  		  url : "cancel_basket3",
+  		  dataType : "json",
+  		  data :{"name": name,
+  			  	  },
+  		  success:function(data){ //삭제 
+  			 
+  			  if(data == 1){ //삭제 성공
+  				  $(".list_item#"+name2).hide();
+  			  }else{
+  					alert('취소 실패 잠시후에 다시 시도하세요');
+                }
+  		  },
+  		  
+  	  })
+      }
 //     }
     //메모 남기기
     function savememo(mylistno,memo){ //mylisthair니까 여기서 mylistno, memo를 가져오면 된다.
@@ -399,6 +482,17 @@
 		$.ajax({
 			type :"POST",
 			url : "savememo2",
+			dataType : "json",
+			data : {
+				"mylistno" : mylistno,
+				"memo" : memo
+			}
+		})
+    }
+    function savememo3(mylistno,memo){ //mylisthair니까 여기서 mylistno, memo를 가져오면 된다.
+		$.ajax({
+			type :"POST",
+			url : "savememo3",
 			dataType : "json",
 			data : {
 				"mylistno" : mylistno,

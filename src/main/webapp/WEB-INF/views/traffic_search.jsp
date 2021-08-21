@@ -66,74 +66,87 @@ ul {
 								</ul></li>
 							<li><a href="${pageContext.request.contextPath}/main.do">퇴근길</a>
 								<ul>
-                                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
-                                	<br/>
-                                </ul>
-                            </li>
-                            <li><a href="#">실내</a>
-                                <ul>
-                                    <li><a href="#">영화추천</a></li>
-                                    <li><a href="#">오늘의 쇼핑</a></li>
-                                    <li><a href="#">이직메이트</a></li>
-                                    <li><a href="#">커뮤니티</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">실외</a>
-                                <ul>
-                                    <li><a href="#">걷기장소추천</a></li>
-                                    <li><a href="#">커뮤니티</a></li>
-                                    <li><a href="#">문화</a></li>
-                                    <li><a href="#">체육</a></li>
-                                    <li><a href="#">교통정보보기</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
-                </div>
-                <div id="top_logo">
-                    <a href="${pageContext.request.contextPath}">
-                        <span class="top_text" style="color: black;">
-                            ZIGME
-                        </span>
-                    </a>
-                </div>
-                <div id="top_buttons">
-                    <button type="button" class="btn btn-default btn-xs">퇴근까지</button>
-                    <div id="button_time">
-                        <div class="countdown-bar" id="countdownC">
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div id="button_top">
-                    	<c:if test="${member == null}">
-                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
-                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/register.do'">회원가입</button>
-                   		</c:if>
-                   		<c:if test="${member != null}">
-                   		<div id = "login_top">
-                  		 <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">Mypage</button>
-                   		<button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
-                   		</div>
-                   		</c:if>
-                    </div>
-                    
-                </div>
-            </div>
-            <div id="header_nav">
-                <ul class="nav nav-tabs nav-justified">
-                    <li class="dropdown">
-                        <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        	<li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li> 
-                        </ul></li>
+									<li><a
+										href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
+									<li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
+									<li><a href="${pageContext.request.contextPath}/mylist.do">My
+											List</a></li>
+									<br />
+								</ul></li>
+							<li><a href="#">실내</a>
+								<ul>
+									<li><a href="#">영화추천</a></li>
+									<li><a href="#">오늘의 쇼핑</a></li>
+									<li><a href="#">이직메이트</a></li>
+									<li><a href="#">커뮤니티</a></li>
+								</ul></li>
+							<li><a href="#">실외</a>
+								<ul>
+									<li><a href="#">걷기장소추천</a></li>
+									<li><a href="#">커뮤니티</a></li>
+									<li><a href="#">문화</a></li>
+									<li><a href="#">체육</a></li>
+									<li><a href="#">교통정보보기</a></li>
+								</ul></li>
+						</ul>
+					</div>
+					<span style="font-size: 30px; cursor: pointer;" onclick="openNav()">&#9776;</span>
+				</div>
+				<div id="top_logo">
+					<a href="${pageContext.request.contextPath}"> <span
+						class="top_text" style="color: black;"> ZIGME </span>
+					</a>
+				</div>
+				<div id="top_buttons">
+					<button id="start" type="button" class="btn btn-default btn-xs">퇴근까지</button>
+					<div id="button_time">
+						<div class="countdown-bar" id="countdownC">
+							<div></div>
+							<div></div>
+						</div>
+
+
+
+
+
+					</div>
+					<div id="button_top">
+						<c:if test="${member == null}">
+							<button type="button" class="btn btn-success btn-xs"
+								onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
+							<button type="button" class="btn btn-warning btn-xs"
+								onclick="location.href='${pageContext.request.contextPath}/register.do'">회원가입</button>
+						</c:if>
+						<c:if test="${member != null}">
+							<div id="login_top">
+								<button type="button" class="btn btn-success btn-xs"
+									onclick="location.href='${pageContext.request.contextPath}/edit.do'">Mypage</button>
+								<button type="button" class="btn btn-warning btn-xs"
+									onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button>
+							</div>
+						</c:if>
+					</div>
+
+				</div>
+			</div>
+			<div id="header_nav">
+				<ul class="nav nav-tabs nav-justified">
+					<li class="dropdown"><a id="dropdownMenu1" href="#"
+						role="button" class="dropdown-toggle" data-toggle="dropdown"
+						style="font-size: 20px;">Beauty<b class="caret"></b></a>
+						<ul class="dropdown-menu" role="menu"
+							aria-labelledby="dropdownMenu1">
+							<li role="presentation"><a role="menuitem"
+								href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+							<li role="presentation"><a role="menuitem"
+								href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
+						</ul></li>
 					<li><a
 						href="${pageContext.request.contextPath}/music_select1.do"
 						style="font-size: 20px;">Music</a></li>
@@ -205,8 +218,8 @@ ul {
 			</div>
 			<span id="go_button"><button type="button"
 					<%-- onclick="location.href='${pageContext.request.contextPath}/traffic_result.do'" --%>
-					class=" btn btn-danger" style="width: 150px; font-size: 30px;">GO</button>
-			</span>
+					class=" btn btn-danger"
+					style="width: 150px; font-size: 30px;">GO</button> </span>
 		</div>
 
 
@@ -219,31 +232,29 @@ ul {
 		<!-- footer 시작 -->
 		<div id="footer">
 			<div id="footer_content">
-                    <div id="footer_img">
-                        <a href="${pageContext.request.contextPath}/"><img src="assets/img/zigme_logo_rm.png" /></a>
-                    </div>
-                    <div id="footer_text">
-                        <div class="footer_row">
-                            <span class="glyphicon glyphicon-thumbs-up"> Name </span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            PROJECT PORTFOLIO Big Data Class 8
-                        </div>
-                        <div class="footer_row">
-                            <span class="glyphicon glyphicon-user"> Developer </span>
-                            &nbsp;
-                            TEAM3
-                        </div>
-                        <div class="footer_row">
-                            <span class="glyphicon glyphicon-map-marker"> Address </span>
-                            &nbsp;
-                            서울 서초구 서초대로 77길 55, 에이프로스퀘어 2층 EZEN IT
-                        </div>
-                        <br />
-                        <address>copyright&copy; team_3 / All right reserved</address>
-                    </div>
-                </div>
+				<div id="footer_img">
+					<a href="${pageContext.request.contextPath}/"><img
+						src="assets/img/zigme_logo_rm.png" /></a>
+				</div>
+				<div id="footer_text">
+					<div class="footer_row">
+						<span class="glyphicon glyphicon-thumbs-up"> Name </span>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PROJECT PORTFOLIO Big Data Class 8
+					</div>
+					<div class="footer_row">
+						<span class="glyphicon glyphicon-user"> Developer </span> &nbsp;
+						TEAM3
+					</div>
+					<div class="footer_row">
+						<span class="glyphicon glyphicon-map-marker"> Address </span>
+						&nbsp; 서울 서초구 서초대로 77길 55, 에이프로스퀘어 2층 EZEN IT
+					</div>
+					<br />
+					<address>copyright&copy; team_3 / All right reserved</address>
+				</div>
+			</div>
 		</div>
-		
+
 		<!-- footer 끝-->
 	</div>
 	<!-- Javascript -->
@@ -254,19 +265,64 @@ ul {
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtI5NB3WvBMz5UjZTr5nl_hJf1oprH9bA&callback=initAutocomplete&libraries=places"
 		async defer></script>
 	<script type="text/javascript">
-		countdown('countdownC', 0, 0, 10, 10);
-		// Countdown Loading Bar
-		$config.loadingBars_width = 60;
-		$config.loadingBars_height = 15;
-		$config.loadingBars_border_color = 'orange';
-		$config.loadingBars_color = 'orange';
-		$config.loadingBars_background_color = 'lightblue';
+	var startBtn = document.getElementById('start');
+	
+	startBtn.addEventListener("click", function() {
 
-		// Countdown Timer
-		$config.timer_color = 'black';
-		$config.timer_font_weight = 700;
-		$config.timer_font = 'Verdana';
-		$config.timer_font_size = 9;
+		// 카운트다운을 처음 설정하는 경우
+		off_hour = parseInt(prompt("몇시에 퇴근하시나요? (24시 기준)"));
+		console.log(off_hour);
+		if ((typeof off_hour == "string") || (off_hour > 24)
+				|| (isNaN(off_hour))) {
+			alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
+			return
+
+		}
+
+		off_minute = parseInt(prompt("몇분에 퇴근하시나요?"));
+		if ((typeof off_minute != "number") || (off_minute > 60)
+				|| (isNaN(off_minute))) {
+			alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
+			return
+
+		}
+
+		sessionStorage.setItem("off_hour", off_hour);
+		sessionStorage.setItem("off_minute", off_minute);
+		location.reload();
+
+		console.log("수정된 퇴근 시간" + off_hour + ":" + off_minute);
+
+		location.reload();
+	});
+	
+
+	document.addEventListener("DOMContentLoaded", function() {
+
+		var today = new Date();
+		var now_hour = parseInt(('0' + today.getHours()).slice(-2));
+		var now_minute = parseInt(('0' + today.getMinutes()).slice(-2));
+
+		console.log("현재 시간" + now_hour + ":" + now_minute);
+		
+		if (sessionStorage.getItem('off_hour')==null || sessionStorage.getItem('off_minute')==null){
+			
+			startBtn.innerHTML = "퇴근 시간 설정하기"
+			
+		}
+		
+		else{
+			var off_hour = sessionStorage.getItem('off_hour');
+			var off_minute = sessionStorage.getItem('off_minute');
+
+			console.log("퇴근 시간" + off_hour + ":" + off_minute);
+			startBtn.innerHTML = "퇴근까지 ~ "
+			countdown('countdownC', 0, sessionStorage.getItem('off_hour')
+					- now_hour, sessionStorage.getItem('off_minute')
+					- now_minute, 10);
+		}
+
+	});
 
 		function openNav() {
 			document.getElementById("mySidenav").style.width = "250px";
@@ -277,7 +333,7 @@ ul {
 		}
 
 		function initAutocomplete() {
-			
+
 			// 좌표 정보 전역변수 설정
 			autocomplete_1 = new google.maps.places.Autocomplete((document
 					.getElementById('input_traffic_1')), {
@@ -291,41 +347,49 @@ ul {
 
 		}
 
-		$(document).on("click", "#go_button", function(e) {
-			e.preventDefault();
+		$(document)
+				.on(
+						"click",
+						"#go_button",
+						function(e) {
+							e.preventDefault();
 
-			if (document.getElementById('input_traffic_1').value != "") {
-				var place_1 = autocomplete_1.getPlace();
-				var place_1_lat = place_1.geometry.location.lat();
-				var place_1_lng = place_1.geometry.location.lng();
-				
-				if (document.getElementById('input_traffic_2').value != ""){
-					var place_2 = autocomplete_2.getPlace();
-					var place_2_lat = place_2.geometry.location.lat();
-					var place_2_lng = place_2.geometry.location.lng();
-					
-					get_url = "${pageContext.request.contextPath}/traffic_result.do?s_lat="
-						+ place_1_lat
-						+ "&s_lng="
-						+ place_1_lng
-						+ "&e_lat="
-						+ place_2_lat
-						+ "&e_lng=" 
-						+ place_2_lng;
-						
-					location.href = get_url;
-					
-				} else {
-					alert("도착지를 입력하세요.")
-				}
-					
-			} else {
-				alert("출발지를 입력하세요.")
-			}
-	
-			/* location.href='${pageContext.request.contextPath}/traffic_result.do' */
-			
-		});
+							if (document.getElementById('input_traffic_1').value != "") {
+								var place_1 = autocomplete_1.getPlace();
+								var place_1_lat = place_1.geometry.location
+										.lat();
+								var place_1_lng = place_1.geometry.location
+										.lng();
+
+								if (document.getElementById('input_traffic_2').value != "") {
+									var place_2 = autocomplete_2.getPlace();
+									var place_2_lat = place_2.geometry.location
+											.lat();
+									var place_2_lng = place_2.geometry.location
+											.lng();
+
+									get_url = "${pageContext.request.contextPath}/traffic_result.do?s_lat="
+											+ place_1_lat
+											+ "&s_lng="
+											+ place_1_lng
+											+ "&e_lat="
+											+ place_2_lat
+											+ "&e_lng="
+											+ place_2_lng;
+
+									location.href = get_url;
+
+								} else {
+									alert("도착지를 입력하세요.")
+								}
+
+							} else {
+								alert("출발지를 입력하세요.")
+							}
+
+							/* location.href='${pageContext.request.contextPath}/traffic_result.do' */
+
+						});
 	</script>
 </body>
 

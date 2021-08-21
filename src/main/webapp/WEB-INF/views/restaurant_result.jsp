@@ -43,7 +43,7 @@ String stars = request.getParameter("stars");
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">
-/* .fa-heart-o {
+.fa-heart-o {
 	color: red;
 	cursor: pointer;
 	font-size: 25px;
@@ -54,7 +54,7 @@ String stars = request.getParameter("stars");
 	cursor: pointer;
 	font-size: 25px;
 
-} */
+} 
 .jumbo_info>p>span {
 	font-size: 15px;
 	color: #323232;
@@ -139,109 +139,7 @@ String stars = request.getParameter("stars");
 	<!--bootstrap 반응형 사용을 위해 제일 상위 class를 container로 설정함 -->
 	<div class="container">
 		<!-- header 시작 -->
-<<<<<<< HEAD
-		<div id="header">
-			<div id="header_top">
-				<div id="top_menu">
-					<div id="mySidenav" class="sidenav">
-						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
-						<ul class="navi">
-							<li><a href="#">출근길</a>
-								<ul>
-									<li><a href="#">날씨/미세먼지</a></li>
-									<li><a href="#">코로나수치</a></li>
-									<li><a href="#">대중교통정보</a></li>
-									<li><a href="#">뉴스/주식정보</a></li>
-								</ul></li>
-							<li><a href="#">회사안</a>
-								<ul>
-									<li><a href="#">메뉴추천</a></li>
-									<li><a href="#">업무 주기능</a></li>
-									<li><a href="#">커뮤니티</a></li>
-									<li><a href="#">5분 스트레칭</a></li>
-								</ul></li>
-							<li><a href="main.html">퇴근길</a>
-								<ul>
-									<li><a
-										href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
-									<li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
-									<li><a href="${pageContext.request.contextPath}/mylist.do">My
-											List</a></li>
-									<br />
-								</ul></li>
-							<li><a href="#">실내</a>
-								<ul>
-									<li><a href="#">영화추천</a></li>
-									<li><a href="#">오늘의 쇼핑</a></li>
-									<li><a href="#">이직메이트</a></li>
-									<li><a href="#">커뮤니티</a></li>
-								</ul></li>
-							<li><a href="#">실외</a>
-								<ul>
-									<li><a href="#">걷기장소추천</a></li>
-									<li><a href="#">커뮤니티</a></li>
-									<li><a href="#">문화</a></li>
-									<li><a href="#">체육</a></li>
-									<li><a href="#">교통정보보기</a></li>
-								</ul></li>
-						</ul>
-					</div>
-					<span style="font-size: 30px; cursor: pointer;" onclick="openNav()">&#9776;</span>
-				</div>
-				<div id="top_logo">
-					<a href="${pageContext.request.contextPath}"> <span
-						class="top_text" style="color: black;"> ZIGME </span>
-					</a>
-				</div>
-				<div id="top_buttons">
-					<button type="button" class="btn btn-default btn-xs">퇴근까지</button>
-					<div id="button_time">
-						<div class="countdown-bar" id="countdownC">
-							<div></div>
-							<div></div>
-						</div>
-					</div>
-					<div id="button_top">
-						<button type="button" class="btn btn-success btn-xs"
-							onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
-						<button type="button" class="btn btn-warning btn-xs"
-							onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
-					</div>
-				</div>
-			</div>
-			<div id="header_nav">
-				<ul class="nav nav-tabs nav-justified">
-					<li class="dropdown"><a id="dropdownMenu1" href="#"
-						role="button" class="dropdown-toggle" data-toggle="dropdown"
-						style="font-size: 20px;">Beauty<b class="caret"></b></a>
-						<ul class="dropdown-menu" role="menu"
-							aria-labelledby="dropdownMenu1">
-							<li role="presentation"><a role="menuitem"
-								href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
-							<li role="presentation"><a role="menuitem"
-								href="${pageContext.request.contextPath}/nail_search.do">미용실</a></li>
-						</ul></li>
-					<li><a
-						href="${pageContext.request.contextPath}/music_select1.do"
-						style="font-size: 20px;">Music</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/restaurant_search.do"
-						style="font-size: 20px;">Restaurant</a></li>
-					<li><a href="${pageContext.request.contextPath}/nearby.do"
-						style="font-size: 20px;">Nearby</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/traffic_search.do"
-						style="font-size: 20px;">Transportation</a></li>
-					<li><a href="${pageContext.request.contextPath}/mylist.do"
-						style="font-size: 20px;">MyList</a></li>
-				</ul>
-=======
+
         <div id="header">
             <div id="header_top">
                 <div id="top_menu">
@@ -304,7 +202,7 @@ String stars = request.getParameter("stars");
                     </a>
                 </div>
                 <div id="top_buttons">
-                    <button type="button" class="btn btn-default btn-xs">퇴근까지</button>
+                    <button id="start" type="button" class="btn btn-default btn-xs">퇴근까지</button>
                     <div id="button_time">
                         <div class="countdown-bar" id="countdownC">
                             <div></div>
@@ -341,7 +239,7 @@ String stars = request.getParameter("stars");
                     <li><a href="${pageContext.request.contextPath}/traffic_search.do" style="font-size: 20px;">Transportation</a></li>
                     <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
                 </ul>
->>>>>>> 6c2262fda57f5bb4a66f9d939b78aa40a7db98a3
+
 				<div id="header_banner">
 					<div id="search_input" class="input-group">
 						<%-- 						<input type="text" class="form-control"
@@ -391,7 +289,8 @@ String stars = request.getParameter("stars");
 
 							<c:set var="name_2" value="${fn:replace(item.name,'&','')}" />
 							<c:set var="name_2" value="${fn:replace(name_2,' ','')}" />
-
+							<!-- 식당정보 필요함 -->
+							<c:set var="resno" value="${item.resno}" />
 							<br>
 							<br>
 							<br>
@@ -447,11 +346,13 @@ String stars = request.getParameter("stars");
 									</div>
 									<div id="popup_content_1">
 										<h3>
+										<input type ="hidden" id="${name_2}" value=${resno}>
 											<font style="color: #0077a3; font-size: 30px;">&nbsp;&nbsp;${name}&nbsp;&nbsp;</font>
 											<span style="font-size: 30px"> <i
 												class="fas fa-star fa-1x" style="color: #ffd400"></i>
 											</span> <span id='star' style="font-size: 18px" class="${name_2}">${stars}</span>
 											<span id='review' style="font-size: 15px" class="${name_2}">${review_count}</span>
+											<span id ="heart" class="${name_2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name_2}','${name}')" ></i> </span>
 										</h3>
 									</div>
 									<div id="popup_content_2">
@@ -576,11 +477,13 @@ String stars = request.getParameter("stars");
 											</div>
 											<div id="popup_content_1">
 												<h3>
+												<input type ="hidden" id="${name_2}" value=${resno}>
 													<font style="color: #0077a3; font-size: 30px;">&nbsp;&nbsp;${name}&nbsp;&nbsp;</font>
 													<span style="font-size: 30px"> <i
 														class="fas fa-star fa-1x" style="color: #ffd400"></i>
 													</span> <span id="star" class="${name_2}" style="font-size: 18px">${stars}</span>
 													<span id="review" class="${name_2}" style="font-size: 18px">${review_count}</span>
+													<span id ="heart" class="${name_2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name_2}','${name}')" ></i> </span>
 												</h3>
 											</div>
 											<div id="popup_content_2">
@@ -855,20 +758,68 @@ String stars = request.getParameter("stars");
 				}
 
 			}
+			
+			
+			
 
-			countdown('countdownC', 0, 0, 10, 10);
-			// Countdown Loading Bar
-			$config.loadingBars_width = 60;
-			$config.loadingBars_height = 15;
-			$config.loadingBars_border_color = 'orange';
-			$config.loadingBars_color = 'orange';
-			$config.loadingBars_background_color = 'lightblue';
-
-			// Countdown Timer
-			$config.timer_color = 'black';
-			$config.timer_font_weight = 700;
-			$config.timer_font = 'Verdana';
-			$config.timer_font_size = 9;
+			var startBtn = document.getElementById('start');
+			
+			startBtn.addEventListener("click", function() {
+		
+				// 카운트다운을 처음 설정하는 경우
+				off_hour = parseInt(prompt("몇시에 퇴근하시나요? (24시 기준)"));
+				console.log(off_hour);
+				if ((typeof off_hour == "string") || (off_hour > 24)
+						|| (isNaN(off_hour))) {
+					alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
+					return
+		
+				}
+		
+				off_minute = parseInt(prompt("몇분에 퇴근하시나요?"));
+				if ((typeof off_minute != "number") || (off_minute > 60)
+						|| (isNaN(off_minute))) {
+					alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
+					return
+		
+				}
+		
+				sessionStorage.setItem("off_hour", off_hour);
+				sessionStorage.setItem("off_minute", off_minute);
+				location.reload();
+		
+				console.log("수정된 퇴근 시간" + off_hour + ":" + off_minute);
+		
+				location.reload();
+			});
+			
+		
+			document.addEventListener("DOMContentLoaded", function() {
+		
+				var today = new Date();
+				var now_hour = parseInt(('0' + today.getHours()).slice(-2));
+				var now_minute = parseInt(('0' + today.getMinutes()).slice(-2));
+		
+				console.log("현재 시간" + now_hour + ":" + now_minute);
+				
+				if (sessionStorage.getItem('off_hour')==null || sessionStorage.getItem('off_minute')==null){
+					
+					startBtn.innerHTML = "퇴근 시간 설정하기"
+					
+				}
+				
+				else{
+					var off_hour = sessionStorage.getItem('off_hour');
+					var off_minute = sessionStorage.getItem('off_minute');
+		
+					console.log("퇴근 시간" + off_hour + ":" + off_minute);
+					startBtn.innerHTML = "퇴근까지 ~ "
+					countdown('countdownC', 0, sessionStorage.getItem('off_hour')
+							- now_hour, sessionStorage.getItem('off_minute')
+							- now_minute, 10);
+				}
+		
+			});
 
 			//사이드바 메뉴
 			function openNav() {
@@ -880,44 +831,90 @@ String stars = request.getParameter("stars");
 			}
 
 			//상세팝업
-			function openPopup(name) {
-				$('#popupLayer.' + name).bPopup({
-					iframeAttr : 'frameborder=”auto”',
-					iframeAttr : 'frameborder=”0"',
-					contentContainer : '.popupContent',
+        function openPopup(name) { 
 
-					onOpen : function() {
-					},
+        	var resno = document.getElementById(name).value;
+        	alert(resno);
+        	$.ajax({
+        		type : "POST",
+        		url : "checklist3",
+        		dataType : "json",
+        		data : {
+        			"resno" : resno
+        		},
+        	success : function(data){
+        		if(data){
+ 	  	              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+   	              	  $("#heart."+name).addClass("liked");
+        		}else{
+        			console.log('찜 목록아님')
+        		}
+        	},
 
-					onClose : function() {
-					}
-				}, function() {
-				});
-			}
-			/* 			//찜하트 구현 js
-			 $(document)
-			 .ready(
-			 function() {
-			 $("#heart")
-			 .click(
-			 function() {
-			 if ($("#heart").hasClass(
-			 "liked")) {
-			 $("#heart")
-			 .html(
-			 '<i class="fa fa-heart-o" aria-hidden="true"></i>');
-			 $("#heart")
-			 .removeClass(
-			 "liked");
-			 } else {
-			 $("#heart")
-			 .html(
-			 '<i class="fa fa-heart" aria-hidden="true"></i>');
-			 $("#heart").addClass(
-			 "liked");
-			 }
-			 });
-			 }); */
+        	})
+            $("#popupLayer."+name).bPopup({
+                    iframeAttr: 'frameborder=”auto”',
+                    iframeAttr: 'frameborder=”0',
+                    contentContainer: '.popupContent',
+
+                    onOpen: function() {},
+
+                    onClose: function() {}
+                },
+                function() {});
+            
+            
+        }
+	        //하트 색상 채우기
+			 function heart(name,a){
+	        	alert(a);
+			          $("#heart."+name).click(function(){
+			        	 
+			        	  //찜  취소
+				          if($("#heart."+name).hasClass("liked")){
+				        	  $.ajax({
+				        		  type :"POST",
+				        		  url : "cancel_basket3",
+				        		  dataType : "json",
+				        		  data :{"name": a},
+				        		  success:function(data){ //삭제 
+				        			  if(data == 1){ //삭제 성공
+					                      $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+					                      $("#heart."+name).removeClass("liked");
+				        			  }else{
+											alert('취소 실패 잠시후에 다시 시도하세요');
+				                      }
+				        		  },
+				        		  
+				        	  })
+			            }else{ //찜하기
+			          	  $.ajax({
+			        		  type : "POST",
+			        		  url : "add_basket3",
+			        		  dataType : "json",
+			        		  data : {"name" : a},
+			       	  		 success:function(data){
+			       	  			 	if(data==3){
+			       	  			 		alert('로그인 후 이용해주세요 로그인 페이지로 이동합니다');
+			       	  			 		location.replace("main.do");
+			       	  			 		return false;
+			       	  			 	}else if(data ==-1){
+			       	  			 		alert('저장 실패 다시 시도해주세요');
+			       	  			 		return false;
+			       	  			 	}
+			       	  			 	else{
+			       	  	              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+			       	              	  $("#heart."+name).addClass("liked");
+			       	  			 	}
+
+			        		  },
+			        		
+			        	  })
+			            }
+
+
+			          });
+			        }
 		</script>
 </body>
 

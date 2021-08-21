@@ -21,18 +21,18 @@ import project.spring.simpleproject.helper.RegexHelper;
 import project.spring.simpleproject.helper.WebHelper;
 
 import project.spring.simpleproject.model.Member;
-import project.spring.simpleproject.model.MylistNail;
-
-import project.spring.simpleproject.service.MylistNailService;
-import project.spring.simpleproject.service.NailService;
+import project.spring.simpleproject.model.MylistRestaurant;
+import project.spring.simpleproject.model.Restaurant;
+import project.spring.simpleproject.service.MylistRestaurantService;
+import project.spring.simpleproject.service.RestaurantService;
 
 
 @Controller
-public class MylistNailController {
+public class MylistRestaurantController {
 	@Autowired
-	NailService nailService;
+	RestaurantService restaurantService;
 	@Autowired
-	MylistNailService mylistnail;
+	MylistRestaurantService mylistrestaurant;
 	@Value("#{servletContext.contextPath}")
     String contextPath;
 	@Autowired
@@ -40,13 +40,13 @@ public class MylistNailController {
 	@Autowired
     WebHelper webHelper;
 	@Autowired
-	MylistNailService myListnailService;
+	MylistRestaurantService myListrestaurantService;
 	//찜하기
 	/*
 	 * Member session으로 로그인 여부 확인, span,i 태그의 클래스로 하트 채우기 결정 및 DB연동
 	 */
 	@ResponseBody
-	@RequestMapping(value="/add_basket2", method=RequestMethod.POST)
+	@RequestMapping(value="/add_basket3", method=RequestMethod.POST)
 	public int basketAction(@RequestParam(value="name", defaultValue="")String name,
 			HttpServletResponse response, HttpSession session, HttpServletRequest r)
 			throws Exception {
@@ -56,12 +56,13 @@ public class MylistNailController {
 			System.out.println("로그인안됨");
 			return 3; // 
 		}	
-		int user_no = member.getUserno();		
-		int nail_nailno = mylistnail.getNailno(name);		
+		int user_no = member.getUserno();
+		int restaurant_resno = mylistrestaurant.getResno(name);		
+
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("members_userno", user_no);
-		map.put("nail_nailno", nail_nailno);
-		int result = mylistnail.addList(map);
+		map.put("restaurant_resno", restaurant_resno);
+		int result = mylistrestaurant.addList(map);
 		if(result ==1) {
 			System.out.println("성공");
 		}else {
@@ -72,7 +73,7 @@ public class MylistNailController {
 	
 	//찜 취소
 	@ResponseBody
-	@RequestMapping(value="/cancel_basket2", method=RequestMethod.POST)
+	@RequestMapping(value="/cancel_basket3", method=RequestMethod.POST)
 	public int basket_cencel_Action(@RequestParam(value="name", defaultValue="")String name,
 			HttpServletResponse response, HttpSession session, HttpServletRequest r)
 			throws Exception {
@@ -81,14 +82,13 @@ public class MylistNailController {
 		if(member==null) {
 			
 			return 3; // 로그인 X
-		}
-		System.out.println("CONTROLLER******************************");
+		}	
 		int user_no = member.getUserno();		
-		int nail_nailno = mylistnail.getNailno(name);		
+		int restaurant_resno = mylistrestaurant.getResno(name);		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("members_userno", user_no);
-		map.put("nail_nailno", nail_nailno);
-		int result = mylistnail.cancelList(map);
+		map.put("restaurant_resno", restaurant_resno);
+		int result = mylistrestaurant.cancelList(map);
 		
 		return result;
 	}
@@ -97,31 +97,33 @@ public class MylistNailController {
 
 	//찜확인
 	@ResponseBody
-	@RequestMapping(value="/checklist2", method=RequestMethod.POST)
-	public Integer checklistAction(@RequestParam(value="nailno", defaultValue="")int nailno,
+	@RequestMapping(value="/checklist3", method=RequestMethod.POST)
+	public Integer checklistAction(@RequestParam(value="resno", defaultValue="")int restaurant_resno,
 			HttpServletResponse response, HttpSession session, HttpServletRequest r)
 			throws Exception {
+		
 		Member member = (Member) session.getAttribute("member");
 		Integer result = null;
 		if(member!=null) {
-			int user_no = member.getUserno();		
+			int user_no = member.getUserno();	
+			System.out.println("****************"+restaurant_resno);
 			Map<String, Integer> map = new HashMap<String, Integer>();
 			map.put("members_userno", user_no);
-			map.put("nail_nailno", nailno);
-			result = mylistnail.checklist(map);		
+			map.put("restaurant_resno", restaurant_resno);
+			result = mylistrestaurant.checklist(map);		
 		}			
 		return result;
 	}
 	//메모 저장
 	@ResponseBody
-	@RequestMapping(value="/savememo2", method=RequestMethod.POST)
+	@RequestMapping(value="/savememo3", method=RequestMethod.POST)
 	public int savememoAction(@RequestParam(value="mylistno", defaultValue="")int mylistno , @RequestParam(value="memo", defaultValue="")String memo) throws Exception {
-		MylistNail mylist =new MylistNail();
+		MylistRestaurant mylist =new MylistRestaurant();
 		
 		mylist.setMylistno(mylistno);
 		mylist.setMemo(memo);
 		
-		int result = mylistnail.updatememo(mylist);
+		int result = mylistrestaurant.updatememo(mylist);
 		return result;
 	}
 	

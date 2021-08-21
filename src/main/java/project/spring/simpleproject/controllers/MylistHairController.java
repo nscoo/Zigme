@@ -23,11 +23,15 @@ import project.spring.simpleproject.model.Hair;
 import project.spring.simpleproject.model.Member;
 import project.spring.simpleproject.model.MylistHair;
 import project.spring.simpleproject.model.MylistNail;
+import project.spring.simpleproject.model.MylistRestaurant;
 import project.spring.simpleproject.model.Nail;
+import project.spring.simpleproject.model.Restaurant;
 import project.spring.simpleproject.service.HairService;
 import project.spring.simpleproject.service.NailService;
+import project.spring.simpleproject.service.RestaurantService;
 import project.spring.simpleproject.service.MylistHairService;
 import project.spring.simpleproject.service.MylistNailService;
+import project.spring.simpleproject.service.MylistRestaurantService;
 
 @Controller
 public class MylistHairController {
@@ -36,7 +40,10 @@ public class MylistHairController {
 	@Autowired
 	NailService nailService;
 	@Autowired
+	RestaurantService restaurantService;
+	@Autowired
 	MylistHairService mylisthair;
+	@Autowired
 	@Value("#{servletContext.contextPath}")
     String contextPath;
 	@Autowired
@@ -47,6 +54,8 @@ public class MylistHairController {
 	MylistHairService myListHairService;
 	@Autowired
 	MylistNailService myListNailService;
+	@Autowired
+	MylistRestaurantService myListRestaurantService;
 	//찜하기
 	/*
 	 * Member session으로 로그인 여부 확인, span,i 태그의 클래스로 하트 채우기 결정 및 DB연동
@@ -167,7 +176,7 @@ public class MylistHairController {
 	      }
 
 	      
-	      //헤어 고유번호 array리스트로 합쳐주기!
+	      //네일 고유번호 array리스트로 합쳐주기!
 	      Nail input2 = new Nail();
 	      List<Nail> output_n = new ArrayList<Nail>();
 	      
@@ -180,12 +189,45 @@ public class MylistHairController {
 	         } catch(Exception e) { e.printStackTrace(); }
 	         
 	      }
+	      //식당
+	      MylistRestaurant input_r = new MylistRestaurant();
+	      input_r.setMembers_userno(userno);
+	      //
+	      List<MylistRestaurant> mylist_r = null;
+	      try {	
+	         mylist_r = myListRestaurantService.getMyListResList(input_r);
+	      } catch (Exception e) {         
+	         e.printStackTrace();
+	      }
 	      
+	      //userno 파라미터로 식당리스트에 저장된 memo 빼내기
+	      List<MylistRestaurant> mymemolist_r = null;
+	      try {
+	         mymemolist_r = myListRestaurantService.getMyListResMemoList(input_r);
+	      } catch (Exception e) {         
+	         e.printStackTrace();
+	      }
 
+	      
+	      //식당 고유번호 array리스트로 합쳐주기!
+	      Restaurant input3 = new Restaurant();
+	      List<Restaurant> output_r = new ArrayList<Restaurant>();
+	      
+	      for(int i=0; i<mylist_r.size(); i++) {
+
+	         input3.setResno(mylist_r.get(i).getRestaurant_resno());
+	         
+	         try {
+	            output_r.addAll(restaurantService.getResMyList(input3));
+	         } catch(Exception e) { e.printStackTrace(); }
+	      }
+	      model.addAttribute("output_r", output_r);
+	      model.addAttribute("mymemolist_r", mymemolist_r);
 	      model.addAttribute("output_h",output_h);
 	      model.addAttribute("mymemolist_h",mymemolist_h);
 	      model.addAttribute("output_n",output_n);
 	      model.addAttribute("mymemolist_n",mymemolist_n);
+
 	      return new ModelAndView("mylist");
 	      }
 	//찜확인

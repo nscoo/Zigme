@@ -116,7 +116,7 @@ function countdown($element, $daysAdd, $hoursAdd, $minutesAdd, $secondsAdd) {
  */
 function setTimer($distance) {
     // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor($distance / (1000 * 60 * 60 * 24));
+    
     var hours = Math.floor(($distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes = Math.floor(($distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor(($distance % (1000 * 60)) / 1000);
@@ -135,17 +135,8 @@ function setTimer($distance) {
 
     var timeLeft = hours + ":" + minutes + ":" + seconds;
 
-    if (days !== 0) {
 
-        if (days === 1) {
-            var timeLeftFinal = days + " day + " + timeLeft;
-        } else {
-            var timeLeftFinal = days + " days + " + timeLeft;
-        }
-
-    } else {
-        var timeLeftFinal = timeLeft;
-    }
+    var timeLeftFinal = timeLeft;
 
     return timeLeftFinal;
 }

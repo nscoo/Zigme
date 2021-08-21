@@ -27,7 +27,6 @@ public class MylistNailServiceImpl implements MylistNailService{
 	public int getNailno(String input) throws Exception {
 		// TODO Auto-generated method stub
 		int result =0;
-		System.out.println("impl ++++"+input+"*****");
 		try {
 			result = sqlSession.selectOne("MylistNailMapper.findNailno_nail",input);
 		}catch(Exception e) {
