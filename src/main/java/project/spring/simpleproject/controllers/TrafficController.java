@@ -39,37 +39,49 @@ public class TrafficController {
 	@Autowired
 	TrafficService trafficService;
 
-	@RequestMapping(value = "/traffic_search.do", method=RequestMethod.GET)
-    public ModelAndView traffic_search(Model model,HttpServletResponse response, HttpSession session, HttpServletRequest r) {
-       
-          Member member = (Member) session.getAttribute("member");
-          
-          if(member ==null) {
-               response.setCharacterEncoding("UTF-8");
-              response.setContentType("text/html;charset=UTF-8");
-                return webHelper.redirect("login.do", "로그인 후 이용바랍니다.");
-             }
-          
-          int userno = member.getUserno();
-       
-          Traffic input = new Traffic();
-       input.setMembers_userno(userno);
-       
-       List<Traffic> alias = null;
-       
-       try {
-          alias = trafficService.getTrafficList(input);
-       } catch (Exception e) {
-          e.printStackTrace();
-       }
-       
-       model.addAttribute("alias",alias);
-       
-       
-       
-       return new ModelAndView("traffic_search");
-       
-    }
+
+	   @RequestMapping(value = "/traffic_search.do", method=RequestMethod.GET)
+	   public ModelAndView traffic_search(Model model,HttpServletResponse response, HttpSession session, HttpServletRequest r) {
+		   
+		   	Member member = (Member) session.getAttribute("member");
+		   	
+		   	if(member ==null) {
+		           response.setCharacterEncoding("UTF-8");
+		          response.setContentType("text/html;charset=UTF-8");
+		            return webHelper.redirect("login.do", "로그인 후 이용바랍니다.");
+		         }
+		   	
+		   	int userno = member.getUserno();
+			
+		   	Traffic input = new Traffic();
+			input.setMembers_userno(userno);
+			
+			List<Traffic> alias = null;
+			
+			try {
+				alias = trafficService.getTrafficList(input);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			model.addAttribute("alias",alias);
+			
+			
+			
+	      return new ModelAndView("traffic_search");
+	      
+	   }
+
+	   @RequestMapping(value = "/traffic_result.do", method=RequestMethod.GET)
+	   public String traffic_result() throws Exception {
+	
+		   
+	      return "traffic_result";
+	      
+	   }
+
+
+
 	   
 	   //찜추가
 	   @ResponseBody
@@ -157,7 +169,7 @@ public class TrafficController {
 			Traffic input = new Traffic();
 			input.setMembers_userno(userno);
 			input.setS_lat(s_lat);
-			input.setS_lng(s_lat);
+			input.setS_lng(s_lng);
 			input.setE_lat(e_lat);
 			input.setE_lng(e_lng);
 			

@@ -155,7 +155,7 @@
                     </li>
                     <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
                     <li><a href="${pageContext.request.contextPath}/restaurant_search.do" style="font-size: 20px;">Restaurant</a></li>
-                    <li><a href="#" style="font-size: 20px;">Nearby</a></li>
+                    <li><a href="${pageContext.request.contextPath}/nearby.do" style="font-size: 20px;">Nearby</a></li>
                     <li><a href="${pageContext.request.contextPath}/traffic_search.do" style="font-size: 20px;">Transportation</a></li>
                     <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
                 </ul>
@@ -188,8 +188,8 @@
                         	   			<div class="container">
                                     		<div class="carousel-caption">
                                            		<p class="video-text">
-                                             		${item.snippet.title}
-                                            		<small>${item.snippet.publishedAt}</small>
+                                           		${item.snippet.title}
+
                                            		</p>
                                     		</div>
                                 		</div>
@@ -202,7 +202,7 @@
                                     		<div class="carousel-caption">
                                            		<p class="video-text">
                                              		${item.snippet.title}
-                                            		<small>${item.snippet.publishedAt}</small>
+                                            		
                                            		</p>
                                     		</div>
                                 		</div>
