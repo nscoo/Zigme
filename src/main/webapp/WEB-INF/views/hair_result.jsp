@@ -281,6 +281,7 @@ vertical-align: top;
            			
            			<c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
            			<c:set var="name2" value="${fn:replace(name2,' ','')}" />
+           			<c:set var="hairno" value="${item.hairno}"/>
            			<c:if test="${status.count<6 }">
            			
            			<div class="jumbotron">
@@ -327,7 +328,7 @@ vertical-align: top;
                             <image src="${photos}" width="240px" height="240px" />
                            
                         </div>
-                        <div id="popup_content_1">
+                        <div id="popup_content_1"><input type ="hidden" id="${name2}" value=${hairno}>
                             <h3>${name}&nbsp;<span id ="heart" class="${name2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name2}','${name}')" ></i> </span>                            </h3>
                         </div>
                         <div id="popup_content_2">
@@ -345,7 +346,6 @@ vertical-align: top;
                         
                         <div id="popup_content_3">
                         	<br/>
-                       
                         	<div id="info_ps" style="font-size: 20px;"><img src="assets/img/ps.png" width="25px" height="25px">&nbsp;${fn:substring(ps,0,35)}<br/>${fn:substring(ps,35,70)}<br/>${fn:substring(ps,70,105)}<br/>${fn:substring(ps,105,150)}</div><br/>
                          	<div id="info_etc" style="font-size: 20px;"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${fn:substring(menu,0,45)}<br/>${fn:substring(menu,45,90)}<br/>${fn:substring(menu,90,135)}<br/>${fn:substring(menu,135,180)}</div>
                         </div>
@@ -398,7 +398,8 @@ vertical-align: top;
            			
            			<c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
            			<c:set var="name2" value="${fn:replace(name2,' ','')}" />
-           		
+           			
+           			<c:set var="hairno" value="${item.hairno}"/>
            			
                     		<li>
                         		<a href="javascript:void(0);" style="text-decoration: none;" 
@@ -420,6 +421,7 @@ vertical-align: top;
                            
                         </div>
                         <div id="popup_content_1">
+                        	<input type ="hidden" id="${name2}" value=${hairno }>
                             <h3>${name}&nbsp;<span id=heart class="${name2}" ><i class="fa fa-heart-o" aria-hidden="true" onClick="heart('${name2}','${name}')"></i> </span>
                             </h3>
 
@@ -434,12 +436,13 @@ vertical-align: top;
                                 <div id="info_num" style="font-size: 20px;">&nbsp;${call}</div>
                                 <div id="info_add" style="font-size: 20px;"><img src="assets/img/add.png" width="20px" height="20px">&nbsp;${address}</div>
                                 
+                                
 
                         </div>
                         
                         <div id="popup_content_3">
                         	<br/>
-                       
+                       		<font id="sang" class={name2} style="font-size:0px;">${item.hairno}</font>
                         	<div id="info_ps" style="font-size: 20px;"><img src="assets/img/ps.png" width="25px" height="25px">&nbsp;${fn:substring(ps,0,35)}<br/>${fn:substring(ps,35,70)}<br/>${fn:substring(ps,70,150)}</div><br/>
                          	<div id="info_etc" style="font-size: 20px;"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${fn:substring(menu,0,45)}<br/>${fn:substring(menu,45,90)}<br/>${fn:substring(menu,90,150)}</div>
                         </div>
@@ -650,7 +653,26 @@ vertical-align: top;
             document.getElementById("mySidebar").style.display = "none";
         }
         //상세 팝업
-        function openPopup(name) {
+        function openPopup(name) { 
+
+        	var hairno = document.getElementById(name).value;
+        	$.ajax({
+        		type : "POST",
+        		url : "checklist",
+        		dataType : "json",
+        		data : {
+        			"hairno" : hairno
+        		},
+        	success : function(data){
+        		if(data){
+ 	  	              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+   	              	  $("#heart."+name).addClass("liked");
+        		}else{
+        			console.log('찜 목록아님')
+        		}
+        	},
+
+        	})
             $("#popupLayer."+name).bPopup({
                     iframeAttr: 'frameborder=”auto”',
                     iframeAttr: 'frameborder=”0',
@@ -661,6 +683,8 @@ vertical-align: top;
                     onClose: function() {}
                 },
                 function() {});
+            
+            
         }
         //찜하트 구현 js
         /*
@@ -693,6 +717,7 @@ vertical-align: top;
         //하트 색상 채우기
  function heart(name,a){
           $("#heart."+name).click(function(){
+        	 
         	  //찜  취소
 	          if($("#heart."+name).hasClass("liked")){
 	        	  $.ajax({
@@ -700,13 +725,12 @@ vertical-align: top;
 	        		  url : "cancel_basket",
 	        		  dataType : "json",
 	        		  data :{"name": a},
-	        		  success:function(data){
-	        			  if(data == 0){
-	        				  alert('삭제 실패 다시 시도해주세요');
-	        				  return false;
+	        		  success:function(data){ //삭제 
+	        			  if(data == 1){ //삭제 성공
+		                      $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+		                      $("#heart."+name).removeClass("liked");
 	        			  }else{
-	                      $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-	                      $("#heart."+name).removeClass("liked");
+								alert('취소 실패 잠시후에 다시 시도하세요');
 	                      }
 	        		  },
 	        		  

@@ -276,7 +276,7 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/script.js"></script>
     <script type="text/javascript">
-    countdown('countdownC', 0, 0, 10, 10);
+    countdown('countdownC', 0, 0, 10, 10); //일 시 분 초
     // Countdown Loading Bar
     $config.loadingBars_width = 60;
     $config.loadingBars_height = 15;
