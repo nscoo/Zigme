@@ -139,6 +139,7 @@ String stars = request.getParameter("stars");
 	<!--bootstrap 반응형 사용을 위해 제일 상위 class를 container로 설정함 -->
 	<div class="container">
 		<!-- header 시작 -->
+
 		<div id="header">
 			<div id="header_top">
 				<div id="top_menu">
@@ -166,7 +167,7 @@ String stars = request.getParameter("stars");
 									<li><a
 										href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
 									<li><a
-										href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
+										href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
 									<li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
@@ -199,7 +200,7 @@ String stars = request.getParameter("stars");
 					</a>
 				</div>
 				<div id="top_buttons">
-					<button id="start" type="button" class="btn btn-default btn-xs">퇴근 시간 설정하기</button>
+					<button id="start" type="button" class="btn btn-default btn-xs">퇴근까지</button>
 					<div id="button_time">
 						<div class="countdown-bar" id="countdownC">
 							<div></div>
@@ -207,11 +208,22 @@ String stars = request.getParameter("stars");
 						</div>
 					</div>
 					<div id="button_top">
-						<button type="button" class="btn btn-success btn-xs"
-							onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
-						<button type="button" class="btn btn-warning btn-xs"
-							onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
+						<c:if test="${member == null}">
+							<button type="button" class="btn btn-success btn-xs"
+								onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
+							<button type="button" class="btn btn-warning btn-xs"
+								onclick="location.href='${pageContext.request.contextPath}/register.do'">회원가입</button>
+						</c:if>
+						<c:if test="${member != null}">
+							<div id="login_top">
+								<button type="button" class="btn btn-success btn-xs"
+									onclick="location.href='${pageContext.request.contextPath}/edit.do'">Mypage</button>
+								<button type="button" class="btn btn-warning btn-xs"
+									onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button>
+							</div>
+						</c:if>
 					</div>
+
 				</div>
 			</div>
 			<div id="header_nav">
@@ -222,9 +234,9 @@ String stars = request.getParameter("stars");
 						<ul class="dropdown-menu" role="menu"
 							aria-labelledby="dropdownMenu1">
 							<li role="presentation"><a role="menuitem"
-								href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
+								href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
 							<li role="presentation"><a role="menuitem"
-								href="${pageContext.request.contextPath}/nail_search.do">미용실</a></li>
+								href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
 						</ul></li>
 					<li><a
 						href="${pageContext.request.contextPath}/music_select1.do"
@@ -240,106 +252,6 @@ String stars = request.getParameter("stars");
 					<li><a href="${pageContext.request.contextPath}/mylist.do"
 						style="font-size: 20px;">MyList</a></li>
 				</ul>
-
-        <div id="header">
-            <div id="header_top">
-                <div id="top_menu">
-                    <div id="mySidenav" class="sidenav">
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
-                        <ul class="navi">
-                            <li><a href="#">출근길</a>
-                                <ul>
-                                    <li><a href="#">날씨/미세먼지</a></li>
-                                    <li><a href="#">코로나수치</a></li>
-                                    <li><a href="#">대중교통정보</a></li>
-                                    <li><a href="#">뉴스/주식정보</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">회사안</a>
-                                <ul>
-                                    <li><a href="#">메뉴추천</a></li>
-                                    <li><a href="#">업무 주기능</a></li>
-                                    <li><a href="#">커뮤니티</a></li>
-                                    <li><a href="#">5분 스트레칭</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="main.html">퇴근길</a>
-                               <ul>
-                                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
-                                	<br/>
-                                </ul>
-                            </li>
-                            <li><a href="#">실내</a>
-                                <ul>
-                                    <li><a href="#">영화추천</a></li>
-                                    <li><a href="#">오늘의 쇼핑</a></li>
-                                    <li><a href="#">이직메이트</a></li>
-                                    <li><a href="#">커뮤니티</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">실외</a>
-                                <ul>
-                                    <li><a href="#">걷기장소추천</a></li>
-                                    <li><a href="#">커뮤니티</a></li>
-                                    <li><a href="#">문화</a></li>
-                                    <li><a href="#">체육</a></li>
-                                    <li><a href="#">교통정보보기</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
-                </div>
-                <div id="top_logo">
-                    <a href="${pageContext.request.contextPath}">
-                        <span class="top_text" style="color: black;">
-                            ZIGME
-                        </span>
-                    </a>
-                </div>
-                <div id="top_buttons">
-                    <button type="button" class="btn btn-default btn-xs">퇴근까지</button>
-                    <div id="button_time">
-                        <div class="countdown-bar" id="countdownC">
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div id="button_top">
-                    	<c:if test="${member == null}">
-                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
-                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/register.do'">회원가입</button>
-                   		</c:if>
-                   		<c:if test="${member != null}">
-                   		<div id = "login_top">
-                  		 <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">Mypage</button>
-                   		<button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
-                   		</div>
-                   		</c:if>
-                    </div>
-                    
-                </div>
-            </div>
-            <div id="header_nav">
-                <ul class="nav nav-tabs nav-justified">
-                    <li class="dropdown">
-                        <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        	<li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li> 
-                        </ul>
-                    </li>
-                    <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
-                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do" style="font-size: 20px;">Restaurant</a></li>
-                    <li><a href="${pageContext.request.contextPath}/nearby.do" style="font-size: 20px;">Nearby</a></li>
-                    <li><a href="${pageContext.request.contextPath}/traffic_search.do" style="font-size: 20px;">Transportation</a></li>
-                    <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
-                </ul>
 
 				<div id="header_banner">
 					<div id="search_input" class="input-group">
@@ -495,8 +407,7 @@ String stars = request.getParameter("stars");
 										<div id="graph_left" style="font-size: 18px">
 											<button onclick="statistics('${name_2}')"
 												class="btn btn-warning">직메의 점수 보기</button>
-											<br>
-											<br>
+											<br> <br>
 											<canvas id="avg_chart" class="${name_2}"></canvas>
 										</div>
 										<div id="graph_right" style="font-size: 18px">
@@ -642,29 +553,28 @@ String stars = request.getParameter("stars");
 				<!-- footer 시작 -->
 				<div id="footer">
 					<div id="footer_content">
-                    <div id="footer_img">
-                        <a href="${pageContext.request.contextPath}/"><img src="assets/img/zigme_logo_rm.png" /></a>
-                    </div>
-                    <div id="footer_text">
-                        <div class="footer_row">
-                            <span class="glyphicon glyphicon-thumbs-up"> Name </span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            PROJECT PORTFOLIO Big Data Class 8
-                        </div>
-                        <div class="footer_row">
-                            <span class="glyphicon glyphicon-user"> Developer </span>
-                            &nbsp;
-                            TEAM3
-                        </div>
-                        <div class="footer_row">
-                            <span class="glyphicon glyphicon-map-marker"> Address </span>
-                            &nbsp;
-                            서울 서초구 서초대로 77길 55, 에이프로스퀘어 2층 EZEN IT
-                        </div>
-                        <br />
-                        <address>copyright&copy; team_3 / All right reserved</address>
-                    </div>
-                </div>
+						<div id="footer_img">
+							<a href="${pageContext.request.contextPath}/"><img
+								src="assets/img/zigme_logo_rm.png" /></a>
+						</div>
+						<div id="footer_text">
+							<div class="footer_row">
+								<span class="glyphicon glyphicon-thumbs-up"> Name </span>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PROJECT PORTFOLIO Big Data Class
+								8
+							</div>
+							<div class="footer_row">
+								<span class="glyphicon glyphicon-user"> Developer </span> &nbsp;
+								TEAM3
+							</div>
+							<div class="footer_row">
+								<span class="glyphicon glyphicon-map-marker"> Address </span>
+								&nbsp; 서울 서초구 서초대로 77길 55, 에이프로스퀘어 2층 EZEN IT
+							</div>
+							<br />
+							<address>copyright&copy; team_3 / All right reserved</address>
+						</div>
+					</div>
 				</div>
 			</div>
 			<!-- footer 끝-->
@@ -907,12 +817,21 @@ String stars = request.getParameter("stars");
 				else{
 					var off_hour = sessionStorage.getItem('off_hour');
 					var off_minute = sessionStorage.getItem('off_minute');
-		
-					console.log("퇴근 시간" + off_hour + ":" + off_minute);
-					startBtn.innerHTML = "퇴근까지 ~ "
-					countdown('countdownC', 0, sessionStorage.getItem('off_hour')
-							- now_hour, sessionStorage.getItem('off_minute')
-							- now_minute, 10);
+						
+					if ((off_hour-now_hour)<=0 && (off_minute-now_minute)<=0){
+						console.log("문제 있다")
+						startBtn.innerHTML = "퇴근 시간 설정하기"
+						countdown('countdownC',0,0,0,0);
+						
+					} else {
+						console.log("퇴근 시간" + off_hour + ":" + off_minute);
+						startBtn.innerHTML = "퇴근까지 ~ "
+						countdown('countdownC', 0, sessionStorage.getItem('off_hour')
+								- now_hour, sessionStorage.getItem('off_minute')
+								- now_minute, 10);
+						
+					}
+
 				}
 		
 			});
