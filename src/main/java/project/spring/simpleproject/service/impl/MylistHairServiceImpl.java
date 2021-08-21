@@ -1,8 +1,10 @@
+
 package project.spring.simpleproject.service.impl;
 
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +28,7 @@ public class MylistHairServiceImpl implements MylistHairService{
 	public int getHairno(String input) throws Exception {
 		// TODO Auto-generated method stub
 		int result =0;
-		System.out.println("impl ++++"+input+"*****");
+		
 		try {
 			result = sqlSession.selectOne("MylistHairMapper.findHairno",input);
 		}catch(Exception e) {
@@ -38,7 +40,8 @@ public class MylistHairServiceImpl implements MylistHairService{
 	@Override
 	public int cancelList(Map<String, Integer> map) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		int result = sqlSession.delete("MylistHairMapper.deletelist", map);
+		return result;
 	}
 	
 	///
@@ -87,5 +90,23 @@ public class MylistHairServiceImpl implements MylistHairService{
 	      
 	      return result;
 	   }
+	@Override
+	public Integer checklist(Map<String, Integer> map) throws Exception {
+		// TODO Auto-generated method stub
+		Integer result = sqlSession.selectOne("MylistHairMapper.checklist",map);
+		System.out.println("+++++++++impll"+result);
+		return result;
+	}
+	@Override
+	public int updatememo(MylistHair mylist) throws Exception {
+		System.out.println("impl&&&&&&&&&&&&&&"+mylist.getMylistno());
+		int result = sqlSession.update("MylistHairMapper.updatememo", mylist);
+		return result;
+	}
+
+
+
+
 	
 }
+

@@ -150,57 +150,6 @@
                     <div role="tabpanel" class="tab-content tab-area">
                         <!-- tab1 -->
                         <div class="tab-pane search-tab-content active filter inner2--bottom" id="my_restaurant_list" style="overflow:auto; height:1400px; border: 1px solid #f89b00;">
-                            
-                            <c:choose>
-           					<%-- 조회 결과가 없는 경우 --%>
-           						<c:when test="${output == null || fn:length(output)==0 }">
-           							<h1>조회 결과가 없습니다.</h1>
-           						</c:when>
-           					<%-- 조회 결과가 있는 경우 --%>
-           						<c:otherwise>
-           					<%-- 조회 결과에 대한 반복 처리 --%>
-           							<c:forEach var="item" items="${output}" varStatus="status" >
-           							<c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
-           							<c:set var="name2" value="${fn:replace(name2,' ','')}" />
-			           					<div class="list_item" id="${name2}">
-			                                <div class="info_button">
-			                                    <a id="delete" class="${name2}" href="javascript:void(0)" onClick="deleteClick('${name2}')">X</a>
-			                                </div>
-			                                <div class="item_img">
-			                                    <image src="${item.photos}" width="280px" height="280px">
-			                                </div>
-			                                <div class="item_info">
-			                                    <div class="info_name">${item.name}</div>
-			                                    <div class="info_stars"><i class="fas fa-star" style="color:#ffd400; font-size:20px;"></i>
-			                                        <font size="3px">&nbsp;${item.stars}</font>
-			                                    </div>
-			                                    <div class="info_common">
-			                                        <div class="info_call"><img src="assets/img/call.png" width="13px" height="13px">&nbsp;전화번호 : ${item.call}</div>
-			                                        <div class="info_add"><img src="assets/img/add.png" width="13px" height="13px">&nbsp;주소 : ${item.address}</div>
-			                                        <div class="info_etc"><img src="assets/img/etc.png" width="13px" height="13px">&nbsp;${fn:substring(item.ps,0,30)}</div>
-			                                        <div class="info_time"><img src="assets/img/time.png" width="13px" height="13px">&nbsp;${item.times}</div>
-			                                    </div>
-			                                  
-			                                    <div class="info_memo">
-			                                        <form method="post" action="${pageContext.request.contextPath}/mylist.do">
-			                                            <input type="text" id="memo" name="memo" value="${mymemolist[status.index].memo}"/>
-			                                            <input type="submit" value="메모 수정">
-			                                        </form>
-			                                    </div>
-			                                    
-			                                </div>
-			                            </div>
-           							
-           							</c:forEach>
-           						</c:otherwise>
-           					</c:choose>
-           					
-                            
-                            
-                        </div>
-                        <!-- tab2 -->
-                        <div class="tab-pane search-tab-content" id="my_hair_list" style="overflow:auto; height:1400px; border: 1px solid #969BA6;">
-                            
                             <c:choose>
                           <%-- 조회 결과가 없는 경우 --%>
                              <c:when test="${output == null || fn:length(output)==0 }">
@@ -210,11 +159,15 @@
                              <c:otherwise>
                           <%-- 조회 결과에 대한 반복 처리 --%>
                                 <c:forEach var="item" items="${output}" varStatus="status" >
-                                   <div class="list_item">
+                                <c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
+                                <c:set var="name2" value="${fn:replace(name2,' ','')}" />
+                                
+                                   <div class="list_item" id="${name2}">
                                          <div class="info_button">
-                                             <a href="#">X</a>
+                                             <a id="delete" class="${name2}" href="javascript:void(0)" onClick="deletelist('${name2}','${item.name}')">X</a>
                                          </div>
                                          <div class="item_img">
+                                        	
                                              <image src="${item.photos}" width="280px" height="280px">
                                          </div>
                                          <div class="item_info">
@@ -225,14 +178,15 @@
                                              <div class="info_common">
                                                  <div class="info_call"><img src="assets/img/call.png" width="13px" height="13px">&nbsp;전화번호 : ${item.call}</div>
                                                  <div class="info_add"><img src="assets/img/add.png" width="13px" height="13px">&nbsp;주소 : ${item.address}</div>
-                                                 <div class="info_etc"><img src="assets/img/etc.png" width="13px" height="13px">&nbsp;${item.ps}</div>
+                                                 <div class="info_etc"><img src="assets/img/etc.png" width="13px" height="13px">&nbsp;${fn:substring(item.ps,0,30)}</div>
                                                  <div class="info_time"><img src="assets/img/time.png" width="13px" height="13px">&nbsp;${item.times}</div>
                                              </div>
-                                           
-                                             <div class="info_memo">
-                                                 <form method="post" action="${pageContext.request.contextPath}/mylist.do">
-                                                     <input type="text" id="memo" name="memo" value="${mymemolist[status.index].memo}"/>
-                                                     <input type="submit" value="메모 수정">
+                                          
+                                             <div class="info_memo" > 
+                                            
+                                                 <form method="post" id="memoform"  method ="post">
+                                                     <input type="text" id="memo${name2}" name="memo${name2}" value="${mymemolist[status.index].memo}"/>
+                                                     <input type="button" value="메모 수정" onclick="savememo('${mymemolist[status.index].mylistno}',document.getElementById('memo${name2}').value)" >
                                                  </form>
                                              </div>
                                              
@@ -244,8 +198,55 @@
                           </c:choose>
                             
                             
-                            
-                            
+                        </div>
+                        <!-- tab2 -->
+                        <div class="tab-pane search-tab-content" id="my_hair_list" style="overflow:auto; height:1400px; border: 1px solid #f89b00;">
+                            <c:choose>
+                          <%-- 조회 결과가 없는 경우 --%>
+                             <c:when test="${output == null || fn:length(output)==0 }">
+                                <h1>조회 결과가 없습니다.</h1>
+                             </c:when>
+                          <%-- 조회 결과가 있는 경우 --%>
+                             <c:otherwise>
+                          <%-- 조회 결과에 대한 반복 처리 --%>
+                                <c:forEach var="item" items="${output}" varStatus="status" >
+                                <c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
+                                <c:set var="name2" value="${fn:replace(name2,' ','')}" />
+                                
+                                   <div class="list_item" id="${name2}">
+                                         <div class="info_button">
+                                             <a id="delete" class="${name2}" href="javascript:void(0)" onClick="deletelist('${name2}','${item.name}')">X</a>
+                                         </div>
+                                         <div class="item_img">
+                                        	
+                                             <image src="${item.photos}" width="280px" height="280px">
+                                         </div>
+                                         <div class="item_info">
+                                             <div class="info_name">${item.name}</div>
+                                             <div class="info_stars"><i class="fas fa-star" style="color:#ffd400; font-size:20px;"></i>
+                                                 <font size="3px">&nbsp;${item.stars}</font>
+                                             </div>
+                                             <div class="info_common">
+                                                 <div class="info_call"><img src="assets/img/call.png" width="13px" height="13px">&nbsp;전화번호 : ${item.call}</div>
+                                                 <div class="info_add"><img src="assets/img/add.png" width="13px" height="13px">&nbsp;주소 : ${item.address}</div>
+                                                 <div class="info_etc"><img src="assets/img/etc.png" width="13px" height="13px">&nbsp;${fn:substring(item.ps,0,30)}</div>
+                                                 <div class="info_time"><img src="assets/img/time.png" width="13px" height="13px">&nbsp;${item.times}</div>
+                                             </div>
+                                          
+                                             <div class="info_memo" > 
+                                            
+                                                 <form method="post" id="memoform"  method ="post">
+                                                     <input type="text" id="memo${name2}" name="memo${name2}" value="${mymemolist[status.index].memo}"/>
+                                                     <input type="button" value="메모 수정" onclick="savememo('${mymemolist[status.index].mylistno}',document.getElementById('memo${name2}').value)" >
+                                                 </form>
+                                             </div>
+                                             
+                                         </div>
+                                     </div>
+                                
+                                </c:forEach>
+                             </c:otherwise>
+                          </c:choose>
                             
                             
                         </div>
@@ -395,13 +396,6 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/script.js"></script>
     <script type="text/javascript">
-    function deleteClick(name){
-    	$(".list_item#"+name).hide();
-    	
-    }
-    
-    
-    
     countdown('countdownC', 0, 0, 10, 10);
     // Countdown Loading Bar
     $config.loadingBars_width = 60;
@@ -424,6 +418,41 @@
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
+    //찜 취소
+    function deletelist(name2,name){
+    	       
+  	  $.ajax({
+		  type :"POST",
+		  url : "cancel_basket",
+		  dataType : "json",
+		  data :{"name": name,
+			  	  },
+		  success:function(data){ //삭제 
+			 
+			  if(data == 1){ //삭제 성공
+				  $(".list_item#"+name2).hide();
+			  }else{
+					alert('취소 실패 잠시후에 다시 시도하세요');
+              }
+		  },
+		  
+	  })
+    }
+
+    //메모 남기기
+    function savememo(mylistno,memo){ //mylisthair니까 여기서 mylistno, memo를 가져오면 된다.
+		$.ajax({
+			type :"POST",
+			url : "savememo",
+			dataType : "json",
+			data : {
+				"mylistno" : mylistno,
+				"memo" : memo
+			}
+		})
+    }
+    
+    
     </script>
 </body>
 

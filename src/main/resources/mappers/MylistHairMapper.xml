@@ -2,7 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="MylistHairMapper">
-
+	<!-- Beans 객체이름(id)과 클래스type을 명시 -->
+	<resultMap type="project.spring.simpleproject.model.MylistHair" id="myhairlist">
+		<!-- Beans의 property 이름과 대상 테이블의 column연결 -->
+		<result property="mylistno" column="mylistno" />
+		<result property="members_userno" column="members_userno" />
+		<result property="hair_hairno" column="hair_hairno" />
+		<result property="memo" column="memo" />
+	</resultMap>
 	<!-- 회원 -->
 	<resultMap id="memberMap" type="project.spring.simpleproject.model.Member" >
 	<result property="userno" column="userno" />
@@ -30,13 +37,7 @@
 	<result property="photos" column="photos" />
 	<result property="menu" column="menu" />
 	</resultMap>
-	<resultMap type="project.spring.simpleproject.model.MylistHair" id ="mylisthairMap">
-	<result property="mylistno" column="mylistno"/>
-	<result property="members_userno" column="members_userno"/>
-	<result property="hair_hairno" column="hair_hairno"/>
-	<result property="memo" column="memo"/>
-	
-	</resultMap>
+
 	<!-- Hairno 조회 -->
 	<select id="findHairno" parameterType="string" resultType="int">
 		SELECT hairno FROM hair 
@@ -46,24 +47,30 @@
 	</select>
 	
 	<!-- 찜하기 -->
-	<select id="find">
-	
-	</select>
     <insert id="addList"
         useGeneratedKeys="true"
         keyProperty="userno"
         parameterType="hashmap"
         >
         INSERT INTO `mylist_hair` (`members_userno`, `hair_hairno`) 
-        VALUES (#{item1}, #{item2});
+        VALUES (#{members_userno}, #{hair_hairno});
     </insert>
-	   <select id="selectMyList" parameterType="project.spring.simpleproject.model.MylistHair" resultMap="mylisthairMap">
+    <!-- mylist 조회 -->
+	   <select id="selectMyList" parameterType="project.spring.simpleproject.model.MylistHair" resultMap="myhairlist">
       SELECT hair_hairno FROM mylist_hair where members_userno=#{members_userno}
-
    </select>
-   
-   <select id="selectMyMemoList" parameterType="project.spring.simpleproject.model.MylistHair" resultMap="mylisthairMap">
-      SELECT memo, mylistno FROM mylist_hair where members_userno=#{members_userno}
-
+   <!-- mylist memo 조회 -->
+   <select id="selectMyMemoList" parameterType="project.spring.simpleproject.model.MylistHair" resultMap="myhairlist">
+      SELECT mylistno, memo FROM mylist_hair where members_userno=#{members_userno}
    </select>
+   <!-- 찜 취소하기  -->
+   <delete id="deletelist" parameterType="hashmap">
+   	DELETE  FROM mylist_hair WHERE members_userno=#{members_userno} AND hair_hairno =#{hair_hairno}
+   </delete> 
+	<select id="checklist" parameterType="hashmap" resultType="Integer">
+	SELECT * FROM mylist_hair WHERE members_userno=#{members_userno} AND hair_hairno =#{hair_hairno}
+	</select>
+	<update id ="updatememo"  parameterType="project.spring.simpleproject.model.MylistHair">
+		UPDATE mylist_hair SET memo = #{memo} WHERE mylistno = #{mylistno}
+	</update>
 </mapper>

@@ -7,9 +7,9 @@
 <%
 request.setCharacterEncoding("UTF-8");
 
+// 검색 페이지에서 선택한 옵션들 값
 String loc = request.getParameter("loc");
 String food = request.getParameter("food");
-String input_keyword = request.getParameter("input_keyword");
 String review_count = request.getParameter("review_count");
 String stars = request.getParameter("stars");
 
@@ -55,29 +55,28 @@ String stars = request.getParameter("stars");
 	font-size: 25px;
 
 } */
-
 .jumbo_info>p>span {
-    font-size: 15px;
-    color: #323232;
-    width : 400px;
+	font-size: 15px;
+	color: #323232;
+	width: 400px;
 }
 
 .jumbo_img>img {
-    width: 350px;
-    height: 220px;
-    object-fit: cover;
-    margin-top: 15px;
-    margin-right: 30px;
+	width: 350px;
+	height: 220px;
+	object-fit: cover;
+	margin-top: 15px;
+	margin-right: 30px;
 }
 
 .container .jumbotron {
-    padding-left: 30px;
-    padding-right: 60px;
-    padding-top: 30px;
-    padding-bottom: 40px;
-    background-color: #eee;
-    width: 1000px;
-    margin: 0 auto;
+	padding-left: 30px;
+	padding-right: 60px;
+	padding-top: 30px;
+	padding-bottom: 40px;
+	background-color: #eee;
+	width: 1000px;
+	margin: 0 auto;
 }
 
 .shop_title {
@@ -85,16 +84,16 @@ String stars = request.getParameter("stars");
 }
 
 #popupContent>#popup_content_2>div>div {
-    font-size: 18px;
-    height: 50px;
+	font-size: 18px;
+	height: 50px;
 }
 
 #popupContent>#popup_content_2 {
-    height: 300px;
-    border-bottom: 4px solid #cccccc;
-    padding-left: 50px;
-    padding-top: 30px;
-    vertical-align: top;
+	height: 300px;
+	border-bottom: 4px solid #cccccc;
+	padding-left: 50px;
+	padding-top: 30px;
+	vertical-align: top;
 }
 
 #popupContent>#popup_content_3 {
@@ -102,15 +101,37 @@ String stars = request.getParameter("stars");
 	padding-left: 50px;
 	height: 140px;
 }
-#popupContent>#popup_content_3>.info_menu{
+
+#popupContent>#popup_content_3>.info_menu {
 	height: 50px;
-	
 }
 
-#popupContent>#popup_content_3>.info_menu>img>a{
+#popupContent>#popup_content_3>.info_menu>img>a {
 	font-size: 18px;
 }
 
+#popupContent>#popup_content_4 {
+	vertical-align: top;
+	height: 300px;
+	padding-left: 62px;
+	padding-top: 30px;
+	font-size: 20px;
+}
+
+#popupContent>#popup_content_4>#graph_left {
+	vertical-align: top;
+	width: 300px;
+}
+
+#popupContent>#popup_content_4>#graph_right {
+	vertical-align: top;
+	width: 300px;
+	display: inline-block;
+}
+
+#popup_content_4>button {
+	display: inline-block;
+}
 </style>
 </head>
 
@@ -118,6 +139,109 @@ String stars = request.getParameter("stars");
 	<!--bootstrap 반응형 사용을 위해 제일 상위 class를 container로 설정함 -->
 	<div class="container">
 		<!-- header 시작 -->
+<<<<<<< HEAD
+		<div id="header">
+			<div id="header_top">
+				<div id="top_menu">
+					<div id="mySidenav" class="sidenav">
+						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
+						<ul class="navi">
+							<li><a href="#">출근길</a>
+								<ul>
+									<li><a href="#">날씨/미세먼지</a></li>
+									<li><a href="#">코로나수치</a></li>
+									<li><a href="#">대중교통정보</a></li>
+									<li><a href="#">뉴스/주식정보</a></li>
+								</ul></li>
+							<li><a href="#">회사안</a>
+								<ul>
+									<li><a href="#">메뉴추천</a></li>
+									<li><a href="#">업무 주기능</a></li>
+									<li><a href="#">커뮤니티</a></li>
+									<li><a href="#">5분 스트레칭</a></li>
+								</ul></li>
+							<li><a href="main.html">퇴근길</a>
+								<ul>
+									<li><a
+										href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
+									<li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
+									<li><a href="${pageContext.request.contextPath}/mylist.do">My
+											List</a></li>
+									<br />
+								</ul></li>
+							<li><a href="#">실내</a>
+								<ul>
+									<li><a href="#">영화추천</a></li>
+									<li><a href="#">오늘의 쇼핑</a></li>
+									<li><a href="#">이직메이트</a></li>
+									<li><a href="#">커뮤니티</a></li>
+								</ul></li>
+							<li><a href="#">실외</a>
+								<ul>
+									<li><a href="#">걷기장소추천</a></li>
+									<li><a href="#">커뮤니티</a></li>
+									<li><a href="#">문화</a></li>
+									<li><a href="#">체육</a></li>
+									<li><a href="#">교통정보보기</a></li>
+								</ul></li>
+						</ul>
+					</div>
+					<span style="font-size: 30px; cursor: pointer;" onclick="openNav()">&#9776;</span>
+				</div>
+				<div id="top_logo">
+					<a href="${pageContext.request.contextPath}"> <span
+						class="top_text" style="color: black;"> ZIGME </span>
+					</a>
+				</div>
+				<div id="top_buttons">
+					<button type="button" class="btn btn-default btn-xs">퇴근까지</button>
+					<div id="button_time">
+						<div class="countdown-bar" id="countdownC">
+							<div></div>
+							<div></div>
+						</div>
+					</div>
+					<div id="button_top">
+						<button type="button" class="btn btn-success btn-xs"
+							onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
+						<button type="button" class="btn btn-warning btn-xs"
+							onclick="location.href='${pageContext.request.contextPath}/edit.do'">mypage</button>
+					</div>
+				</div>
+			</div>
+			<div id="header_nav">
+				<ul class="nav nav-tabs nav-justified">
+					<li class="dropdown"><a id="dropdownMenu1" href="#"
+						role="button" class="dropdown-toggle" data-toggle="dropdown"
+						style="font-size: 20px;">Beauty<b class="caret"></b></a>
+						<ul class="dropdown-menu" role="menu"
+							aria-labelledby="dropdownMenu1">
+							<li role="presentation"><a role="menuitem"
+								href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
+							<li role="presentation"><a role="menuitem"
+								href="${pageContext.request.contextPath}/nail_search.do">미용실</a></li>
+						</ul></li>
+					<li><a
+						href="${pageContext.request.contextPath}/music_select1.do"
+						style="font-size: 20px;">Music</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/restaurant_search.do"
+						style="font-size: 20px;">Restaurant</a></li>
+					<li><a href="${pageContext.request.contextPath}/nearby.do"
+						style="font-size: 20px;">Nearby</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/traffic_search.do"
+						style="font-size: 20px;">Transportation</a></li>
+					<li><a href="${pageContext.request.contextPath}/mylist.do"
+						style="font-size: 20px;">MyList</a></li>
+				</ul>
+=======
         <div id="header">
             <div id="header_top">
                 <div id="top_menu">
@@ -217,9 +341,10 @@ String stars = request.getParameter("stars");
                     <li><a href="${pageContext.request.contextPath}/traffic_search.do" style="font-size: 20px;">Transportation</a></li>
                     <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
                 </ul>
+>>>>>>> 6c2262fda57f5bb4a66f9d939b78aa40a7db98a3
 				<div id="header_banner">
 					<div id="search_input" class="input-group">
-<%-- 						<input type="text" class="form-control"
+						<%-- 						<input type="text" class="form-control"
 							placeholder=<%=input_keyword%>> <span
 							class="input-group-btn">
 							<button class="btn btn-default" type="button">
@@ -232,12 +357,12 @@ String stars = request.getParameter("stars");
 			<!-- header 끝-->
 			<!-- 식당 검색결과 부분 시작-->
 			<div class="container">
-				<br>
-				<br>
+				<br> <br>
 				<h1 style="text-align: center;">Best5</h1>
 				<br />
 
 				<c:choose>
+
 					<%-- 조회 결과가 없는 경우 --%>
 					<c:when test="${output == null || fn:length(output)==0 }">
 						<h1>조회 결과가 없습니다.</h1>
@@ -266,7 +391,7 @@ String stars = request.getParameter("stars");
 
 							<c:set var="name_2" value="${fn:replace(item.name,'&','')}" />
 							<c:set var="name_2" value="${fn:replace(name_2,' ','')}" />
-							
+
 							<br>
 							<br>
 							<br>
@@ -277,37 +402,38 @@ String stars = request.getParameter("stars");
 								</div>
 								<div class="shop_title">
 									<a href="javascript:void(0);" style="text-decoration: none;"
-										onClick="openPopup('${name_2}')">
-										<font style="color: #0077a3; font-size: 23px;">&nbsp;&nbsp;${name}&nbsp;&nbsp;</font>
-										<span style="font-size: 30px">
-										<i class="fas fa-star fa-1x" style="color:#ffd400"></i>
-										</span>
-										<span style="font-size: 18px">${stars}</span>
-										<span style="font-size: 15px">(${review_count})</span>
+										onClick="openPopup('${name_2}')"> <font
+										style="color: #0077a3; font-size: 23px;">&nbsp;&nbsp;${name}&nbsp;&nbsp;</font>
+										<span style="font-size: 30px"> <i
+											class="fas fa-star fa-1x" style="color: #ffd400"></i>
+									</span> <span style="font-size: 18px">${stars}</span> <span
+										style="font-size: 15px">(${review_count})</span>
 									</a>
-									
+
 								</div>
 								<div class="jumbo_info">
 									<p>
 										<br /> <img src="assets/img/call.png" width="20px"
-											height="20px">&nbsp;&nbsp;&nbsp;&nbsp;<span>전화번호 : ${call}</span>
+											height="20px">&nbsp;&nbsp;&nbsp;&nbsp;<span>전화번호
+											: ${call}</span>
 									</p>
 									<p>
 										<img src="assets/img/placeholder-filled-point.png"
-											width="25px" height="25px">&nbsp;&nbsp;&nbsp;<span>주소 : </span><span  style="font-size:12px;">${address}</span>
+											width="25px" height="25px">&nbsp;&nbsp;&nbsp;<span>주소
+											: </span><span style="font-size: 12px;">${address}</span>
 									</p>
 									<p>
 										<img src="assets/img/clock.png" alt="시간" width="25px"
 											height="25px"> &nbsp;&nbsp;<span>${times}</span>
 									</p>
 									<p>
-										 <img src="assets/img/clipboard.png" width="25px"
-											height="25px"> <a href="${menu_1}"
-											referrerpolicy="no-referrer" target="_blank"><span style="font-size:15px; color:skyblue;">&nbsp;&nbsp;-> 메뉴판 이미지 링크</span></a>
+										<img src="assets/img/clipboard.png" width="25px" height="25px">
+										<a href="${menu_1}" referrerpolicy="no-referrer"
+											target="_blank"><span
+											style="font-size: 15px; color: skyblue;">&nbsp;&nbsp;->
+												메뉴판 이미지 링크</span></a>
 								</div>
-								<div class="jumbo_info">
-
-								</div>
+								<div class="jumbo_info"></div>
 							</div>
 
 							<div id="popupLayer" class="${name_2}">
@@ -320,12 +446,12 @@ String stars = request.getParameter("stars");
 											referrerpolicy="no-referrer" />
 									</div>
 									<div id="popup_content_1">
-										<h3><font style="color: #0077a3; font-size: 30px;">&nbsp;&nbsp;${name}&nbsp;&nbsp;</font>
-											<span style="font-size: 30px">
-												<i class="fas fa-star fa-1x" style="color:#ffd400"></i>
-											</span>
-											<span style="font-size: 18px">${stars}</span>
-											<span style="font-size: 15px">(${review_count})</span>
+										<h3>
+											<font style="color: #0077a3; font-size: 30px;">&nbsp;&nbsp;${name}&nbsp;&nbsp;</font>
+											<span style="font-size: 30px"> <i
+												class="fas fa-star fa-1x" style="color: #ffd400"></i>
+											</span> <span id='star' style="font-size: 18px" class="${name_2}">${stars}</span>
+											<span id='review' style="font-size: 15px" class="${name_2}">${review_count}</span>
 										</h3>
 									</div>
 									<div id="popup_content_2">
@@ -347,8 +473,8 @@ String stars = request.getParameter("stars");
 												: ${ps}
 											</div>
 											<div id="info_tags" style="padding-top: 3px;">
-												<img src="assets/img/tag.png" width="25px" height="25px">&nbsp;&nbsp;검색 키워드
-												: ${tags}
+												<img src="assets/img/tag.png" width="25px" height="25px">&nbsp;&nbsp;검색
+												키워드 : ${tags}
 											</div>
 										</div>
 									</div>
@@ -356,23 +482,29 @@ String stars = request.getParameter("stars");
 										<div class="info_menu">
 											<img src="assets/img/etc.png" width="25px" height="25px">&nbsp;
 											<a href="${menu_1}" referrerpolicy="no-referrer"
-												target="_blank" style="font-size:18px; color:skyblue;">-> 메뉴판 이미지 링크 1</a>
+												target="_blank" style="font-size: 18px; color: skyblue;">->
+												메뉴판 이미지 링크 1</a>
 										</div>
 										<div class="info_menu">
 											<img src="assets/img/etc.png" width="25px" height="25px">&nbsp;
 											<a href="${menu_2}" referrerpolicy="no-referrer"
-												target="_blank" style="font-size:18px; color:skyblue;">-> 메뉴판 이미지 링크 2</a>
+												target="_blank" style="font-size: 18px; color: skyblue;">->
+												메뉴판 이미지 링크 2</a>
 										</div>
 									</div>
 									<div id="popup_content_4">
 										<div id="graph_left" style="font-size: 18px">
-											통계 결과 <img src="assets/img/graph1.png" width="280"
-												height="220px">
+											<button onclick="statistics('${name_2}')"
+												class="btn btn-warning">직메의 점수 보기</button>
+											<br>
+											<br>
+											<canvas id="avg_chart" class="${name_2}"></canvas>
 										</div>
 										<div id="graph_right" style="font-size: 18px">
-											나이대별 선호도 <img src="assets/img/graph2.png" width="280"
-												height="220px">
+											<font id="visualize" class="${name_2}"
+												style="font-size: 20px; color: #404040; text-align: center;"></font>
 										</div>
+
 									</div>
 								</div>
 								<div class="b-close"></div>
@@ -380,9 +512,15 @@ String stars = request.getParameter("stars");
 
 
 						</c:forEach>
-					</c:otherwise>
 
+					</c:otherwise>
 				</c:choose>
+
+
+
+
+
+
 				<br />
 				<hr />
 				<div id="normal_list">
@@ -395,7 +533,8 @@ String stars = request.getParameter("stars");
 							<%-- 조회 결과가 있는 경우 --%>
 							<c:otherwise>
 								<%-- 조회 결과에 대한 반복 처리 --%>
-								<c:forEach var="item" items="${output}" varStatus="status" begin="6" end="100">
+								<c:forEach var="item" items="${output}" varStatus="status"
+									begin="6" end="100">
 									<c:set var="loc" value="${item.loc}" />
 									<c:set var="subject" value="${item.subject}" />
 									<c:set var="resno" value="${item.resno}" />
@@ -420,9 +559,9 @@ String stars = request.getParameter("stars");
 									<li><a href="javascript:void(0);"
 										style="text-decoration: none;"
 										onClick="openPopup('${name_2}')"> <span class="thumb">
-												<img src="${photo_1}" alt="이미지1" width="270px" 
-												height="150px" referrerpolicy="no-referrer"/>
-										</span> <span class="text" style="font-size:15px;">${name}</span>
+												<img src="${photo_1}" alt="이미지1" width="270px"
+												height="150px" referrerpolicy="no-referrer" />
+										</span> <span class="text" style="font-size: 15px;">${name}</span>
 									</a></li>
 
 									<%-- 일반 가게 리스트 팝업 --%>
@@ -436,11 +575,12 @@ String stars = request.getParameter("stars");
 													referrerpolicy="no-referrer" />
 											</div>
 											<div id="popup_content_1">
-												<h3><font style="color: #0077a3; font-size: 30px;">&nbsp;&nbsp;${name}&nbsp;&nbsp;</font>
-													<span style="font-size: 30px">
-														<i class="fas fa-star fa-1x" style="color:#ffd400"></i>
-													</span>
-													<span style="font-size: 18px">${stars}</span>
+												<h3>
+													<font style="color: #0077a3; font-size: 30px;">&nbsp;&nbsp;${name}&nbsp;&nbsp;</font>
+													<span style="font-size: 30px"> <i
+														class="fas fa-star fa-1x" style="color: #ffd400"></i>
+													</span> <span id="star" class="${name_2}" style="font-size: 18px">${stars}</span>
+													<span id="review" class="${name_2}" style="font-size: 18px">${review_count}</span>
 												</h3>
 											</div>
 											<div id="popup_content_2">
@@ -462,8 +602,8 @@ String stars = request.getParameter("stars");
 														: ${ps}
 													</div>
 													<div id="info_tags" style="padding-top: 3px;">
-														<img src="assets/img/tag.png" width="25px" height="25px">&nbsp;&nbsp;검색 키워드
-														: ${tags}
+														<img src="assets/img/tag.png" width="25px" height="25px">&nbsp;&nbsp;검색
+														키워드 : ${tags}
 													</div>
 												</div>
 											</div>
@@ -471,22 +611,25 @@ String stars = request.getParameter("stars");
 												<div class="info_menu">
 													<img src="assets/img/etc.png" width="25px" height="25px">&nbsp;
 													<a href="${menu_1}" referrerpolicy="no-referrer"
-														target="_blank" style="font-size:18px; color:skyblue;">-> 메뉴판 이미지 링크 1</a>
+														target="_blank" style="font-size: 18px; color: skyblue;">->
+														메뉴판 이미지 링크 1</a>
 												</div>
 												<div class="info_menu">
 													<img src="assets/img/etc.png" width="25px" height="25px">&nbsp;
 													<a href="${menu_2}" referrerpolicy="no-referrer"
-														target="_blank" style="font-size:18px; color:skyblue;">-> 메뉴판 이미지 링크 2</a>
+														target="_blank" style="font-size: 18px; color: skyblue;">->
+														메뉴판 이미지 링크 2</a>
 												</div>
 											</div>
 											<div id="popup_content_4">
+												<button onclick="statistics('${name_2}')"
+													class="btn btn-warning">직메의 점수 보기</button>
 												<div id="graph_left" style="font-size: 18px">
-													통계 결과 <img src="assets/img/graph1.png" width="280"
-														height="220px">
+													<canvas id="avg_chart" class="${name_2}"></canvas>
 												</div>
 												<div id="graph_right" style="font-size: 18px">
-													나이대별 선호도 <img src="assets/img/graph2.png" width="280"
-														height="220px">
+													<font id="visualize" class="${name_2}"
+														style="font-size: 20px; color: #404040; text-align: center;"></font>
 												</div>
 											</div>
 										</div>
@@ -527,13 +670,192 @@ String stars = request.getParameter("stars");
 			</div>
 			<!-- footer 끝-->
 		</div>
-		
+
 		<!-- Javascript -->
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
 		<script src="assets/js/script.js"></script>
 		<script type="text/javascript" src="assets/js/bpopup.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script type="text/javascript">
+			function statistics(name) {
+				var ctx = $("#avg_chart."+name)[0].getContext('2d');
+                var star = $("#star."+name)[0].innerHTML;
+                var review = ($("#review."+name)[0].innerHTML)/10;
+				var score = (((0.9*star)+(0.1*review)/10)/5.451)*100;
+				var myChart = new Chart(ctx, {
+					data : {
+						labels : [ '별점', '리뷰수(개)' ],
+						datasets : [
+								{
+									type : 'bar',
+									label : name + '데이터',
+									data : [star, review],
+									backgroundColor : [
+											'rgba(255, 159, 64, 0.2)',
+											'rgba(255, 205, 86, 0.2)' ],
+									borderColor : [ 'rgb(255, 159, 64)',
+											'rgb(255, 205, 86)' ],
+									borderWidth : 1
+								}, {
+									type : 'line',
+									label : '동일 지역, 메뉴 평균치',
+									data : [ ${avg_stars}, ${avg_rc}/10 ],
+
+								} ]
+					},
+					options : {
+						scales : {
+							y : {
+								beginAtZero : true
+							}
+						}
+					}
+				});
+
+				if (star > ${avg_stars} && review > ${avg_rc}) {
+
+					if (score > 70) {
+						$("#visualize." + name)[0].innerHTML = "<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"
+								+ name
+								+ "</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+								+ Math.abs((star - 4.2).toFixed(1))
+								+ "</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"
+								+ Math.abs((review - 1.4).toFixed(1))
+								+ "</font>십 개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+								+ score.toFixed(2)
+								+ "</font>점입니다.<br/>&nbsp;&nbsp;유명한 식당이네요!<br/>&nbsp;&nbsp;강력 추천합니다!";
+
+					} else if (score<70 && score>30) {
+						$("#visualize." + name)[0].innerHTML = "<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"
+								+ name
+								+ "</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+								+ Math.abs((star - 4.2).toFixed(1))
+								+ "</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"
+								+ Math.abs((review - 1.4).toFixed(1))
+								+ "</font>십 개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+								+ score.toFixed(2)
+								+ "</font>점입니다.<br/>&nbsp;&nbsp;괜찮은 식당인 것 같아요!<br/>&nbsp;&nbsp;추천합니다!";
+					} else if (score < 30) {
+						$("#visualize." + name)[0].innerHTML = "<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"
+								+ name
+								+ "</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+								+ Math.abs((star - 4.2).toFixed(1))
+								+ "</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"
+								+ Math.abs((review - 1.4).toFixed(1))
+								+ "</font>십 개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+								+ score.toFixed(2)
+								+ "</font>점입니다.<br/>&nbsp;&nbsp;데이터가 많이 없네요!<br/>&nbsp;&nbsp;도전해보실래요? 숨은 진주일수도요!";
+					}
+
+				} else if (star > ${avg_stars} && review < ${avg_rc}) {
+
+					if (score > 70) {
+						$("#visualize." + name)[0].innerHTML = "<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"
+								+ name
+								+ "</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+								+ Math.abs((star - 4.2).toFixed(1))
+								+ "</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"
+								+ Math.abs((review - 1.4).toFixed(1))
+								+ "</font>십 개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+								+ score.toFixed(2)
+								+ "</font>점입니다.<br/>&nbsp;&nbsp;유명한 식당이네요!<br/>&nbsp;&nbsp;강력 추천합니다!";
+
+					} else if (score<70 && score>30) {
+						$("#visualize." + name)[0].innerHTML = "<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"
+								+ name
+								+ "</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+								+ Math.abs((star - 4.2).toFixed(1))
+								+ "</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"
+								+ Math.abs((review - 1.4).toFixed(1))
+								+ "</font>십 개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+								+ score.toFixed(2)
+								+ "</font>점입니다.<br/>&nbsp;&nbsp;괜찮은 식당인 것 같아요!<br/>&nbsp;&nbsp;추천합니다!";
+					} else if (score < 30) {
+						$("#visualize." + name)[0].innerHTML = "<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"
+								+ name
+								+ "</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+								+ Math.abs((star - 4.2).toFixed(1))
+								+ "</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"
+								+ Math.abs((review - 1.4).toFixed(1))
+								+ "</font>십 개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+								+ score.toFixed(2)
+								+ "</font>점입니다.<br/>&nbsp;&nbsp;데이터가 많이 없네요!<br/>&nbsp;&nbsp;도전해보실래요? 숨은 진주일수도요!";
+					}
+
+				} else if (star<${avg_stars} && review>${avg_rc}) {
+
+					if (score > 70) {
+						$("#visualize." + name)[0].innerHTML = "<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"
+								+ name
+								+ "</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+								+ Math.abs((star - 4.2).toFixed(1))
+								+ "</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"
+								+ Math.abs((review - 1.4).toFixed(1))
+								+ "</font>십 개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+								+ score.toFixed(2)
+								+ "</font>점입니다.<br/>&nbsp;&nbsp;유명한 식당이네요!<br/>&nbsp;&nbsp;강력 추천합니다!";
+
+					} else if (score<70 && score>30) {
+						$("#visualize." + name)[0].innerHTML = "<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"
+								+ name
+								+ "</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+								+ Math.abs((star - 4.2).toFixed(1))
+								+ "</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"
+								+ Math.abs((review - 1.4).toFixed(1))
+								+ "</font>십 개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+								+ score.toFixed(2)
+								+ "</font>점입니다.<br/>&nbsp;&nbsp;괜찮은 식당인 것 같아요!<br/>&nbsp;&nbsp;추천합니다!";
+					} else if (score < 30) {
+						$("#visualize." + name)[0].innerHTML = "<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"
+								+ name
+								+ "</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+								+ Math.abs((star - 4.2).toFixed(1))
+								+ "</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"
+								+ Math.abs((review - 1.4).toFixed(1))
+								+ "</font>십 개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+								+ score.toFixed(2)
+								+ "</font>점입니다.<br/>&nbsp;&nbsp;데이터가 많이 없네요!<br/>&nbsp;&nbsp;도전해보실래요? 숨은 진주일수도요!";
+					}
+
+				} else if (star < ${avg_stars} && review < ${avg_rc}) {
+
+					if (score >70) {
+						$("#visualize." + name)[0].innerHTML = "<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"
+								+ name
+								+ "</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+								+ Math.abs((star - 4.2).toFixed(1))
+								+ "</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"
+								+ Math.abs((review - 1.4).toFixed(1))
+								+ "</font>십 개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+								+ score.toFixed(2)
+								+ "</font>점입니다.<br/>&nbsp;&nbsp;유명한 식당이네요!<br/>&nbsp;&nbsp;강력 추천합니다!";
+
+					} else if (score<70 && score>50) {
+						$("#visualize." + name)[0].innerHTML = "<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"
+								+ name
+								+ "</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+								+ Math.abs((star - 4.2).toFixed(1))
+								+ "</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"
+								+ Math.abs((review - 1.4).toFixed(1))
+								+ "</font>십 개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+								+ score.toFixed(2)
+								+ "</font>점입니다.<br/>&nbsp;&nbsp;괜찮은 식당인 것 같아요!<br/>&nbsp;&nbsp;추천합니다!";
+					} else if (score < 30) {
+						$("#visualize." + name)[0].innerHTML = "<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"
+								+ name
+								+ "</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+								+ Math.abs((star - 4.2).toFixed(1))
+								+ "</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"
+								+ Math.abs((review - 1.4).toFixed(1))
+								+ "</font>십 개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+								+ score.toFixed(2)
+								+ "</font>점입니다.<br/>&nbsp;&nbsp;데이터가 많이 없네요!<br/>&nbsp;&nbsp;도전해보실래요? 숨은 진주일수도요!";
+					}
+				}
+
+			}
+
 			countdown('countdownC', 0, 0, 10, 10);
 			// Countdown Loading Bar
 			$config.loadingBars_width = 60;
@@ -572,30 +894,30 @@ String stars = request.getParameter("stars");
 				}, function() {
 				});
 			}
-/* 			//찜하트 구현 js
-			$(document)
-					.ready(
-							function() {
-								$("#heart")
-										.click(
-												function() {
-													if ($("#heart").hasClass(
-															"liked")) {
-														$("#heart")
-																.html(
-																		'<i class="fa fa-heart-o" aria-hidden="true"></i>');
-														$("#heart")
-																.removeClass(
-																		"liked");
-													} else {
-														$("#heart")
-																.html(
-																		'<i class="fa fa-heart" aria-hidden="true"></i>');
-														$("#heart").addClass(
-																"liked");
-													}
-												});
-							}); */
+			/* 			//찜하트 구현 js
+			 $(document)
+			 .ready(
+			 function() {
+			 $("#heart")
+			 .click(
+			 function() {
+			 if ($("#heart").hasClass(
+			 "liked")) {
+			 $("#heart")
+			 .html(
+			 '<i class="fa fa-heart-o" aria-hidden="true"></i>');
+			 $("#heart")
+			 .removeClass(
+			 "liked");
+			 } else {
+			 $("#heart")
+			 .html(
+			 '<i class="fa fa-heart" aria-hidden="true"></i>');
+			 $("#heart").addClass(
+			 "liked");
+			 }
+			 });
+			 }); */
 		</script>
 </body>
 

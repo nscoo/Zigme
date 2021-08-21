@@ -146,7 +146,7 @@
                             <li><a href="${pageContext.request.contextPath}/music_select4.do?ans1=<%=ans1%>&ans2=<%=ans2%>&ans3=<%=URLEncoder.encode("우울한", "utf-8")%>">조금 우울해</a></li>
                             <li><a href="${pageContext.request.contextPath}/music_select4.do?ans1=<%=ans1%>&ans2=<%=ans2%>&ans3=<%=URLEncoder.encode("편안한", "utf-8")%>">그냥그래~</a></li>
                         </ul>
-                        <span class="select_number">1&#47;4</span>
+                        <span class="select_number">3&#47;4</span>
                     </fieldset>
                     <div class="speech-bubble">
                         네가 원하는 음악을 찾아줄고양!

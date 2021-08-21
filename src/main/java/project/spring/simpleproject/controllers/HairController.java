@@ -1,5 +1,6 @@
 package project.spring.simpleproject.controllers;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,13 +16,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import project.spring.simpleproject.model.Hair;
 import project.spring.simpleproject.service.HairService;
-import project.spring.simpleproject.service.MemberService;
+import project.spring.simpleproject.service.MylistHairService;
+
 
 @Controller
 public class HairController {
 
 	@Autowired
 	HairService hairService;
+	@Autowired
+	MylistHairService myListHairService;
+	
 	
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
@@ -29,22 +34,23 @@ public class HairController {
 
 	
 	@RequestMapping(value="/hair_result.do", method = RequestMethod.GET)
-	public String list(Model model, HttpServletResponse response, @RequestParam(value="keyword", required=false) String keyword) {
+	public String list(Model model, HttpServletResponse response,HttpServletRequest r, @RequestParam(value="keyword", required=false) String keyword) throws Exception {
 		
 		Hair input = new Hair();
 		input.setName(keyword);
-		input.setAddress(keyword);
 		
 		List<Hair> output = null;
+
 		
 		try {
 			output = hairService.getHairList(input);
 		} catch(Exception e) { e.printStackTrace(); }
-		
-		
-		
+		//
+
+		//
 		//view 처리
-		model.addAttribute("output",output);
+
+	    model.addAttribute("output",output);
 		model.addAttribute("keyword",keyword);
 		
 		
@@ -57,3 +63,4 @@ public class HairController {
 		
 	}
 }
+

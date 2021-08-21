@@ -9,4 +9,6 @@ public class Traffic {
 	private String s_lng;
 	private	String e_lat;
 	private String e_lng;
+	private String to;
+	private String from;
 }

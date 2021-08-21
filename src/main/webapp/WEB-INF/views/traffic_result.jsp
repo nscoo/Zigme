@@ -190,18 +190,41 @@ ul {
 
 
 
-
+ 
 		<!-- traffic 시작-->
 		<div id="traffic_result">
 
-
-
-
-
-
 			<a href="javascript:void(0);"
-				style="text-decoration: none; float: right;" onClick="saveRoute()">경로저장하기<span id ="heart" class="${name2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name2}','${name}')" ></i> </span>
-			</a>
+				style="text-decoration: none; float: right;" onclick="openPopup()" >경로저장하기</a>
+			
+			<div id="popupLayer">
+				<div id="popupContent">
+					<div class="traffic_alias">
+						<div class="alias_name">
+							<div class="location">
+								<button class="btn btn-primary">출발지</button>
+							</div>
+							<input type="text" class="form-control"
+								placeholder="출발지 별명을 설정해주세요. 예)집,회사,지역명" id="from"/>
+						</div>
+						<div class="alias_name">
+							<div class="location">
+								<button class="btn btn-primary">도착지</button>
+							</div>
+							<input type="text" class="form-control"
+								placeholder="도착지 별명을 설정해주세요. 예)집,회사,지역명" id="to"/>
+						</div>
+						<div class="alias_name">
+							<button type="button"
+								style="width: 50px; height: 50px; margin-top: -150px; background: white; border: none;">
+								저장<span id ="heart"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart()" ></i></span>
+							</button>
+						</div>
+					</div>
+					<div class="b-close"></div>
+				</div>
+			</div>	
+	
 		
 
 
@@ -219,7 +242,6 @@ ul {
 			<div id="map"
 				style="width: 100%; height: 100%; background-color: #CCCCCC; height: 700px;"></div>
 		</div>
-		
 		
 		
 		<!-- traffic 끝-->
@@ -296,7 +318,7 @@ ul {
 		    .then((response) => {
 		      directionsRenderer.setDirections(response);
 		    })
-		    .catch((e) => window.alert("대한민국은 대중교통 검색 결과만 제공합니다."));
+		    .catch((e) => window.alert("대한민국은 대중교통 검색 결과만 제공합니다. 대중교통만 보세요"));
 		}
 	</script>
 	<script async defer
@@ -343,31 +365,39 @@ ul {
 		
 		
 		//하트 찜하기
-		function heart(){
-          
+		function heart(to,from){
+			
         	  //찜  취소
 	         if($("#heart").hasClass("liked")){
+
+	        		 
 	        	  $.ajax({
 	        		  type :"POST",
 	        		  url : "cancel_tbasket",
 	        		  dataType : "json",
 	        		  data :{"s_lat": <%=s_lat%>,
-	        			  	 "s_lng": <%=s_lng%>,
-	        			  	 "e_lat": <%=e_lat%>,
-	        			  	 "e_lng": <%=e_lng%>
+	     			  	  "s_lng": <%=s_lng%>,
+	    			  	  "e_lat": <%=e_lat%>,
+	    			  	  "e_lng": <%=e_lng%>
 	        		  		},
 	        		  success:function(data){
 	        			  if(data == 0){
 	        				  alert('삭제 실패 다시 시도해주세요');
 	        				  return false;
 	        			  }else{
-	                      $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-	                      $("#heart."+name).removeClass("liked");
+	                      $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true" onclick="heart()"></i> ');
+	                      $("#heart").removeClass("liked");
+	                      alert('자주가는 경로에서 삭제되었습니다.');
 	                      }
 	        		  },
 	        		  
 	        	  })
+	        	  
+	        	  
             }else{ //찜하기
+            	var to = document.getElementById("to").value;
+            	var from= document.getElementById("from").value;
+            	
           	  $.ajax({
         		  type : "POST",
         		  url : "add_tbasket",
@@ -375,7 +405,9 @@ ul {
         		  data : {"s_lat": <%=s_lat%>,
 	     			  	  "s_lng": <%=s_lng%>,
 	    			  	  "e_lat": <%=e_lat%>,
-	    			  	  "e_lng": <%=e_lng%>
+	    			  	  "e_lng": <%=e_lng%>,
+	    			  	  "to": to,
+	    			  	  "from": from
 	    		  		 },
        	  		 success:function(data){
        	  			 	if(data==3){
@@ -387,18 +419,40 @@ ul {
        	  			 		return false;
        	  			 	}
        	  			 	else{
-       	  	              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
-       	              	  $("#heart."+name).addClass("liked");
+       	  	              $("#heart").html('<i class="fa fa-heart" aria-hidden="true" onclick="heart()" ></i>');
+       	              	  $("#heart").addClass("liked");
+       	              	alert('자주가는 경로로 저장되었습니다.');
        	  			 	}
 
         		  },
         		
         	  })
             }
-
-
-          
+    
         }
+		
+		$.ajax({
+    		type : "POST",
+    		url : "checktlist",
+    		dataType : "json",
+    		data : {
+    			  "s_lat": <%=s_lat%>,
+			  	  "s_lng": <%=s_lng%>,
+			  	  "e_lat": <%=e_lat%>,
+			  	  "e_lng": <%=e_lng%>
+    		},
+    	success : function(data){
+    		if(data){
+	  	              $("#heart").html('<i class="fa fa-heart" aria-hidden="true" onclick="heart()" ></i>');
+	              	  $("#heart").addClass("liked");
+    		}else{
+    			console.log('찜 목록아님')
+    		}
+    	},
+
+    	})
+		
+		
 	</script>
 </body>
 

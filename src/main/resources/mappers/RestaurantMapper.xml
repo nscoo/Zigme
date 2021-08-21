@@ -32,6 +32,7 @@
 		<choose>
 			<when test="loc.equals('상관없음')">
 				WHERE resno in (
+
 					SELECT max(resno)
 					FROM restaurant
 					GROUP BY name
@@ -53,6 +54,7 @@
 					subject = #{subject}
 				ORDER BY 
 					stars DESC, review_count DESC;
+
 			</otherwise>
 		</choose>
 	</select>
@@ -71,7 +73,6 @@
 		AND
 			stars &gt;= #{stars}
 	</select>
-
 
 
 </mapper>
