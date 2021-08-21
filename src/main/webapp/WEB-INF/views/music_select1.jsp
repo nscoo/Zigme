@@ -20,22 +20,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/container.css">
     <link rel="stylesheet" type="text/css" href="assets/css/music_select.css">
     <!-- 이수진 css,부트스트랩 끝 -->
-    <style type="text/css">
-    legend {
-        position: relative;
-        top: 110px;
-    }
-
-    .music_select {
-        position: relative;
-        top: 97px;
-    }
-
-    .select_number {
-        position: relative;
-        top: -141px;
-    }
-    </style>
+    
 </head>
 
 <body>
