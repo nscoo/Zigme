@@ -40,6 +40,9 @@ public class MylistHairController {
 	@Autowired
 	MylistHairService myListHairService;
 	//찜하기
+	/*
+	 * Member session으로 로그인 여부 확인, span,i 태그의 클래스로 하트 채우기 결정 및 DB연동
+	 */
 	@ResponseBody
 	@RequestMapping(value="/add_basket", method=RequestMethod.POST)
 	public int basketAction(@RequestParam(value="name", defaultValue="")String name,
@@ -54,8 +57,8 @@ public class MylistHairController {
 		int user_no = member.getUserno();		
 		int hair_hairno = mylisthair.getHairno(name);		
 		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("item1", user_no);
-		map.put("item2", hair_hairno);
+		map.put("members_userno", user_no);
+		map.put("hair_hairno", hair_hairno);
 		int result = mylisthair.addList(map);
 		if(result ==1) {
 			System.out.println("성공");
@@ -80,17 +83,13 @@ public class MylistHairController {
 		int user_no = member.getUserno();		
 		int hair_hairno = mylisthair.getHairno(name);		
 		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("item1", user_no);
-		map.put("item2", hair_hairno);
-		int result = mylisthair.addList(map);
-		if(result ==1) {
-			System.out.println("성공");
-		}else {
-			System.out.println("실패");
-		}
+		map.put("members_userno", user_no);
+		map.put("hair_hairno", hair_hairno);
+		int result = mylisthair.cancelList(map);
+		
 		return result;
 	}
-	/////////////////////////////////////////
+
 	
 	@RequestMapping(value ="/mylist.do", method=RequestMethod.GET)
 	   public ModelAndView list(Model model, HttpServletRequest r) {
@@ -140,8 +139,34 @@ public class MylistHairController {
 	      
 	      return new ModelAndView("mylist");
 	      }
-	
-	
-	
+	//찜확인
+	@ResponseBody
+	@RequestMapping(value="/checklist", method=RequestMethod.POST)
+	public Integer checklistAction(@RequestParam(value="hairno", defaultValue="")int hairno,
+			HttpServletResponse response, HttpSession session, HttpServletRequest r)
+			throws Exception {
+		Member member = (Member) session.getAttribute("member");
+		Integer result = null;
+		if(member!=null) {
+			int user_no = member.getUserno();		
+			Map<String, Integer> map = new HashMap<String, Integer>();
+			map.put("members_userno", user_no);
+			map.put("hair_hairno", hairno);
+			result = mylisthair.checklist(map);		
+		}			
+		return result;
+	}
+	//메모 저장
+	@ResponseBody
+	@RequestMapping(value="/savememo", method=RequestMethod.POST)
+	public int savememoAction(@RequestParam(value="mylistno", defaultValue="")int mylistno , @RequestParam(value="memo", defaultValue="")String memo) throws Exception {
+		MylistHair mylist =new MylistHair();
+		
+		mylist.setMylistno(mylistno);
+		mylist.setMemo(memo);
+		System.out.println("&&&&&&&&&&&&&&&&&&&&&"+mylist);
+		int result = mylisthair.updatememo(mylist);
+		return result;
+	}
 	
 }
