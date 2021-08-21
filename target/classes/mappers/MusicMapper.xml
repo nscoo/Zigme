@@ -24,7 +24,7 @@
    </update>
    
     <update id="updateSchedulerItem" parameterType="project.spring.simpleproject.model.Music" >
-   		UPDATE music SET happy=0,joy=0,mad=0,blue=0,comfy=0 WHERE musicno=1
+   		UPDATE music SET happy=1,joy=1,mad=1,blue=1,comfy=1 WHERE musicno=1
    </update>
    
  </mapper>

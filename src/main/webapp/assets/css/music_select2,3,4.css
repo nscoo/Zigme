@@ -1,3 +1,4 @@
+ @charset "utf-8";
  @media(max-width: 480px) {
 
      #form-horizontal {
@@ -83,7 +84,7 @@
 
  legend {
      position: relative;
-     top: 90px;
+     top: 65px;
      text-align: center;
      font-size: calc(0.42vw + 22.00px);
      border: 2px solid;
@@ -96,7 +97,7 @@
 
  .music_select {
      position: relative;
-     top: 80px;
+     top: 55px;
      left: 80px;
      text-align: center;
      font-size: 1.375em;
@@ -112,7 +113,7 @@
 
  .select_number {
      position: relative;
-     top: -180px;
+     top: -224px;
      left: 745px;
      font-size: 22px;
  }
@@ -121,7 +122,7 @@
      width: 360px;
      height: 62px;
      position: relative;
-     top: 70px;
+     top: 35px;
      left: 665px;
      background: #666;
      border-radius: .4em;

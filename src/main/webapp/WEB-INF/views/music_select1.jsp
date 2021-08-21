@@ -20,22 +20,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/container.css">
     <link rel="stylesheet" type="text/css" href="assets/css/music_select.css">
     <!-- 이수진 css,부트스트랩 끝 -->
-    <style type="text/css">
-    legend {
-        position: relative;
-        top: 110px;
-    }
-
-    .music_select {
-        position: relative;
-        top: 97px;
-    }
-
-    .select_number {
-        position: relative;
-        top: -141px;
-    }
-    </style>
+    
 </head>
 
 <body>
@@ -251,12 +236,28 @@
 			else{
 				var off_hour = sessionStorage.getItem('off_hour');
 				var off_minute = sessionStorage.getItem('off_minute');
-	
-				console.log("퇴근 시간" + off_hour + ":" + off_minute);
-				startBtn.innerHTML = "퇴근까지 ~ "
-				countdown('countdownC', 0, sessionStorage.getItem('off_hour')
-						- now_hour, sessionStorage.getItem('off_minute')
-						- now_minute, 10);
+				if ((off_hour-now_hour)<=0){
+					
+					if ((off_hour-now_hour)==0 && (off_minute-now_minute)>=0){
+						console.log("퇴근 시간" + off_hour + ":" + off_minute);
+						startBtn.innerHTML = "퇴근까지 ~ "
+						countdown('countdownC', 0, sessionStorage.getItem('off_hour')
+								- now_hour, sessionStorage.getItem('off_minute')
+								- now_minute, 10);
+					} else {
+						console.log("문제 있다")
+						startBtn.innerHTML = "퇴근 시간 설정하기"
+						countdown('countdownC',0,0,0,0);
+					}
+					
+				} else {
+					console.log("퇴근 시간" + off_hour + ":" + off_minute);
+					startBtn.innerHTML = "퇴근까지 ~ "
+					countdown('countdownC', 0, sessionStorage.getItem('off_hour')
+							- now_hour, sessionStorage.getItem('off_minute')
+							- now_minute, 10);
+				}
+
 			}
 	
 		});

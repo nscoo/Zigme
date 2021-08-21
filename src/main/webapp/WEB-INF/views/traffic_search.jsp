@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -184,15 +186,7 @@ ul {
 
 					</button>
 				</div>
-				<div class="toggle_traffic">
-					<ul class="navi1" style="padding-top: 20px">
-						<li><a href="#">즐겨찾는 출발지</a>
-							<ul>
-								<li><a href="#">집</a></li>
-								<li><a href="#">직장</a></li>
-							</ul></li>
-					</ul>
-				</div>
+				
 			</div>
 			<div class="traffic_content">
 				<img src="assets/img/to.png">
@@ -206,16 +200,28 @@ ul {
 
 					</button>
 				</div>
-				<div class="toggle_traffic">
-					<ul class="navi1" style="padding-top: 20px">
-						<li><a href="#">즐겨찾는 출발지</a>
-							<ul>
-								<li><a href="#">집</a></li>
-								<li><a href="#">직장</a></li>
-							</ul></li>
-					</ul>
-				</div>
+				
 			</div>
+			
+			<div class="toggle_traffic">
+			<ul class="navi1" style="padding-top: 20px">
+						<li><a href="#">즐겨찾는 경로</a>
+							<ul>
+			<c:choose>
+				<c:when test="${alias == null || fn:length(alias)==0 }">		
+								<li>저장된 경로가 없습니다.</li>				
+				</c:when>				
+				<c:otherwise>
+					<c:forEach var="alias" items="${alias}" varStatus="status">
+						<li><a href="${pageContext.request.contextPath}/traffic_result.do?s_lat=${alias.s_lat}&s_lng=${alias.s_lng}&e_lat=${alias.e_lat}&e_lng=${alias.e_lng}" >${alias.from}->${alias.to}</a></li>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+				</ul>
+					</li>
+				</ul>
+			</div>
+				
 			<span id="go_button"><button type="button"
 					<%-- onclick="location.href='${pageContext.request.contextPath}/traffic_result.do'" --%>
 					class=" btn btn-danger"
@@ -314,14 +320,29 @@ ul {
 		else{
 			var off_hour = sessionStorage.getItem('off_hour');
 			var off_minute = sessionStorage.getItem('off_minute');
+			if ((off_hour-now_hour)<=0){
+				
+				if ((off_hour-now_hour)==0 && (off_minute-now_minute)>=0){
+					console.log("퇴근 시간" + off_hour + ":" + off_minute);
+					startBtn.innerHTML = "퇴근까지 ~ "
+					countdown('countdownC', 0, sessionStorage.getItem('off_hour')
+							- now_hour, sessionStorage.getItem('off_minute')
+							- now_minute, 10);
+				} else {
+					console.log("문제 있다")
+					startBtn.innerHTML = "퇴근 시간 설정하기"
+					countdown('countdownC',0,0,0,0);
+				}
+				
+			} else {
+				console.log("퇴근 시간" + off_hour + ":" + off_minute);
+				startBtn.innerHTML = "퇴근까지 ~ "
+				countdown('countdownC', 0, sessionStorage.getItem('off_hour')
+						- now_hour, sessionStorage.getItem('off_minute')
+						- now_minute, 10);
+			}
 
-			console.log("퇴근 시간" + off_hour + ":" + off_minute);
-			startBtn.innerHTML = "퇴근까지 ~ "
-			countdown('countdownC', 0, sessionStorage.getItem('off_hour')
-					- now_hour, sessionStorage.getItem('off_minute')
-					- now_minute, 10);
 		}
-
 	});
 
 		function openNav() {
