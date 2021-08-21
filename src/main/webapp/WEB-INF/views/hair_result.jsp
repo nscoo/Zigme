@@ -748,34 +748,7 @@ vertical-align: top;
             
             
         }
-        //찜하트 구현 js
-        /*
-        function heart(name,a){
-          $("#heart."+name).click(function(){
-        	  $.ajax({
-        		  type : "POST",
-        		  url : "basket",
-        		  dataType : "json",
-        		  data : {"name" : a},
-       	  		 success:function(data){
-       	  			 	if(data==3){
-       	  			 		alert('로그인 후 이용해주세요 로그인 페이지로 이동합니다');
-       	  			 		location.replace("main.do");
-       	  			 		return false;
-       	  			 	}
-        	            if($("#heart."+name).hasClass("liked"))){
-        	                $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-        	                $("#heart."+name).removeClass("liked");
-        	              }else{
-        	                $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
-        	                $("#heart."+name).addClass("liked");
-        	              }
-        		  }
-        	  })
-
-          });
-        }
-        */
+        
         //하트 색상 채우기
  function heart(name,a){
           $("#heart."+name).click(function(){
@@ -806,7 +779,7 @@ vertical-align: top;
        	  		 success:function(data){
        	  			 	if(data==3){
        	  			 		alert('로그인 후 이용해주세요 로그인 페이지로 이동합니다');
-       	  			 		location.replace("main.do");
+       	  			 		location.replace("login.do");
        	  			 		return false;
        	  			 	}else if(data ==-1){
        	  			 		alert('저장 실패 다시 시도해주세요');

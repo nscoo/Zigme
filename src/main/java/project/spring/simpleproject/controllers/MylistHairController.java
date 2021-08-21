@@ -92,11 +92,17 @@ public class MylistHairController {
 
 	
 	@RequestMapping(value ="/mylist.do", method=RequestMethod.GET)
-	   public ModelAndView list(Model model, HttpServletRequest r) {
+	   public ModelAndView list(Model model, HttpServletResponse response, HttpServletRequest r) {
 
 	      //멤버 userno 구하기
 	      HttpSession session = r.getSession();
 	      Member member = (Member) session.getAttribute("member");
+	      if(member ==null) {
+	           response.setCharacterEncoding("UTF-8");
+	          response.setContentType("text/html;charset=UTF-8");
+	            return webHelper.redirect("login.do", "로그인 후 이용바랍니다.");
+	         }
+	      
 	      int userno=member.getUserno();
 	      
 	      //userno 파라미터로 hairlist에 저장된 hairno 빼내기
