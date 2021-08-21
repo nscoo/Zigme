@@ -93,7 +93,7 @@
                     </a>
                 </div>
                 <div id="top_buttons">
-                    <button type="button" class="btn btn-default btn-xs">퇴근까지</button>
+                    <button id="start" type="button" class="btn btn-default btn-xs">퇴근까지</button>
                     <div id="button_time">
                         <div class="countdown-bar" id="countdownC">
                             <div></div>
@@ -192,19 +192,64 @@
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/script.js"></script>
         <script type="text/javascript">
-        countdown('countdownC', 0, 0, 10, 10);
-        // Countdown Loading Bar
-        $config.loadingBars_width = 60;
-        $config.loadingBars_height = 15;
-        $config.loadingBars_border_color = 'orange';
-        $config.loadingBars_color = 'orange';
-        $config.loadingBars_background_color = 'lightblue';
-
-        // Countdown Timer
-        $config.timer_color = 'black';
-        $config.timer_font_weight = 700;
-        $config.timer_font = 'Verdana';
-        $config.timer_font_size = 9;
+		var startBtn = document.getElementById('start');
+		
+		startBtn.addEventListener("click", function() {
+	
+			// 카운트다운을 처음 설정하는 경우
+			off_hour = parseInt(prompt("몇시에 퇴근하시나요? (24시 기준)"));
+			console.log(off_hour);
+			if ((typeof off_hour == "string") || (off_hour > 24)
+					|| (isNaN(off_hour))) {
+				alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
+				return
+	
+			}
+	
+			off_minute = parseInt(prompt("몇분에 퇴근하시나요?"));
+			if ((typeof off_minute != "number") || (off_minute > 60)
+					|| (isNaN(off_minute))) {
+				alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
+				return
+	
+			}
+	
+			sessionStorage.setItem("off_hour", off_hour);
+			sessionStorage.setItem("off_minute", off_minute);
+			location.reload();
+	
+			console.log("수정된 퇴근 시간" + off_hour + ":" + off_minute);
+	
+			location.reload();
+		});
+		
+	
+		document.addEventListener("DOMContentLoaded", function() {
+	
+			var today = new Date();
+			var now_hour = parseInt(('0' + today.getHours()).slice(-2));
+			var now_minute = parseInt(('0' + today.getMinutes()).slice(-2));
+	
+			console.log("현재 시간" + now_hour + ":" + now_minute);
+			
+			if (sessionStorage.getItem('off_hour')==null || sessionStorage.getItem('off_minute')==null){
+				
+				startBtn.innerHTML = "퇴근 시간 설정하기"
+				
+			}
+			
+			else{
+				var off_hour = sessionStorage.getItem('off_hour');
+				var off_minute = sessionStorage.getItem('off_minute');
+	
+				console.log("퇴근 시간" + off_hour + ":" + off_minute);
+				startBtn.innerHTML = "퇴근까지 ~ "
+				countdown('countdownC', 0, sessionStorage.getItem('off_hour')
+						- now_hour, sessionStorage.getItem('off_minute')
+						- now_minute, 10);
+			}
+	
+		});
 
 
         function openNav() {
