@@ -1,11 +1,10 @@
 package project.spring.simpleproject.controllers;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,10 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import project.spring.simpleproject.model.Hair;
-import project.spring.simpleproject.model.Member;
-import project.spring.simpleproject.model.MylistHair;
 import project.spring.simpleproject.service.HairService;
 import project.spring.simpleproject.service.MylistHairService;
+
 
 @Controller
 public class HairController {
@@ -32,6 +30,8 @@ public class HairController {
 	
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
+	
+
 	
 	@RequestMapping(value="/hair_result.do", method = RequestMethod.GET)
 	public String list(Model model, HttpServletResponse response,HttpServletRequest r, @RequestParam(value="keyword", required=false) String keyword) throws Exception {
@@ -63,3 +63,4 @@ public class HairController {
 		
 	}
 }
+

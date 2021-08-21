@@ -1,3 +1,5 @@
+
+
 package project.spring.simpleproject.service;
 
 import java.util.List;
@@ -16,3 +18,4 @@ public interface MylistHairService {
     public Integer checklist(Map<String,Integer> map)throws Exception;
     public int updatememo(MylistHair mylist)throws Exception;
 }
+

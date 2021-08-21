@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -58,7 +59,7 @@
                                <ul>
                                     <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
                                     <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
                                     <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
                                     <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
                                     <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
@@ -101,18 +102,19 @@
                             <div></div>
                         </div>
                     </div>
-	              <div id="button_top">
-	                    	<c:if test="${member == null}">
-	                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
-	                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/register.do'">회원가입</button>
-	                   		</c:if>
-	                   		<c:if test="${member != null}">
-	                   		<div id = "login_top">
-	                  		 <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">Mypage</button>
-	                   		<button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
-	                   		</div>
-	                   		</c:if>
-	                </div>
+                    <div id="button_top">
+                    	<c:if test="${member == null}">
+                        <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
+                        <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/register.do'">회원가입</button>
+                   		</c:if>
+                   		<c:if test="${member != null}">
+                   		<div id = "login_top">
+                  		 <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">Mypage</button>
+                   		<button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
+                   		</div>
+                   		</c:if>
+                    </div>
+                    
                 </div>
             </div>
             <div id="header_nav">
@@ -120,8 +122,8 @@
                     <li class="dropdown">
                         <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                        	<li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li> 
                         </ul>
                     </li>
                    <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
@@ -148,7 +150,6 @@
                     <div role="tabpanel" class="tab-content tab-area">
                         <!-- tab1 -->
                         <div class="tab-pane search-tab-content active filter inner2--bottom" id="my_restaurant_list" style="overflow:auto; height:1400px; border: 1px solid #f89b00;">
-                            
                             <c:choose>
                           <%-- 조회 결과가 없는 경우 --%>
                              <c:when test="${output == null || fn:length(output)==0 }">
@@ -195,13 +196,11 @@
                                 </c:forEach>
                              </c:otherwise>
                           </c:choose>
-                          
                             
                             
                         </div>
                         <!-- tab2 -->
-                        <div class="tab-pane search-tab-content" id="my_hair_list" style="overflow:auto; height:1400px; border: 1px solid #969BA6;">
-                            
+                        <div class="tab-pane search-tab-content active filter inner2--bottom" id="my_restaurant_list" style="overflow:auto; height:1400px; border: 1px solid #f89b00;">
                             <c:choose>
                           <%-- 조회 결과가 없는 경우 --%>
                              <c:when test="${output == null || fn:length(output)==0 }">
@@ -211,29 +210,34 @@
                              <c:otherwise>
                           <%-- 조회 결과에 대한 반복 처리 --%>
                                 <c:forEach var="item" items="${output}" varStatus="status" >
-                                   <div class="list_item">
+                                <c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
+                                <c:set var="name2" value="${fn:replace(name2,' ','')}" />
+                                
+                                   <div class="list_item" id="${name2}">
                                          <div class="info_button">
-                                              <a href="javascript:void(0);" onclick="deletelist(${item.name})" >X</a>
+                                             <a id="delete" class="${name2}" href="javascript:void(0)" onClick="deletelist('${name2}','${item.name}')">X</a>
                                          </div>
                                          <div class="item_img">
+                                        	
                                              <image src="${item.photos}" width="280px" height="280px">
                                          </div>
                                          <div class="item_info">
-                                             <div class="info_name">${mymemolist[status.index].mylistno},${item.name}</div>
+                                             <div class="info_name">${item.name}</div>
                                              <div class="info_stars"><i class="fas fa-star" style="color:#ffd400; font-size:20px;"></i>
                                                  <font size="3px">&nbsp;${item.stars}</font>
                                              </div>
                                              <div class="info_common">
                                                  <div class="info_call"><img src="assets/img/call.png" width="13px" height="13px">&nbsp;전화번호 : ${item.call}</div>
                                                  <div class="info_add"><img src="assets/img/add.png" width="13px" height="13px">&nbsp;주소 : ${item.address}</div>
-                                                 <div class="info_etc"><img src="assets/img/etc.png" width="13px" height="13px">&nbsp;${item.ps}</div>
+                                                 <div class="info_etc"><img src="assets/img/etc.png" width="13px" height="13px">&nbsp;${fn:substring(item.ps,0,30)}</div>
                                                  <div class="info_time"><img src="assets/img/time.png" width="13px" height="13px">&nbsp;${item.times}</div>
                                              </div>
-                                           
-                                             <div class="info_memo">
-                                                 <form method="post" action="${pageContext.request.contextPath}/mylist.do">
-                                                     <input type="text" id="memo" name="memo" value="${mymemolist[status.index].memo}"/>
-                                                     <input type="submit" value="메모 수정">
+                                          
+                                             <div class="info_memo" > 
+                                            
+                                                 <form method="post" id="memoform"  method ="post">
+                                                     <input type="text" id="memo${name2}" name="memo${name2}" value="${mymemolist[status.index].memo}"/>
+                                                     <input type="button" value="메모 수정" onclick="savememo('${mymemolist[status.index].mylistno}',document.getElementById('memo${name2}').value)" >
                                                  </form>
                                              </div>
                                              
@@ -243,10 +247,6 @@
                                 </c:forEach>
                              </c:otherwise>
                           </c:choose>
-                            
-                            
-                            
-                            
                             
                             
                         </div>
@@ -364,35 +364,29 @@
         <!-- footer 시작 -->
         <div id="footer">
             <div id="footer_content">
-                <div id="footer_img">
-                    <a href="${pageContext.request.contextPath}"><img src="assets/img/zigme_logo_rm.png" /></a>
+                    <div id="footer_img">
+                        <a href="${pageContext.request.contextPath}/"><img src="assets/img/zigme_logo_rm.png" /></a>
+                    </div>
+                    <div id="footer_text">
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-thumbs-up"> Name </span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            PROJECT PORTFOLIO Big Data Class 8
+                        </div>
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-user"> Developer </span>
+                            &nbsp;
+                            TEAM3
+                        </div>
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-map-marker"> Address </span>
+                            &nbsp;
+                            서울 서초구 서초대로 77길 55, 에이프로스퀘어 2층 EZEN IT
+                        </div>
+                        <br />
+                        <address>copyright&copy; team_3 / All right reserved</address>
+                    </div>
                 </div>
-                <div id="footer_text">
-                    <div id="text_left">
-                        <span class="glyphicon glyphicon-thumbs-up"> Name </span>
-                    </div>
-                    <div id="text_right">
-                        PROJECT PORTFOLIO Big Data Class 8
-                    </div>
-                    <br />
-                    <div id="text_left">
-                        <span class="glyphicon glyphicon-user"> Manager </span>
-                    </div>
-                    <div id="text_right">
-                        Younga Joo
-                    </div>
-                    <br />
-                    <div id="text_left">
-                        <span class="glyphicon glyphicon-map-marker"> Address </span>
-                    </div>
-                    <div id="text_right">
-                        서울 서초구 서초대로 77길 55, 에이프로스퀘어 2층 EZEN IT
-                    </div>
-                    <br />
-                    <br />
-                    <address>copyright&copy;team_3 / All right reserved</address>
-                </div>
-            </div>
         </div>
         <!-- footer 끝-->
     </div>

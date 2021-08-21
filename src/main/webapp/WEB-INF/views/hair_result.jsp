@@ -173,10 +173,11 @@ vertical-align: top;
                                 <ul>
                                     <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
                                     <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/nearby.do" >Nearby</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
                                     <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
                                     <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
+                                	<br/>
                                 </ul>
                             </li>
                             <li><a href="#">실내</a>
@@ -185,7 +186,6 @@ vertical-align: top;
                                     <li><a href="#">오늘의 쇼핑</a></li>
                                     <li><a href="#">이직메이트</a></li>
                                     <li><a href="#">커뮤니티</a></li>
-                                    <br/>
                                 </ul>
                             </li>
                             <li><a href="#">실외</a>
@@ -195,7 +195,6 @@ vertical-align: top;
                                     <li><a href="#">문화</a></li>
                                     <li><a href="#">체육</a></li>
                                     <li><a href="#">교통정보보기</a></li>
-                                    <br/>
                                 </ul>
                             </li>
                         </ul>
@@ -203,7 +202,7 @@ vertical-align: top;
                     <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
                 </div>
                 <div id="top_logo">
-                    <a href="${pageContext.request.contextPath}/main.do">
+                    <a href="${pageContext.request.contextPath}">
                         <span class="top_text" style="color: black;">
                             ZIGME
                         </span>
@@ -229,6 +228,7 @@ vertical-align: top;
                    		</div>
                    		</c:if>
                     </div>
+                    
                 </div>
             </div>
             <div id="header_nav">
@@ -236,8 +236,8 @@ vertical-align: top;
                     <li class="dropdown">
                         <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                        	<li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li> 
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
@@ -360,7 +360,7 @@ vertical-align: top;
                          </div>
                         
                         <div id="graph_right">
-                        	<font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;"></font>
+                        	<font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<-- 직메가 매긴<br/>추천 점수를 확인해보세요!</font>
                         </div>
                         
                         </div>
@@ -457,7 +457,7 @@ vertical-align: top;
                          </div>
                         
                         <div id="graph_right">
-                        	<font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;"></font>
+                        	<font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<-- 직메가 매긴<br/>추천 점수를 확인해보세요!</font>
                         </div>
                         
                         </div>
@@ -485,9 +485,9 @@ vertical-align: top;
                             PROJECT PORTFOLIO Big Data Class 8
                         </div>
                         <div class="footer_row">
-                            <span class="glyphicon glyphicon-user"> Manager </span>
+                            <span class="glyphicon glyphicon-user"> Developer </span>
                             &nbsp;
-                            Younga Joo
+                            TEAM3
                         </div>
                         <div class="footer_row">
                             <span class="glyphicon glyphicon-map-marker"> Address </span>
@@ -513,16 +513,16 @@ vertical-align: top;
                               function statistics(name){
                               var ctx = $("#myChart."+name)[0].getContext('2d');
                               var star = $("#star."+name)[0].innerHTML;
-                              var review = ($("#review."+name)[0].innerHTML)/100;
-                              var score = (((star*0.3)+(review*0.7))/8.46)*100;
+                              var review = ($("#review."+name)[0].innerHTML)/10;
+                              var score = 50
                               var myChart = new Chart(ctx, {
                                   
                                   data: {
-                                      labels: ['별점', '리뷰수(백)'],
+                                      labels: ['별점', '리뷰수(십)'],
                                       datasets: [{
                                     	  type: 'bar',
                                           label: name+'데이터',
-                                          data: [star,review],
+                                          data: [4, 2],
                                           backgroundColor:['rgba(255, 159, 64, 0.2)',
                                               'rgba(255, 205, 86, 0.2)'],
                                           borderColor: ['rgb(255, 159, 64)',

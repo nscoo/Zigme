@@ -1,3 +1,4 @@
+
 package project.spring.simpleproject.model;
 import lombok.Data;
 @Data

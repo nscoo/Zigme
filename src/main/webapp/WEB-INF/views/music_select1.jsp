@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -70,7 +68,7 @@
                                <ul>
                                     <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
                                     <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/nail_search.do">Beauty</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
                                     <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
                                     <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
                                     <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
@@ -125,6 +123,7 @@
                    		</div>
                    		</c:if>
                     </div>
+                    
                 </div>
             </div>
             <div id="header_nav">
@@ -132,8 +131,8 @@
                     <li class="dropdown">
                         <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li>
-                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                        	<li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                            <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li> 
                         </ul>
                     </li>
                    <li><a href="${pageContext.request.contextPath}/music_select1.do" style="font-size: 20px;">Music</a></li>
@@ -147,13 +146,16 @@
             <div class="container_music">
                 <form id="form-horizontal" role="form" method="get" action="${pageContext.request.contextPath}/music_result.do">
                     <fieldset>
-                        <legend>어떤 기분이냥?</legend>
+                    <legend>날씨는 어떠냥?</legend>
                         <ul class="music_select">
-                            <li><a href="${pageContext.request.contextPath}/music_select3.do?ans1=신나는">신난다!!!</a></li>
-                            <li><a href="${pageContext.request.contextPath}/music_select3.do?ans1=편안한">우울해</a></li>
-                            <li><a href="${pageContext.request.contextPath}/music_select3.do?ans1=감성적인">너무 복잡해</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select2.do?ans1=화창한">화창해</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select2.do?ans1=비오는">비가 내려</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select2.do?ans1=여름">햇빛이 쨍쨍 더워</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select2.do?ans1=흐린">회색빛 하늘이야</a></li>
+                            <li><a href="${pageContext.request.contextPath}/music_select2.do?ans1=눈오는">눈이 내리고 있어</a></li>
                         </ul>
                         <span class="select_number">1&#47;4</span>
+                        
                     </fieldset>
                     <div class="speech-bubble">
                         네가 원하는 음악을 찾아줄고양!
@@ -168,32 +170,26 @@
             <div id="footer">
                 <div id="footer_content">
                     <div id="footer_img">
-                        <a href="${pageContext.request.contextPath}"><img src="assets/img/zigme_logo_rm.png" /></a>
+                        <a href="${pageContext.request.contextPath}/"><img src="assets/img/zigme_logo_rm.png" /></a>
                     </div>
                     <div id="footer_text">
-                        <div id="text_left">
+                        <div class="footer_row">
                             <span class="glyphicon glyphicon-thumbs-up"> Name </span>
-                        </div>
-                        <div id="text_right">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             PROJECT PORTFOLIO Big Data Class 8
                         </div>
-                        <br />
-                        <div id="text_left">
-                            <span class="glyphicon glyphicon-user"> Manager </span>
+                        <div class="footer_row">
+                            <span class="glyphicon glyphicon-user"> Developer </span>
+                            &nbsp;
+                            TEAM3
                         </div>
-                        <div id="text_right">
-                            Younga Joo
-                        </div>
-                        <br />
-                        <div id="text_left">
+                        <div class="footer_row">
                             <span class="glyphicon glyphicon-map-marker"> Address </span>
-                        </div>
-                        <div id="text_right">
+                            &nbsp;
                             서울 서초구 서초대로 77길 55, 에이프로스퀘어 2층 EZEN IT
                         </div>
                         <br />
-                        <br />
-                        <address>copyright&copy;team_3 / All right reserved</address>
+                        <address>copyright&copy; team_3 / All right reserved</address>
                     </div>
                 </div>
             </div>
@@ -229,6 +225,7 @@
             document.getElementById("mySidenav").style.width = "0";
         }
         </script>
+    
 </body>
 
 </html>
