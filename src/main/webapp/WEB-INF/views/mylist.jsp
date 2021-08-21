@@ -160,9 +160,11 @@
            						<c:otherwise>
            					<%-- 조회 결과에 대한 반복 처리 --%>
            							<c:forEach var="item" items="${output}" varStatus="status" >
-			           					<div class="list_item">
+           							<c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
+           							<c:set var="name2" value="${fn:replace(name2,' ','')}" />
+			           					<div class="list_item" id="${name2}">
 			                                <div class="info_button">
-			                                    <a href="#">X</a>
+			                                    <a id="delete" class="${name2}" href="javascript:void(0)" onClick="deleteClick('${name2}')">X</a>
 			                                </div>
 			                                <div class="item_img">
 			                                    <image src="${item.photos}" width="280px" height="280px">
@@ -393,6 +395,13 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/script.js"></script>
     <script type="text/javascript">
+    function deleteClick(name){
+    	$(".list_item#"+name).hide();
+    	
+    }
+    
+    
+    
     countdown('countdownC', 0, 0, 10, 10);
     // Countdown Loading Bar
     $config.loadingBars_width = 60;
