@@ -174,28 +174,7 @@
 
             </div>
             
-            <input type="checkbox" id="sidebar" style="display: none;" >
-			<!-- 헤더 네비게이션 -->
-			
-			<header>
-				<label for="sidebar" class="menu" style="margin-top:20px; float: right; transform:translateY(-50%);width:24px;height:24px;background:url('assets/img/menu.png') 0 0 no-repeat;cursor:pointer;"></label>
-			</header>
-		
-			
-			<!-- 사이드바 -->
-			<div class="sidebar_content">
-				<ul>
-					<li><a>메뉴1</a></li>
-					<li><a>메뉴2</a></li>
-					<li><a>메뉴3</a></li>
-					<li><a>메뉴4</a></li>
-					<li><a>메뉴5</a></li>
-					<li><a>메뉴6</a></li>
-				</ul>
-				<label for="sidebar"></label>
-			</div>
-			<!-- 사이드바 외 영역 -->
-			<label for="sidebar" class="background"></label>
+            
 
         </div>
         <!-- header 끝-->

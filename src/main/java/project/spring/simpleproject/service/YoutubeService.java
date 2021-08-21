@@ -10,7 +10,7 @@ public interface YoutubeService {
 	public static final String BASE_URL = "https://www.googleapis.com";
 
 	// 유튜브 api 연동
-	@GET("/youtube/v3/search?key=AIzaSyDN6sRZ2jPEJyyihxAWC0yS0lgNuJeWQbU&part=snippet&type=video")
+	@GET("/youtube/v3/search?key=AIzaSyD0mRgl-STDQIH6sNl2fvE2YshQhzYmRS0&part=snippet&type=video")
 	Call<SearchYoutubeList> getSearchYoutube(@Query("q") String q);
 
 	

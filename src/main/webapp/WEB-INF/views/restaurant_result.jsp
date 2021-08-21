@@ -496,7 +496,7 @@ String stars = request.getParameter("stars");
 													<span style="font-size: 30px"> <i
 														class="fas fa-star fa-1x" style="color: #ffd400"></i>
 													</span> <span id="star" class="${name_2}" style="font-size: 18px">${stars}</span>
-													<span id="review" class="${name_2}" style="font-size: 18px">${review_count}</span>
+													<span id="review" class="${name_2}" style="font-size: 18px">(${review_count})</span>
 													<span id ="heart" class="${name_2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name_2}','${name}')" ></i> </span>
 												</h3>
 											</div>

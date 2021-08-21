@@ -205,7 +205,7 @@ ul {
 			
 			<div class="toggle_traffic">
 			<ul class="navi1" style="padding-top: 20px">
-						<li><a href="#">즐겨찾는 경로</a>
+						<li><a href="javascript:void(0)">즐겨찾는 경로</a>
 							<ul>
 			<c:choose>
 				<c:when test="${alias == null || fn:length(alias)==0 }">		

@@ -188,8 +188,8 @@
                         	   			<div class="container">
                                     		<div class="carousel-caption">
                                            		<p class="video-text">
-                                             		${item.snippet.title}
-                                            		<small>${item.snippet.publishedAt}</small>
+                                           		${item.snippet.title}
+
                                            		</p>
                                     		</div>
                                 		</div>
@@ -202,7 +202,7 @@
                                     		<div class="carousel-caption">
                                            		<p class="video-text">
                                              		${item.snippet.title}
-                                            		<small>${item.snippet.publishedAt}</small>
+                                            		
                                            		</p>
                                     		</div>
                                 		</div>
