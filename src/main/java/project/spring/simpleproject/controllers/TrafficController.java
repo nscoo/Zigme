@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import project.spring.simpleproject.helper.RegexHelper;
 import project.spring.simpleproject.helper.WebHelper;
@@ -38,38 +39,37 @@ public class TrafficController {
 	@Autowired
 	TrafficService trafficService;
 
-	   @RequestMapping(value = "/traffic_search.do", method=RequestMethod.GET)
-	   public String traffic_search(Model model,HttpServletResponse response, HttpSession session, HttpServletRequest r) {
-		   
-		   	Member member = (Member) session.getAttribute("member");
-		   	int userno = member.getUserno();
-			
-		   	Traffic input = new Traffic();
-			input.setMembers_userno(userno);
-			
-			List<Traffic> alias = null;
-			
-			try {
-				alias = trafficService.getTrafficList(input);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			model.addAttribute("alias",alias);
-			
-			
-			
-	      return "traffic_search";
-	      
-	   }
-
-	   @RequestMapping(value = "/traffic_result.do", method=RequestMethod.GET)
-	   public String traffic_result() throws Exception {
-	
-		   
-	      return "traffic_result";
-	      
-	   }
+	@RequestMapping(value = "/traffic_search.do", method=RequestMethod.GET)
+    public ModelAndView traffic_search(Model model,HttpServletResponse response, HttpSession session, HttpServletRequest r) {
+       
+          Member member = (Member) session.getAttribute("member");
+          
+          if(member ==null) {
+               response.setCharacterEncoding("UTF-8");
+              response.setContentType("text/html;charset=UTF-8");
+                return webHelper.redirect("login.do", "로그인 후 이용바랍니다.");
+             }
+          
+          int userno = member.getUserno();
+       
+          Traffic input = new Traffic();
+       input.setMembers_userno(userno);
+       
+       List<Traffic> alias = null;
+       
+       try {
+          alias = trafficService.getTrafficList(input);
+       } catch (Exception e) {
+          e.printStackTrace();
+       }
+       
+       model.addAttribute("alias",alias);
+       
+       
+       
+       return new ModelAndView("traffic_search");
+       
+    }
 	   
 	   //찜추가
 	   @ResponseBody

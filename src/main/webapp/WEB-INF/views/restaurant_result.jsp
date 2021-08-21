@@ -925,7 +925,7 @@ String stars = request.getParameter("stars");
 			       	  		 success:function(data){
 			       	  			 	if(data==3){
 			       	  			 		alert('로그인 후 이용해주세요 로그인 페이지로 이동합니다');
-			       	  			 		location.replace("main.do");
+			       	  			 		location.replace("login.do");
 			       	  			 		return false;
 			       	  			 	}else if(data ==-1){
 			       	  			 		alert('저장 실패 다시 시도해주세요');
