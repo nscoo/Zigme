@@ -434,22 +434,25 @@ ul {
 
 								}
 
-								else {
-									var off_hour = sessionStorage
-											.getItem('off_hour');
-									var off_minute = sessionStorage
-											.getItem('off_minute');
+								else{
+									var off_hour = sessionStorage.getItem('off_hour');
+									var off_minute = sessionStorage.getItem('off_minute');
+										
+									if ((off_hour-now_hour)<=0 && (off_minute-now_minute)<=0){
+										console.log("문제 있다")
+										startBtn.innerHTML = "퇴근 시간 설정하기"
+										countdown('countdownC',0,0,0,0);
+										
+									} else {
+										console.log("퇴근 시간" + off_hour + ":" + off_minute);
+										startBtn.innerHTML = "퇴근까지 ~ "
+										countdown('countdownC', 0, sessionStorage.getItem('off_hour')
+												- now_hour, sessionStorage.getItem('off_minute')
+												- now_minute, 10);
+										
+									}
 
-									console.log("퇴근 시간" + off_hour + ":"
-											+ off_minute);
-									startBtn.innerHTML = "퇴근까지 ~ "
-									countdown('countdownC', 0, sessionStorage
-											.getItem('off_hour')
-											- now_hour, sessionStorage
-											.getItem('off_minute')
-											- now_minute, 10);
 								}
-
 							});
 
 			// 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
