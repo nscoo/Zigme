@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="TrafficMapper">
+
+	<resultMap type="project.spring.simpleproject.model.Traffic" id="trafficMap">
+		<result property="trafficno" column="trafficno" />
+		<result property="members_userno" column="members_userno" />
+		<result property="s_lat" column="s_lat" />
+		<result property="s_lng" column="s_lng" />
+		<result property="e_lat" column="e_lat" />
+		<result property="e_lng" column="e_lng" />
+		<result property="to" column="to" />
+		<result property="from" column="from" />
+	</resultMap>
+
+
+
+	<!-- 찜하기 -->
+    <insert id="insertItem" useGeneratedKeys="true" keyProperty="trafficno" parameterType="project.spring.simpleproject.model.Traffic">
+        INSERT INTO mylist_traffic (`members_userno`, `s_lat`, `s_lng`, `e_lat`, `e_lng`, `to`, `from`) 
+        VALUES (#{members_userno}, #{s_lat}, #{s_lng}, #{e_lat}, #{e_lng}, #{to}, #{from});
+    </insert>
+    
+    <!-- 찜삭제 -->
+    <delete id="deleteList" parameterType="hashmap">
+   		DELETE FROM mylist_traffic WHERE trafficno=#{trafficno}
+    </delete>
+
+    <!-- 찜확인 -->
+    <select id="checkList" parameterType="project.spring.simpleproject.model.Traffic" resultType="Integer">
+		SELECT * FROM mylist_traffic WHERE s_lat=#{s_lat} AND s_lng=#{s_lng} AND e_lat=#{e_lat} AND e_lng=#{e_lng} AND members_userno=#{members_userno}
+	</select>
+    
+    <select id="selectItem" parameterType="project.spring.simpleproject.model.Traffic" resultMap="trafficMap">
+		SELECT * FROM mylist_traffic WHERE s_lat=#{s_lat} AND s_lng=#{s_lng} AND e_lat=#{e_lat} AND e_lng=#{e_lng}
+	</select>
+	
+	<select id="selectList"  parameterType="project.spring.simpleproject.model.Traffic" resultMap="trafficMap" >
+		SELECT * FROM mylist_traffic WHERE members_userno=#{members_userno}
+	</select>
+   
+   	
+
+</mapper>

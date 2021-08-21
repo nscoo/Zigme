@@ -200,7 +200,7 @@
                             
                         </div>
                         <!-- tab2 -->
-                        <div class="tab-pane search-tab-content active filter inner2--bottom" id="my_restaurant_list" style="overflow:auto; height:1400px; border: 1px solid #f89b00;">
+                        <div class="tab-pane search-tab-content" id="my_hair_list" style="overflow:auto; height:1400px; border: 1px solid #f89b00;">
                             <c:choose>
                           <%-- 조회 결과가 없는 경우 --%>
                              <c:when test="${output == null || fn:length(output)==0 }">
@@ -499,7 +499,7 @@
 		  
 	  })
     }
-//     }
+
     //메모 남기기
     function savememo(mylistno,memo){ //mylisthair니까 여기서 mylistno, memo를 가져오면 된다.
 		$.ajax({

@@ -164,7 +164,6 @@ public class MylistHairController {
 		
 		mylist.setMylistno(mylistno);
 		mylist.setMemo(memo);
-		System.out.println("&&&&&&&&&&&&&&&&&&&&&"+mylist);
 		int result = mylisthair.updatememo(mylist);
 		return result;
 	}

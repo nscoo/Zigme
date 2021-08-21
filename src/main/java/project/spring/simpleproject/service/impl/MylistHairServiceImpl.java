@@ -28,7 +28,7 @@ public class MylistHairServiceImpl implements MylistHairService{
 	public int getHairno(String input) throws Exception {
 		// TODO Auto-generated method stub
 		int result =0;
-		System.out.println("impl ++++"+input+"*****");
+		
 		try {
 			result = sqlSession.selectOne("MylistHairMapper.findHairno",input);
 		}catch(Exception e) {

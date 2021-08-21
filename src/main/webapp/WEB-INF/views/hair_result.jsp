@@ -513,16 +513,17 @@ vertical-align: top;
                               function statistics(name){
                               var ctx = $("#myChart."+name)[0].getContext('2d');
                               var star = $("#star."+name)[0].innerHTML;
-                              var review = ($("#review."+name)[0].innerHTML)/10;
-                              var score = 50
+                              var review = ($("#review."+name)[0].innerHTML)/100;
+                              var score = (((star*0.3)+(review*0.7))/6.98)*100;
+                              
                               var myChart = new Chart(ctx, {
                                   
                                   data: {
-                                      labels: ['별점', '리뷰수(십)'],
+                                      labels: ['별점', '리뷰수(백)'],
                                       datasets: [{
                                     	  type: 'bar',
                                           label: name+'데이터',
-                                          data: [4, 2],
+                                          data: [star, review],
                                           backgroundColor:['rgba(255, 159, 64, 0.2)',
                                               'rgba(255, 205, 86, 0.2)'],
                                           borderColor: ['rgb(255, 159, 64)',

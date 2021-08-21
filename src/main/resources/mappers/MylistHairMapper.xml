@@ -71,6 +71,6 @@
 	SELECT * FROM mylist_hair WHERE members_userno=#{members_userno} AND hair_hairno =#{hair_hairno}
 	</select>
 	<update id ="updatememo"  parameterType="project.spring.simpleproject.model.MylistHair">
-		UPDATE mylist_hair SET memo = ${memo} WHERE mylistno = #{mylistno}
+		UPDATE mylist_hair SET memo = #{memo} WHERE mylistno = #{mylistno}
 	</update>
 </mapper>
