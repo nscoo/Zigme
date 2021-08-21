@@ -21,7 +21,7 @@
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="assets/css/common.css">
     <link rel="stylesheet" type="text/css" href="assets/css/container.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/music_select.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/music_select2,3,4.css">
     <!-- 이수진 css,부트스트랩 끝 -->
 </head>
 
@@ -91,7 +91,7 @@
                     </a>
                 </div>
                 <div id="top_buttons">
-                    <button id="start" type="button" class="btn btn-default btn-xs">퇴근까지</button>
+                    <button type="button" class="btn btn-default btn-xs">퇴근까지</button>
                     <div id="button_time">
                         <div class="countdown-bar" id="countdownC">
                             <div></div>
@@ -190,8 +190,8 @@
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/script.js"></script>
         <script type="text/javascript">
-		var startBtn = document.getElementById('start');
-		
+        var startBtn = document.getElementById('start');
+    	
 		startBtn.addEventListener("click", function() {
 	
 			// 카운트다운을 처음 설정하는 경우
@@ -264,6 +264,7 @@
 			}
 	
 		});
+
 
 
         function openNav() {
