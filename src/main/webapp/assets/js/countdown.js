@@ -3,13 +3,14 @@
  *
  * @returns {array}
  */
+
 	function config() {
 
     var $config = [];
     $config.loadingBars = '.countdown-bar';
 
     // Countdown Loading Bar
-    $config.loadingBars_width = 200;
+    $config.loadingBars_width = 600;
     $config.loadingBars_height = 20;
     $config.loadingBars_border_color = '#E74C3C';
     $config.loadingBars_color =  '#C0392B';
@@ -43,6 +44,7 @@
  * @param {number} $minutesAdd
  * @param {number} $secondsAdd
  */
+ 
 function countdown($element, $daysAdd, $hoursAdd, $minutesAdd, $secondsAdd) {
 
     $config = this.config();
@@ -110,12 +112,12 @@ function countdown($element, $daysAdd, $hoursAdd, $minutesAdd, $secondsAdd) {
 
 
 
-
 /**
  * Set the timer compared to what date it is and what time is set for it.
  *
  * @param {timstamp} $distance
  */
+
 function setTimer($distance) {
     // Time calculations for days, hours, minutes and seconds
     var days = Math.floor($distance / (1000 * 60 * 60 * 24));

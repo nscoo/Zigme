@@ -39,7 +39,7 @@ public class TrafficController {
 	TrafficService trafficService;
 
 	   @RequestMapping(value = "/traffic_search.do", method=RequestMethod.GET)
-	   public String nearby(Model model,HttpServletResponse response, HttpSession session, HttpServletRequest r) {
+	   public String traffic_search(Model model,HttpServletResponse response, HttpSession session, HttpServletRequest r) {
 		   
 		   	Member member = (Member) session.getAttribute("member");
 		   	int userno = member.getUserno();
@@ -64,7 +64,7 @@ public class TrafficController {
 	   }
 
 	   @RequestMapping(value = "/traffic_result.do", method=RequestMethod.GET)
-	   public String main() throws Exception {
+	   public String traffic_result() throws Exception {
 	
 		   
 	      return "traffic_result";
