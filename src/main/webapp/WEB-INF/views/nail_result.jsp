@@ -336,7 +336,9 @@ vertical-align: top;
            			
            			<c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
            			<c:set var="name2" value="${fn:replace(name2,' ','')}" />
+           			<c:set var="nailno" value="${item.nailno}"/>
            			<c:if test="${status.count<6 }">
+           			
            			<div class="jumbotron">
                 		<div class="jumbo_img">
                     		<img src= "${photos}" alt="best5 사진">
@@ -381,14 +383,13 @@ vertical-align: top;
                             <image src="${photos}" width="240px" height="240px" />
                            
                         </div>
-                        <div id="popup_content_1">
-                            <h2>${name}&nbsp;<span id=heart><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-                            </h2>
+                        <div id="popup_content_1"><input type ="hidden" id="${name2}" value=${nailno}>
+                            <h3>${name}&nbsp;<span id ="heart" class="${name2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name2}','${name}')" ></i> </span>                            </h3>
                         </div>
                         <div id="popup_content_2">
                            		
                            		<div class="info_stars" style="font-size: 20px; margin-left: -30px;"><i class="fas fa-star" style="color:#ffd400; font-size:28px;"></i><font style="font-size: 20px;" id="star" class="${name2}">${item.stars}</font></div>
-                                <div id="info_num" style="font-size: 20px;">카카오 네일샵 리뷰수:&nbsp;<font id="review" class="${name2}" style="font-size: 25px; color: #ff7f00;">${item.review_count}</font>개</div>
+                                <div id="info_num" style="font-size: 20px;">카카오 헤어샵 리뷰수:&nbsp;<font id="review" class="${name2}" style="font-size: 25px; color: #ff7f00;">${item.review_count}</font>개</div>
                                 <br/>   
                                 
                                 <div id="info_time" style="font-size: 20px;"><img src="assets/img/time.png" width="20px" height="20px">&nbsp;${times}</div>     
@@ -400,9 +401,8 @@ vertical-align: top;
                         
                         <div id="popup_content_3">
                         	<br/>
-                       
-                        	<div id="info_ps" style="font-size: 20px;"><img src="assets/img/ps.png" width="25px" height="25px">&nbsp;${fn:substring(ps,0,35)}<br/>${fn:substring(ps,35,70)}<br/>${fn:substring(ps,70,150)}</div><br/>
-                         	<div id="info_etc" style="font-size: 20px;"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${fn:substring(menu,0,45)}<br/>${fn:substring(menu,45,90)}<br/>${fn:substring(menu,90,150)}</div>
+                        	<div id="info_ps" style="font-size: 20px;"><img src="assets/img/ps.png" width="25px" height="25px">&nbsp;${fn:substring(ps,0,35)}<br/>${fn:substring(ps,35,70)}<br/>${fn:substring(ps,70,105)}<br/>${fn:substring(ps,105,150)}</div><br/>
+                         	<div id="info_etc" style="font-size: 20px;"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${fn:substring(menu,0,45)}<br/>${fn:substring(menu,45,90)}<br/>${fn:substring(menu,90,135)}<br/>${fn:substring(menu,135,180)}</div>
                         </div>
                         
                         <div id="popup_content_4">
@@ -422,8 +422,8 @@ vertical-align: top;
                     </div>
                     <div class="b-close"></div>
                 </div>
-            		
-   					</c:if>
+            	</c:if>
+   
            			</c:forEach>
            			
            		</c:otherwise>
@@ -440,6 +440,7 @@ vertical-align: top;
            		<%-- 조회 결과가 있는 경우 --%>
            		<c:otherwise>
            			<%-- 조회 결과에 대한 반복 처리 --%>
+           			
            			<c:forEach var="item" items="${output}" varStatus="status" >
            			<c:if test="${status.count>5}">
 					<c:set var="name" value="${item.name}"/>           			
@@ -449,9 +450,11 @@ vertical-align: top;
            			<c:set var="times" value="${item.times}"/>
            			<c:set var="menu" value="${item.menu}"/>
            			<c:set var="photos" value="${item.photos}"/>
+           			
            			<c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
            			<c:set var="name2" value="${fn:replace(name2,' ','')}" />
-           		
+           			
+           			<c:set var="nailno" value="${item.nailno}"/>
            			
                     		<li>
                         		<a href="javascript:void(0);" style="text-decoration: none;" 
@@ -473,25 +476,28 @@ vertical-align: top;
                            
                         </div>
                         <div id="popup_content_1">
-                            <h2>${name}&nbsp;<span id=heart><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-                            </h2>
+                        	<input type ="hidden" id="${name2}" value=${nailno }>
+                            <h3>${name}&nbsp;<span id=heart class="${name2}" ><i class="fa fa-heart-o" aria-hidden="true" onClick="heart('${name2}','${name}')"></i> </span>
+                            </h3>
+
                         </div>
                         <div id="popup_content_2">
                            		
                            		<div class="info_stars" style="font-size: 20px; margin-left: -30px;"><i class="fas fa-star" style="color:#ffd400; font-size:28px;"></i><font style="font-size: 20px;" id="star" class="${name2}">${item.stars}</font></div>
-                                <div id="info_num" style="font-size: 20px;">카카오 네일샵 리뷰수:&nbsp;<font id="review" class="${name2}" style="font-size: 25px; color: #ff7f00;">${item.review_count}</font>개</div>
+                                <div id="info_num" style="font-size: 20px;">카카오 헤어샵 리뷰수:&nbsp;<font id="review" class="${name2}" style="font-size: 25px; color: #ff7f00;">${item.review_count}</font>개</div>
                                 <br/>   
                                 
                                 <div id="info_time" style="font-size: 20px;"><img src="assets/img/time.png" width="20px" height="20px">&nbsp;${times}</div>     
                                 <div id="info_num" style="font-size: 20px;">&nbsp;${call}</div>
                                 <div id="info_add" style="font-size: 20px;"><img src="assets/img/add.png" width="20px" height="20px">&nbsp;${address}</div>
                                 
+                                
 
                         </div>
                         
                         <div id="popup_content_3">
                         	<br/>
-                       
+                       		<font id="sang" class={name2} style="font-size:0px;">${item.nailno}</font>
                         	<div id="info_ps" style="font-size: 20px;"><img src="assets/img/ps.png" width="25px" height="25px">&nbsp;${fn:substring(ps,0,35)}<br/>${fn:substring(ps,35,70)}<br/>${fn:substring(ps,70,150)}</div><br/>
                          	<div id="info_etc" style="font-size: 20px;"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${fn:substring(menu,0,45)}<br/>${fn:substring(menu,45,90)}<br/>${fn:substring(menu,90,150)}</div>
                         </div>
@@ -518,6 +524,7 @@ vertical-align: top;
            			</c:forEach>
            	</c:otherwise>
            </c:choose>
+        
            	</ul>
           </div>
            
@@ -704,7 +711,28 @@ vertical-align: top;
             document.getElementById("mySidebar").style.display = "none";
         }
         //상세 팝업
-        function openPopup(name) {
+function openPopup(name) { 
+
+        	var nailno = document.getElementById(name).value;
+        	
+        	$.ajax({
+        		type : "POST",
+        		url : "checklist2",
+        		dataType : "json",
+        		data : {
+        			"nailno" : nailno
+        		},
+        	success : function(data){
+        		
+        		if(data){
+ 	  	              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+   	              	  $("#heart."+name).addClass("liked");
+        		}else{
+        			console.log('찜 목록아님')
+        		}
+        	},
+
+        	})
             $("#popupLayer."+name).bPopup({
                     iframeAttr: 'frameborder=”auto”',
                     iframeAttr: 'frameborder=”0',
@@ -715,19 +743,58 @@ vertical-align: top;
                     onClose: function() {}
                 },
                 function() {});
+            
+            
         }
-        //찜하트 구현 js
-        $(document).ready(function() {
-            $("#heart").click(function() {
-                if ($("#heart").hasClass("liked")) {
-                    $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-                    $("#heart").removeClass("liked");
-                } else {
-                    $("#heart").html('<i class="fa fa-heart" aria-hidden="true"></i>');
-                    $("#heart").addClass("liked");
-                }
-            });
-        });
+        //하트 색상 채우기
+        function heart(name,a){
+                 $("#heart."+name).click(function(){
+               	 
+               	  //찜  취소
+       	          if($("#heart."+name).hasClass("liked")){
+       	        	  $.ajax({
+       	        		  type :"POST",
+       	        		  url : "cancel_basket2",
+       	        		  dataType : "json",
+       	        		  data :{"name": a},
+       	        		  success:function(data){ //삭제 
+       	        			  if(data == 1){ //삭제 성공
+       		                      $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+       		                      $("#heart."+name).removeClass("liked");
+       	        			  }else{
+       								alert('취소 실패 잠시후에 다시 시도하세요');
+       	                      }
+       	        		  },
+       	        		  
+       	        	  })
+                   }else{ //찜하기
+                 	  $.ajax({
+               		  type : "POST",
+               		  url : "add_basket2",
+               		  dataType : "json",
+               		  data : {"name" : a},
+              	  		 success:function(data){
+              	  			 	if(data==3){
+              	  			 		alert('로그인 후 이용해주세요 로그인 페이지로 이동합니다');
+              	  			 		location.replace("main.do");
+              	  			 		return false;
+              	  			 	}else if(data ==-1){
+              	  			 		alert('저장 실패 다시 시도해주세요');
+              	  			 		return false;
+              	  			 	}
+              	  			 	else{
+              	  	              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+              	              	  $("#heart."+name).addClass("liked");
+              	  			 	}
+
+               		  },
+               		
+               	  })
+                   }
+
+
+                 });
+               }
         </script>
 </body>
 
