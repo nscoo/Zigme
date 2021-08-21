@@ -141,7 +141,7 @@
                     </a>
                 </div>
                 <div id="top_buttons">
-                    <button type="button" class="btn btn-default btn-xs">퇴근까지</button>
+                    <button id="start" type="button" class="btn btn-default btn-xs">퇴근까지</button>
                     <div id="button_time">
                         <div class="countdown-bar" id="countdownC">
                             <div></div>
@@ -224,6 +224,66 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec3431bf4421193b0c663484256ae020&libraries=services"></script>
 <script>
+var startBtn = document.getElementById('start');
+
+startBtn.addEventListener("click", function() {
+
+	// 카운트다운을 처음 설정하는 경우
+	off_hour = parseInt(prompt("몇시에 퇴근하시나요? (24시 기준)"));
+	console.log(off_hour);
+	if ((typeof off_hour == "string") || (off_hour > 24)
+			|| (isNaN(off_hour))) {
+		alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
+		return
+
+	}
+
+	off_minute = parseInt(prompt("몇분에 퇴근하시나요?"));
+	if ((typeof off_minute != "number") || (off_minute > 60)
+			|| (isNaN(off_minute))) {
+		alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
+		return
+
+	}
+
+	sessionStorage.setItem("off_hour", off_hour);
+	sessionStorage.setItem("off_minute", off_minute);
+	location.reload();
+
+	console.log("수정된 퇴근 시간" + off_hour + ":" + off_minute);
+
+	location.reload();
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+
+	var today = new Date();
+	var now_hour = parseInt(('0' + today.getHours()).slice(-2));
+	var now_minute = parseInt(('0' + today.getMinutes()).slice(-2));
+
+	console.log("현재 시간" + now_hour + ":" + now_minute);
+	
+	if (sessionStorage.getItem('off_hour')==null || sessionStorage.getItem('off_minute')==null){
+		
+		startBtn.innerHTML = "퇴근 시간 설정하기"
+		
+	}
+	
+	else{
+		var off_hour = sessionStorage.getItem('off_hour');
+		var off_minute = sessionStorage.getItem('off_minute');
+
+		console.log("퇴근 시간" + off_hour + ":" + off_minute);
+		startBtn.innerHTML = "퇴근까지 ~ "
+		countdown('countdownC', 0, sessionStorage.getItem('off_hour')
+				- now_hour, sessionStorage.getItem('off_minute')
+				- now_minute, 10);
+	}
+
+});
+
+
 // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
 var placeOverlay = new kakao.maps.CustomOverlay({zIndex:1}), 
     contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다 

@@ -139,7 +139,6 @@ String stars = request.getParameter("stars");
 	<!--bootstrap 반응형 사용을 위해 제일 상위 class를 container로 설정함 -->
 	<div class="container">
 		<!-- header 시작 -->
-<<<<<<< HEAD
 		<div id="header">
 			<div id="header_top">
 				<div id="top_menu">
@@ -200,7 +199,7 @@ String stars = request.getParameter("stars");
 					</a>
 				</div>
 				<div id="top_buttons">
-					<button type="button" class="btn btn-default btn-xs">퇴근 시간 설정하기</button>
+					<button id="start" type="button" class="btn btn-default btn-xs">퇴근 시간 설정하기</button>
 					<div id="button_time">
 						<div class="countdown-bar" id="countdownC">
 							<div></div>
@@ -241,7 +240,7 @@ String stars = request.getParameter("stars");
 					<li><a href="${pageContext.request.contextPath}/mylist.do"
 						style="font-size: 20px;">MyList</a></li>
 				</ul>
-=======
+
         <div id="header">
             <div id="header_top">
                 <div id="top_menu">
@@ -341,7 +340,7 @@ String stars = request.getParameter("stars");
                     <li><a href="${pageContext.request.contextPath}/traffic_search.do" style="font-size: 20px;">Transportation</a></li>
                     <li><a href="${pageContext.request.contextPath}/mylist.do" style="font-size: 20px;">MyList</a></li>
                 </ul>
->>>>>>> 6c2262fda57f5bb4a66f9d939b78aa40a7db98a3
+
 				<div id="header_banner">
 					<div id="search_input" class="input-group">
 						<%-- 						<input type="text" class="form-control"
@@ -859,19 +858,64 @@ String stars = request.getParameter("stars");
 			
 			
 
-			countdown('countdownC', 0, 0, 10, 10);
-			// Countdown Loading Bar
-			$config.loadingBars_width = 60;
-			$config.loadingBars_height = 15;
-			$config.loadingBars_border_color = 'orange';
-			$config.loadingBars_color = 'orange';
-			$config.loadingBars_background_color = 'lightblue';
-
-			// Countdown Timer
-			$config.timer_color = 'black';
-			$config.timer_font_weight = 700;
-			$config.timer_font = 'Verdana';
-			$config.timer_font_size = 9;
+			var startBtn = document.getElementById('start');
+			
+			startBtn.addEventListener("click", function() {
+		
+				// 카운트다운을 처음 설정하는 경우
+				off_hour = parseInt(prompt("몇시에 퇴근하시나요? (24시 기준)"));
+				console.log(off_hour);
+				if ((typeof off_hour == "string") || (off_hour > 24)
+						|| (isNaN(off_hour))) {
+					alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
+					return
+		
+				}
+		
+				off_minute = parseInt(prompt("몇분에 퇴근하시나요?"));
+				if ((typeof off_minute != "number") || (off_minute > 60)
+						|| (isNaN(off_minute))) {
+					alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
+					return
+		
+				}
+		
+				sessionStorage.setItem("off_hour", off_hour);
+				sessionStorage.setItem("off_minute", off_minute);
+				location.reload();
+		
+				console.log("수정된 퇴근 시간" + off_hour + ":" + off_minute);
+		
+				location.reload();
+			});
+			
+		
+			document.addEventListener("DOMContentLoaded", function() {
+		
+				var today = new Date();
+				var now_hour = parseInt(('0' + today.getHours()).slice(-2));
+				var now_minute = parseInt(('0' + today.getMinutes()).slice(-2));
+		
+				console.log("현재 시간" + now_hour + ":" + now_minute);
+				
+				if (sessionStorage.getItem('off_hour')==null || sessionStorage.getItem('off_minute')==null){
+					
+					startBtn.innerHTML = "퇴근 시간 설정하기"
+					
+				}
+				
+				else{
+					var off_hour = sessionStorage.getItem('off_hour');
+					var off_minute = sessionStorage.getItem('off_minute');
+		
+					console.log("퇴근 시간" + off_hour + ":" + off_minute);
+					startBtn.innerHTML = "퇴근까지 ~ "
+					countdown('countdownC', 0, sessionStorage.getItem('off_hour')
+							- now_hour, sessionStorage.getItem('off_minute')
+							- now_minute, 10);
+				}
+		
+			});
 
 			//사이드바 메뉴
 			function openNav() {

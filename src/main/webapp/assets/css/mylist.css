@@ -1,4 +1,4 @@
-/* mylist 부분 시작*/
+/* mylist 遺�遺� �떆�옉*/
 
 #mylist_area {
     width: 1200px;
@@ -20,7 +20,7 @@
     left: 150px;
 }
 
-/* 선택 탭 (선택) */
+/* �꽑�깮 �꺆 (�꽑�깮) */
 #list_select>ul>li {
     width: 300px;
     position: relative;
@@ -64,7 +64,7 @@
 }
 
 
-/* 선택 탭 내용 */
+/* �꽑�깮 �꺆 �궡�슜 */
 
 #list_select>div>div:nth-child(1).active {
     border: 10px solid #fd9735;
@@ -114,7 +114,7 @@
 }
 
 .info_name {
-    font-size: 40px;
+    font-size: 35px;
 }
 
 .info_name,
@@ -151,9 +151,9 @@
     border: 1px 1px 1px 0px solid #000000;
 }
 
-/* mylist 부분 end */
+/* mylist 遺�遺� end */
 
-/*반응형 부분*/
+/*諛섏쓳�삎 遺�遺�*/
 
 @media(max-width: 480px) {
     #mylist_area {

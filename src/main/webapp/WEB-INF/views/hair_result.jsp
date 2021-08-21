@@ -209,7 +209,7 @@ vertical-align: top;
                     </a>
                 </div>
                 <div id="top_buttons">
-                    <button type="button" class="btn btn-default btn-xs">퇴근까지</button>
+                    <button id="start" type="button" class="btn btn-default btn-xs">퇴근까지</button>
                     <div id="button_time">
                         <div class="countdown-bar" id="countdownC">
                             <div></div>
@@ -281,6 +281,7 @@ vertical-align: top;
            			
            			<c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
            			<c:set var="name2" value="${fn:replace(name2,' ','')}" />
+           			<c:set var="hairno" value="${item.hairno}"/>
            			<c:if test="${status.count<6 }">
            			
            			<div class="jumbotron">
@@ -327,7 +328,7 @@ vertical-align: top;
                             <image src="${photos}" width="240px" height="240px" />
                            
                         </div>
-                        <div id="popup_content_1">
+                        <div id="popup_content_1"><input type ="hidden" id="${name2}" value=${hairno}>
                             <h3>${name}&nbsp;<span id ="heart" class="${name2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name2}','${name}')" ></i> </span>                            </h3>
                         </div>
                         <div id="popup_content_2">
@@ -345,7 +346,6 @@ vertical-align: top;
                         
                         <div id="popup_content_3">
                         	<br/>
-                       
                         	<div id="info_ps" style="font-size: 20px;"><img src="assets/img/ps.png" width="25px" height="25px">&nbsp;${fn:substring(ps,0,35)}<br/>${fn:substring(ps,35,70)}<br/>${fn:substring(ps,70,105)}<br/>${fn:substring(ps,105,150)}</div><br/>
                          	<div id="info_etc" style="font-size: 20px;"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${fn:substring(menu,0,45)}<br/>${fn:substring(menu,45,90)}<br/>${fn:substring(menu,90,135)}<br/>${fn:substring(menu,135,180)}</div>
                         </div>
@@ -398,7 +398,8 @@ vertical-align: top;
            			
            			<c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
            			<c:set var="name2" value="${fn:replace(name2,' ','')}" />
-           		
+           			
+           			<c:set var="hairno" value="${item.hairno}"/>
            			
                     		<li>
                         		<a href="javascript:void(0);" style="text-decoration: none;" 
@@ -420,6 +421,7 @@ vertical-align: top;
                            
                         </div>
                         <div id="popup_content_1">
+                        	<input type ="hidden" id="${name2}" value=${hairno }>
                             <h3>${name}&nbsp;<span id=heart class="${name2}" ><i class="fa fa-heart-o" aria-hidden="true" onClick="heart('${name2}','${name}')"></i> </span>
                             </h3>
 
@@ -434,12 +436,13 @@ vertical-align: top;
                                 <div id="info_num" style="font-size: 20px;">&nbsp;${call}</div>
                                 <div id="info_add" style="font-size: 20px;"><img src="assets/img/add.png" width="20px" height="20px">&nbsp;${address}</div>
                                 
+                                
 
                         </div>
                         
                         <div id="popup_content_3">
                         	<br/>
-                       
+                       		<font id="sang" class={name2} style="font-size:0px;">${item.hairno}</font>
                         	<div id="info_ps" style="font-size: 20px;"><img src="assets/img/ps.png" width="25px" height="25px">&nbsp;${fn:substring(ps,0,35)}<br/>${fn:substring(ps,35,70)}<br/>${fn:substring(ps,70,150)}</div><br/>
                          	<div id="info_etc" style="font-size: 20px;"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${fn:substring(menu,0,45)}<br/>${fn:substring(menu,45,90)}<br/>${fn:substring(menu,90,150)}</div>
                         </div>
@@ -619,19 +622,64 @@ vertical-align: top;
 
                               </script>
         <script type="text/javascript">
-        countdown('countdownC', 0, 0, 10, 10);
-        // Countdown Loading Bar
-        $config.loadingBars_width = 60;
-        $config.loadingBars_height = 15;
-        $config.loadingBars_border_color = 'orange';
-        $config.loadingBars_color = 'orange';
-        $config.loadingBars_background_color = 'lightblue';
-
-        // Countdown Timer
-        $config.timer_color = 'black';
-        $config.timer_font_weight = 700;
-        $config.timer_font = 'Verdana';
-        $config.timer_font_size = 9;
+		var startBtn = document.getElementById('start');
+		
+		startBtn.addEventListener("click", function() {
+	
+			// 카운트다운을 처음 설정하는 경우
+			off_hour = parseInt(prompt("몇시에 퇴근하시나요? (24시 기준)"));
+			console.log(off_hour);
+			if ((typeof off_hour == "string") || (off_hour > 24)
+					|| (isNaN(off_hour))) {
+				alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
+				return
+	
+			}
+	
+			off_minute = parseInt(prompt("몇분에 퇴근하시나요?"));
+			if ((typeof off_minute != "number") || (off_minute > 60)
+					|| (isNaN(off_minute))) {
+				alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
+				return
+	
+			}
+	
+			sessionStorage.setItem("off_hour", off_hour);
+			sessionStorage.setItem("off_minute", off_minute);
+			location.reload();
+	
+			console.log("수정된 퇴근 시간" + off_hour + ":" + off_minute);
+	
+			location.reload();
+		});
+		
+	
+		document.addEventListener("DOMContentLoaded", function() {
+	
+			var today = new Date();
+			var now_hour = parseInt(('0' + today.getHours()).slice(-2));
+			var now_minute = parseInt(('0' + today.getMinutes()).slice(-2));
+	
+			console.log("현재 시간" + now_hour + ":" + now_minute);
+			
+			if (sessionStorage.getItem('off_hour')==null || sessionStorage.getItem('off_minute')==null){
+				
+				startBtn.innerHTML = "퇴근 시간 설정하기"
+				
+			}
+			
+			else{
+				var off_hour = sessionStorage.getItem('off_hour');
+				var off_minute = sessionStorage.getItem('off_minute');
+	
+				console.log("퇴근 시간" + off_hour + ":" + off_minute);
+				startBtn.innerHTML = "퇴근까지 ~ "
+				countdown('countdownC', 0, sessionStorage.getItem('off_hour')
+						- now_hour, sessionStorage.getItem('off_minute')
+						- now_minute, 10);
+			}
+	
+		});
 
 
         function openNav() {
@@ -650,7 +698,26 @@ vertical-align: top;
             document.getElementById("mySidebar").style.display = "none";
         }
         //상세 팝업
-        function openPopup(name) {
+        function openPopup(name) { 
+
+        	var hairno = document.getElementById(name).value;
+        	$.ajax({
+        		type : "POST",
+        		url : "checklist",
+        		dataType : "json",
+        		data : {
+        			"hairno" : hairno
+        		},
+        	success : function(data){
+        		if(data){
+ 	  	              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+   	              	  $("#heart."+name).addClass("liked");
+        		}else{
+        			console.log('찜 목록아님')
+        		}
+        	},
+
+        	})
             $("#popupLayer."+name).bPopup({
                     iframeAttr: 'frameborder=”auto”',
                     iframeAttr: 'frameborder=”0',
@@ -661,6 +728,8 @@ vertical-align: top;
                     onClose: function() {}
                 },
                 function() {});
+            
+            
         }
         //찜하트 구현 js
         /*
@@ -693,6 +762,7 @@ vertical-align: top;
         //하트 색상 채우기
  function heart(name,a){
           $("#heart."+name).click(function(){
+        	 
         	  //찜  취소
 	          if($("#heart."+name).hasClass("liked")){
 	        	  $.ajax({
@@ -700,13 +770,12 @@ vertical-align: top;
 	        		  url : "cancel_basket",
 	        		  dataType : "json",
 	        		  data :{"name": a},
-	        		  success:function(data){
-	        			  if(data == 0){
-	        				  alert('삭제 실패 다시 시도해주세요');
-	        				  return false;
+	        		  success:function(data){ //삭제 
+	        			  if(data == 1){ //삭제 성공
+		                      $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+		                      $("#heart."+name).removeClass("liked");
 	        			  }else{
-	                      $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-	                      $("#heart."+name).removeClass("liked");
+								alert('취소 실패 잠시후에 다시 시도하세요');
 	                      }
 	        		  },
 	        		  
