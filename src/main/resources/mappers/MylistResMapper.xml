@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MylistResMapper">
+	<!-- Beans 객체이름(id)과 클래스type을 명시 -->
+	<resultMap type="project.spring.simpleproject.model.MylistRestaurant" id="myreslist">
+		<!-- Beans의 property 이름과 대상 테이블의 column연결 -->
+		<result property="mylistno" column="mylistno" />
+		<result property="members_userno" column="members_userno" />
+		<result property="restaurant_resno" column="restaurant_resno" />
+		<result property="memo" column="memo" />
+	</resultMap>
+	<!-- 회원 -->
+	<resultMap id="memberMap" type="project.spring.simpleproject.model.Member" >
+	<result property="userno" column="userno" />
+	<result property="name" column="name" />
+	<result property="userid" column="userid" />
+	<result property="userpw" column="userpw" />
+	<result property="tel" column="tel" />
+	<result property="birthdate" column="birthdate" />
+	<result property="addr_h" column="addr_h" />
+	<result property="addr_c" column="addr_c" />
+	<result property="is_out" column="is_out" />
+	<result property="is_login" column="is_login" />
+	</resultMap>
+	<!-- 음식 -->
+	<resultMap id="restaurantMap"
+		type="project.spring.simpleproject.model.Restaurant" >
+		<result property="resno" column="resno" />
+		<result property="name" column="name" />
+		<result property="stars" column="stars" />
+		<result property="call" column="call" />
+		<result property="address" column="address" />
+		<result property="times" column="times" />
+		<result property="ps" column="ps" />
+		<result property="tags" column="tags" />
+		<result property="review_count" column="review_count" />
+		<result property="photo_1" column="photo_1" />
+		<result property="photo_2" column="photo_2" />
+		<result property="photo_3" column="photo_3" />
+		<result property="menu_1" column="menu_1" />
+		<result property="menu_2" column="menu_2" />
+		<result property="loc" column="loc" />
+		<result property="subject" column="subject" />
+	</resultMap>
+
+	<!-- resno 조회 -->
+	<select id="findResno_res" parameterType="string" resultType="int">
+		SELECT resno FROM restaurant 
+		<where>
+		name = #{name} LIMIT 1;
+		</where> 
+	</select>
+	
+	<!-- 찜하기 -->
+    <insert id="addList_res"
+        useGeneratedKeys="true"
+        keyProperty="userno"
+        parameterType="hashmap"
+        >
+        INSERT INTO `mylist_res` (`members_userno`, `restaurant_resno`) 
+        VALUES (#{members_userno}, #{restaurant_resno});
+    </insert>
+    <!-- mylist 조회 -->
+	   <select id="selectMyList_res" parameterType="project.spring.simpleproject.model.MylistRestaurant" resultMap="myreslist">
+      SELECT restaurant_resno FROM mylist_res where members_userno=#{members_userno}
+   </select>
+   <!-- mylist memo 조회 -->
+   <select id="selectMyMemoList_res" parameterType="project.spring.simpleproject.model.MylistRestaurant" resultMap="myreslist">
+      SELECT mylistno, memo FROM mylist_res where members_userno=#{members_userno}
+   </select>
+   <!-- 찜 취소하기  -->
+   <delete id="deletelist_res" parameterType="hashmap">
+   	DELETE  FROM mylist_res WHERE members_userno=#{members_userno} AND restaurant_resno =#{restaurant_resno}
+   </delete> 
+	<select id="checklist_res" parameterType="hashmap" resultType="Integer">
+	SELECT * FROM mylist_res WHERE members_userno=#{members_userno} AND restaurant_resno =#{restaurant_resno}
+	</select>
+	<update id ="updatememo_res"  parameterType="project.spring.simpleproject.model.MylistRestaurant">
+		UPDATE mylist_res SET memo = #{memo} WHERE mylistno = #{mylistno}
+	</update>
+	
+	
+	
+	
+</mapper>

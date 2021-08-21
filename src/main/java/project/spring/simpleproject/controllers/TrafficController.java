@@ -39,6 +39,7 @@ public class TrafficController {
 	@Autowired
 	TrafficService trafficService;
 
+
 	   @RequestMapping(value = "/traffic_search.do", method=RequestMethod.GET)
 	   public ModelAndView traffic_search(Model model,HttpServletResponse response, HttpSession session, HttpServletRequest r) {
 		   
@@ -78,6 +79,9 @@ public class TrafficController {
 	      return "traffic_result";
 	      
 	   }
+
+
+
 	   
 	   //찜추가
 	   @ResponseBody
@@ -165,7 +169,7 @@ public class TrafficController {
 			Traffic input = new Traffic();
 			input.setMembers_userno(userno);
 			input.setS_lat(s_lat);
-			input.setS_lng(s_lat);
+			input.setS_lng(s_lng);
 			input.setE_lat(e_lat);
 			input.setE_lng(e_lng);
 			

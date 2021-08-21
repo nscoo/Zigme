@@ -73,6 +73,8 @@
 		AND
 			stars &gt;= #{stars}
 	</select>
-
+	<select id="selectMyList" parameterType="project.spring.simpleproject.model.Restaurant" resultMap="restaurantMap">
+      SELECT * FROM restaurant WHERE resno = #{resno}      
+   </select>
 
 </mapper>
