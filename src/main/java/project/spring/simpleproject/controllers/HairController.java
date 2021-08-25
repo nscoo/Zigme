@@ -38,6 +38,7 @@ public class HairController {
 		
 		Hair input = new Hair();
 		input.setName(keyword);
+		input.setAddress(keyword);
 		
 		List<Hair> output = null;
 
