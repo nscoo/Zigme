@@ -33,7 +33,7 @@ public class MylistHairServiceImpl implements MylistHairService{
 			result = sqlSession.selectOne("MylistHairMapper.findHairno",input);
 		}catch(Exception e) {
 			log.error(e.getLocalizedMessage());
-			throw new Exception("�뜲�씠�꽣  議고쉶�뿉 �떎�뙣");
+			throw new Exception("데이터  조회에 실패");
 		}
 		return result;
 	}
@@ -58,10 +58,10 @@ public class MylistHairServiceImpl implements MylistHairService{
 	         }
 	      } catch(NullPointerException e) {
 	         log.error(e.getLocalizedMessage());
-	         throw new Exception("議고쉶�맂 �뜲�씠�꽣媛� �뾾�뒿�땲�떎.");
+	         throw new Exception("조회된 데이터가 없습니다.");
 	      } catch(Exception e) {
 	         log.error(e.getLocalizedMessage());
-	         throw new Exception("�뜲�씠�꽣 議고쉶�뿉 �떎�뙣�뻽�뒿�땲�떎");
+	         throw new Exception("데이터 조회에 실패했습니다");
 	      }
 	      
 	      
@@ -81,10 +81,10 @@ public class MylistHairServiceImpl implements MylistHairService{
 	         }
 	      } catch(NullPointerException e) {
 	         log.error(e.getLocalizedMessage());
-	         throw new Exception("議고쉶�맂 �뜲�씠�꽣媛� �뾾�뒿�땲�떎.");
+	         throw new Exception("조회된 데이터가 없습니다.");
 	      } catch(Exception e) {
 	         log.error(e.getLocalizedMessage());
-	         throw new Exception("�뜲�씠�꽣 議고쉶�뿉 �떎�뙣�뻽�뒿�땲�떎");
+	         throw new Exception("데이터 조회에 실패했습니다");
 	      }
 	      
 	      
@@ -94,12 +94,11 @@ public class MylistHairServiceImpl implements MylistHairService{
 	public Integer checklist(Map<String, Integer> map) throws Exception {
 		// TODO Auto-generated method stub
 		Integer result = sqlSession.selectOne("MylistHairMapper.checklist",map);
-		System.out.println("+++++++++impll"+result);
 		return result;
 	}
 	@Override
 	public int updatememo(MylistHair mylist) throws Exception {
-		System.out.println("impl&&&&&&&&&&&&&&"+mylist.getMylistno());
+		
 		int result = sqlSession.update("MylistHairMapper.updatememo", mylist);
 		return result;
 	}

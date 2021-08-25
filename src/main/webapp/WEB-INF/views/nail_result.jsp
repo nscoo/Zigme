@@ -39,7 +39,7 @@
 
 }
 
-	.fa-heart-o {
+   .fa-heart-o {
         color: red;
         cursor: pointer;
         font-size: 25px;
@@ -52,7 +52,7 @@
     }
     
    .jumbo_img>img{
-   		display: block;
+         display: block;
    }
     
 .info_stars {
@@ -179,7 +179,7 @@ vertical-align: top;
 }
 
 #popupContent>#popup_content_4>#graph_left {
-	vertical-align: top;
+   vertical-align: top;
     width: 300px;
     
     display: inline-block;
@@ -232,7 +232,7 @@ vertical-align: top;
                                     <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
                                     <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
                                     <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
-                                	<br/>
+                                   <br/>
                                 </ul>
                             </li>
                             <li><a href="#">실내</a>
@@ -272,16 +272,16 @@ vertical-align: top;
                         </div>
                     </div>
                     <div id="button_top">
-                    	<c:if test="${member == null}">
+                       <c:if test="${member == null}">
                         <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/login.do'">Login</button>
                         <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/register.do'">회원가입</button>
-                   		</c:if>
-                   		<c:if test="${member != null}">
-                   		<div id = "login_top">
-                  		 <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">Mypage</button>
-                   		<button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
-                   		</div>
-                   		</c:if>
+                         </c:if>
+                         <c:if test="${member != null}">
+                         <div id = "login_top">
+                         <button type="button" class="btn btn-success btn-xs" onclick="location.href='${pageContext.request.contextPath}/edit.do'">Mypage</button>
+                         <button type="button" class="btn btn-warning btn-xs" onclick="location.href='${pageContext.request.contextPath}/logout.do'">로그아웃</button> 
+                         </div>
+                         </c:if>
                     </div>
                     
                 </div>
@@ -291,7 +291,7 @@ vertical-align: top;
                     <li class="dropdown">
                         <a id="dropdownMenu1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" style="font-size: 20px;">Beauty<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        	<li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
+                           <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/hair_search.do">미용실</a></li>
                             <li role="presentation"><a role="menuitem" href="${pageContext.request.contextPath}/nail_search.do">네일샵</a></li> 
                         </ul>
                     </li>
@@ -305,10 +305,10 @@ vertical-align: top;
             <div id="head_banner" style="position: relative; height: 420px; overflow: hidden; background-image: url(assets/img/flowers.jpg); background-size: cover;" >
             <!-- 검색 input을 form 태그로 바꾸어서 파라미터 전달을 가능하게 만듬 -->
                 <form method="get" action="${pageContext.request.contextPath}/nail_result.do" } id="search_input" class="input-group">
-                	<input type="search" name="keyword" class="form-control" placeholder="검색어를 입력하세요" value="${keyword}" /> <!-- 검색어에 대한 상태유지 처리 -->
+                   <input type="search" name="keyword" class="form-control" placeholder="검색어를 입력하세요" value="${keyword}" /> <!-- 검색어에 대한 상태유지 처리 -->
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="submit"><i class="fas fa-search"></i></button>
-                    </span>        	
+                    </span>           
                 </form>
             </div>
           </div>
@@ -318,64 +318,64 @@ vertical-align: top;
             <br />
             
             <c:choose>
-           		<%-- 조회 결과가 없는 경우 --%>
-           		<c:when test="${output == null || fn:length(output)==0 }">
-           			<h1>조회 결과가 없습니다.</h1>
-           		</c:when>
-           		<%-- 조회 결과가 있는 경우 --%>
-           		<c:otherwise>
-           			<%-- 조회 결과에 대한 반복 처리 --%>
-           			<c:forEach var="item" items="${output}" varStatus="status" >
-					<c:set var="name" value="${item.name}"/>           			
-           			<c:set var="address" value="${item.address}"/>
-           			<c:set var="call" value="${item.call}"/>
-           			<c:set var="ps" value="${item.ps}"/>
-           			<c:set var="times" value="${item.times}"/>
-           			<c:set var="menu" value="${item.menu}"/>
-           			<c:set var="photos" value="${item.photos}"/>
-           			
-           			<c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
-           			<c:set var="name2" value="${fn:replace(name2,' ','')}" />
-           			<c:set var="nailno" value="${item.nailno}"/>
-           			<c:if test="${status.count<6 }">
-           			
-           			<div class="jumbotron">
-                		<div class="jumbo_img">
-                    		<img src= "${photos}" alt="best5 사진">
-                    		
-                		</div>
-                		<div class="shop_title">
-                    		<a href="javascript:void(0);" style="text-decoration: none;" onClick="openPopup('${name2}')">
-                        		${name}&nbsp;<div class="info_stars"><i class="fas fa-star" style="color:#ffd400; font-size:28px;"></i>
+                 <%-- 조회 결과가 없는 경우 --%>
+                 <c:when test="${output == null || fn:length(output)==0 }">
+                    <h1>조회 결과가 없습니다.</h1>
+                 </c:when>
+                 <%-- 조회 결과가 있는 경우 --%>
+                 <c:otherwise>
+                    <%-- 조회 결과에 대한 반복 처리 --%>
+                    <c:forEach var="item" items="${output}" varStatus="status" >
+               <c:set var="name" value="${item.name}"/>                    
+                    <c:set var="address" value="${item.address}"/>
+                    <c:set var="call" value="${item.call}"/>
+                    <c:set var="ps" value="${item.ps}"/>
+                    <c:set var="times" value="${item.times}"/>
+                    <c:set var="menu" value="${item.menu}"/>
+                    <c:set var="photos" value="${item.photos}"/>
+                    
+                    <c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
+                    <c:set var="name2" value="${fn:replace(name2,' ','')}" />
+                    <c:set var="nailno" value="${item.nailno}"/>
+                    <c:if test="${status.count<6 }">
+                    
+                    <div class="jumbotron">
+                      <div class="jumbo_img">
+                          <img src= "${photos}" alt="best5 사진">
+                          
+                      </div>
+                      <div class="shop_title">
+                          <a href="javascript:void(0);" style="text-decoration: none;" onClick="openPopup('${name2}')">
+                              ${name}&nbsp;<div class="info_stars"><i class="fas fa-star" style="color:#ffd400; font-size:28px;"></i>
                                         <font style="font-size:20px;">&nbsp;${item.stars}</font></div></a><div style="font-size: 20px; color: gray;">&nbsp;리뷰수:&nbsp;${item.review_count}개</div>
-                    		</a>
-                		</div>
-                		<div class="jumbo_info">
-                			<p>
-                				<br />
-                        		<img src="assets/img/clock.png" alt="시간" width="25px" height="25px">
-                        		${times}
-                    		</p>
-                    		<p>
-                        		
-                        		<img src="assets/img/call.png" width="20px" height="20px">
-                        		${call}
-                    		</p>
-                    		<p>
-                        		<img src="assets/img/placeholder-filled-point.png" width="20px" height="20px">
-                        		${address}
-                    		</p>
-                    		
-                    		<p>
-                        		
-                        		<img src="assets/img/clipboard.png" width="20px" height="20px">
-                        		${fn:substring(menu,0,fn:indexOf(menu, "~")+1)}
+                          </a>
+                      </div>
+                      <div class="jumbo_info">
+                         <p>
+                            <br />
+                              <img src="assets/img/clock.png" alt="시간" width="25px" height="25px">
+                              ${times}
+                          </p>
+                          <p>
+                              
+                              <img src="assets/img/call.png" width="20px" height="20px">
+                              ${call}
+                          </p>
+                          <p>
+                              <img src="assets/img/placeholder-filled-point.png" width="20px" height="20px">
+                              ${address}
+                          </p>
+                          
+                          <p>
+                              
+                              <img src="assets/img/clipboard.png" width="20px" height="20px">
+                              ${fn:substring(menu,0,40)}
          
-                        		
-                    		</p>
-                		</div>
-            		</div>
-            		<div id="popupLayer" class="${name2}">
+                              
+                          </p>
+                      </div>
+                  </div>
+                  <div id="popupLayer" class="${name2}">
                     <div id="popupContent">
                         <div id="popup_image_box">
                             <image src="${photos}" width="240px" height="240px" />
@@ -387,8 +387,8 @@ vertical-align: top;
                             <h3>${name}&nbsp;<span id ="heart" class="${name2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name2}','${name}')" ></i> </span>                            </h3>
                         </div>
                         <div id="popup_content_2">
-                           		
-                           		<div class="info_stars" style="font-size: 20px; margin-left: -30px;"><i class="fas fa-star" style="color:#ffd400; font-size:28px;"></i><font style="font-size: 20px;" id="star" class="${name2}">${item.stars}</font></div>
+                                 
+                                 <div class="info_stars" style="font-size: 20px; margin-left: -30px;"><i class="fas fa-star" style="color:#ffd400; font-size:28px;"></i><font style="font-size: 20px;" id="star" class="${name2}">${item.stars}</font></div>
                                 <div id="info_num" style="font-size: 20px;">카카오 헤어샵 리뷰수:&nbsp;<font id="review" class="${name2}" style="font-size: 25px; color: #ff7f00;">${item.review_count}</font>개</div>
                                 <br/>   
                                 
@@ -400,73 +400,73 @@ vertical-align: top;
                         </div>
                         
                         <div id="popup_content_3">
-                        	<br/>
-                        	<div id="info_ps" style="font-size: 20px;"><img src="assets/img/ps.png" width="25px" height="25px">&nbsp;${fn:substring(ps,0,35)}<br/>${fn:substring(ps,35,70)}<br/>${fn:substring(ps,70,105)}<br/>${fn:substring(ps,105,150)}</div><br/>
-                         	<div id="info_etc" style="font-size: 20px;"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${fn:substring(menu,0,45)}<br/>${fn:substring(menu,45,90)}<br/>${fn:substring(menu,90,135)}<br/>${fn:substring(menu,135,180)}</div>
+                           <br/>
+                           <div id="info_ps" style="font-size: 20px;"><img src="assets/img/ps.png" width="25px" height="25px">&nbsp;${fn:substring(ps,0,35)}<br/>${fn:substring(ps,35,70)}<br/>${fn:substring(ps,70,105)}</div>
+                            <div id="info_etc" style="font-size: 20px;"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${fn:substring(menu,0,45)}<br/>${fn:substring(menu,45,90)}<br/>${fn:substring(menu,90,135)}<br/>${fn:substring(menu,135,180)}</div>
                         </div>
                         
                         <div id="popup_content_4">
                         <div id="graph_left">
                         <button onclick="statistics('${name2}')" class="btn btn-warning">직메의 점수 보기</button>
-                        	<br/><br/>
+                           <br/><br/>
                             <div style="width: 300px;">
-                            	<canvas id="myChart" class="${name2}"></canvas>
+                               <canvas id="myChart" class="${name2}"></canvas>
                             </div>
                          </div>
                         
                         <div id="graph_right">
-                        	<font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<-- 직메가 매긴<br/>추천 점수를 확인해보세요!</font>
+                           <font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<-- 직메가 매긴<br/>추천 점수를 확인해보세요!</font>
                         </div>
                         
                         </div>
                     </div>
                     <div class="b-close"></div>
                 </div>
-            	</c:if>
+               </c:if>
    
-           			</c:forEach>
-           			
-           		</c:otherwise>
-           	</c:choose>
-           	<br />
+                    </c:forEach>
+                    
+                 </c:otherwise>
+              </c:choose>
+              <br />
             <hr />
             <div id="normal_list">
                 <ul id="gallery">
             <c:choose>
-           		<%-- 조회 결과가 없는 경우 --%>
-           		<c:when test="${output == null || fn:length(output)==0 }">
-           			<h1>조회 결과가 없습니다.</h1>
-           		</c:when>
-           		<%-- 조회 결과가 있는 경우 --%>
-           		<c:otherwise>
-           			<%-- 조회 결과에 대한 반복 처리 --%>
-           			
-           			<c:forEach var="item" items="${output}" varStatus="status" >
-           			<c:if test="${status.count>5}">
-					<c:set var="name" value="${item.name}"/>           			
-           			<c:set var="address" value="${item.address}"/>
-           			<c:set var="call" value="${item.call}"/>
-           			<c:set var="ps" value="${item.ps}"/>
-           			<c:set var="times" value="${item.times}"/>
-           			<c:set var="menu" value="${item.menu}"/>
-           			<c:set var="photos" value="${item.photos}"/>
-           			
-           			<c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
-           			<c:set var="name2" value="${fn:replace(name2,' ','')}" />
-           			
-           			<c:set var="nailno" value="${item.nailno}"/>
-           			
-                    		<li>
-                        		<a href="javascript:void(0);" style="text-decoration: none;" 
-                        		onClick="openPopup('${name2}')">
-                            		<span class="thumb">
-                                		<img src="${photos}" alt="이미지1" width="270px" height="150px"/>
-                            		</span>
-                            		<span class="text" style="font-size: 15px;">${name}<div class="info_stars"><i class="fas fa-star" style="color:#ffd400; font-size:15px;"></i>
+                 <%-- 조회 결과가 없는 경우 --%>
+                 <c:when test="${output == null || fn:length(output)==0 }">
+                    <h1>조회 결과가 없습니다.</h1>
+                 </c:when>
+                 <%-- 조회 결과가 있는 경우 --%>
+                 <c:otherwise>
+                    <%-- 조회 결과에 대한 반복 처리 --%>
+                    
+                    <c:forEach var="item" items="${output}" varStatus="status" >
+                    <c:if test="${status.count>5}">
+               <c:set var="name" value="${item.name}"/>                    
+                    <c:set var="address" value="${item.address}"/>
+                    <c:set var="call" value="${item.call}"/>
+                    <c:set var="ps" value="${item.ps}"/>
+                    <c:set var="times" value="${item.times}"/>
+                    <c:set var="menu" value="${item.menu}"/>
+                    <c:set var="photos" value="${item.photos}"/>
+                    
+                    <c:set var="name2" value="${fn:replace(item.name,'&','')}"/>
+                    <c:set var="name2" value="${fn:replace(name2,' ','')}" />
+                    
+                    <c:set var="nailno" value="${item.nailno}"/>
+                    
+                          <li>
+                              <a href="javascript:void(0);" style="text-decoration: none;" 
+                              onClick="openPopup('${name2}')">
+                                  <span class="thumb">
+                                      <img src="${photos}" alt="이미지1" width="270px" height="150px"/>
+                                  </span>
+                                  <span class="text" style="font-size: 15px;">${name}<div class="info_stars"><i class="fas fa-star" style="color:#ffd400; font-size:15px;"></i>
                                         <font style="font-size:15px;">&nbsp;${item.stars}</font></div></span>
-                        		</a>
-                    		</li>
-                    		
+                              </a>
+                          </li>
+                          
                     <div id="popupLayer" class="${name2}">
                     <div id="popupContent">
                         <div id="popup_image_box">
@@ -476,14 +476,14 @@ vertical-align: top;
                            
                         </div>
                         <div id="popup_content_1">
-                        	<input type ="hidden" id="${name2}" value=${nailno }>
+                           <input type ="hidden" id="${name2}" value=${nailno }>
                             <h3>${name}&nbsp;<span id=heart class="${name2}" ><i class="fa fa-heart-o" aria-hidden="true" onClick="heart('${name2}','${name}')"></i> </span>
                             </h3>
 
                         </div>
                         <div id="popup_content_2">
-                           		
-                           		<div class="info_stars" style="font-size: 20px; margin-left: -30px;"><i class="fas fa-star" style="color:#ffd400; font-size:28px;"></i><font style="font-size: 20px;" id="star" class="${name2}">${item.stars}</font></div>
+                                 
+                                 <div class="info_stars" style="font-size: 20px; margin-left: -30px;"><i class="fas fa-star" style="color:#ffd400; font-size:28px;"></i><font style="font-size: 20px;" id="star" class="${name2}">${item.stars}</font></div>
                                 <div id="info_num" style="font-size: 20px;">카카오 헤어샵 리뷰수:&nbsp;<font id="review" class="${name2}" style="font-size: 25px; color: #ff7f00;">${item.review_count}</font>개</div>
                                 <br/>   
                                 
@@ -496,36 +496,36 @@ vertical-align: top;
                         </div>
                         
                         <div id="popup_content_3">
-                        	<br/>
-                       		<font id="sang" class={name2} style="font-size:0px;">${item.nailno}</font>
-                        	<div id="info_ps" style="font-size: 20px;"><img src="assets/img/ps.png" width="25px" height="25px">&nbsp;${fn:substring(ps,0,35)}<br/>${fn:substring(ps,35,70)}<br/>${fn:substring(ps,70,150)}</div><br/>
-                         	<div id="info_etc" style="font-size: 20px;"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${fn:substring(menu,0,45)}<br/>${fn:substring(menu,45,90)}<br/>${fn:substring(menu,90,150)}</div>
+                           <br/>
+                             <font id="sang" class={name2} style="font-size:0px;">${item.nailno}</font>
+                           <div id="info_ps" style="font-size: 20px;"><img src="assets/img/ps.png" width="25px" height="25px">&nbsp;${fn:substring(ps,0,35)}<br/>${fn:substring(ps,35,70)}<br/>${fn:substring(ps,70,150)}</div>
+                            <div id="info_etc" style="font-size: 20px;"><img src="assets/img/etc.png" width="20px" height="20px">&nbsp;${fn:substring(menu,0,45)}<br/>${fn:substring(menu,45,90)}<br/>${fn:substring(menu,90,150)}</div>
                         </div>
                         
                         <div id="popup_content_4">
                         <div id="graph_left">
                         <button onclick="statistics('${name2}')" class="btn btn-warning">직메의 점수 보기</button>
-                        	<br/><br/>
+                           <br/><br/>
                             <div style="width: 300px;">
-                            	<canvas id="myChart" class="${name2}"></canvas>
+                               <canvas id="myChart" class="${name2}"></canvas>
                             </div>
                          </div>
                         
                         <div id="graph_right">
-                        	<font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<-- 직메가 매긴<br/>추천 점수를 확인해보세요!</font>
+                           <font id="visualize" class="${name2}" style="font-size: 20px; color:#404040; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<-- 직메가 매긴<br/>추천 점수를 확인해보세요!</font>
                         </div>
                         
                         </div>
                     </div>
                     <div class="b-close"></div>
                 </div>
-                    	
-      				</c:if>
-           			</c:forEach>
-           	</c:otherwise>
+                       
+                  </c:if>
+                    </c:forEach>
+              </c:otherwise>
            </c:choose>
         
-           	</ul>
+              </ul>
           </div>
            
         <!-- footer 시작 -->
@@ -569,15 +569,15 @@ vertical-align: top;
                               function statistics(name){
                               var ctx = $("#myChart."+name)[0].getContext('2d');
                               var star = $("#star."+name)[0].innerHTML;
-                              var review = ($("#review."+name)[0].innerHTML)/10;
-                              var score = (((star*0.3)+(review*0.7))/32.2)*100;
+                              var review = ($("#review."+name)[0].innerHTML)/100;
+                              var score = (((star*0.3)+(review*0.7))/10.02)*100;
                               
                               var myChart = new Chart(ctx, {
                                   
                                   data: {
-                                      labels: ['별점', '리뷰수(십)'],
+                                      labels: ['별점', '리뷰수(백)'],
                                       datasets: [{
-                                    	  type: 'bar',
+                                         type: 'bar',
                                           label: name+'데이터',
                                           data: [star,review],
                                           backgroundColor:['rgba(255, 159, 64, 0.2)',
@@ -585,9 +585,9 @@ vertical-align: top;
                                           borderColor: ['rgb(255, 159, 64)',
                                               'rgb(255, 205, 86)'],
                                       borderWidth: 1}, {
-                                    	  type:'line',
-                                    	  label: '전체 데이터 평균치',
-                                    	  data: [4.1,3.3],
+                                         type:'line',
+                                         label: '전체 데이터 평균치',
+                                         data: [4.1,3.3],
 
                                       }]
                                   },
@@ -601,75 +601,75 @@ vertical-align: top;
                               });
                               
                               if(star>=4.1 && review>=3.3){
-                            	 
-                            	  
-                            	  if(score>=70){
-                            		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
-                            		  +Math.abs((star-4.1).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
-                            		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;유명한 네일샵이네요!<br/>&nbsp;&nbsp;강력 추천합니다!";
-                            		  
-                            	  } else if(score<70 && score>=30){
-                            		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
-                            		  +Math.abs((star-4.1).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
-                            		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;좋은 네일샵인 것 같아요!<br/>&nbsp;&nbsp;추천합니다!";
-                            	  } else if(score<30){
-                            		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
-                            		  +Math.abs((star-4.1).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
-                            		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;데이터가 많이 없네요!<br/>&nbsp;&nbsp;도전해보실래요? 숨은 진주일수도요!";
-                            	  }
-                            	  
+                                
+                                 
+                                 if(score>=70){
+                                    $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                                    +Math.abs((star-4.1).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                                    +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;유명한 네일샵이네요!<br/>&nbsp;&nbsp;강력 추천합니다!";
+                                    
+                                 } else if(score<70 && score>=30){
+                                    $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                                    +Math.abs((star-4.1).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                                    +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;좋은 네일샵인 것 같아요!<br/>&nbsp;&nbsp;추천합니다!";
+                                 } else if(score<30){
+                                    $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                                    +Math.abs((star-4.1).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                                    +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;데이터가 많이 없네요!<br/>&nbsp;&nbsp;도전해보실래요? 숨은 진주일수도요!";
+                                 }
+                                 
                               } else if (star>=4.1 && review<3.3) {
-                            	  
-                            	  if(score>=70){
-                            		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
-                            		  +Math.abs((star-4.1).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
-                            		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;유명한 네일샵이네요!<br/>&nbsp;&nbsp;강력 추천합니다!";
-                            		  
-                            	  } else if(score<70 && score>=30){
-                            		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
-                            		  +Math.abs((star-4.1).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
-                            		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;좋은 네일샵인 것 같아요!<br/>&nbsp;&nbsp;추천합니다!";
-                            	  } else if(score<30){
-                            		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
-                            		  +Math.abs((star-4.1).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
-                            		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;데이터가 많이 없네요!<br/>&nbsp;&nbsp;도전해보실래요? 숨은 진주일수도요!";
-                            	  }
-								
-							} else if (star<4.1 && review>=3.3) {
-                          	  
-                          	  if(score>=70){
-                          		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
-                          		  +Math.abs((star-4.1).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
-                          		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;유명한 네일샵이네요!<br/>&nbsp;&nbsp;강력 추천합니다!";
-                          		  
-                          	  } else if(score<70 && score>=30){
-                          		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
-                          		  +Math.abs((star-4.1).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
-                          		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;좋은 네일샵인 것 같아요!<br/>&nbsp;&nbsp;추천합니다!";
-                          	  } else if(score<30){
-                          		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
-                          		  +Math.abs((star-4.1).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
-                          		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;데이터가 많이 없네요!<br/>&nbsp;&nbsp;도전해보실래요? 숨은 진주일수도요!";
-                          	  	} 
+                                 
+                                 if(score>=70){
+                                    $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                                    +Math.abs((star-4.1).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                                    +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;유명한 네일샵이네요!<br/>&nbsp;&nbsp;강력 추천합니다!";
+                                    
+                                 } else if(score<70 && score>=30){
+                                    $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                                    +Math.abs((star-4.1).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                                    +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;좋은 네일샵인 것 같아요!<br/>&nbsp;&nbsp;추천합니다!";
+                                 } else if(score<30){
+                                    $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                                    +Math.abs((star-4.1).toFixed(1))+"</font> 높고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                                    +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;데이터가 많이 없네요!<br/>&nbsp;&nbsp;도전해보실래요? 숨은 진주일수도요!";
+                                 }
+                        
+                     } else if (star<4.1 && review>=3.3) {
+                               
+                               if(score>=70){
+                                  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                                  +Math.abs((star-4.1).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                                  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;유명한 네일샵이네요!<br/>&nbsp;&nbsp;강력 추천합니다!";
+                                  
+                               } else if(score<70 && score>=30){
+                                  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                                  +Math.abs((star-4.1).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                                  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;좋은 네일샵인 것 같아요!<br/>&nbsp;&nbsp;추천합니다!";
+                               } else if(score<30){
+                                  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                                  +Math.abs((star-4.1).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 많습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                                  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;데이터가 많이 없네요!<br/>&nbsp;&nbsp;도전해보실래요? 숨은 진주일수도요!";
+                                  } 
                               
                               
                             
                               } else if (star<4.1 && review<3.3) {
-                              	  
-                              	  if(score>=70){
-                              		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
-                              		  +Math.abs((star-4.1).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
-                              		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;유명한 네일샵이네요!<br/>&nbsp;&nbsp;강력 추천합니다!";
-                              		  
-                              	  } else if(score<70 && score>=50){
-                              		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
-                              		  +Math.abs((star-4.1).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
-                              		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;좋은 네일샵인 것 같아요!<br/>&nbsp;&nbsp;추천합니다!";
-                              	  } else if(score<30){
-                              		  $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
-                              		  +Math.abs((star-4.1).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
-                              		  +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;데이터가 많이 없네요!<br/>&nbsp;&nbsp;도전해보실래요? 숨은 진주일수도요!";
-                              	  }
+                                   
+                                   if(score>=70){
+                                      $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                                      +Math.abs((star-4.1).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                                      +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;유명한 네일샵이네요!<br/>&nbsp;&nbsp;강력 추천합니다!";
+                                      
+                                   } else if(score<70 && score>=50){
+                                      $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                                      +Math.abs((star-4.1).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                                      +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;좋은 네일샵인 것 같아요!<br/>&nbsp;&nbsp;추천합니다!";
+                                   } else if(score<30){
+                                      $("#visualize."+name)[0].innerHTML="<br/>&nbsp;&nbsp;<font style='color: #6f4314; font-size:22px;'>"+name+"</font>은(는)<br/>&nbsp;&nbsp;평균 별점보다 <font style='color: #ffa71a; font-size:22px;'>"
+                                      +Math.abs((star-4.1).toFixed(1))+"</font> 낮고,<br/>&nbsp;&nbsp;평균 리뷰수보다 <font style='color: #3b7862; font-size:22px;'>"+((Math.abs((review-3.3).toFixed(1)))*10)+"</font>개 적습니다.<br/>&nbsp;&nbsp;직메의 점수는 <font style='color: #e96363; font-size:22px;'>"
+                                      +score.toFixed(2)+"</font>점입니다.<br/>&nbsp;&nbsp;데이터가 많이 없네요!<br/>&nbsp;&nbsp;도전해보실래요? 숨은 진주일수도요!";
+                                   }
                               } 
                               
                               }
@@ -680,80 +680,80 @@ vertical-align: top;
                               </script>
         
         <script type="text/javascript">
-		var startBtn = document.getElementById('start');
-		
-		startBtn.addEventListener("click", function() {
-	
-			// 카운트다운을 처음 설정하는 경우
-			off_hour = parseInt(prompt("몇시에 퇴근하시나요? (24시 기준)"));
-			console.log(off_hour);
-			if ((typeof off_hour == "string") || (off_hour > 24)
-					|| (isNaN(off_hour))) {
-				alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
-				return
-	
-			}
-	
-			off_minute = parseInt(prompt("몇분에 퇴근하시나요?"));
-			if ((typeof off_minute != "number") || (off_minute > 60)
-					|| (isNaN(off_minute))) {
-				alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
-				return
-	
-			}
-	
-			sessionStorage.setItem("off_hour", off_hour);
-			sessionStorage.setItem("off_minute", off_minute);
-			location.reload();
-	
-			console.log("수정된 퇴근 시간" + off_hour + ":" + off_minute);
-	
-			location.reload();
-		});
-		
-	
-		document.addEventListener("DOMContentLoaded", function() {
-	
-			var today = new Date();
-			var now_hour = parseInt(('0' + today.getHours()).slice(-2));
-			var now_minute = parseInt(('0' + today.getMinutes()).slice(-2));
-	
-			console.log("현재 시간" + now_hour + ":" + now_minute);
-			
-			if (sessionStorage.getItem('off_hour')==null || sessionStorage.getItem('off_minute')==null){
-				
-				startBtn.innerHTML = "퇴근 시간 설정하기"
-				
-			}
-			
-			else{
-				var off_hour = sessionStorage.getItem('off_hour');
-				var off_minute = sessionStorage.getItem('off_minute');
-				if ((off_hour-now_hour)<=0){
-					
-					if ((off_hour-now_hour)==0 && (off_minute-now_minute)>=0){
-						console.log("퇴근 시간" + off_hour + ":" + off_minute);
-						startBtn.innerHTML = "퇴근까지 ~ "
-						countdown('countdownC', 0, sessionStorage.getItem('off_hour')
-								- now_hour, sessionStorage.getItem('off_minute')
-								- now_minute, 10);
-					} else {
-						console.log("문제 있다")
-						startBtn.innerHTML = "퇴근 시간 설정하기"
-						countdown('countdownC',0,0,0,0);
-					}
-					
-				} else {
-					console.log("퇴근 시간" + off_hour + ":" + off_minute);
-					startBtn.innerHTML = "퇴근까지 ~ "
-					countdown('countdownC', 0, sessionStorage.getItem('off_hour')
-							- now_hour, sessionStorage.getItem('off_minute')
-							- now_minute, 10);
-				}
+      var startBtn = document.getElementById('start');
+      
+      startBtn.addEventListener("click", function() {
+   
+         // 카운트다운을 처음 설정하는 경우
+         off_hour = parseInt(prompt("몇시에 퇴근하시나요? (24시 기준)"));
+         console.log(off_hour);
+         if ((typeof off_hour == "string") || (off_hour > 24)
+               || (isNaN(off_hour))) {
+            alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
+            return
+   
+         }
+   
+         off_minute = parseInt(prompt("몇분에 퇴근하시나요?"));
+         if ((typeof off_minute != "number") || (off_minute > 60)
+               || (isNaN(off_minute))) {
+            alert("잘못된 입력입니다. 퇴근시간을 다시 설정해주세요!")
+            return
+   
+         }
+   
+         sessionStorage.setItem("off_hour", off_hour);
+         sessionStorage.setItem("off_minute", off_minute);
+         location.reload();
+   
+         console.log("수정된 퇴근 시간" + off_hour + ":" + off_minute);
+   
+         location.reload();
+      });
+      
+   
+      document.addEventListener("DOMContentLoaded", function() {
+   
+         var today = new Date();
+         var now_hour = parseInt(('0' + today.getHours()).slice(-2));
+         var now_minute = parseInt(('0' + today.getMinutes()).slice(-2));
+   
+         console.log("현재 시간" + now_hour + ":" + now_minute);
+         
+         if (sessionStorage.getItem('off_hour')==null || sessionStorage.getItem('off_minute')==null){
+            
+            startBtn.innerHTML = "퇴근 시간 설정하기"
+            
+         }
+         
+         else{
+            var off_hour = sessionStorage.getItem('off_hour');
+            var off_minute = sessionStorage.getItem('off_minute');
+            if ((off_hour-now_hour)<=0){
+               
+               if ((off_hour-now_hour)==0 && (off_minute-now_minute)>=0){
+                  console.log("퇴근 시간" + off_hour + ":" + off_minute);
+                  startBtn.innerHTML = "퇴근까지 ~ "
+                  countdown('countdownC', 0, sessionStorage.getItem('off_hour')
+                        - now_hour, sessionStorage.getItem('off_minute')
+                        - now_minute, 10);
+               } else {
+                  console.log("문제 있다")
+                  startBtn.innerHTML = "퇴근 시간 설정하기"
+                  countdown('countdownC',0,0,0,0);
+               }
+               
+            } else {
+               console.log("퇴근 시간" + off_hour + ":" + off_minute);
+               startBtn.innerHTML = "퇴근까지 ~ "
+               countdown('countdownC', 0, sessionStorage.getItem('off_hour')
+                     - now_hour, sessionStorage.getItem('off_minute')
+                     - now_minute, 10);
+            }
 
-			}
-	
-		});
+         }
+   
+      });
 
 
         function openNav() {
@@ -774,26 +774,26 @@ vertical-align: top;
         //상세 팝업
 function openPopup(name) { 
 
-        	var nailno = document.getElementById(name).value;
-        	
-        	$.ajax({
-        		type : "POST",
-        		url : "checklist2",
-        		dataType : "json",
-        		data : {
-        			"nailno" : nailno
-        		},
-        	success : function(data){
-        		
-        		if(data){
- 	  	              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
-   	              	  $("#heart."+name).addClass("liked");
-        		}else{
-        			console.log('찜 목록아님')
-        		}
-        	},
+           var nailno = document.getElementById(name).value;
+           
+           $.ajax({
+              type : "POST",
+              url : "checklist2",
+              dataType : "json",
+              data : {
+                 "nailno" : nailno
+              },
+           success : function(data){
+              
+              if(data){
+                       $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+                         $("#heart."+name).addClass("liked");
+              }else{
+                 console.log('찜 목록아님')
+              }
+           },
 
-        	})
+           })
             $("#popupLayer."+name).bPopup({
                     iframeAttr: 'frameborder=”auto”',
                     iframeAttr: 'frameborder=”0',
@@ -810,47 +810,47 @@ function openPopup(name) {
         //하트 색상 채우기
         function heart(name,a){
                  $("#heart."+name).click(function(){
-               	 
-               	  //찜  취소
-       	          if($("#heart."+name).hasClass("liked")){
-       	        	  $.ajax({
-       	        		  type :"POST",
-       	        		  url : "cancel_basket2",
-       	        		  dataType : "json",
-       	        		  data :{"name": a},
-       	        		  success:function(data){ //삭제 
-       	        			  if(data == 1){ //삭제 성공
-       		                      $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
-       		                      $("#heart."+name).removeClass("liked");
-       	        			  }else{
-       								alert('취소 실패 잠시후에 다시 시도하세요');
-       	                      }
-       	        		  },
-       	        		  
-       	        	  })
+                   
+                    //찜  취소
+                    if($("#heart."+name).hasClass("liked")){
+                       $.ajax({
+                          type :"POST",
+                          url : "cancel_basket2",
+                          dataType : "json",
+                          data :{"name": a},
+                          success:function(data){ //삭제 
+                             if(data == 1){ //삭제 성공
+                                   $("#heart."+name).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+                                   $("#heart."+name).removeClass("liked");
+                             }else{
+                               alert('취소 실패 잠시후에 다시 시도하세요');
+                                }
+                          },
+                          
+                       })
                    }else{ //찜하기
-                 	  $.ajax({
-               		  type : "POST",
-               		  url : "add_basket2",
-               		  dataType : "json",
-               		  data : {"name" : a},
-              	  		 success:function(data){
-              	  			 	if(data==3){
-              	  			 		alert('로그인 후 이용해주세요 로그인 페이지로 이동합니다');
-              	  			 		location.replace("login.do");
-              	  			 		return false;
-              	  			 	}else if(data ==-1){
-              	  			 		alert('저장 실패 다시 시도해주세요');
-              	  			 		return false;
-              	  			 	}
-              	  			 	else{
-              	  	              $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
-              	              	  $("#heart."+name).addClass("liked");
-              	  			 	}
+                      $.ajax({
+                       type : "POST",
+                       url : "add_basket2",
+                       dataType : "json",
+                       data : {"name" : a},
+                          success:function(data){
+                                if(data==3){
+                                   alert('로그인 후 이용해주세요 로그인 페이지로 이동합니다');
+                                   location.replace("login.do");
+                                   return false;
+                                }else if(data ==-1){
+                                   alert('저장 실패 다시 시도해주세요');
+                                   return false;
+                                }
+                                else{
+                                    $("#heart."+name).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+                                    $("#heart."+name).addClass("liked");
+                                }
 
-               		  },
-               		
-               	  })
+                       },
+                     
+                    })
                    }
 
 
