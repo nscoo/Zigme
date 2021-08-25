@@ -50,52 +50,49 @@ ul {
 					<div id="mySidenav" class="sidenav">
 						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
 						<ul class="navi">
-							<li><a href="#">출근길</a>
-								<ul>
-									<li><a href="#">날씨/미세먼지</a></li>
-									<li><a href="#">코로나수치</a></li>
-									<li><a href="#">대중교통정보</a></li>
-									<li><a href="#">뉴스/주식정보</a></li>
-									<br />
-								</ul></li>
-							<li><a href="#">회사안</a>
-								<ul>
-									<li><a href="#">메뉴추천</a></li>
-									<li><a href="#">업무 주기능</a></li>
-									<li><a href="#">커뮤니티</a></li>
-									<li><a href="#">5분 스트레칭</a></li>
-									<br />
-								</ul></li>
-							<li><a href="${pageContext.request.contextPath}/main.do">퇴근길</a>
-								<ul>
-									<li><a
-										href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
-									<li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
-									<li><a href="${pageContext.request.contextPath}/mylist.do">My
-											List</a></li>
-									<br />
-								</ul></li>
-							<li><a href="#">실내</a>
-								<ul>
-									<li><a href="#">영화추천</a></li>
-									<li><a href="#">오늘의 쇼핑</a></li>
-									<li><a href="#">이직메이트</a></li>
-									<li><a href="#">커뮤니티</a></li>
-								</ul></li>
-							<li><a href="#">실외</a>
-								<ul>
-									<li><a href="#">걷기장소추천</a></li>
-									<li><a href="#">커뮤니티</a></li>
-									<li><a href="#">문화</a></li>
-									<li><a href="#">체육</a></li>
-									<li><a href="#">교통정보보기</a></li>
-								</ul></li>
+							<li><a href="http://itproject.ezenac.co.kr/ilchooL/">출근길</a>
+                                <ul>
+                                    <li><a href="http://itproject.ezenac.co.kr/ilchooL/">날씨/미세먼지</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/ilchooL/">코로나수치</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/ilchooL/contents/contents_transport.do">대중교통정보</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/ilchooL/contents/contents_news.do">뉴스/주식정보</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="http://itproject.ezenac.co.kr/zigme/">회사안</a>
+                                <ul>
+                                    <li><a href="http://itproject.ezenac.co.kr/zigme/menu/menu_main">메뉴추천</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/zigme/help/help_main">업무 주기능</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/zigme/help_ajax/help_comm.do">커뮤니티</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/zigme/util/util_main">5분 스트레칭</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="${pageContext.request.contextPath}">퇴근길</a>
+                               <ul>
+                                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
+                                	<br/>
+                                </ul>
+                            </li>
+                            <li><a href="http://itproject.ezenac.co.kr/homely">실내활동</a>
+                                <ul>
+                                    <li><a href="http://itproject.ezenac.co.kr/homely/movie/movie_main.do">영화추천</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/homely/Homely_Shopping/shopping_main.do">오늘의 쇼핑</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/homely/job/job_main.do">이직메이트</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/homely/community/community_main.do">커뮤니티</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="http://itproject.ezenac.co.kr/goodspring/">실외활동</a>
+                                <ul>
+                                    <li><a href="http://itproject.ezenac.co.kr/goodspring/walkPage/walk_index.do">걷기장소추천</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/goodspring/commPage/comm_index.do">커뮤니티</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/goodspring/casPage/cas_index.do">문화,체육</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/goodspring/bicyclePage/bicycle_index.do">따릉이정보보기</a></li>
+                                </ul>
+                            </li>
 						</ul>
 					</div>
 					<span style="font-size: 30px; cursor: pointer;" onclick="openNav()">&#9776;</span>

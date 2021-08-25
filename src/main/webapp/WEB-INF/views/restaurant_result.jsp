@@ -147,50 +147,49 @@ String stars = request.getParameter("stars");
 					<div id="mySidenav" class="sidenav">
 						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
 						<ul class="navi">
-							<li><a href="#">출근길</a>
-								<ul>
-									<li><a href="#">날씨/미세먼지</a></li>
-									<li><a href="#">코로나수치</a></li>
-									<li><a href="#">대중교통정보</a></li>
-									<li><a href="#">뉴스/주식정보</a></li>
-								</ul></li>
-							<li><a href="#">회사안</a>
-								<ul>
-									<li><a href="#">메뉴추천</a></li>
-									<li><a href="#">업무 주기능</a></li>
-									<li><a href="#">커뮤니티</a></li>
-									<li><a href="#">5분 스트레칭</a></li>
-								</ul></li>
-							<li><a href="main.html">퇴근길</a>
-								<ul>
-									<li><a
-										href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
-									<li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
-									<li><a href="${pageContext.request.contextPath}/mylist.do">My
-											List</a></li>
-									<br />
-								</ul></li>
-							<li><a href="#">실내</a>
-								<ul>
-									<li><a href="#">영화추천</a></li>
-									<li><a href="#">오늘의 쇼핑</a></li>
-									<li><a href="#">이직메이트</a></li>
-									<li><a href="#">커뮤니티</a></li>
-								</ul></li>
-							<li><a href="#">실외</a>
-								<ul>
-									<li><a href="#">걷기장소추천</a></li>
-									<li><a href="#">커뮤니티</a></li>
-									<li><a href="#">문화</a></li>
-									<li><a href="#">체육</a></li>
-									<li><a href="#">교통정보보기</a></li>
-								</ul></li>
+							<li><a href="http://itproject.ezenac.co.kr/ilchooL/">출근길</a>
+                                <ul>
+                                    <li><a href="http://itproject.ezenac.co.kr/ilchooL/">날씨/미세먼지</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/ilchooL/">코로나수치</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/ilchooL/contents/contents_transport.do">대중교통정보</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/ilchooL/contents/contents_news.do">뉴스/주식정보</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="http://itproject.ezenac.co.kr/zigme/">회사안</a>
+                                <ul>
+                                    <li><a href="http://itproject.ezenac.co.kr/zigme/menu/menu_main">메뉴추천</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/zigme/help/help_main">업무 주기능</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/zigme/help_ajax/help_comm.do">커뮤니티</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/zigme/util/util_main">5분 스트레칭</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="${pageContext.request.contextPath}">퇴근길</a>
+                               <ul>
+                                    <li><a href="${pageContext.request.contextPath}/restaurant_search.do">Restaurant</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/music_select1.do">Music</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/hair_search.do">Beauty</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/nearby.do">Nearby</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/traffic_search.do">Transportation</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/mylist.do">My List</a></li>
+                                	<br/>
+                                </ul>
+                            </li>
+                            <li><a href="http://itproject.ezenac.co.kr/homely">실내활동</a>
+                                <ul>
+                                    <li><a href="http://itproject.ezenac.co.kr/homely/movie/movie_main.do">영화추천</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/homely/Homely_Shopping/shopping_main.do">오늘의 쇼핑</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/homely/job/job_main.do">이직메이트</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/homely/community/community_main.do">커뮤니티</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="http://itproject.ezenac.co.kr/goodspring/">실외활동</a>
+                                <ul>
+                                    <li><a href="http://itproject.ezenac.co.kr/goodspring/walkPage/walk_index.do">걷기장소추천</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/goodspring/commPage/comm_index.do">커뮤니티</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/goodspring/casPage/cas_index.do">문화,체육</a></li>
+                                    <li><a href="http://itproject.ezenac.co.kr/goodspring/bicyclePage/bicycle_index.do">따릉이정보보기</a></li>
+                                </ul>
+                            </li>
 						</ul>
 					</div>
 					<span style="font-size: 30px; cursor: pointer;" onclick="openNav()">&#9776;</span>
@@ -366,7 +365,7 @@ String stars = request.getParameter("stars");
 											<span style="font-size: 30px"> <i
 												class="fas fa-star fa-1x" style="color: #ffd400"></i>
 											</span> <span id='star' style="font-size: 18px" class="${name_2}">${stars}</span>
-											<span id='review' style="font-size: 15px" class="${name_2}">(${review_count})</span>
+											<span id='review' style="font-size: 15px" class="${name_2}">${review_count}</span>
 											<span id ="heart" class="${name_2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name_2}','${name}')" ></i> </span>
 										</h3>
 									</div>
@@ -417,7 +416,7 @@ String stars = request.getParameter("stars");
 										</div>
 										<div id="graph_right" style="font-size: 18px">
 											<font id="visualize" class="${name_2}"
-												style="font-size: 20px; color: #404040; text-align: center;"></font>
+												style="font-size: 20px; color: #404040; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<-- 직메가 매긴<br/>추천 점수를 확인해보세요!</font>
 										</div>
 
 									</div>
@@ -481,77 +480,79 @@ String stars = request.getParameter("stars");
 
 									<%-- 일반 가게 리스트 팝업 --%>
 									<div id="popupLayer" class="${name_2}">
-										<div id="popupContent">
-											<div id="popup_image_box">
-												<img src="${photo_1}" width="240px" height="220px"
-													referrerpolicy="no-referrer" /> <img src="${photo_2}"
-													width="240px" height="220px" referrerpolicy="no-referrer" />
-												<img src="${photo_3}" width="240px" height="220px"
-													referrerpolicy="no-referrer" />
+								<div id="popupContent">
+									<div id="popup_image_box">
+										<img src="${photo_1}" width="240px" height="220px"
+											referrerpolicy="no-referrer" /> <img src="${photo_2}"
+											width="240px" height="220px" referrerpolicy="no-referrer" />
+										<img src="${photo_3}" width="240px" height="220px"
+											referrerpolicy="no-referrer" />
+									</div>
+									<div id="popup_content_1">
+										<h3>
+										<input type ="hidden" id="${name_2}" value=${resno}>
+											<font style="color: #0077a3; font-size: 30px;">&nbsp;&nbsp;${name}&nbsp;&nbsp;</font>
+											<span style="font-size: 30px"> <i
+												class="fas fa-star fa-1x" style="color: #ffd400"></i>
+											</span> <span id='star' style="font-size: 18px" class="${name_2}">${stars}</span>
+											<span id='review' style="font-size: 15px" class="${name_2}">${review_count}</span>
+											<span id ="heart" class="${name_2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name_2}','${name}')" ></i> </span>
+										</h3>
+									</div>
+									<div id="popup_content_2">
+										<div>
+											<div id="info_num">
+												<img src="assets/img/call.png" width="25px" height="25px">&nbsp;&nbsp;전화번호
+												: ${call}
 											</div>
-											<div id="popup_content_1">
-												<h3>
-												<input type ="hidden" id="${name_2}" value=${resno}>
-													<font style="color: #0077a3; font-size: 30px;">&nbsp;&nbsp;${name}&nbsp;&nbsp;</font>
-													<span style="font-size: 30px"> <i
-														class="fas fa-star fa-1x" style="color: #ffd400"></i>
-													</span> <span id="star" class="${name_2}" style="font-size: 18px">${stars}</span>
-													<span id="review" class="${name_2}" style="font-size: 18px">(${review_count})</span>
-													<span id ="heart" class="${name_2}"><i class="fa fa-heart-o" aria-hidden="true" onclick="heart('${name_2}','${name}')" ></i> </span>
-												</h3>
+											<div id="info_add">
+												<img src="assets/img/add.png" width="25px" height="25px">&nbsp;&nbsp;주소
+												: ${address}
 											</div>
-											<div id="popup_content_2">
-												<div>
-													<div id="info_num">
-														<img src="assets/img/call.png" width="25px" height="25px">&nbsp;&nbsp;전화번호
-														: ${call}
-													</div>
-													<div id="info_add">
-														<img src="assets/img/add.png" width="25px" height="25px">&nbsp;&nbsp;주소
-														: ${address}
-													</div>
-													<div id="info_time">
-														<img src="assets/img/time.png" width="25px" height="25px">&nbsp;&nbsp;영업시간
-														: ${times}
-													</div>
-													<div id="info_ps" style="padding-top: 3px;">
-														<img src="assets/img/ps.png" width="25px" height="25px">&nbsp;&nbsp;편의시설
-														: ${ps}
-													</div>
-													<div id="info_tags" style="padding-top: 3px;">
-														<img src="assets/img/tag.png" width="25px" height="25px">&nbsp;&nbsp;검색
-														키워드 : ${tags}
-													</div>
-												</div>
+											<div id="info_time">
+												<img src="assets/img/time.png" width="25px" height="25px">&nbsp;&nbsp;영업시간
+												: ${times}
 											</div>
-											<div id="popup_content_3">
-												<div class="info_menu">
-													<img src="assets/img/etc.png" width="25px" height="25px">&nbsp;
-													<a href="${menu_1}" referrerpolicy="no-referrer"
-														target="_blank" style="font-size: 18px; color: skyblue;">->
-														메뉴판 이미지 링크 1</a>
-												</div>
-												<div class="info_menu">
-													<img src="assets/img/etc.png" width="25px" height="25px">&nbsp;
-													<a href="${menu_2}" referrerpolicy="no-referrer"
-														target="_blank" style="font-size: 18px; color: skyblue;">->
-														메뉴판 이미지 링크 2</a>
-												</div>
+											<div id="info_ps" style="padding-top: 3px;">
+												<img src="assets/img/ps.png" width="25px" height="25px">&nbsp;&nbsp;편의시설
+												: ${ps}
 											</div>
-											<div id="popup_content_4">
-												<button onclick="statistics('${name_2}')"
-													class="btn btn-warning">직메의 점수 보기</button>
-												<div id="graph_left" style="font-size: 18px">
-													<canvas id="avg_chart" class="${name_2}"></canvas>
-												</div>
-												<div id="graph_right" style="font-size: 18px">
-													<font id="visualize" class="${name_2}"
-														style="font-size: 20px; color: #404040; text-align: center;"></font>
-												</div>
+											<div id="info_tags" style="padding-top: 3px;">
+												<img src="assets/img/tag.png" width="25px" height="25px">&nbsp;&nbsp;검색
+												키워드 : ${tags}
 											</div>
 										</div>
-										<div class="b-close"></div>
 									</div>
+									<div id="popup_content_3">
+										<div class="info_menu">
+											<img src="assets/img/etc.png" width="25px" height="25px">&nbsp;
+											<a href="${menu_1}" referrerpolicy="no-referrer"
+												target="_blank" style="font-size: 18px; color: skyblue;">->
+												메뉴판 이미지 링크 1</a>
+										</div>
+										<div class="info_menu">
+											<img src="assets/img/etc.png" width="25px" height="25px">&nbsp;
+											<a href="${menu_2}" referrerpolicy="no-referrer"
+												target="_blank" style="font-size: 18px; color: skyblue;">->
+												메뉴판 이미지 링크 2</a>
+										</div>
+									</div>
+									<div id="popup_content_4">
+										<div id="graph_left" style="font-size: 18px">
+											<button onclick="statistics('${name_2}')"
+												class="btn btn-warning">직메의 점수 보기</button>
+											<br> <br>
+											<canvas id="avg_chart" class="${name_2}"></canvas>
+										</div>
+										<div id="graph_right" style="font-size: 18px">
+											<font id="visualize" class="${name_2}"
+												style="font-size: 20px; color: #404040; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<-- 직메가 매긴<br/>추천 점수를 확인해보세요!</font>
+										</div>
+
+									</div>
+								</div>
+								<div class="b-close"></div>
+							</div>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
