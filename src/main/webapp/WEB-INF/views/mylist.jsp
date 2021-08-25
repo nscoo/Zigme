@@ -491,6 +491,11 @@
 			data : {
 				"mylistno" : mylistno,
 				"memo" : memo
+			},
+			success:function(data){
+				if(data==1){
+					alert('수정 완료');
+				}
 			}
 		})
     }
@@ -502,7 +507,12 @@
 			data : {
 				"mylistno" : mylistno,
 				"memo" : memo
+			},
+		success:function(data){
+			if(data==1){
+				alert('수정 완료');
 			}
+		}
 		})
     }
     function savememo3(mylistno,memo){ //mylisthair니까 여기서 mylistno, memo를 가져오면 된다.
@@ -513,7 +523,12 @@
 			data : {
 				"mylistno" : mylistno,
 				"memo" : memo
+			},
+		success:function(data){
+			if(data==1){
+				alert('수정 완료');
 			}
+		}
 		})
     }
     
