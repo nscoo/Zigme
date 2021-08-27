@@ -27,6 +27,10 @@
     <link rel="stylesheet" type="text/css" href="assets/css/result.css">
     <!-- 인스타그램 하트스타일-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- favicon -->
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon192.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon32.png"> 
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon16.png">
     <style type="text/css">
 
     #head_banner {

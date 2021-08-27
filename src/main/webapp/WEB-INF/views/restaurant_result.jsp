@@ -42,6 +42,10 @@ String stars = request.getParameter("stars");
 <!-- 인스타그램 하트스타일-->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- favicon -->
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon192.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon32.png"> 
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon16.png">
 <style type="text/css">
 .fa-heart-o {
 	color: red;
@@ -897,7 +901,7 @@ String stars = request.getParameter("stars");
         }
 	        //하트 색상 채우기
 			 function heart(name,a){
-	        	alert(a);
+	        	
 			          $("#heart."+name).click(function(){
 			        	 
 			        	  //찜  취소

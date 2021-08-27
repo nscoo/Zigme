@@ -18,6 +18,11 @@
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="assets/css/common.css" />
 <link rel="stylesheet" type="text/css" href="assets/css/container.css" />
+<!-- favicon -->
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon192.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon32.png"> 
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon16.png">
+
 <style type="text/css">
 /** 자기멋대로 지정되는 user agent stylesheet때문에 css따로지정해줌*/
 ul {
