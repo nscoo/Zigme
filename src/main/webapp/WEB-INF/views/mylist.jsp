@@ -165,9 +165,9 @@
                                          <div class="info_button">
                                              <a id="delete" class="${name2}" href="javascript:void(0)" onClick="deletelist3('${name2}','${item.name}')">X</a>
                                          </div>
-                                         <div class="item_img">
+                                         <div class="item_img">[p-y]
                                         	
-                                             <image src="${item.photo_1}" width="280px" height="280px">
+                                             <image src="${item.photo_1}" width="280px" height="280px" referrerpolicy="no-referrer">
                                          </div>
                                          <div class="item_info">
                                              <div class="info_name">${item.name}</div>
