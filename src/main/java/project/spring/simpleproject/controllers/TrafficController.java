@@ -139,7 +139,7 @@ public class TrafficController {
 			Traffic input = new Traffic();
 			input.setMembers_userno(userno);
 			input.setS_lat(s_lat);
-			input.setS_lng(s_lat);
+			input.setS_lng(s_lng);
 			input.setE_lat(e_lat);
 			input.setE_lng(e_lng);
 			

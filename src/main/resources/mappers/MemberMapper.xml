@@ -62,6 +62,6 @@
 	<update id="member_FindPw">
 		UPDATE members SET
 		userpw = "0000"
-		where userid=#{userid}
+		WHERE userid=#{userid} AND tel=#{tel}
 	</update>
 </mapper>
