@@ -21,6 +21,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon192.png"> 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon32.png"> 
 <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon16.png">
+<title>당신의 직장메이트, ZIGME</title>
 </head>
 
 <body>
