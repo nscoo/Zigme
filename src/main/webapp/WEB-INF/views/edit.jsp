@@ -17,6 +17,11 @@
     <link rel="stylesheet" type="text/css" href="assets/css/container.css">
     <link rel="stylesheet" type="text/css" href="assets/css/register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <!-- favicon -->
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon192.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon32.png"> 
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon16.png">
+<title>당신의 직장메이트, ZIGME</title>
 </head>
 
 <body>
@@ -303,7 +308,7 @@
 					$("#userpw").focus();
 					return false;
 				}
-				if(input.length<4 || input.length>20){
+				if(Object.keys(input).length<4 ||Object.keys(input).length>20){
 					alert("비밀번호는 4~20글자까지 가능합니다.");
 					return false;
 				}

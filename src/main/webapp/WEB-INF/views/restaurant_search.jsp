@@ -18,6 +18,11 @@
 <link rel="stylesheet" type="text/css" href="assets/css/common.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+	<!-- favicon -->
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon192.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon32.png"> 
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon16.png">
+<title>당신의 직장메이트, ZIGME</title>
 <!--css 폴더 링크가 작동하지않아서 페이지안에서 작성한 css -->
 <style type="text/css">
 #search_area {

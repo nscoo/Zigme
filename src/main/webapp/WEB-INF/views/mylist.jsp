@@ -9,7 +9,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>mylist</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
@@ -18,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/common.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/mylist.css" />
+    <title>당신의 직장메이트, ZIGME</title>
     <style type="text/css">
     #header_banner {
         position: relative;
@@ -165,9 +165,9 @@
                                          <div class="info_button">
                                              <a id="delete" class="${name2}" href="javascript:void(0)" onClick="deletelist3('${name2}','${item.name}')">X</a>
                                          </div>
-                                         <div class="item_img">
+                                         <div class="item_img">[p-y]
                                         	
-                                             <image src="${item.photo_1}" width="280px" height="280px">
+                                             <image src="${item.photo_1}" width="280px" height="280px" referrerpolicy="no-referrer">
                                          </div>
                                          <div class="item_info">
                                              <div class="info_name">${item.name}</div>

@@ -18,6 +18,11 @@
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="assets/css/common.css">
     <link rel="stylesheet" type="text/css" href="assets/css/container.css">
+    <!-- favicon -->
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon192.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon32.png"> 
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon16.png">
+<title>당신의 직장메이트, ZIGME</title>
 </head>
 <!-- 내용이 적어서 css 파일 별도로 안만듬-->
 <style type="text/css">
@@ -168,7 +173,7 @@
 							return false;
 						}
 						alert('비밀번호를 0000으로 초기화했습니다 로그인 후 비밀번호를 변경하세요.');
-						location.replace('http://localhost:8080/simpleproject/main.do')
+						location.replace('http://itproject.ezenac.co.kr/zigme3/')
 					},
 					error: function(data){
 						alert('잘못된 정보입니다');

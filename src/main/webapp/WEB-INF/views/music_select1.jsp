@@ -20,6 +20,11 @@
     <link rel="stylesheet" type="text/css" href="assets/css/container.css">
     <link rel="stylesheet" type="text/css" href="assets/css/music_select.css">
     <!-- 이수진 css,부트스트랩 끝 -->
+    <!-- favicon -->
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon192.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon32.png"> 
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon16.png">
+<title>당신의 직장메이트, ZIGME</title>
     
 </head>
 
