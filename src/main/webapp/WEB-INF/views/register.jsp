@@ -158,16 +158,16 @@
                             <input type="tel" class="form-control" name="tel" id="tel" placeholder="휴대폰번호를 입력해 주세요">
                         </div>
                         <div class="form-group">
-                            <label for="inputMobile">생년 월일</label>
+                            <label for="inputBirthday">생년 월일</label>
                             <input type="date" class="form-control" name="birthdate" id="birthdate" placeholder="생년월일입력">
                         </div>
                         <div class="form-group" id="icon_search">
-                            <label for="inputadd">집 주소 </label>
+                            <label for="inputhome">집 주소 </label>
                             <input type="text" class="form-control" name="addr_h" id="addr_h" placeholder="집 주소를 입력하세요"   onclick="execution_daum_address_h()">
                             
                         </div>
                         <div class="form-group">
-                            <label for="inputadd" id="icon_search">회사 주소 </label>
+                            <label for="inputcom" id="icon_search">회사 주소 </label>
                             <input type="text" class="form-control" id="addr_c" name="addr_c" placeholder="회사 주소를 입력하세요"  onclick="execution_daum_address_c()">
                            
                         </div>
