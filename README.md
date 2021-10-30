@@ -17,3 +17,9 @@ https://drive.google.com/file/d/1fVy0K9bgHs3o_ZN_kHQhTLAp10l3T5cG/view?usp=shari
 
 ### 프로젝트 구성원
 노상철, 이수진, 김준형, 백수빈
+
+### 사용언어
+Python, Java, HTML, CSS
+
+### Tool
+Spring, Tomcat, CentOS
